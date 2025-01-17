@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public float speedRate; // 速率系数
     public float jumpForce; // 跳跃高度
+    public bool isBat;
 
     private Rigidbody2D rigidbody2D;
     private float xSpeed;
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        isBat = false;
     }
 
     // Update is called once per frame
@@ -34,6 +36,21 @@ public class Player : MonoBehaviour
             rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpForce);
             jumpNumber++;
         }
+        //蝙蝠形态（滑翔）
+        if (Input.GetKey(KeyCode.R) && isBat ==false)
+        {
+            rigidbody2D.drag = 10;
+            isBat = true;
+            jumpNumber=2;
+        }
+        //持续按住r变身蝙蝠，使下落速度变慢且不能再跳跃
+        if (Input.GetKeyUp(KeyCode.R) && isBat == true)
+        {
+            rigidbody2D.drag = 1;
+            isBat = false;
+        }
+        //松开r还原
+
     }
 
     // 当玩家与标签为“ground”的地面接触后，重置跳跃次数
