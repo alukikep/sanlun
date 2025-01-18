@@ -98,6 +98,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y);
             jumpNumber = 0;
             highJump = false;
         }
