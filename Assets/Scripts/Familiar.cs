@@ -17,10 +17,16 @@ public class Familiar : MonoBehaviour
     public float chaseRange;//追击范围
     public float maxRangeToPlayer;//与玩家的最远距离
     public float moveSpeed;
+    public float jumpForce;
 
     private float waitTimer = 0;
     private float waitInterval = 5;//每过几秒在玩家旁边移动一下
     private float attackTimer;
+    private float jumpInterVal = 3;
+    private float jumpTimer;
+  
+
+    private bool isOnGround = true;
 
     private Rigidbody2D rb;
     private GameObject player;
@@ -33,16 +39,20 @@ public class Familiar : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         attackTimer = 0;
+        jumpTimer = jumpInterVal;
        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         attackTimer -= Time.deltaTime;
-        getCurrentEnemyTarget();
-        attack();
+        waitTimer += Time.deltaTime;
+        jumpTimer -= Time.deltaTime;
         moveToPlayer();
+        getCurrentEnemyTarget();
+        attack();       
         moveToEnemy();
     }
     private void getCurrentEnemyTarget()//检测最近的在Enemy层的敌人 检测范围是矩形
@@ -75,8 +85,10 @@ public class Familiar : MonoBehaviour
     }
     private void attack()//对最近的敌人进行攻击
     {
-        float distance = Vector3.Distance(targetEnemy.transform.position, transform.position);
-        if (targetEnemy!=null&&attackTimer<=0&&distance< attackRange)
+        
+        
+        
+        if (targetEnemy!=null&&attackTimer<=0&&Vector2.Distance(targetEnemy.position,transform.position)< attackRange)
         {
             
             GameObject farmiliarBullet = Instantiate(familiarBulletPrefab, transform.position, Quaternion.identity);
@@ -89,19 +101,23 @@ public class Familiar : MonoBehaviour
     }
     private void moveToPlayer()//移动向玩家且在玩家旁边行动
     {
+       
         float distance = Vector3.Distance(player.transform.position, transform.position);
         Vector2 direction = (player.transform.position - transform.position);
         Vector2 horizontalDirection = new Vector2(direction.x, 0).normalized;
-        if(distance>maxRangeToPlayer)
+        float horizontalDistance = Mathf.Abs(direction.x);
+        if(horizontalDistance > maxRangeToPlayer)
         {
+           
             rb.velocity = horizontalDirection * moveSpeed;
         }    
-        if(distance<maxRangeToPlayer&&targetEnemy==null)//暂时用于其在玩家旁移动而不是傻站着
+        if(horizontalDistance < maxRangeToPlayer)//暂时用于其在玩家旁移动而不是傻站着
         {
+            
 
-            waitTimer += Time.deltaTime;
-            if(waitTimer>waitInterval)
+            if (waitTimer>waitInterval)
             {
+               
                 float randomNum = Random.Range(0, 2);
                 if(randomNum>1.25)
                 {
@@ -118,25 +134,41 @@ public class Familiar : MonoBehaviour
                 }
                 waitTimer = 0;
             }
+        
 
+        }
+        float verticalDistance = Mathf.Abs(direction.y);//后面是跟随玩家跳跃的逻辑
+        
+        if (verticalDistance >=5  && isOnGround == true&&jumpTimer<=0)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            jumpTimer = jumpInterVal;
+            isOnGround = false;
         }
     }
     private void moveToEnemy()//追击敌人
     {
-        float distance = Vector3.Distance(targetEnemy.transform.position, transform.position);
+
         Vector2 direction = (targetEnemy.transform.position - transform.position);
         Vector2 horizontalDirection = new Vector2(direction.x, 0).normalized;
-        if (distance >attackRange)
+        if (Vector2.Distance(targetEnemy.position, transform.position) > attackRange)
         {
             rb.velocity = horizontalDirection * moveSpeed;
         }
-        if(distance<attackRange)
+        if (Vector2.Distance(targetEnemy.position, transform.position) < attackRange)
         {
             rb.velocity = new Vector2(-horizontalDirection.x, 0);
         }
-        if (distance == attackRange)
+        if (Vector2.Distance(targetEnemy.position, transform.position) == attackRange)
         {
             rb.velocity = new Vector2(0, 0);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)//检测是否在地面上 用于跳跃
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = true;
         }
     }
 }
