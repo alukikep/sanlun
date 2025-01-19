@@ -13,6 +13,11 @@ public class Player : MonoBehaviour
     public float jumpDir;
     private bool highJump;
 
+    [Header("Attack")]
+    public Transform attackCheck;
+    public float attackRadius;
+    public bool isAttack;
+
     private Rigidbody2D rigidbody2D;
     private Animator animation;
     private CapsuleCollider2D capsuleCollider;
@@ -57,6 +62,7 @@ public class Player : MonoBehaviour
         AnimatorControllers();
         BatTranform();
         MouseTransform();
+        Attack();
     }
 
     private void BatTranform()//按R变身蝙蝠（空中时）
@@ -74,6 +80,14 @@ public class Player : MonoBehaviour
             isBat = false;
         }
         //松开r还原
+    }
+
+    private void Attack()
+    {
+        if (Input.GetKeyDown(KeyCode.J) && isMouse == false && isBat == false && jumpNumber == 0&&isAttack==false)
+        {
+            isAttack = true;
+        }
     }
 
     private void MouseTransform()//按E变身老鼠
@@ -122,6 +136,7 @@ public class Player : MonoBehaviour
         animation.SetFloat("jump",jumpDir );
         animation.SetBool("highJump",highJump);
         animation.SetBool("isMouse", isMouse);
+        animation.SetBool("isAttack",isAttack);
     }
 
     private void Flip()//控制转向
