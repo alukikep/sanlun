@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rigidbody2D;
     private Animator animation;
-    private CapsuleCollider2D capsuleCollider;
+    private BoxCollider2D boxCollider2D;
     private float xSpeed;
     private int jumpNumber = 0; // 0,1,2分别表示跳跃了0，1，2次，控制二段跳
 
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         animation=GetComponentInChildren<Animator>();
-        capsuleCollider = GetComponent<CapsuleCollider2D>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
         isBat = false;
         faceRight = true;
     }
@@ -96,13 +96,13 @@ public class Player : MonoBehaviour
         {
             isMouse = true;
             jumpForce = 8;
-            capsuleCollider.size=new Vector2(0.8f,0.8f);
+            boxCollider2D.size=new Vector2(0.8f,0.8f);
         }
         else if(Input.GetKeyDown(KeyCode.E)&& isMouse == true)
         {
             isMouse=false;
             jumpForce=10;
-            capsuleCollider.size = new Vector2(1,1.9f);
+            boxCollider2D.size = new Vector2(1, 1.8f);
         }
     }
 
