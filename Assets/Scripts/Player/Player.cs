@@ -102,19 +102,32 @@ public class Player : MonoBehaviour
         {
             isMouse=false;
             jumpForce=10;
-            boxCollider2D.size = new Vector2(1, 1.8f);
+            boxCollider2D.size = new Vector2(0.8f, 1.8f);
         }
     }
 
     // 当玩家与标签为“ground”的地面接触后，重置跳跃次数
     //OnCollisionEnter2D适用于两者都不是trigger的情况，后续可能需要改成OnTriggerEnter2D
-    private void OnCollisionEnter2D(Collision2D collision)
+    //已修改为trigger检测，为了一些动作衔接的正确性
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
             rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y);
             jumpNumber = 0;
             highJump = false;
+        }
+      
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+           if(rigidbody2D.velocity.y< 0&&jumpNumber==0)
+            {
+                jumpNumber = 1;
+            }
         }
     }
 
