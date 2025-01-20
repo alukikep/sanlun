@@ -25,7 +25,7 @@ public class AttackCheck : MonoBehaviour
 
     private void AttackTrigger()
     {
-        Collider2D[] Enemies = Physics2D.OverlapCircleAll(player.attackCheck.position, player.attackRadius);
+        Collider2D[] Enemies = Physics2D.OverlapCircleAll(player.attackCheck.position, player.attackRadius,LayerMask.GetMask("Enemy"));
 
         foreach(var hit in Enemies)
         {

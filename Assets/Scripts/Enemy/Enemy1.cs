@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Enemy1 : MonoBehaviour
 {
+    [SerializeField]private float attackTimer;
+    [SerializeField]private float attackTime;
+    [SerializeField] private float attackRadius;
+    public Transform attackCheck;
+
     private Rigidbody2D rigidbody2D;
 
     public Transform player;
@@ -15,6 +20,8 @@ public class Enemy1 : MonoBehaviour
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        attackTimer = 0;
+        attackTime=5;
     }
 
     // Update is called once per frame
@@ -30,5 +37,36 @@ public class Enemy1 : MonoBehaviour
             rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y);
         }
         
+        attackTimer-=Time.deltaTime;
+        AttackPlayer();
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(attackCheck.position, attackRadius);
+    }
+
+    private void AttackPlayer()
+    {
+        if(attackTimer<0)
+        {
+            Attack();
+            attackTimer=attackTime;
+        }
+    }
+
+    private void Attack()
+    {
+        Collider2D[] player = Physics2D.OverlapCircleAll(attackCheck.position, attackRadius, LayerMask.GetMask("Player"));
+
+        foreach(var hit in player)
+        {
+            if(player!=null)
+            {
+                Debug.Log("player get hurted");
+            }
+        }
+
+    }
+
 }

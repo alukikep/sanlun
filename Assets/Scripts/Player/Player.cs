@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
-        animation=GetComponentInChildren<Animator>();
+        animation = GetComponentInChildren<Animator>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         isBat = false;
         faceRight = true;
@@ -43,7 +43,14 @@ public class Player : MonoBehaviour
         {
             xSpeed *= 2;
         }
-        rigidbody2D.velocity = new Vector2(xSpeed * speedRate, rigidbody2D.velocity.y);
+        if (isAttack == false)
+        {
+            rigidbody2D.velocity = new Vector2(xSpeed * speedRate, rigidbody2D.velocity.y);
+        }
+        else
+        {
+            rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y);
+        }
 
         // 跳跃
         if (Input.GetButtonDown("Jump") && jumpNumber < 2)
@@ -52,10 +59,10 @@ public class Player : MonoBehaviour
             jumpNumber++;
         }
 
-        if(Input.GetKeyDown(KeyCode.Q)&&jumpNumber!=0)//在空中按Q高跳（可以无限跳)
+        if (Input.GetKeyDown(KeyCode.Q) && jumpNumber != 0)//在空中按Q高跳（可以无限跳)
         {
             rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpForce * 3);
-            highJump=true;
+            highJump = true;
             jumpNumber = 2;
         }
         Flip();
@@ -68,13 +75,13 @@ public class Player : MonoBehaviour
     private void BatTranform()//按R变身蝙蝠（空中时）
     {
         //蝙蝠形态（滑翔）
-        if (Input.GetKeyDown(KeyCode.R) && isBat == false&&isMouse==false)
+        if (Input.GetKeyDown(KeyCode.R) && isBat == false && isMouse == false)
         {
             rigidbody2D.drag = 10;
             isBat = true;
         }
         //持续按住r变身蝙蝠，使下落速度变慢且不能再跳跃
-        else if (Input.GetKeyDown(KeyCode.R) && isBat == true&&isMouse==false)
+        else if (Input.GetKeyDown(KeyCode.R) && isBat == true && isMouse == false)
         {
             rigidbody2D.drag = 1;
             isBat = false;
@@ -84,7 +91,7 @@ public class Player : MonoBehaviour
 
     private void Attack()
     {
-        if (Input.GetKeyDown(KeyCode.J) && isMouse == false && isBat == false && jumpNumber == 0&&isAttack==false)
+        if (Input.GetKeyDown(KeyCode.J) && isMouse == false && isBat == false && jumpNumber == 0 && isAttack == false)
         {
             isAttack = true;
         }
@@ -92,16 +99,16 @@ public class Player : MonoBehaviour
 
     private void MouseTransform()//按E变身老鼠
     {
-        if(Input.GetKeyDown(KeyCode.E) && isMouse == false)
+        if (Input.GetKeyDown(KeyCode.E) && isMouse == false)
         {
             isMouse = true;
             jumpForce = 8;
-            boxCollider2D.size=new Vector2(0.8f,0.8f);
+            boxCollider2D.size = new Vector2(0.8f, 0.8f);
         }
-        else if(Input.GetKeyDown(KeyCode.E)&& isMouse == true)
+        else if (Input.GetKeyDown(KeyCode.E) && isMouse == true)
         {
-            isMouse=false;
-            jumpForce=10;
+            isMouse = false;
+            jumpForce = 10;
             boxCollider2D.size = new Vector2(0.8f, 1.8f);
         }
     }
@@ -117,14 +124,14 @@ public class Player : MonoBehaviour
             jumpNumber = 0;
             highJump = false;
         }
-      
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-           if(rigidbody2D.velocity.y< 0&&jumpNumber==0)
+            if (rigidbody2D.velocity.y < 0 && jumpNumber == 0)
             {
                 jumpNumber = 1;
             }
@@ -135,26 +142,26 @@ public class Player : MonoBehaviour
     {
         bool isMoving = rigidbody2D.velocity.x != 0;
         bool isGround = jumpNumber == 0;
-        if(rigidbody2D.velocity.y>0)
+        if (rigidbody2D.velocity.y > 0)
         {
             jumpDir = 1;
         }
-        if(rigidbody2D.velocity.y<0)
+        if (rigidbody2D.velocity.y < 0)
         {
             jumpDir = -1;
         }
         animation.SetBool("isMoving", isMoving);
-        animation.SetBool("isBat",isBat);
-        animation.SetBool("isGround",isGround);
-        animation.SetFloat("jump",jumpDir );
-        animation.SetBool("highJump",highJump);
+        animation.SetBool("isBat", isBat);
+        animation.SetBool("isGround", isGround);
+        animation.SetFloat("jump", jumpDir);
+        animation.SetBool("highJump", highJump);
         animation.SetBool("isMouse", isMouse);
-        animation.SetBool("isAttack",isAttack);
+        animation.SetBool("isAttack", isAttack);
     }
 
     private void Flip()//控制转向
     {
-        if(rigidbody2D.velocity.x > 0&&faceRight==false)
+        if (rigidbody2D.velocity.x > 0 && faceRight == false)
         {
             transform.Rotate(0, 180, 0);
             faceRight = true;
@@ -165,4 +172,6 @@ public class Player : MonoBehaviour
             faceRight = false;
         }
     }
+
+   
 }

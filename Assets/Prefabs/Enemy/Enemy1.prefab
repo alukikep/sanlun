@@ -161,6 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47b99ef330f1de499b73e586131abc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 384723499119586684, guid: c6f716c84404ce24bb098502470067e7, type: 3}
   stopDistanceX: 2
   moveSpeed: 3
