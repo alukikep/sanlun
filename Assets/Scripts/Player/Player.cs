@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
         {
             xSpeed *= 2;
         }
+
         if (isAttack == false)
         {
             rigidbody2D.velocity = new Vector2(xSpeed * speedRate, rigidbody2D.velocity.y);
@@ -86,7 +87,7 @@ public class Player : MonoBehaviour
         {
             rigidbody2D.drag = 1;
             isBat = false;
-            boxCollider2D.size = new Vector2(0.4f, 1.8f);
+            boxCollider2D.size = new Vector2(0.4f, 1.7f);
         }
         //ËÉ¿ªr»¹Ô­
     }
@@ -111,7 +112,7 @@ public class Player : MonoBehaviour
         {
             isMouse = false;
             jumpForce = 14;
-            boxCollider2D.size = new Vector2(0.4f, 1.8f);
+            boxCollider2D.size = new Vector2(0.4f, 1.7f);
         }
     }
 
@@ -133,10 +134,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            if (rigidbody2D.velocity.y < 0 && jumpNumber == 0)
-            {
-                jumpNumber = 1;
-            }
+           jumpNumber = 1;
         }
     }
 
