@@ -79,12 +79,14 @@ public class Player : MonoBehaviour
         {
             rigidbody2D.drag = 10;
             isBat = true;
+            boxCollider2D.size = new Vector2(0.4f, 0.8f);
         }
-        //持续按住r变身蝙蝠，使下落速度变慢且不能再跳跃
+        //按r变身蝙蝠，使下落速度变慢且不能再跳跃
         else if (Input.GetKeyDown(KeyCode.R) && isBat == true && isMouse == false)
         {
             rigidbody2D.drag = 1;
             isBat = false;
+            boxCollider2D.size = new Vector2(0.4f, 1.8f);
         }
         //松开r还原
     }
@@ -103,13 +105,13 @@ public class Player : MonoBehaviour
         {
             isMouse = true;
             jumpForce = 8;
-            boxCollider2D.size = new Vector2(0.8f, 0.8f);
+            boxCollider2D.size = new Vector2(0.4f, 0.8f);
         }
         else if (Input.GetKeyDown(KeyCode.E) && isMouse == true)
         {
             isMouse = false;
-            jumpForce = 10;
-            boxCollider2D.size = new Vector2(0.8f, 1.8f);
+            jumpForce = 14;
+            boxCollider2D.size = new Vector2(0.4f, 1.8f);
         }
     }
 
