@@ -105,7 +105,7 @@ public class Player : MonoBehaviour
         {
             isMouse = true;
             jumpForce = 8;
-            boxCollider2D.size = new Vector2(0.4f, 0.8f);
+            boxCollider2D.size = new Vector2(0.4f, 0.5f);
         }
         else if (Input.GetKeyDown(KeyCode.E) && isMouse == true)
         {
