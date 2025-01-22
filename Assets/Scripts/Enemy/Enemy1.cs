@@ -8,6 +8,8 @@ public class Enemy1 : MonoBehaviour
     [SerializeField]private float attackTime;
     [SerializeField] private float attackRadius;
     public Transform attackCheck;
+    public float ATK;
+
 
     private Rigidbody2D rigidbody2D;
 
@@ -39,6 +41,8 @@ public class Enemy1 : MonoBehaviour
         
         attackTimer-=Time.deltaTime;
         AttackPlayer();
+
+       
     }
 
     private void OnDrawGizmos()
@@ -55,18 +59,19 @@ public class Enemy1 : MonoBehaviour
         }
     }
 
-    private void Attack()
+    public void Attack()
     {
         Collider2D[] player = Physics2D.OverlapCircleAll(attackCheck.position, attackRadius, LayerMask.GetMask("Player"));
 
         foreach(var hit in player)
         {
-            if(player!=null)
+            if(hit.GetComponent<Player>() != null)
             {
-                Debug.Log("player get hurted");
+                hit.GetComponent<Player>().GetDamage(ATK);
             }
         }
 
     }
 
+    
 }

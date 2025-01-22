@@ -17,6 +17,12 @@ public class Player : MonoBehaviour
     public Transform attackCheck;
     public float attackRadius;
     public bool isAttack;
+    public float ATK;
+   
+
+    [Header("Health")]
+    public float maxHealth;
+    public float health;
 
     private Rigidbody2D rigidbody2D;
     private Animator animation;
@@ -71,6 +77,10 @@ public class Player : MonoBehaviour
         BatTranform();
         MouseTransform();
         Attack();
+        if(health<0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void BatTranform()//按R变身蝙蝠（空中时）
@@ -173,5 +183,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void GetDamage(float eATK)
+    {
+       
+            health = health - eATK 
+       
+    }
    
 }
