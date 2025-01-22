@@ -29,25 +29,34 @@ public class Player : MonoBehaviour
     private BoxCollider2D boxCollider2D;
     private float xSpeed;
     private int jumpNumber = 0; // 0,1,2分别表示跳跃了0，1，2次，控制二段跳
+    private int jumpLimit;
 
+    private bool isdoubleJumpEnabled = false;
+    private bool ishighJumpEnabled=false;
+    private bool isbatTransformEnabled=false;
+    private bool isratTransformEnabled = false;
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("start");
         rigidbody2D = GetComponent<Rigidbody2D>();
         animation = GetComponentInChildren<Animator>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         isBat = false;
         faceRight = true;
+        jumpLimit = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
         xSpeed = Input.GetAxisRaw("Horizontal");
-        // 按住shift速度翻倍
-        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        SpeedUp();
+
+        if (Input.GetButtonDown("Jump") && jumpNumber < jumpLimit)
         {
-            xSpeed *= 2;
+            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpForce);
+            jumpNumber++;
         }
 
         if (isAttack == false)
@@ -59,12 +68,38 @@ public class Player : MonoBehaviour
             rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y);
         }
 
-        // 跳跃
-        if (Input.GetButtonDown("Jump") && jumpNumber < 2)
+        Flip();
+        AnimatorControllers();
+        DoubleJump();
+        HighJump();
+        BatTranform();
+        MouseTransform();
+        Attack();
+
+        if(health<0)
         {
-            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpForce);
-            jumpNumber++;
+            Destroy(gameObject);
         }
+    }
+    private void SpeedUp()
+    {
+        // 按住shift速度翻倍
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        {
+            xSpeed *= 2;
+        }
+    }
+
+    private void DoubleJump()
+    {
+        if (!isdoubleJumpEnabled) return;
+        Debug.Log("highjump");
+        jumpLimit = 2;
+    }
+
+    private void HighJump()
+    {
+        if (!ishighJumpEnabled) return;
 
         if (Input.GetKeyDown(KeyCode.Q) && jumpNumber != 0)//在空中按Q高跳（可以无限跳)
         {
@@ -72,19 +107,11 @@ public class Player : MonoBehaviour
             highJump = true;
             jumpNumber = 2;
         }
-        Flip();
-        AnimatorControllers();
-        BatTranform();
-        MouseTransform();
-        Attack();
-        if(health<0)
-        {
-            Destroy(gameObject);
-        }
     }
-
     private void BatTranform()//按R变身蝙蝠（空中时）
     {
+        if (!isbatTransformEnabled) return;
+
         //蝙蝠形态（滑翔）
         if (Input.GetKeyDown(KeyCode.R) && isBat == false && isMouse == false)
         {
@@ -102,16 +129,11 @@ public class Player : MonoBehaviour
         //松开r还原
     }
 
-    private void Attack()
-    {
-        if (Input.GetKeyDown(KeyCode.J) && isMouse == false && isBat == false && jumpNumber == 0 && isAttack == false)
-        {
-            isAttack = true;
-        }
-    }
-
     private void MouseTransform()//按E变身老鼠
     {
+        if (!isratTransformEnabled) return;
+
+
         if (Input.GetKeyDown(KeyCode.E) && isMouse == false)
         {
             isMouse = true;
@@ -126,11 +148,17 @@ public class Player : MonoBehaviour
         }
     }
 
-    // 当玩家与标签为“ground”的地面接触后，重置跳跃次数
-    //OnCollisionEnter2D适用于两者都不是trigger的情况，后续可能需要改成OnTriggerEnter2D
-    //已修改为trigger检测，为了一些动作衔接的正确性
+    private void Attack()
+    {
+        if (Input.GetKeyDown(KeyCode.J) && isMouse == false && isBat == false && jumpNumber == 0 && isAttack == false)
+        {
+            isAttack = true;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // 当玩家与标签为“ground”的地面接触后，重置跳跃次数
         if (collision.gameObject.CompareTag("Ground"))
         {
             rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y);
@@ -138,6 +166,27 @@ public class Player : MonoBehaviour
             highJump = false;
         }
 
+        //当player与item碰撞时，解锁相应的技能
+        Item item = collision.GetComponent<Item>();
+        if (item != null)
+        {
+            Ability ability = item.abilityToUnlock;
+            switch (ability)
+            {
+                case Ability.DoubleJump:
+                    isdoubleJumpEnabled = true;
+                    break;
+                case Ability.HighJump:
+                    ishighJumpEnabled = true;
+                    break;
+                case Ability.BatTransform:
+                    isbatTransformEnabled = true;
+                    break;
+                case Ability.RatTransform:
+                    isratTransformEnabled = true;
+                    break;
+            }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -185,9 +234,8 @@ public class Player : MonoBehaviour
 
     public void GetDamage(float eATK)
     {
-       
-            health = health - eATK 
+
+        health = health - eATK;
        
     }
-   
 }
