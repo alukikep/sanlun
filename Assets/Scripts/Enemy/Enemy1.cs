@@ -7,6 +7,7 @@ public class Enemy1 : MonoBehaviour
     [SerializeField]private float attackTimer;
     [SerializeField]private float attackTime;
     [SerializeField] private float attackRadius;
+    [SerializeField] private bool faceRight;
     public Transform attackCheck;
     public float ATK;
 
@@ -43,6 +44,20 @@ public class Enemy1 : MonoBehaviour
         AttackPlayer();
 
        
+    }
+
+    private void Flip()
+    {
+        if(rigidbody2D.velocity.x>0&&faceRight==false)
+        {
+            transform.Rotate(0, 180, 0);
+            faceRight = true;
+        }
+        if(rigidbody2D.velocity.x<0&&faceRight == true)
+        {
+            transform.Rotate(0,180,0);
+            faceRight = false;
+        }
     }
 
     private void OnDrawGizmos()
