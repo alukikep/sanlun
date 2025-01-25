@@ -166,11 +166,11 @@ public class Player : MonoBehaviour
             highJump = false;
         }
 
-        //当player与item碰撞时，解锁相应的技能
-        Item item = collision.GetComponent<Item>();
-        if (item != null)
+        //当player与UnlockItem碰撞时，解锁相应的技能
+        UnlockItem UnlockItem = collision.GetComponent<UnlockItem>();
+        if (UnlockItem != null)
         {
-            Ability ability = item.abilityToUnlock;
+            Ability ability = UnlockItem.abilityToUnlock;
             switch (ability)
             {
                 case Ability.DoubleJump:
