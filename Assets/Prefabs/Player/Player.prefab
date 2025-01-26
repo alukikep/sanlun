@@ -206,9 +206,9 @@ MonoBehaviour:
   attackCheck: {fileID: 4992143127092206325}
   attackRadius: 1.2
   isAttack: 0
+  ATK: 20
   maxHealth: 100
-  Health: 100
-  DEF: 5
+  health: 0
 --- !u!252 &7165065425084465614
 SurfaceEffector2D:
   m_ObjectHideFlags: 0

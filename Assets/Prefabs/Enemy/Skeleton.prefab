@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1974231514590957143}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.17, y: 0.01, z: 0.018053941}
+  m_LocalPosition: {x: 0.71, y: -0.05, z: 0.018053941}
   m_LocalScale: {x: 0.95286, y: 0.95286, z: 0.95286}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -61,14 +61,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7284667726208474417}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 340.26, y: -6.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5674462402080599693}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!212 &7800797542542248356
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -197,10 +197,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackTimer: 10
   attackTime: 5
-  attackRadius: 2
+  attackRadius: 1
   faceRight: 0
   attackCheck: {fileID: 5674462402080599693}
-  ATK: 50
+  ATK: 20
   player: {fileID: 0}
   stopDistanceX: 2
   moveSpeed: 3

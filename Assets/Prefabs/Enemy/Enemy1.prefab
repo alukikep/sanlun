@@ -197,6 +197,7 @@ MonoBehaviour:
   attackTimer: 10
   attackTime: 5
   attackRadius: 2
+  faceRight: 0
   attackCheck: {fileID: 2479880866219064489}
   ATK: 50
   player: {fileID: 0}
