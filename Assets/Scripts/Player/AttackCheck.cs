@@ -29,7 +29,7 @@ public class AttackCheck : MonoBehaviour
 
         foreach(var hit in Enemies)
         {
-            if(hit.GetComponent<EnemyHealth>() != null)
+            if(hit.GetComponent<EnemyHealth>() != null&&!hit.isTrigger)
             {
                 hit.GetComponent<EnemyHealth>().GetDamage(player.ATK);
             }

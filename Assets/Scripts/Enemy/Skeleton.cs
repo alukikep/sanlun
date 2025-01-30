@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class Enemy1 : MonoBehaviour
     [SerializeField]private float attackTime;
     [SerializeField] private float attackRadius;
     [SerializeField] private bool faceRight;
+
+
     public Transform attackCheck;
     public float ATK;
 
@@ -16,7 +19,8 @@ public class Enemy1 : MonoBehaviour
 
     private Rigidbody2D rigidbody2D;
 
-    public Transform player;
+    public Transform playerPosition;
+    
 
     public float stopDistanceX;//敌人移动到距主角一定距离停下
     [SerializeField] private float moveSpeed;
@@ -33,7 +37,7 @@ public class Enemy1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float directionX = player.position.x - transform.position.x;
+        float directionX = playerPosition.position.x - transform.position.x;
         if (Mathf.Abs(directionX) > stopDistanceX) {
             float moveDirection = directionX > 0 ? 1 : -1;
             rigidbody2D.velocity = new Vector2(moveDirection * moveSpeed, rigidbody2D.velocity.y);
@@ -46,7 +50,7 @@ public class Enemy1 : MonoBehaviour
         attackTimer-=Time.deltaTime;
         AttackPlayer();
         Flip();
-       
+      
     }
 
     private void Flip()
@@ -100,6 +104,22 @@ public class Enemy1 : MonoBehaviour
     {
         animator.Play("SkeletonMove");
     }
-   
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerPosition = other.transform;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerPosition = null;
+        }
+    }
 }
+
  
