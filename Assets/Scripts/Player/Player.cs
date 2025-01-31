@@ -13,6 +13,13 @@ public class Player : MonoBehaviour
     public float jumpDir;
     private bool highJump;
 
+    [Header("格挡相关")]
+    public bool isBlock;
+    public bool blockSuc;
+    private float blockCoolTimer;
+    [SerializeField]private float blockCoolTime;
+    public float blockBonus;
+
     [Header("Attack")]
     public Transform attackCheck;
     public float attackRadius;
@@ -75,6 +82,8 @@ public class Player : MonoBehaviour
         BatTranform();
         MouseTransform();
         Attack();
+        Block();
+        blockCoolTimer-=Time.deltaTime;
 
         if(health<0)
         {
@@ -156,6 +165,14 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void Block()
+    {
+        if (Input.GetKeyDown(KeyCode.F) && isBlock == false&&blockCoolTimer<0)
+        {
+            isBlock = true;
+            blockCoolTimer = blockCoolTime;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 当玩家与标签为“ground”的地面接触后，重置跳跃次数
@@ -216,6 +233,8 @@ public class Player : MonoBehaviour
         animation.SetBool("highJump", highJump);
         animation.SetBool("isMouse", isMouse);
         animation.SetBool("isAttack", isAttack);
+        animation.SetBool("isBlock", isBlock);
+        animation.SetBool("blockSuc", blockSuc);
     }
 
     private void Flip()//控制转向
@@ -234,8 +253,14 @@ public class Player : MonoBehaviour
 
     public void GetDamage(float eATK)
     {
-
-        health = health - eATK;
+        if (isBlock == false)
+        {
+            health = health - eATK;
+        }
+        if(isBlock == true)
+        {
+            blockSuc = true;
+        }
        
     }
 }

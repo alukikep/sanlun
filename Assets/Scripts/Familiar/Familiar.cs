@@ -39,6 +39,7 @@ public class Familiar : MonoBehaviour
     [Header("检测范围")]
     public float detectionWidth;//检测敌人的范围
     public float detectionHeight;
+    
 
     
     public bool invulnerable;
@@ -141,6 +142,9 @@ public class Familiar : MonoBehaviour
         
         
     }
+
+    
+
     private void moveToPlayer()//移动向玩家且在玩家旁边行动
     {
        

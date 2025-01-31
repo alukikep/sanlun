@@ -31,7 +31,15 @@ public class AttackCheck : MonoBehaviour
         {
             if(hit.GetComponent<EnemyHealth>() != null&&!hit.isTrigger)
             {
-                hit.GetComponent<EnemyHealth>().GetDamage(player.ATK);
+                if (player.blockBonus == 1)
+                {
+                    hit.GetComponent<EnemyHealth>().GetDamage(player.ATK);
+                }
+                if(player.blockBonus == 2)
+                {
+                    hit.GetComponent<EnemyHealth>().GetDamage(player.ATK*player.blockBonus);
+                    player.blockBonus = 1;
+                }
             }
         }
     }
@@ -39,5 +47,17 @@ public class AttackCheck : MonoBehaviour
     public void AttackEnd()
     {
         player.isAttack=false;      
+    }
+
+    public void BlockEnd()
+    {
+        player.isBlock=false;
+    }
+
+    public void BlockSuccessEnd()
+    {
+        player.isBlock = false;     
+        player.blockSuc=false;
+        player.blockBonus = 2;
     }
 }
