@@ -30,8 +30,6 @@ public class Enemy1 : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rigidbody2D = GetComponent<Rigidbody2D>();
-        attackTimer = 0;
-        attackTime=5;
     }
 
     // Update is called once per frame

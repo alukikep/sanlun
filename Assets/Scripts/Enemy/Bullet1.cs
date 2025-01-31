@@ -9,6 +9,7 @@ public class Bullet1 : MonoBehaviour
     [SerializeField] private float moveSpeed;
     public float angle;
     private float destroyTimer=10;//×Ô»ÙÊ±¼ä
+    public float ATK;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +28,13 @@ public class Bullet1 : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground")|| collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
+            Destroy(gameObject);
+        }
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<Player>().GetDamage(ATK);
             Destroy(gameObject);
         }
     }
