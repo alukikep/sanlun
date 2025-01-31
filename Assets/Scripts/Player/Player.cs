@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public bool faceRight;
     public float jumpDir;
     private bool highJump;
+   
+    
 
     [Header("格挡相关")]
     public bool isBlock;
@@ -30,6 +32,10 @@ public class Player : MonoBehaviour
     [Header("Health")]
     public float maxHealth;
     public float health;
+    [Header("副武器相关")]
+
+    public GameObject axe;
+    public bool isAxe;
 
     private Rigidbody2D rigidbody2D;
     private Animator animation;
@@ -83,6 +89,7 @@ public class Player : MonoBehaviour
         MouseTransform();
         Attack();
         Block();
+        SubWeapon();
         blockCoolTimer-=Time.deltaTime;
 
         if(health<0)
@@ -262,5 +269,12 @@ public class Player : MonoBehaviour
             blockSuc = true;
         }
        
+    }
+    public void SubWeapon()
+    {
+        if (Input.GetKeyDown(KeyCode.T)&&isAxe)
+        {
+            GameObject SubWeapon = Instantiate(axe, transform.position, Quaternion.identity);
+        }     
     }
 }
