@@ -36,6 +36,10 @@ public class Player : MonoBehaviour
 
     public GameObject axe;
     public bool isAxe;
+    public GameObject guardian;
+    public bool isGuardian;
+    public int guardianNum;
+    private Guardian guardianScript;
 
     private Rigidbody2D rigidbody2D;
     private Animator animation;
@@ -58,6 +62,7 @@ public class Player : MonoBehaviour
         isBat = false;
         faceRight = true;
         jumpLimit = 1;
+        guardianScript = guardian.GetComponent<Guardian>();
     }
 
     // Update is called once per frame
@@ -276,5 +281,21 @@ public class Player : MonoBehaviour
         {
             GameObject SubWeapon = Instantiate(axe, transform.position, Quaternion.identity);
         }     
+        if (Input.GetKeyDown(KeyCode.T)&& isGuardian&&guardianScript != null)
+        {
+            
+
+            for (int i = 0; i < guardianNum; i++)
+            {
+                guardianScript.totalAngle *= (i + 1);
+                GameObject SubWeapon = Instantiate(guardian,transform.position , Quaternion.identity);
+            }
+
+        }
     }
+   
+
+   
+
+
 }
