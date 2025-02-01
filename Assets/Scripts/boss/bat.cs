@@ -11,9 +11,20 @@ public class bat : MonoBehaviour
     public float movingInterval;//调整左右移动的频率
     private float movingTimer;
     public float attackInterval;//调整所有攻击的间隔
+    [Header("召唤蝙蝠")]
+    public int batNum;
+    public float spawnInterval;
+    public GameObject littleBat;
+    public float spawnWidth;
+    private int currentNum;
+    private Vector3 spawnUp;
+    private Vector3 spawnDown;
+    private float spawnTimer;   
     private float attackTimer;
     private bool isAttacking;
     private bool diving;
+    private bool LittleBat;
+    private bool startSpawn;
     private GameObject Player;
     private Rigidbody2D rb;
     private Vector3 targetPosition; 
@@ -27,11 +38,13 @@ public class bat : MonoBehaviour
         Player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody2D>();
         movingTimer = 2;
+        spawnTimer = 0;
     }
     private void Update()
     {
         movingTimer-= Time.deltaTime;
-       
+        spawnUp = new Vector3(transform.position.x,Player.transform.position.y+spawnWidth,transform.position.z);
+        spawnDown = new Vector3(transform.position.x, Player.transform.position.y - spawnWidth, transform.position.z);
         if (!isAttacking)
         {
             moving();
@@ -59,6 +72,13 @@ public class bat : MonoBehaviour
                     isAttacking = true;
                     hasStartedDiving = false ;
                     attackTimer = attackInterval;
+                }
+                if(attackNum == 1)
+                {
+                    LittleBat = true;
+                    isAttacking = true;
+                    attackTimer = attackInterval;
+                    startSpawn = false;
                 }
             }
         }
@@ -100,6 +120,33 @@ public class bat : MonoBehaviour
                 transform.position = originalPosition;                
                 isAttacking = false;
             }
+        }
+        
+
+        if(LittleBat)
+        {
+         
+            spawnTimer-=Time.deltaTime;
+            if(!startSpawn)
+            {
+                startSpawn = true;
+                currentNum = 0;
+            }
+            if(spawnTimer<=0&&startSpawn==true)
+            {
+                float vertical = Random.Range(spawnDown.y, spawnUp.y);
+                Vector3 spawnPos = new Vector3(transform.position.x,Player.transform.position.y-spawnWidth,transform.position.z);              //暂时设置为定点召唤吧                                                                                                                                              
+                GameObject littlbat =  Instantiate(littleBat, spawnPos, Quaternion.identity);               
+                currentNum += 1;
+                spawnTimer = spawnInterval;
+                if(currentNum==batNum)
+                {
+                    startSpawn=false;
+                    LittleBat = false;
+                    isAttacking =false; 
+                }
+            }
+
         }
     }
 

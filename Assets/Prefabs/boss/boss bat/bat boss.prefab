@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6279858807761533746}
   - component: {fileID: 7899867075888267219}
   m_Layer: 0
-  m_Name: bat
+  m_Name: bat boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,3 +165,7 @@ MonoBehaviour:
   speed: 3
   movingInterval: 3
   attackInterval: 3
+  batNum: 0
+  spawnInterval: 0
+  littleBat: {fileID: 1578088413944297465, guid: 74f79159b4a7aee459782e9fb8a7d36e, type: 3}
+  spawnWidth: 0
