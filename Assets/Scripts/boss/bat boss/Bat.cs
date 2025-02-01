@@ -4,7 +4,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 
-public class bat : MonoBehaviour
+public class Bat : MonoBehaviour
 {
     public float damage;//目前未做伤害处理
     public float speed;
@@ -14,17 +14,25 @@ public class bat : MonoBehaviour
     [Header("召唤蝙蝠")]
     public int batNum;
     public float spawnInterval;
-    public GameObject littleBat;
+    public GameObject littleBatPrefab;
     public float spawnWidth;
-    private int currentNum;
+    private bool LittleBat;
+    private bool startSpawn;
+    private float spawnTimer;
     private Vector3 spawnUp;
     private Vector3 spawnDown;
-    private float spawnTimer;   
+    private int currentNum;
+    [Header("超声波")]
+    public GameObject wavePrefab;
+    private bool Wave;
+
+ 
+     
     private float attackTimer;
     private bool isAttacking;
     private bool diving;
-    private bool LittleBat;
-    private bool startSpawn;
+    
+   
     private GameObject Player;
     private Rigidbody2D rb;
     private Vector3 targetPosition; 
@@ -39,6 +47,7 @@ public class bat : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         movingTimer = 2;
         spawnTimer = 0;
+        attackTimer = attackInterval;
     }
     private void Update()
     {
@@ -65,7 +74,7 @@ public class bat : MonoBehaviour
         }
         if(attackTimer<=0)
         {
-            int attackNum = Random.Range(0, 3);//随机数控制攻击方式 目前只做了一个
+            int attackNum = Random.Range(0, 3);//随机数控制攻击方式 
             {
                 if (attackNum == 0)
                 {
@@ -80,6 +89,12 @@ public class bat : MonoBehaviour
                     isAttacking = true;
                     attackTimer = attackInterval;
                     startSpawn = false;
+                }
+                if(attackNum == 2)
+                {
+                    Wave = true;
+                    isAttacking = true;
+                    attackTimer = attackInterval;
                 }
             }
         }
@@ -137,7 +152,7 @@ public class bat : MonoBehaviour
             {
                 float vertical = Random.Range(spawnDown.y, spawnUp.y);
                 Vector3 spawnPos = new Vector3(transform.position.x,Player.transform.position.y-spawnWidth,transform.position.z);              //暂时设置为定点召唤吧                                                                                                                                              
-                GameObject littlbat =  Instantiate(littleBat, spawnPos, Quaternion.identity);               
+                GameObject littlebat =  Instantiate(littleBatPrefab, spawnPos, Quaternion.identity);               
                 currentNum += 1;
                 spawnTimer = spawnInterval;
                 if(currentNum==batNum)
@@ -148,6 +163,12 @@ public class bat : MonoBehaviour
                 }
             }
 
+        }
+        if(Wave)
+        {
+            GameObject wave = Instantiate(wavePrefab,transform.position,Quaternion.identity);
+            isAttacking = false ;
+            Wave = false;
         }
     }
 

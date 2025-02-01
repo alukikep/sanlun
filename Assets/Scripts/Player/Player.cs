@@ -11,7 +11,9 @@ public class Player : MonoBehaviour
     public bool isMouse;
     public bool faceRight;
     public float jumpDir;
+    private float maxSpeed;
     private bool highJump;
+    private float leftSlowDuration;
    
     
 
@@ -55,6 +57,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        maxSpeed = speedRate;
         Debug.Log("start");
         rigidbody2D = GetComponent<Rigidbody2D>();
         animation = GetComponentInChildren<Animator>();
@@ -95,9 +98,11 @@ public class Player : MonoBehaviour
         Attack();
         Block();
         SubWeapon();
+        resetSpeed();
         blockCoolTimer-=Time.deltaTime;
+        leftSlowDuration -= Time.deltaTime;
 
-        if(health<0)
+        if (health<0)
         {
             Destroy(gameObject);
         }
@@ -295,9 +300,29 @@ public class Player : MonoBehaviour
             }
         }
     }
-   
+    public void getSlowed(float slowPercent, float slowDuration)
+    {   
+        leftSlowDuration = slowDuration;
+        
 
-   
+        if (leftSlowDuration>0)
+        {
+            speedRate *=  slowPercent;
+        }
+        
+        
+    }
+    public void resetSpeed()
+    {
+        if(leftSlowDuration<=0)
+        {
+            speedRate = maxSpeed;
+        }
+
+    }
+
+
+
 
 
 }
