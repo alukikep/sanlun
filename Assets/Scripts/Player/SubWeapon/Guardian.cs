@@ -8,14 +8,15 @@ public class Guardian : MonoBehaviour
     public float speed;
     public float radius;
     public float totalAngle;
-    public float time;
+    private float initialAngle;
     private Transform Player;
     private Rigidbody2D rb;
     private void Start()
     {
         Player = GameObject.Find("Player").transform;
         rb = GetComponent<Rigidbody2D>();
-        time = 2 * Mathf.PI / (speed * Mathf.Deg2Rad);
+        Vector2 direction = (transform.position - Player.transform.position);
+        initialAngle = Mathf.Atan2(direction.y, direction.x);
     }
     private void Update()
     {
@@ -26,7 +27,8 @@ public class Guardian : MonoBehaviour
     {
         float angle = Time.deltaTime * speed; 
         totalAngle += angle; 
-        Vector3 Pos = Player.position + new Vector3(Mathf.Cos(totalAngle) * radius, Mathf.Sin(totalAngle) * radius, 0);
-        transform.position = Pos;
+        float x = Player.position.x+radius*Mathf.Cos(initialAngle+totalAngle);
+        float y = Player.position.y+radius*Mathf.Sin(initialAngle+totalAngle);
+        transform.position = new Vector3(x, y, transform.position.z);
     }
 }

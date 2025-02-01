@@ -283,14 +283,16 @@ public class Player : MonoBehaviour
         }     
         if (Input.GetKeyDown(KeyCode.T)&& isGuardian&&guardianScript != null)
         {
-            
-
-            for (int i = 0; i < guardianNum; i++)
+            float radius = guardianScript.radius;
+            float angleStep = 360 / guardianNum;
+            for(int i=0;i<guardianNum;i++)
             {
-                guardianScript.totalAngle *= (i + 1);
-                GameObject SubWeapon = Instantiate(guardian,transform.position , Quaternion.identity);
+                float angle = angleStep * i;
+                float x = radius*Mathf.Cos(angle*Mathf.Deg2Rad);
+                float y = radius*Mathf.Sin(angle*Mathf.Deg2Rad);
+                Vector3 Pos = transform.position+new Vector3(x, y, 0);
+                GameObject subWeapon = Instantiate(guardian, Pos, Quaternion.identity);
             }
-
         }
     }
    

@@ -51,6 +51,7 @@ public class bat : MonoBehaviour
            
         }
         
+        
         Attack(); 
         
         
@@ -85,8 +86,8 @@ public class bat : MonoBehaviour
        
        
         if (diving)//冲向玩家然后返回的攻击方式
-        {   
-            
+        {
+            rb.velocity = Vector2.zero;
             if (!hasStartedDiving)
             {
                 
