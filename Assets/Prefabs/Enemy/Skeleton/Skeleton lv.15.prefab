@@ -196,8 +196,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47b99ef330f1de499b73e586131abc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTimer: 2
-  attackTime: 2
+  attackTimer: 1
+  attackTime: 1
   attackRadius: 1
   faceRight: 0
   attackCheck: {fileID: 7508988294473742936}

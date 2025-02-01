@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8192809403345864074}
   - component: {fileID: 7679535720091208437}
   - component: {fileID: 5730421993669199198}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,4 +163,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 8
   angle: 0
-  ATK: 200
+  ATK: 15
