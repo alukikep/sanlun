@@ -8,7 +8,8 @@ public class UI_ItemSlot : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemText;
 
     public InventoryItem item;
-  
+    public ItemData itemData;
+
     public void UpdateSlot(InventoryItem _newItem)
     {
         item=_newItem;
@@ -28,5 +29,13 @@ public class UI_ItemSlot : MonoBehaviour
             }
         }
     }
-
+    
+    //点击使用道具
+    public void OnClick()
+    {
+        if (itemData != null)
+        {
+            Inventory.Instance.UseItem(itemData);
+        }
+    }
 }

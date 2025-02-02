@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player Instance;
+
+
+
     public float speedRate; // 速率系数
     public float jumpForce; // 跳跃高度
     public bool isBat;
@@ -321,8 +325,24 @@ public class Player : MonoBehaviour
 
     }
 
+    public void Heal(int amount)
+    {
+        health += amount;
+        if (health > maxHealth)
+            health = maxHealth;
 
+        Debug.Log("Player healed! Current health: " + health);
+    }
 
+    public void IncreaseMaxHealth(int amount)
+    {
+        maxHealth += amount;
+        Debug.Log("Player's max health increased! New max health: " + maxHealth);
+    }
 
-
+    public void IncreaseAttack(int amount)
+    {
+        ATK += amount;
+        Debug.Log("Player's attack increased! New attack: " + ATK);
+    }
 }

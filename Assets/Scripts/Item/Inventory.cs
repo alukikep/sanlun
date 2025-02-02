@@ -68,4 +68,24 @@ public class Inventory : MonoBehaviour
         }
         UpdateSlotUI();
     }
+    // 使用物品
+    public void UseItem(ItemData _item)
+    {
+        if (inventoryDictionary.TryGetValue(_item, out InventoryItem value))
+        {
+            switch (_item.itemType)
+            {
+                case ItemData.ItemType.HealingPotion:
+                    Player.Instance.Heal(_item.healAmount);
+                    break;
+                case ItemData.ItemType.HealthMaxPotion:
+                    Player.Instance.IncreaseMaxHealth(_item.increaseHealthMax);
+                    break;
+                case ItemData.ItemType.AttackPotion:
+                    Player.Instance.IncreaseAttack(_item.increaseAttack);
+                    break;
+            }
+            RemoveItem(_item);
+        }
+    }
 }
