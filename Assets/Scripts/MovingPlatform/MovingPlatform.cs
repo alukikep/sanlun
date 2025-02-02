@@ -13,7 +13,8 @@ public class MovingPlatform : MonoBehaviour//一个简单的代码实现移动平台
     Rigidbody2D rb;
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();           
+        rb = GetComponent<Rigidbody2D>();
+        movingTimer = movingTime; // 初始化 movingTimer
     }
     private void Update()
     {

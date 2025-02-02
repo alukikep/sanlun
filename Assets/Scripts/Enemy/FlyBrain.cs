@@ -32,27 +32,31 @@ public class Enemy2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        leftBoundary = player.position.x - wanderRadius;
-        rightBoundary = player.position.x + wanderRadius;
-        // 检查是否到达边界并反转方向
-        if (transform.position.x <= leftBoundary)
+        if (player == null) { return; }
+        else
         {
-            isMovingRight = true;
-        }
-        else if (transform.position.x >= rightBoundary)
-        {
-            isMovingRight = false;
+            leftBoundary = player.position.x - wanderRadius;
+            rightBoundary = player.position.x + wanderRadius;
+            // 检查是否到达边界并反转方向
+            if (transform.position.x <= leftBoundary)
+            {
+                isMovingRight = true;
+            }
+            else if (transform.position.x >= rightBoundary)
+            {
+                isMovingRight = false;
+            }
         }
         // 根据当前方向设置速度
         float direction = isMovingRight ? 1 : -1;
-        rigidbody2D.velocity = new Vector2(direction * moveSpeed,0);
+        rigidbody2D.velocity = new Vector2(direction * moveSpeed, 0);
 
         cooldownTimer -= Time.deltaTime;
         if (cooldownTimer < 0)
         {
             for (int i = 0; i < bullets.Length; i++)
             {
-                bullets[i]= Instantiate(bullet, transform.position, Quaternion.identity);
+                bullets[i] = Instantiate(bullet, transform.position, Quaternion.identity);
                 bullets[i].GetComponent<Bullet1>().angle = angles[i];
             }
             cooldownTimer = cooldown;
@@ -63,15 +67,15 @@ public class Enemy2 : MonoBehaviour
 
     void Flip()
     {
-        if (!FaceRight&&rigidbody2D.velocity.x>0)
+        if (!FaceRight && rigidbody2D.velocity.x > 0)
         {
             transform.Rotate(0, 180, 0);
             FaceRight = true;
         }
-        if(FaceRight&&rigidbody2D.velocity.x<0)
+        if (FaceRight && rigidbody2D.velocity.x < 0)
         {
-            transform.Rotate(0,180,0);
-            FaceRight=false;
+            transform.Rotate(0, 180, 0);
+            FaceRight = false;
         }
     }
 
