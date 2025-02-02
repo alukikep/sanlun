@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Enemy1 : MonoBehaviour
 {
-    [SerializeField]private float attackTimer;
-    [SerializeField]private float attackTime;
+    [SerializeField] private float attackTimer;
+    [SerializeField] private float attackTime;
     [SerializeField] private float attackRadius;
     [SerializeField] private bool faceRight;
 
@@ -20,11 +20,11 @@ public class Enemy1 : MonoBehaviour
     private Rigidbody2D rigidbody2D;
 
     public Transform playerPosition;
-    
+
 
     public float stopDistanceX;//敌人移动到距主角一定距离停下
     [SerializeField] private float moveSpeed;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,32 +35,39 @@ public class Enemy1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float directionX = playerPosition.position.x - transform.position.x;
-        if (Mathf.Abs(directionX) > stopDistanceX) {
-            float moveDirection = directionX > 0 ? 1 : -1;
-            rigidbody2D.velocity = new Vector2(moveDirection * moveSpeed, rigidbody2D.velocity.y);
+        if (playerPosition == null)
+        {
+            return;
         }
         else
         {
-            rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y);
+            float directionX = playerPosition.position.x - transform.position.x;
+            if (Mathf.Abs(directionX) > stopDistanceX)
+            {
+                float moveDirection = directionX > 0 ? 1 : -1;
+                rigidbody2D.velocity = new Vector2(moveDirection * moveSpeed, rigidbody2D.velocity.y);
+            }
+            else
+            {
+                rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y);
+            }
         }
-        
-        attackTimer-=Time.deltaTime;
+        attackTimer -= Time.deltaTime;
         AttackPlayer();
         Flip();
-      
+
     }
 
     private void Flip()
     {
-        if(rigidbody2D.velocity.x>0&&faceRight==false)
+        if (rigidbody2D.velocity.x > 0 && faceRight == false)
         {
             transform.Rotate(0, 180, 0);
             faceRight = true;
         }
-        if(rigidbody2D.velocity.x<0&&faceRight == true)
+        if (rigidbody2D.velocity.x < 0 && faceRight == true)
         {
-            transform.Rotate(0,180,0);
+            transform.Rotate(0, 180, 0);
             faceRight = false;
         }
     }
@@ -78,10 +85,10 @@ public class Enemy1 : MonoBehaviour
 
     private void AttackPlayer()
     {
-        if(attackTimer<0)
+        if (attackTimer < 0)
         {
             AttackAnim();
-            attackTimer=attackTime;
+            attackTimer = attackTime;
         }
     }
 
@@ -89,9 +96,9 @@ public class Enemy1 : MonoBehaviour
     {
         Collider2D[] player = Physics2D.OverlapCircleAll(attackCheck.position, attackRadius, LayerMask.GetMask("Player"));
 
-        foreach(var hit in player)
+        foreach (var hit in player)
         {
-            if(hit.GetComponent<Player>() != null)
+            if (hit.GetComponent<Player>() != null)
             {
                 hit.GetComponent<Player>().GetDamage(ATK);
             }
@@ -120,4 +127,4 @@ public class Enemy1 : MonoBehaviour
     }
 }
 
- 
+

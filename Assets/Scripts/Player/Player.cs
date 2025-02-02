@@ -69,7 +69,14 @@ public class Player : MonoBehaviour
         isBat = false;
         faceRight = true;
         jumpLimit = 1;
-        guardianScript = guardian.GetComponent<Guardian>();
+        if (guardian == null)
+        {
+            return;
+        }
+        else
+        {
+            guardianScript = guardian.GetComponent<Guardian>();
+        }
     }
 
     // Update is called once per frame
