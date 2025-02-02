@@ -29,7 +29,7 @@ public class Zombie : MonoBehaviour
             float moveDirection = directionX > 0 ? 1 : -1;
             rigidbody2D.velocity = new Vector2(moveDirection * moveSpeed, rigidbody2D.velocity.y);
         Flip();
-
+        Die();
     }
 
     private void Flip()
@@ -67,6 +67,16 @@ public class Zombie : MonoBehaviour
         {       
             playerPosition = null;
         }
+    }
+
+    private void Die()
+    {
+        if (gameObject.GetComponent<EnemyHealth>().health <= 0)
+            animator.Play("Die");
+    }
+    private void DestroyEnemy()
+    {
+        Destroy(gameObject);
     }
 }
 
