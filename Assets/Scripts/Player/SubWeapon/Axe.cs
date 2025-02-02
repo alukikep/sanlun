@@ -7,7 +7,6 @@ public class Axe : MonoBehaviour
     public float speed;
     public float angle;
     public float damage;
-    public float destroyTime;
     public Transform attackCheck;
     public float attackRadius;
     private GameObject _player;
@@ -27,11 +26,6 @@ public class Axe : MonoBehaviour
     private void Update()
     {
         AttackTrigger();
-        destroyTime -=Time.deltaTime;
-        if(destroyTime<=0)
-        {
-            Destroy(gameObject);
-        }    
     }
     public void ThrowAxe()
     {
