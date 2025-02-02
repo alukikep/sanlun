@@ -15,8 +15,19 @@ public class EnemyHealth : MonoBehaviour
     }
     public void GetDamage(float pATK)
     {
-        animator.Play("Hurt");
+        
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+        if(animator!=null)
+        {
+            animator.Play("Hurt");
+        }
+      
         health = health - pATK;
+       
+        
     }
 
 

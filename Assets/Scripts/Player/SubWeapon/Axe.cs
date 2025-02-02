@@ -7,28 +7,64 @@ public class Axe : MonoBehaviour
     public float speed;
     public float angle;
     public float damage;
+    public Transform attackCheck;
+    public float attackRadius;
+    private GameObject _player;
+    private Player player;
 
     private Rigidbody2D rb;
     private void Start()
     {
+        _player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody2D>();
+        player = _player.GetComponent<Player>();
         ThrowAxe();
-        
+       
+       
     }
-  
 
+    private void Update()
+    {
+        AttackTrigger();
+    }
     public void ThrowAxe()
     {
-        Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
-        rb.velocity = direction*speed;
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
-        if(enemyHealth!=null)
+        
+        
+        if(player.faceRight==true)
         {
-            enemyHealth.GetDamage(damage);
-            Destroy(gameObject);
+            Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
+            rb.velocity = direction * speed;
         }
+        else 
+        {
+            Vector2 direction = new Vector2(-Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
+            rb.velocity = direction * speed; 
+        }
+           
+
+        }
+    private void AttackTrigger()
+    {
+        Collider2D[] Enemies = Physics2D.OverlapCircleAll(attackCheck.position, attackRadius, LayerMask.GetMask("Enemy"));
+
+        foreach (var hit in Enemies)
+        {
+            if (hit.GetComponent<EnemyHealth>() != null && !hit.isTrigger)
+            {
+              
+                    hit.GetComponent<EnemyHealth>().GetDamage(damage);
+                Destroy(gameObject);
+                
+            }
+        }
+
+
+
+
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(attackCheck.position, attackRadius);
     }
 }

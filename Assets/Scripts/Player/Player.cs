@@ -45,6 +45,7 @@ public class Player : MonoBehaviour
     public GameObject guardian;
     public bool isGuardian;
     public int guardianNum;
+    private bool isSlowed;
     private Guardian guardianScript;
 
     private Rigidbody2D rigidbody2D;
@@ -315,10 +316,12 @@ public class Player : MonoBehaviour
     {   
         leftSlowDuration = slowDuration;
         
-
-        if (leftSlowDuration>0)
+        
+        if (leftSlowDuration>0&&isSlowed==false)
         {
+            isSlowed = true;
             speedRate *=  slowPercent;
+            
         }
         
         
@@ -328,6 +331,7 @@ public class Player : MonoBehaviour
         if(leftSlowDuration<=0)
         {
             speedRate = maxSpeed;
+            isSlowed = false;
         }
 
     }
