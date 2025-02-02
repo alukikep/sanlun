@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Bat : MonoBehaviour
 {
-    public float damage;//目前未做伤害处理
+    public float ATK;//目前未做伤害处理
     public float speed;
     public float movingInterval;//调整左右移动的频率
     private float movingTimer;
@@ -202,5 +202,13 @@ public class Bat : MonoBehaviour
             }
         }
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Player"))
+        {
+            collision.GetComponent<Player>().GetDamage(ATK);
+        }
     }
 }

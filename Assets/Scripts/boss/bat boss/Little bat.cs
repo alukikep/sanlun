@@ -14,6 +14,8 @@ public class Littlebat : MonoBehaviour
     private GameObject Player;
     private Rigidbody2D rb;
 
+    [SerializeField] private float ATK;
+
 
 
     private void Start()
@@ -50,6 +52,14 @@ public class Littlebat : MonoBehaviour
       
 
     }
-  
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Player"))
+        {
+            collision.GetComponent<Player>().GetDamage(ATK);
+        }
+    }
+
 }
    

@@ -22,5 +22,9 @@ public class Wave : MonoBehaviour
     {
         player = collision.GetComponent<Player>();
         player.getSlowed(slowPercent, slowDuration);
+        if(collision.CompareTag("Player"))
+        {
+            collision.GetComponent<Player>().GetDamage(damage);
+        }
     }
 }
