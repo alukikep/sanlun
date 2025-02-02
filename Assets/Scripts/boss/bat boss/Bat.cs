@@ -172,6 +172,7 @@ public class Bat : MonoBehaviour
         }
     }
 
+    
   
     private void moving()
     {

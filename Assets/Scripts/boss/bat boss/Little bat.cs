@@ -13,6 +13,8 @@ public class Littlebat : MonoBehaviour
     private Vector2 moveDirection;
     private GameObject Player;
     private Rigidbody2D rb;
+    public Animator animator;
+    private bool faceRight =true;
 
     [SerializeField] private float ATK;
 
@@ -26,6 +28,7 @@ public class Littlebat : MonoBehaviour
         moveDirection.x = horizontalDistance * horizonSpeed * Time.deltaTime;
         aF = 2 * Mathf.PI / verticalPeriod;
         phase = 0f;
+        animator=GetComponent<Animator>();
     }
     private void Update()
     {
@@ -36,8 +39,9 @@ public class Littlebat : MonoBehaviour
         {
             Destroy(gameObject);
         }
-       
 
+        Die();
+        Flip();
     }
     private void move()
     {
@@ -53,6 +57,14 @@ public class Littlebat : MonoBehaviour
 
     }
 
+    private void Flip()
+    {
+        if (faceRight == true && moveDirection.x < 0)
+        {
+            transform.Rotate(0, 180, 0);
+            faceRight = false;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
@@ -61,5 +73,14 @@ public class Littlebat : MonoBehaviour
         }
     }
 
+    private void Die()
+    {
+        if (gameObject.GetComponent<EnemyHealth>().health <= 0)
+            animator.Play("BatDie");
+    }
+    private void DestroyEnemy()
+    {
+        Destroy(gameObject);
+    }
 }
    
