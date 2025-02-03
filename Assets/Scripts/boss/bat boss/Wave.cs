@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wave : MonoBehaviour
+public class Wave : MonoBehaviour//用来互动之后摧毁特定砖块
 {
     public float damage;
     public float speed;

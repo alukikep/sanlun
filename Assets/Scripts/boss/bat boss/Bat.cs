@@ -11,6 +11,7 @@ public class Bat : MonoBehaviour
     public float movingInterval;//调整左右移动的频率
     private float movingTimer;
     public float attackInterval;//调整所有攻击的间隔
+    public GameObject BatTrans;
     [Header("召唤蝙蝠")]
     public int batNum;
     public float spawnInterval;
@@ -31,8 +32,8 @@ public class Bat : MonoBehaviour
     private float attackTimer;
     private bool isAttacking;
     private bool diving;
-    
-   
+
+    private EnemyHealth enemyHealth;
     private GameObject Player;
     private Rigidbody2D rb;
     private Vector3 targetPosition; 
@@ -58,6 +59,10 @@ public class Bat : MonoBehaviour
         {
             moving();
            
+        }
+        if(enemyHealth.health<=0)
+        {
+            GameObject batTrans = Instantiate(BatTrans, transform.position, Quaternion.identity);
         }
         
         
