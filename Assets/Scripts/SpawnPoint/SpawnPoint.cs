@@ -6,9 +6,11 @@ public class SpawnPoint : MonoBehaviour
 {
     public ObjectPool objectPool;
     public Transform player;
+    private GameObject _Player;
     public float spawnDistance;
     public float despawnDistance;
     public float respawnTime;
+    public float Radius;
 
     private GameObject currentMonster;
     private float lastDespawnTime;
@@ -17,12 +19,14 @@ public class SpawnPoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _Player = GameObject.Find("Player");
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+        player = _Player.transform;
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
         if (currentMonster==null)
@@ -68,5 +72,9 @@ public class SpawnPoint : MonoBehaviour
         currentMonster = null;
         isDead = true;
         lastDespawnTime = Time.time;
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, Radius);
     }
 }
