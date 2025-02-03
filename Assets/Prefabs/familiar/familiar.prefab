@@ -191,4 +191,4 @@ MonoBehaviour:
   detectionWidth: 200
   detectionHeight: 200
   invulnerable: 0
-  familiarBulletPrefab: {fileID: 0}
+  familiarBulletPrefab: {fileID: 2676731043623454019, guid: 7d1644d3d24b9e14d83a190f9acf1c08, type: 3}

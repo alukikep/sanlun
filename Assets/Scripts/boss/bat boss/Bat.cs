@@ -46,6 +46,7 @@ public class Bat : MonoBehaviour
     {
         Player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody2D>();
+        enemyHealth = GetComponent<EnemyHealth>();
         movingTimer = 2;
         spawnTimer = 0;
         attackTimer = attackInterval;
