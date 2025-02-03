@@ -166,6 +166,7 @@ MonoBehaviour:
   angle: 75
   damage: 20
   destroyTime: 10
+  neededMana: 20
   attackCheck: {fileID: 7283862870236359627}
   attackRadius: 0.5
 --- !u!1 &8918571302687522909

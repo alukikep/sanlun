@@ -20,11 +20,15 @@ public class Wave : MonoBehaviour//用来互动之后摧毁特定砖块
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        player = collision.GetComponent<Player>();
-        player.getSlowed(slowPercent, slowDuration);
-        if(collision.CompareTag("Player"))
+        if (_Player != null)
         {
-            collision.GetComponent<Player>().GetDamage(damage);
+            player = collision.GetComponent<Player>();
+            player.getSlowed(slowPercent, slowDuration);
+            if (collision.CompareTag("Player"))
+            {
+                collision.GetComponent<Player>().GetDamage(damage);
+            }
         }
+       
     }
 }

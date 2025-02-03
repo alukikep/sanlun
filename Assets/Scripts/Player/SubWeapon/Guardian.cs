@@ -7,8 +7,12 @@ public class Guardian : MonoBehaviour
     public float damage;
     public float speed;
     public float radius;
+    public float destroyTime;
     public float totalAngle;
+    public float neededMana;
     private float initialAngle;
+    public Transform attackCheck;
+    public float attackRadius;
     private Transform Player;
     private Rigidbody2D rb;
     private void Start()
@@ -21,7 +25,14 @@ public class Guardian : MonoBehaviour
     private void Update()
     {
         rotate();
+        AttackTrigger();
+        destroyTime -= Time.deltaTime;
+        if (destroyTime <= 0)
+        {
+            Destroy(gameObject);
+        }
        
+
     }
     public void rotate()
     {
@@ -30,5 +41,28 @@ public class Guardian : MonoBehaviour
         float x = Player.position.x+radius*Mathf.Cos(initialAngle+totalAngle);
         float y = Player.position.y+radius*Mathf.Sin(initialAngle+totalAngle);
         transform.position = new Vector3(x, y, transform.position.z);
+    }
+    private void AttackTrigger()
+    {
+        Collider2D[] Enemies = Physics2D.OverlapCircleAll(attackCheck.position, attackRadius, LayerMask.GetMask("Enemy"));
+
+        foreach (var hit in Enemies)
+        {
+            if (hit.GetComponent<EnemyHealth>() != null && !hit.isTrigger)
+            {
+
+                hit.GetComponent<EnemyHealth>().GetDamage(damage);
+                Destroy(gameObject);
+
+            }
+        }
+
+
+
+
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(attackCheck.position, attackRadius);
     }
 }

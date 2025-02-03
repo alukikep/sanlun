@@ -38,6 +38,10 @@ public class Player : MonoBehaviour
     [Header("Health")]
     public float maxHealth;
     public float health;
+    [Header("Mana")]
+    public float maxMana;
+    public float currentMana;
+    public float ManaPerSecond;
     [Header("∏±Œ‰∆˜œ‡πÿ")]
 
     public GameObject axe;
@@ -47,6 +51,7 @@ public class Player : MonoBehaviour
     public int guardianNum;
     private bool isSlowed;
     private Guardian guardianScript;
+    private Axe axeScript;
 
     private Rigidbody2D rigidbody2D;
     private Animator animation;
@@ -70,6 +75,7 @@ public class Player : MonoBehaviour
         isBat = false;
         faceRight = true;
         jumpLimit = 1;
+        currentMana = maxMana;
         if (guardian == null)
         {
             return;
@@ -78,6 +84,14 @@ public class Player : MonoBehaviour
         {
             guardianScript = guardian.GetComponent<Guardian>();
         }
+        if(axe ==null)
+        {
+            return ;
+        }
+        else
+        {
+            axeScript = axe.GetComponent<Axe>();
+        }
     }
 
     // Update is called once per frame
@@ -85,7 +99,11 @@ public class Player : MonoBehaviour
     {
         xSpeed = Input.GetAxisRaw("Horizontal");
         SpeedUp();
-
+        currentMana += ManaPerSecond*Time.deltaTime;
+        if(currentMana>=maxMana)
+        {
+            currentMana = maxMana;
+        }
         if (Input.GetButtonDown("Jump") && jumpNumber < jumpLimit)
         {
             rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpForce);
@@ -294,11 +312,12 @@ public class Player : MonoBehaviour
     }
     public void SubWeapon()
     {
-        if (Input.GetKeyDown(KeyCode.T)&&isAxe)
+        if (Input.GetKeyDown(KeyCode.T)&&isAxe&&currentMana>=axeScript.neededMana)
         {
             GameObject SubWeapon = Instantiate(axe, transform.position, Quaternion.identity);
+            currentMana-=axeScript.neededMana;
         }     
-        if (Input.GetKeyDown(KeyCode.T)&& isGuardian&&guardianScript != null)
+        if (Input.GetKeyDown(KeyCode.T)&& isGuardian&&guardianScript != null&&currentMana>=guardianScript.neededMana)
         {
             float radius = guardianScript.radius;
             float angleStep = 360 / guardianNum;
@@ -310,6 +329,7 @@ public class Player : MonoBehaviour
                 Vector3 Pos = transform.position+new Vector3(x, y, 0);
                 GameObject subWeapon = Instantiate(guardian, Pos, Quaternion.identity);
             }
+            currentMana-=guardianScript.neededMana;
         }
     }
     public void getSlowed(float slowPercent, float slowDuration)

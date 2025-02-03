@@ -8,6 +8,7 @@ public class Axe : MonoBehaviour
     public float angle;
     public float damage;
     public float destroyTime;
+    public float neededMana;
     public Transform attackCheck;
     public float attackRadius;
     private GameObject _player;
