@@ -10,6 +10,10 @@ public class Enemy1 : MonoBehaviour
     [SerializeField] private float attackRadius;
     [SerializeField] private bool faceRight;
 
+    public delegate void DeathEventHandler();
+    public event DeathEventHandler OnDeath;
+
+
 
     public Transform attackCheck;
     public float ATK;
@@ -127,12 +131,12 @@ public class Enemy1 : MonoBehaviour
     }
     private void Die()
     {
-        if (gameObject.GetComponent<EnemyHealth>().health <= 0)
+        if (gameObject.GetComponent<EnemyHealth>().health <= 0&&OnDeath!=null)
             animator.Play("Die");
     }
     private void DestroyEnemy()
     {
-        Destroy(gameObject);
+        OnDeath();
     }
 }
 
