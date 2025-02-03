@@ -38,7 +38,8 @@ public class Bat : MonoBehaviour
     private Rigidbody2D rb;
     private Vector3 targetPosition; 
     private Vector3 originalPosition; 
-    private bool hasStartedDiving = false; 
+    private bool hasStartedDiving = false;
+    private bool SpawnItem=false;
     
 
 
@@ -63,7 +64,12 @@ public class Bat : MonoBehaviour
         }
         if(enemyHealth.health<=0)
         {
-            GameObject batTrans = Instantiate(BatTrans, transform.position, Quaternion.identity);
+            SpawnItem = true;
+            if(SpawnItem==true)
+            {
+                GameObject batTrans = Instantiate(BatTrans, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
         }
         
         
