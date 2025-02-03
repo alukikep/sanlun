@@ -188,7 +188,7 @@ public class Player : MonoBehaviour
 
     private void Attack()
     {
-        if (Input.GetKeyDown(KeyCode.J) && isMouse == false && isBat == false && jumpNumber == 0 && isAttack == false)
+        if (Input.GetKeyDown(KeyCode.J) && isMouse == false && isBat == false && isAttack == false)
         {
             isAttack = true;
         }
