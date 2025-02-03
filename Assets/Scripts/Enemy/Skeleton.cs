@@ -10,8 +10,7 @@ public class Enemy1 : MonoBehaviour
     [SerializeField] private float attackRadius;
     [SerializeField] private bool faceRight;
 
-    public delegate void DeathEventHandler();
-    public event DeathEventHandler OnDeath;
+    
 
 
 
@@ -59,7 +58,6 @@ public class Enemy1 : MonoBehaviour
         attackTimer -= Time.deltaTime;
         AttackPlayer();
         Flip();
-        Die();
     }
 
     private void Flip()
@@ -129,15 +127,7 @@ public class Enemy1 : MonoBehaviour
             playerPosition = null;
         }
     }
-    private void Die()
-    {
-        if (gameObject.GetComponent<EnemyHealth>().health <= 0&&OnDeath!=null)
-            animator.Play("Die");
-    }
-    private void DestroyEnemy()
-    {
-        OnDeath();
-    }
+   
 }
 
 

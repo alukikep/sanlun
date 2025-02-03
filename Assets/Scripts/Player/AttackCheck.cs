@@ -30,7 +30,7 @@ public class AttackCheck : MonoBehaviour
         Collider2D[] bricks = Physics2D.OverlapCircleAll(player.attackCheck.position, player.attackRadius, LayerMask.GetMask("DestructibleBricks"));
         foreach (var hit in Enemies)
         {
-            if(hit.GetComponent<EnemyHealth>() != null&&!hit.isTrigger)
+            if(hit.GetComponent<EnemyHealth>() != null&&!hit.isTrigger&&hit.GetComponent<EnemyHealth>().health>0)
             {
                 if (player.blockBonus == 1)
                 {

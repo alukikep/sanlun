@@ -48,20 +48,23 @@ public class SpawnPoint : MonoBehaviour
     {
         currentMonster = objectPool.GetMonster();
         currentMonster.transform.position = transform.position;
-        currentMonster.GetComponent<Enemy1>().OnDeath += OnMonsterDeath;
+        currentMonster.GetComponent<EnemyHealth>().OnDeath += OnMonsterDeath;
         isDead=false;
     }
 
     private void DespawnMonster()
     {
         objectPool.ReturnMonster(currentMonster);
-        currentMonster.GetComponent<Enemy1>().OnDeath -= OnMonsterDeath;
+        currentMonster.GetComponent<EnemyHealth>().OnDeath -= OnMonsterDeath;
         currentMonster = null;
         lastDespawnTime = Time.time;
     }
 
     private void OnMonsterDeath()
     {
+        float maxHealth = currentMonster.GetComponent<EnemyHealth>().maxHealth;
+        currentMonster.GetComponent<EnemyHealth>().health = maxHealth;
+        currentMonster.SetActive(false);
         currentMonster = null;
         isDead = true;
         lastDespawnTime = Time.time;

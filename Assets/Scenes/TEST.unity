@@ -808,7 +808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea064b3080d15474cafa5d42d80743d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monster: {fileID: 7284667726208474417, guid: a9da7e0a9f3d22d4ba9ec973c5204b5a, type: 3}
+  monster: {fileID: 6242530160710838983, guid: 0951d075cf446e041bcf8ba49c3a8856, type: 3}
   poolSize: 10
 --- !u!4 &789055199
 Transform:
@@ -977,7 +977,7 @@ MonoBehaviour:
   player: {fileID: 1714696574}
   spawnDistance: 200
   despawnDistance: 200
-  respawnTime: 10
+  respawnTime: 2
 --- !u!212 &1178792135
 SpriteRenderer:
   m_ObjectHideFlags: 0
