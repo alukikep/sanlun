@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
     public float maxMana;
     public float currentMana;
     public float ManaPerSecond;
+    private float ManaPSOnSlow;
     [Header("∏±Œ‰∆˜œ‡πÿ")]
 
     public GameObject axe;
@@ -73,6 +74,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         oriJumpForce = jumpForce;
         maxSpeed = speedRate;
         Debug.Log("start");
@@ -107,8 +109,9 @@ public class Player : MonoBehaviour
         {
             timeSlowScript = TimeSlow.GetComponent<TimeSlow>();
         }
-        
-        
+        ManaPSOnSlow = ManaPerSecond /timeSlowScript.slowDownFactor;
+
+
     }
 
     // Update is called once per frame
@@ -116,7 +119,8 @@ public class Player : MonoBehaviour
     {
         xSpeed = Input.GetAxisRaw("Horizontal");
         SpeedUp();
-        currentMana += ManaPerSecond*Time.deltaTime;
+        
+       
         if(currentMana>=maxMana)
         {
             currentMana = maxMana;
@@ -162,7 +166,16 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
-      
+        if(timeSlowScript.TimeSlowActive==false)
+        {
+            currentMana += ManaPerSecond * Time.deltaTime;
+        }
+        else
+        {
+            currentMana += ManaPSOnSlow * Time.deltaTime;
+        }
+
+
     }
     private void SpeedUp()
     {
