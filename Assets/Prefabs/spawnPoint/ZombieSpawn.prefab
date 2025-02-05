@@ -127,5 +127,5 @@ MonoBehaviour:
   player: {fileID: 0}
   spawnDistance: 200
   despawnDistance: 200
-  respawnTime: 20
-  Radius: 0
+  respawnTime: 2
+  Radius: 0.6

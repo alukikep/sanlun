@@ -110,7 +110,7 @@ public class Player : MonoBehaviour
             jumpNumber++;
         }
 
-        if (isAttack == false)
+        if (isAttack == false&&isBlock==false)
         {
             rigidbody2D.velocity = new Vector2(xSpeed * speedRate, rigidbody2D.velocity.y);
         }
@@ -209,6 +209,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J) && isMouse == false && isBat == false && isAttack == false)
         {
             isAttack = true;
+            isBlock = false;
         }
     }
 
