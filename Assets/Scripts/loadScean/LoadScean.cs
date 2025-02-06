@@ -39,9 +39,7 @@ public class LoadScean : MonoBehaviour
             }
             yield return null;
         }
-
        
-        
     }
 
    
