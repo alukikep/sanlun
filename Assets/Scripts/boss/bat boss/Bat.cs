@@ -45,12 +45,15 @@ public class Bat : MonoBehaviour
 
     private void Start()
     {
+        
         Player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody2D>();
         enemyHealth = GetComponent<EnemyHealth>();
         movingTimer = 2;
         spawnTimer = 0;
         attackTimer = attackInterval;
+        
+         
     }
     private void Update()
     {
@@ -69,6 +72,7 @@ public class Bat : MonoBehaviour
             {
                 GameObject batTrans = Instantiate(BatTrans, transform.position, Quaternion.identity);
                 Destroy(gameObject);
+
             }
         }
         

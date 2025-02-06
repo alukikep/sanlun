@@ -169,6 +169,13 @@ MonoBehaviour:
   movingInterval: 3
   attackInterval: 1
   BatTrans: {fileID: 8200310514696222930, guid: 03dcbd54b8b17ad4bb1be10883b0d97f, type: 3}
+  bricksToDesTroy:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   batNum: 1
   spawnInterval: 0.5
   littleBatPrefab: {fileID: 1578088413944297465, guid: 74f79159b4a7aee459782e9fb8a7d36e, type: 3}
