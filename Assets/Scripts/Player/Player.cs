@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
 
     public float speedRate; // 速率系数
     public float jumpForce; // 跳跃高度
+    private float oriJumpForce;
+    private bool isSlowed;
     public bool isBat;
     public bool isMouse;
     public bool faceRight;
@@ -42,6 +44,7 @@ public class Player : MonoBehaviour
     public float maxMana;
     public float currentMana;
     public float ManaPerSecond;
+    private float ManaPSOnSlow;
     [Header("副武器相关")]
 
     public GameObject axe;
@@ -49,9 +52,13 @@ public class Player : MonoBehaviour
     public GameObject guardian;
     public bool isGuardian;
     public int guardianNum;
-    private bool isSlowed;
+    public GameObject TimeSlow;
+    private TimeSlow timeSlowScript;
+    public bool isTimeSlowed;
     private Guardian guardianScript;
     private Axe axeScript;
+   
+
 
     private Rigidbody2D rigidbody2D;
     private Animator animation;
@@ -67,6 +74,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
+        oriJumpForce = jumpForce;
         maxSpeed = speedRate;
         Debug.Log("start");
         rigidbody2D = GetComponent<Rigidbody2D>();
@@ -92,6 +101,17 @@ public class Player : MonoBehaviour
         {
             axeScript = axe.GetComponent<Axe>();
         }
+        if(TimeSlow==null)
+        {
+            return;
+        }
+        else
+        {
+            timeSlowScript = TimeSlow.GetComponent<TimeSlow>();
+        }
+        ManaPSOnSlow = ManaPerSecond /timeSlowScript.slowDownFactor;
+
+
     }
 
     // Update is called once per frame
@@ -99,7 +119,8 @@ public class Player : MonoBehaviour
     {
         xSpeed = Input.GetAxisRaw("Horizontal");
         SpeedUp();
-        currentMana += ManaPerSecond*Time.deltaTime;
+        
+       
         if(currentMana>=maxMana)
         {
             currentMana = maxMana;
@@ -110,9 +131,18 @@ public class Player : MonoBehaviour
             jumpNumber++;
         }
 
-        if (isAttack == false&&isBlock==false)
+        if (isAttack == false&&isBlock==false&& timeSlowScript.TimeSlowActive==false)//修改了一下用于适配缓速的副武器
         {
             rigidbody2D.velocity = new Vector2(xSpeed * speedRate, rigidbody2D.velocity.y);
+            rigidbody2D.gravityScale = 2;
+            jumpForce = oriJumpForce;
+           
+        }
+        else if(isAttack == false && isBlock == false && timeSlowScript.TimeSlowActive == true)
+        {
+            jumpForce = 38;
+            rigidbody2D.gravityScale = 20;      
+            rigidbody2D.velocity = new Vector2(xSpeed * speedRate / Time.timeScale,rigidbody2D.velocity.y);           
         }
         else
         {
@@ -136,6 +166,16 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if(timeSlowScript.TimeSlowActive==false)
+        {
+            currentMana += ManaPerSecond * Time.deltaTime;
+        }
+        else
+        {
+            currentMana += ManaPSOnSlow * Time.deltaTime;
+        }
+
+
     }
     private void SpeedUp()
     {
@@ -331,6 +371,11 @@ public class Player : MonoBehaviour
                 GameObject subWeapon = Instantiate(guardian, Pos, Quaternion.identity);
             }
             currentMana-=guardianScript.neededMana;
+        }
+        if(Input.GetKeyDown(KeyCode.T)&&isTimeSlowed&&currentMana>=timeSlowScript.neededMana)
+        {
+            StartCoroutine(timeSlowScript.ActiveTimeSlow());
+            currentMana-=timeSlowScript.neededMana;
         }
     }
     public void getSlowed(float slowPercent, float slowDuration)
