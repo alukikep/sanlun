@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.AssemblyQualifiedNameParser;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 
@@ -12,10 +13,12 @@ public class Dracula : MonoBehaviour
     [Header("×Óµ¯")]
     public GameObject fireBall;
     public GameObject hugeFireBall;
+    public GameObject lightRain;
 
     [Header("»ðÇò¼ä¾à")]
     [SerializeField]private float littleSpacing;
     [SerializeField] private float hugeSpacing;
+    [SerializeField]private float lightRainSpacing;
 
     private void Update()
     {
@@ -32,6 +35,10 @@ public class Dracula : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.V))
         {
             HugeFireBallDown();
+        }
+        if(Input.GetKeyDown (KeyCode.L))
+        {
+            LightRain();
         }
     }
 
@@ -92,6 +99,24 @@ public class Dracula : MonoBehaviour
         Vector3 down = transform.position + space;
 
         GameObject HugeFireBall = Instantiate(hugeFireBall, down, Quaternion.Euler(direction));
+    }
+
+    public void LightRain ()
+    {
+        if (player == null || lightRain == null)
+        {
+            Debug.Log("Player or fireball prefab is not assigned!");
+            return;
+        }
+        Vector3 space = new Vector3 (lightRainSpacing, 0, 0);
+        Vector3 height = new Vector3(0, 3, 0);
+        Vector3 startPos = transform.position-8*space+height;
+        for (int i = 0; i < 16; i++)
+        {
+            Vector3 setPos = startPos + space * i;
+            GameObject LightRain = Instantiate(lightRain, setPos,Quaternion.identity);
+        }
+
     }
 
     private void Flip()
