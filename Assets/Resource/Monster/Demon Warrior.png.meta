@@ -1,0 +1,2090 @@
+fileFormatVersion: 2
+guid: cf84f841143cc15408ae15682a7bb651
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Demon Door_open
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 4321
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 273929fbcabd6e742a302d588121811b
+      internalID: -635159548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Door_close
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 4321
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d7eaf0e0e2108e49b1a51ed952e0a9b
+      internalID: 1891505610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_die
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 4330
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b962906330072d5479e47514793e87fb
+      internalID: -731078936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_11
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 4000
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf54fc13fc02e6d44b698885325e2080
+      internalID: -1869785705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_12
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 4000
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56a5383d04dcfc74dbc349748ec2ce74
+      internalID: -569056264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_13
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 4000
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 227175cae3881e7489c0ba79a3bbcc01
+      internalID: 702806022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_14
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 4000
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9e72c27d00677f40b387bccba36d6bc
+      internalID: -1890739156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_15
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 3861
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21cf474f7a196824c83e5ac625609978
+      internalID: -1752103053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 3860
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1947d746a675ff947a40b021571676f9
+      internalID: -1022254071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_17
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 3859
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe0839b9bf6aab74f8d6e0f0133e4c05
+      internalID: 530042682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_18
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 3851
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aebc9ecc80b14a47ae0c8a949636e29
+      internalID: 1299909063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_19
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 3684
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 381a10ae34a991c4d8a9e3ae1ec916ea
+      internalID: -1080283996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_20
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 3683
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 891b0bd38980a1a4596b43c0b18c8010
+      internalID: -493779670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_21
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 3682
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23293b2df512b4e4481cb27fbc211898
+      internalID: 1446628762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_22
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 3680
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ce93145525890d4b92dbd28b8495f28
+      internalID: 1615587653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_27
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 3521
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b306a82a4cd657349a446d19bfc564fd
+      internalID: 2021415077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_28
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 3521
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b8b7968260cfa84d8c02ded93a480aa
+      internalID: 1112462667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_29
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 3521
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3de21e90b5d2a5f4fbcb3f0451da80ae
+      internalID: 148271218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_30
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 3521
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ca8a4a3f464e344c83eb2f494145639
+      internalID: 799084513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_31
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 3360
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfd18a7852eaaa64b8a093aa02047d2a
+      internalID: -822867525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_32
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 3359
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0464c99289f66e8488f48e4921e7dfcf
+      internalID: -1493962078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_33
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 3360
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 614a61a580a6fa94fac1fab823aa831c
+      internalID: -892021169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_34
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 3359
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de023869729eef64b868367037c2760e
+      internalID: -1827273398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_35
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 3200
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b934339e5b4dfd843bcaa09670a812f0
+      internalID: -1321198438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_36
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 3199
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65e62a74957116d46be2a9e14fbfa11c
+      internalID: 1097165565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_37
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 3200
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6edd9de1c4d79542b7cce1db057e0f0
+      internalID: 368168409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_43
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 3029
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 413a7a19f2c2eda488c64a95d20ac8c1
+      internalID: -1203329962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_45
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 3028
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26a533a79ca5d104e8829e3b8bd37fc3
+      internalID: -1834148099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_46
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 3028
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80f0e12d7e3d62c4fa64a884922319f3
+      internalID: -368289707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_47
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 2836
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af35880017f2e4446ae9733c73e5b01e
+      internalID: 990185082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_49
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 2834
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30b29384d014816429e13f6bb542f747
+      internalID: 1636690219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_50
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 2834
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8580cd8176b78a4fad53a98a50a54d0
+      internalID: -324896460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_55
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 2643
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d79882a1a002181419219f28dfc09c78
+      internalID: 1857978515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_57
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 2661
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 352df603d40d3434cae4b0f89108dccc
+      internalID: -1430819425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_58
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 2646
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ecbb2eac415ac94595ba7b2038ee580
+      internalID: 1140245026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_59
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 2453
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c721280f3e5894f4888ad00648a9cd24
+      internalID: 1792369899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_60
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 2454
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0cc0582978b5d24db95f8715e6d45af
+      internalID: -856556798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_62
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 2479
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a79fc2e4d5b3064681e05cbc3791fd5
+      internalID: -205997736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_67
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 2271
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec171c70525246e47a0d9c70167cf641
+      internalID: 1740517041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_68
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 2271
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10ff690e2032b6540a2c8c5326a86c2c
+      internalID: -379350555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_70
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 2272
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dce2018ace4b434c8c19b59ffe3bfa7
+      internalID: -1390917501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_71
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 2103
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab5139dc8d14a954ca4944401d813b9b
+      internalID: -101137305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_73
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 2106
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08c61adde22c96a4f9586bb903417e88
+      internalID: -380973819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_74
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 2087
+        width: 128
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1d05deaa226f0a4285348f3bda1f007
+      internalID: -1055126275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_79
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 1865
+        width: 128
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b27c766c39ab7bb4b8a3c2264cba530b
+      internalID: -924049249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_81
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 1880
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e342abfe15b4894fba961cb63cb9f2c
+      internalID: -1179475586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_82
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 1895
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25e28a845cc427d44ac3e49decb2a009
+      internalID: 604418581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_83
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 1668
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea33c7f828ad247418822b996a211f34
+      internalID: 531587879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_84
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 1663
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 233be4bdb168e1440874962fa8ff8327
+      internalID: -1643317581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_85
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 1679
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17dee5e0ddf5e0b4185b36354331fbca
+      internalID: 1341075673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_86
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1687
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a6ddb7e35c9a6b43864223649b124af
+      internalID: -1673800506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_91
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1496
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81f76ef7675d7504583683d26057bd9c
+      internalID: 620673361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_92
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 1495
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 026b16be152aca2408eaea1c3f4ab4fa
+      internalID: -838915478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_93
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 1495
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b67d02a84a45b14b98e6c96a16bcfc8
+      internalID: 1190401464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_94
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 1514
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d08fa6cfcc29897449a9a3f4eb5f0b87
+      internalID: -763135473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_95
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1348
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a22be6b22f790254c9531a5c70e4e502
+      internalID: 1173127067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_96
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 1325
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75a8b7ef735b944438c1d1cf92741dee
+      internalID: 2126978634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_97
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 1341
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f6de43b68eeb074abaff71da558d938
+      internalID: -990743466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_99
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 1121
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 308082b6b15ebb845baf3f94b4560f82
+      internalID: -73976018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_101
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 1121
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7385200dccaec743aa23a9ef71dec52
+      internalID: -1826130774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_105
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 1128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7c43b6828a98a341a51036a50c14bca
+      internalID: 1545976285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_106
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 953
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a853865d58ac07c43b950abaa1ae4b9f
+      internalID: -1807842094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_107
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 954
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ecc90c691c6f35438397c9677e84359
+      internalID: 1960564260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_109
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 955
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dfb44c9021b47d478f14cc8d817a90a
+      internalID: 1458100474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_110
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 775
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71bf4448f79ee9a44ac0e557ea145ba0
+      internalID: 378040910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_111
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 771
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bcf9b275588e1a409ee6a7307b8fd46
+      internalID: 2094612168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_112
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 772
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82d1ab911c2c4084fbb32eeab4e2545e
+      internalID: 17213641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_113
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 767
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa698f099b0566440aecd01774cbdbe3
+      internalID: 334432589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_114
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 641
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f582622ae0cbc1147b94b6d86c4805da
+      internalID: 388346608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_115
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 644
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37b970c06af661e4a991b8f83c401729
+      internalID: 186061496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_116
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 641
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34d3e5f2a1978f14686fde19ce651448
+      internalID: -671961537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_117
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 641
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f62ceb313bf5d34a9ecbc20f70a2a40
+      internalID: 1915172912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_122
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 477
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95fd9fb32ee88a34cb6a3a2a103f8d1e
+      internalID: 536126298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_123
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 477
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cfd9b998d88688478566fa38559823c
+      internalID: -2119746925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_124
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 477
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c18d06afc2d2fb44b83f6d4ae61abe2d
+      internalID: 934788513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_125
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 468
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4524b72251a0e7844adbb0883b669367
+      internalID: 1266442454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_126
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 296
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62e3715e60e9ef8468afa28bba94830c
+      internalID: -868087203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_127
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 318
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9cd858ffe63c354d8d307b0be2c36bf
+      internalID: -242558737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_128
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 317
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21792d37ca3d365448eaf57de28aa898
+      internalID: -1541738836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_129
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 325
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b39ae5d2a3894849b587f76593ff1f2
+      internalID: 1710992105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_130
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 164
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a071f45717adb5347875ef2e74713329
+      internalID: -163076009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_131
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 165
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c1c16f9f99055a42a4fb74112ba809e
+      internalID: 1287140582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_132
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 169
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e203cdfabcb334a4cab20a0f8c24d35a
+      internalID: -1219142503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_133
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 167
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd4252b85e9f2d54bbb1c4a502ccf004
+      internalID: -142557099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_134
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 17
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 958410d456982044b83066ee3fe25c15
+      internalID: 1148443420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_135
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 18
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1da6f6956bd96e5408729132312438df
+      internalID: 263991408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Demon Warrior_136
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 28
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 308978b88f6073b43823286f3a3cc000
+      internalID: 697191987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Demon Door_close: 1891505610
+      Demon Door_open: -635159548
+      Demon Warrior_0: 1823934879
+      Demon Warrior_10: 2109500249
+      Demon Warrior_100: -710486171
+      Demon Warrior_101: -1826130774
+      Demon Warrior_102: -1680234826
+      Demon Warrior_103: 1952269174
+      Demon Warrior_104: 499100944
+      Demon Warrior_105: 1545976285
+      Demon Warrior_106: -1807842094
+      Demon Warrior_107: 1960564260
+      Demon Warrior_108: -2077424411
+      Demon Warrior_109: 1458100474
+      Demon Warrior_11: -1869785705
+      Demon Warrior_110: 378040910
+      Demon Warrior_111: 2094612168
+      Demon Warrior_112: 17213641
+      Demon Warrior_113: 334432589
+      Demon Warrior_114: 388346608
+      Demon Warrior_115: 186061496
+      Demon Warrior_116: -671961537
+      Demon Warrior_117: 1915172912
+      Demon Warrior_118: 1760770170
+      Demon Warrior_119: -785105410
+      Demon Warrior_12: -569056264
+      Demon Warrior_120: -1278366578
+      Demon Warrior_121: 1158597388
+      Demon Warrior_122: 536126298
+      Demon Warrior_123: -2119746925
+      Demon Warrior_124: 934788513
+      Demon Warrior_125: 1266442454
+      Demon Warrior_126: -868087203
+      Demon Warrior_127: -242558737
+      Demon Warrior_128: -1541738836
+      Demon Warrior_129: 1710992105
+      Demon Warrior_13: 702806022
+      Demon Warrior_130: -163076009
+      Demon Warrior_131: 1287140582
+      Demon Warrior_132: -1219142503
+      Demon Warrior_133: -142557099
+      Demon Warrior_134: 1148443420
+      Demon Warrior_135: 263991408
+      Demon Warrior_136: 697191987
+      Demon Warrior_14: -1890739156
+      Demon Warrior_15: -1752103053
+      Demon Warrior_16: -1022254071
+      Demon Warrior_17: 530042682
+      Demon Warrior_18: 1299909063
+      Demon Warrior_19: -1080283996
+      Demon Warrior_2: -602131270
+      Demon Warrior_20: -493779670
+      Demon Warrior_21: 1446628762
+      Demon Warrior_22: 1615587653
+      Demon Warrior_23: -953761924
+      Demon Warrior_24: -2096719204
+      Demon Warrior_25: -1538483254
+      Demon Warrior_26: 1762579481
+      Demon Warrior_27: 2021415077
+      Demon Warrior_28: 1112462667
+      Demon Warrior_29: 148271218
+      Demon Warrior_3: -834709729
+      Demon Warrior_30: 799084513
+      Demon Warrior_31: -822867525
+      Demon Warrior_32: -1493962078
+      Demon Warrior_33: -892021169
+      Demon Warrior_34: -1827273398
+      Demon Warrior_35: -1321198438
+      Demon Warrior_36: 1097165565
+      Demon Warrior_37: 368168409
+      Demon Warrior_38: 1111847100
+      Demon Warrior_39: -452292314
+      Demon Warrior_40: -1801037882
+      Demon Warrior_41: 1778084389
+      Demon Warrior_42: -360558898
+      Demon Warrior_43: -1203329962
+      Demon Warrior_44: 1039776053
+      Demon Warrior_45: -1834148099
+      Demon Warrior_46: -368289707
+      Demon Warrior_47: 990185082
+      Demon Warrior_48: -528225324
+      Demon Warrior_49: 1636690219
+      Demon Warrior_50: -324896460
+      Demon Warrior_51: -2138961512
+      Demon Warrior_52: 1770848799
+      Demon Warrior_53: 546232557
+      Demon Warrior_54: -1289233212
+      Demon Warrior_55: 1857978515
+      Demon Warrior_56: -201904206
+      Demon Warrior_57: -1430819425
+      Demon Warrior_58: 1140245026
+      Demon Warrior_59: 1792369899
+      Demon Warrior_60: -856556798
+      Demon Warrior_61: -988773070
+      Demon Warrior_62: -205997736
+      Demon Warrior_63: 1684649965
+      Demon Warrior_64: 1118783958
+      Demon Warrior_65: -1716260058
+      Demon Warrior_66: 966038986
+      Demon Warrior_67: 1740517041
+      Demon Warrior_68: -379350555
+      Demon Warrior_69: -114579480
+      Demon Warrior_7: -1023272612
+      Demon Warrior_70: -1390917501
+      Demon Warrior_71: -101137305
+      Demon Warrior_72: -2120456864
+      Demon Warrior_73: -380973819
+      Demon Warrior_74: -1055126275
+      Demon Warrior_75: -1666738240
+      Demon Warrior_76: 1776153817
+      Demon Warrior_77: -572578245
+      Demon Warrior_78: 860550253
+      Demon Warrior_79: -924049249
+      Demon Warrior_8: 590196886
+      Demon Warrior_80: 1217532984
+      Demon Warrior_81: -1179475586
+      Demon Warrior_82: 604418581
+      Demon Warrior_83: 531587879
+      Demon Warrior_84: -1643317581
+      Demon Warrior_85: 1341075673
+      Demon Warrior_86: -1673800506
+      Demon Warrior_87: 1140066801
+      Demon Warrior_88: 1312876439
+      Demon Warrior_89: -1386299248
+      Demon Warrior_9: 1446467956
+      Demon Warrior_90: 559722508
+      Demon Warrior_91: 620673361
+      Demon Warrior_92: -838915478
+      Demon Warrior_93: 1190401464
+      Demon Warrior_94: -763135473
+      Demon Warrior_95: 1173127067
+      Demon Warrior_96: 2126978634
+      Demon Warrior_97: -990743466
+      Demon Warrior_98: 826219347
+      Demon Warrior_99: -73976018
+      Demon Warrior_die: -731078936
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
