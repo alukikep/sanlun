@@ -2,92 +2,135 @@ using UnityEngine;
 
 public class DemonWarrior : MonoBehaviour
 {
+    [Header("基础设置")]
     public Animator animator;
-    public float attackCooldown = 2.0f;
-    private float nextAttackTime = 0.0f;
-    public Transform playerPosition;
+    public SpriteRenderer spriteRenderer;
+    public Rigidbody2D rb;
+    public Transform player;
+
+    [Header("阶段参数")]
+    public int maxHealth = 3;
+    public float stopDistance = 3f;
+    public float phaseTransitionDuration = 1f;
+
+    [Header("阶段1 - 挥击")]
+    public float phase1MoveSpeed = 3f;
+    public float phase1AttackCD = 2f;
+    public float swipeDamage = 10f;
+
+    [Header("阶段2 - 召唤")]
     public GameObject[] spawnPoints;
-    public GameObject impPrefab; // 小恶魔预制体
-    public GameObject fireballPrefab; // 火球预制体
-    public GameObject demonPortalPrefab; // 恶魔之门预制体
-    public int maxHealth = 3; // 最大生命值，对应阶段数
-    private int currentHealth = 3; // 当前生命值
+    public GameObject impPrefab;
+    public float summonInterval = 5f;
+
+    [Header("阶段3 - 强化")]
+    public float phase3SpeedMultiplier = 1.5f;
+    public float phase3AttackMultiplier = 2f;
+    public ParticleSystem phase3Effect;
+
+    // 私有变量
+    private int currentHealth;
     private int phase = 1;
+    private bool isInRange;
+    private float attackTimer;
+    private float summonTimer;
+    private bool isTransitioning;
+
+    void Start()
+    {
+        currentHealth = maxHealth;
+        player = Player.Instance.transform;
+    }
 
     void Update()
     {
-        if (Time.time > nextAttackTime)
-        {
-            nextAttackTime = Time.time + attackCooldown;
-            PerformAttack();
-        }
+        if (isTransitioning || player == null) return;
+
+        HandleMovement();
+        HandlePhaseBehavior();
     }
 
-    void PerformAttack()
+    void HandleMovement()
+    {
+        float distance = Vector2.Distance(transform.position, player.position);
+        isInRange = distance <= stopDistance;
+
+        if (!isInRange)
+        {
+            Vector2 direction = (player.position - transform.position).normalized;
+            rb.velocity = direction * GetCurrentSpeed();
+            animator.SetBool("IsMoving", true);
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
+            animator.SetBool("IsMoving", false);
+        }
+
+        // 翻转Sprite
+        spriteRenderer.flipX = player.position.x > transform.position.x;
+    }
+
+    void HandlePhaseBehavior()
     {
         switch (phase)
         {
             case 1:
-                Phase1Attack();
+                Phase1Logic();
                 break;
             case 2:
-                Phase2Attack();
+                Phase2Logic();
                 break;
             case 3:
-                Phase3Attack();
+                Phase3Logic();
                 break;
         }
     }
 
-    void Phase1Attack()
+    void Phase1Logic()
     {
-        int attackType = Random.Range(0, 3);
-        switch (attackType)
+        attackTimer += Time.deltaTime;
+
+        if (attackTimer >= phase1AttackCD && isInRange)
         {
-            case 0:
-                SwipeAttack();
-                break;
-            case 1:
-                JumpAttack();
-                break;
-            case 2:
-                SummonImps();
-                break;
+            PerformSwipeAttack();
+            attackTimer = 0f;
         }
     }
 
-    void Phase2Attack()
+    void Phase2Logic()
     {
-        int attackType = Random.Range(0, 3);
-        switch (attackType)
+        summonTimer += Time.deltaTime;
+
+        if (summonTimer >= summonInterval)
         {
-            case 0:
-                FireballAttack();
-                break;
-            case 1:
-                SpinAttack();
-                break;
-            case 2:
-                TeleportAttack();
-                break;
+            SummonImps();
+            summonTimer = 0f;
         }
     }
 
-    void Phase3Attack()
+    void Phase3Logic()
     {
-        ScreenAttack();
-        SummonDemonicPortal();
-        FinalStrike();
+        attackTimer += Time.deltaTime;
+
+        if (attackTimer >= (phase1AttackCD / phase3AttackMultiplier) && isInRange)
+        {
+            PerformEnhancedSwipe();
+            attackTimer = 0f;
+        }
     }
 
-    void SwipeAttack()
+    void PerformSwipeAttack()
     {
         animator.SetTrigger("Swipe");
+        // 实际伤害检测需要在动画事件中处理
     }
 
-    void JumpAttack()
+    void PerformEnhancedSwipe()
     {
-        animator.SetTrigger("Jump");
+        animator.SetTrigger("EnhancedSwipe");
+        phase3Effect.Play();
+        // 强化版攻击处理
     }
 
     void SummonImps()
@@ -95,88 +138,75 @@ public class DemonWarrior : MonoBehaviour
         animator.SetTrigger("Summon");
         foreach (var spawnPoint in spawnPoints)
         {
-            Instantiate(impPrefab, spawnPoint.transform.position, Quaternion.identity);
+            Instantiate(impPrefab, transform.position, Quaternion.identity);
         }
     }
 
-    void FireballAttack()
-    {
-        animator.SetTrigger("Fireball");
-        Instantiate(fireballPrefab, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
-    }
-
-    void SpinAttack()
-    {
-        animator.SetTrigger("Spin");
-    }
-
-    void TeleportAttack()
-    {
-        animator.SetTrigger("Teleport");
-        Vector3 randomPos = new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f));
-        Instantiate(fireballPrefab, randomPos, Quaternion.identity);
-    }
-
-    void ScreenAttack()
-    {
-        animator.SetTrigger("ScreenAttack");
-    }
-
-    void SummonDemonicPortal()
-    {
-        animator.SetTrigger("SummonPortal");
-        Instantiate(demonPortalPrefab, transform.position + new Vector3(0, -2, 0), Quaternion.identity);
-    }
-
-    void FinalStrike()
-    {
-        animator.SetTrigger("FinalStrike");
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            // 玩家进入攻击范围，触发攻击
-            animator.SetTrigger("Attack");
-        }
-    }
-
-    // 阶段转换
     public void TakeDamage(int damage)
     {
+        if (isTransitioning) return;
+
         currentHealth -= damage;
-        Debug.Log("Current Health: " + currentHealth);
+        animator.SetTrigger("Hurt");
 
         if (currentHealth <= 0)
         {
-            AdvancePhase();
-            currentHealth = maxHealth; // 重置生命值
+            StartCoroutine(TransitionPhase());
         }
     }
 
-    private void AdvancePhase()
+    System.Collections.IEnumerator TransitionPhase()
     {
+        isTransitioning = true;
+        animator.SetTrigger("PhaseTransition");
+
+        yield return new WaitForSeconds(phaseTransitionDuration);
+
         phase++;
-        if (phase > 3)
-        {
-            phase = 3; // 最多三个阶段
-        }
-        Debug.Log("Phase: " + phase);
+        if (phase > 3) phase = 3;
+
+        ApplyPhaseModifiers();
+        currentHealth = maxHealth;
+        isTransitioning = false;
     }
-    private void OnTriggerEnter2D(Collider2D other)
+
+    void ApplyPhaseModifiers()
     {
-        if (other.CompareTag("Player"))
+        switch (phase)
         {
-            playerPosition = other.transform;
+            case 2:
+                // 初始化召唤阶段参数
+                summonTimer = summonInterval;
+                break;
+            case 3:
+                // 应用强化参数
+                phase3Effect.Play();
+                break;
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    float GetCurrentSpeed()
     {
-        if (other.CompareTag("Player"))
+        return phase == 3 ? phase1MoveSpeed * phase3SpeedMultiplier : phase1MoveSpeed;
+    }
+
+    // 动画事件回调方法
+    public void OnSwipeHit()
+    {
+        // 实际伤害检测逻辑
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 2f);
+        foreach (var hit in hits)
         {
-            playerPosition = null;
+            if (hit.CompareTag("Player"))
+            {
+                hit.GetComponent<Player>().GetDamage(swipeDamage);
+            }
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 2f);
     }
 }

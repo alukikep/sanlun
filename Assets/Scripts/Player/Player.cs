@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public static Player Instance;
+    public static Player Instance;//单例模式
 
 
 
@@ -71,6 +71,17 @@ public class Player : MonoBehaviour
     private bool ishighJumpEnabled=false;
     private bool isbatTransformEnabled=false;
     private bool isratTransformEnabled = false;
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this; // 确保单例引用正确
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {

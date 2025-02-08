@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8484783642218080580}
   - component: {fileID: 7404033851495885009}
   - component: {fileID: 3628440979598208734}
-  - component: {fileID: 6377770993912117388}
+  - component: {fileID: 5441214609803340374}
   - component: {fileID: 8262910722885082131}
   - component: {fileID: 6573698513452718987}
   m_Layer: 0
@@ -77,12 +77,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1869785705, guid: cf84f841143cc15408ae15682a7bb651, type: 3}
+  m_Sprite: {fileID: -967239596, guid: 26fb3e7886932fc4c8e2019ea23f113e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 3.520752, y: 3.52}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -103,7 +103,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -113,10 +113,10 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
---- !u!58 &6377770993912117388
-CircleCollider2D:
+--- !u!70 &5441214609803340374
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -147,9 +147,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1
+  m_Offset: {x: -0.570282, y: -0.65174794}
+  m_Size: {x: 2.675476, y: 4.8590035}
+  m_Direction: 0
 --- !u!114 &8262910722885082131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,13 +163,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6573698513452718987}
-  attackCooldown: 2
-  playerPosition: {fileID: 0}
+  spriteRenderer: {fileID: 7404033851495885009}
+  rb: {fileID: 3628440979598208734}
+  player: {fileID: 0}
+  maxHealth: 3
+  stopDistance: 3
+  phaseTransitionDuration: 1
+  phase1MoveSpeed: 3
+  phase1AttackCD: 2
+  swipeDamage: 10
   spawnPoints: []
   impPrefab: {fileID: 0}
-  fireballPrefab: {fileID: 0}
-  demonPortalPrefab: {fileID: 0}
-  maxHealth: 3
+  summonInterval: 5
+  phase3SpeedMultiplier: 1.5
+  phase3AttackMultiplier: 2
+  phase3Effect: {fileID: 0}
 --- !u!95 &6573698513452718987
 Animator:
   serializedVersion: 5
@@ -180,7 +188,7 @@ Animator:
   m_GameObject: {fileID: 7076642844775716171}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 523eabe9e7a88044ea92a094e0a28176, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
