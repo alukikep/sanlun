@@ -45,15 +45,15 @@ public class AttackCheck : MonoBehaviour
         }
         foreach (var hit in bricks)
         {
-            if(hit.GetComponent<EnemyHealth>() != null&&!hit.isTrigger)
+            if(hit.GetComponent<DestructibleBricks>() != null&&!hit.isTrigger)
             {
                 if (player.blockBonus == 1)
                 {
-                    hit.GetComponent<EnemyHealth>().GetDamage(player.ATK);
+                    hit.GetComponent<DestructibleBricks>().GetDamage(player.ATK);
                 }
                 if(player.blockBonus == 2)
                 {
-                    hit.GetComponent<EnemyHealth>().GetDamage(player.ATK*player.blockBonus);
+                    hit.GetComponent<DestructibleBricks>().GetDamage(player.ATK*player.blockBonus);
                     player.blockBonus = 1;
                 }
             }
