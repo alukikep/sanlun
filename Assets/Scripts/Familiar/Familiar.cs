@@ -26,7 +26,7 @@ public class Familiar : MonoBehaviour
     public float maxRangeToPlayer;//与玩家的最远距离
     public float moveSpeed;//移速
     public float jumpForce;//跳跃高度
-    private float jumpInterVal = 3;//用于调整最短跳跃间隔 防止连跳？
+    public float jumpInterVal = 3;//用于调整最短跳跃间隔 防止连跳？
     private float jumpTimer;//不用赋值
     private float waitInterval = 5;//每过几秒在玩家旁边移动一下
     private float verticalDistance;//与玩家的最大垂直距离 用于跳跃 不用赋值
@@ -167,16 +167,16 @@ public class Familiar : MonoBehaviour
                 float randomNum = Random.Range(0, 2);
                 if(randomNum>1.25)
                 {
-                    rb.velocity = new Vector2(1,0).normalized*moveSpeed;
+                    rb.velocity = new Vector2(1,rb.velocity.y).normalized*moveSpeed;
 
                 }
                 if(randomNum<=0.75)
                 {
-                    rb.velocity = new Vector2(-1, 0).normalized*moveSpeed;
+                    rb.velocity = new Vector2(-1, rb.velocity.y).normalized*moveSpeed;
                 }
                 if(randomNum>0.75&&randomNum<=1.26)
                 {
-                    rb.velocity = new Vector2(0, 0);
+                    rb.velocity = new Vector2(0, rb.velocity.y);
                 }
                 waitTimer = 0;
             }
@@ -197,18 +197,18 @@ public class Familiar : MonoBehaviour
         if (targetEnemy != null)
         {
             Vector2 direction = (targetEnemy.transform.position - transform.position);
-            Vector2 horizontalDirection = new Vector2(direction.x, 0).normalized;
+            Vector2 horizontalDirection = new Vector2(direction.x, rb.velocity.y).normalized;
             if (Vector2.Distance(targetEnemy.position, transform.position) > attackRange)
             {
                 rb.velocity = horizontalDirection * moveSpeed;
             }
             if (Vector2.Distance(targetEnemy.position, transform.position) < attackRange)
             {
-                rb.velocity = new Vector2(-horizontalDirection.x, 0);
+                rb.velocity = new Vector2(-horizontalDirection.x, rb.velocity.y);
             }
             if (Vector2.Distance(targetEnemy.position, transform.position) == attackRange)
             {
-                rb.velocity = new Vector2(0, 0);
+                rb.velocity = new Vector2(0, rb.velocity.y);
             }
         }
     }
