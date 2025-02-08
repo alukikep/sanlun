@@ -219,3 +219,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   health: 20
+  flashTime: 0.1

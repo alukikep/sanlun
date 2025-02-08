@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Profiling;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
@@ -10,6 +11,8 @@ public class EnemyHealth : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private Sprite initialSprite;
+    private Color originColor;
+    [SerializeField]private float flashTime;
 
     public delegate void DeathEventHandler();
     public event DeathEventHandler OnDeath;
@@ -19,6 +22,7 @@ public class EnemyHealth : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         initialSprite = spriteRenderer.sprite;
+        originColor = spriteRenderer.color;
     }
 
     private void Update()
@@ -27,19 +31,9 @@ public class EnemyHealth : MonoBehaviour
     }
     public void GetDamage(float pATK)
     {
-        
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-        }
-        if(animator!=null)
-        {
-            animator.Play("Hurt");
-        }
-      
-        health = health - pATK;
        
-        
+        health = health - pATK;
+        Flash(flashTime);
     }
 
     private void Die()
@@ -56,4 +50,16 @@ public class EnemyHealth : MonoBehaviour
         spriteRenderer.sprite = initialSprite;
         
     }
+
+    private void Flash(float time)
+    {
+        spriteRenderer.color = Color.red;
+        Invoke("ResetColor", time);
+    }
+
+    private void ResetColor()
+    {
+        spriteRenderer.color= originColor;
+    }
+
 }

@@ -10,6 +10,8 @@ public class Dracula : MonoBehaviour
     public Transform player;
     public Vector2 areaSize;
     public bool faceRight;
+    private Rigidbody2D rb;
+    [SerializeField] private float rushSpeed;
     [Header("×Óµ¯")]
     public GameObject fireBall;
     public GameObject hugeFireBall;
@@ -20,6 +22,10 @@ public class Dracula : MonoBehaviour
     [SerializeField] private float hugeSpacing;
     [SerializeField]private float lightRainSpacing;
 
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
     private void Update()
     {
         Flip();
@@ -39,6 +45,10 @@ public class Dracula : MonoBehaviour
         if(Input.GetKeyDown (KeyCode.L))
         {
             LightRain();
+        }
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            Rush();
         }
     }
 
@@ -118,6 +128,12 @@ public class Dracula : MonoBehaviour
         }
 
     }
+
+    public void Rush()
+    {
+        rb.velocity = new Vector2(rushSpeed * (faceRight ? 1 : -1), 0);
+    }
+
 
     private void Flip()
     {

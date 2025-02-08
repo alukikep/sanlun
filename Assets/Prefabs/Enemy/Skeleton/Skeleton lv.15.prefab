@@ -219,6 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 200
   health: 200
+  flashTime: 0.1
 --- !u!95 &2330927011007634948
 Animator:
   serializedVersion: 5

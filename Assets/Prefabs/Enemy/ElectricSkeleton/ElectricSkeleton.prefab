@@ -185,6 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 60
   health: 60
+  flashTime: 0.1
 --- !u!50 &2747180340028489763
 Rigidbody2D:
   serializedVersion: 4
