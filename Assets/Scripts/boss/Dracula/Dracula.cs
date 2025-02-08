@@ -12,6 +12,7 @@ public class Dracula : MonoBehaviour
     public bool faceRight;
     private Rigidbody2D rb;
     [SerializeField] private float rushSpeed;
+    private Animator animator;
     [Header("子弹")]
     public GameObject fireBall;
     public GameObject hugeFireBall;
@@ -22,9 +23,14 @@ public class Dracula : MonoBehaviour
     [SerializeField] private float hugeSpacing;
     [SerializeField]private float lightRainSpacing;
 
+    [Header("间歇时间")]
+    [SerializeField] private float attackEnd;
+    [SerializeField] private float transEnd;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     private void Update()
     {
@@ -51,6 +57,52 @@ public class Dracula : MonoBehaviour
             Rush();
         }
     }
+
+    private void Attack()
+    {
+        int attackNum = Random.Range(0, 4);
+        switch (attackNum)
+        { 
+            case 0:
+                {
+                    animator.Play("FireBall");
+                    break;
+                }
+
+            case 1:
+                {
+                    animator.Play("HugeFireBall");
+                    break;
+                }
+            case 2:
+                {
+                    animator.Play("LightRain");
+                    break;
+                }
+            case 3:
+                {
+                    animator.Play("Rush");
+                    break;
+                }
+        }
+    }
+
+    private void AttackEnd()
+    {
+        Invoke("Trans", attackEnd);
+
+    }
+
+    private void TransEnd()
+    {
+        Invoke("Attack", transEnd);
+    }
+
+    private void Trans()
+    {
+        animator.Play("Teleportation");
+    }
+
 
     public void TeleportToRandomPosition()
     {
