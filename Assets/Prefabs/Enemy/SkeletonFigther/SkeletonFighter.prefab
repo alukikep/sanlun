@@ -101,7 +101,7 @@ Animator:
   m_GameObject: {fileID: 6242530160710838983}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ede87ae7ddc88d42bb50f27267342e0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9c1a439e1ccbf934896c76af62742ae9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -227,6 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 60
   health: 60
+  flashTime: 0.1
 --- !u!50 &3706583575358093834
 Rigidbody2D:
   serializedVersion: 4
