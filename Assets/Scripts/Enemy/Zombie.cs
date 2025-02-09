@@ -25,6 +25,10 @@ public class Zombie : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(playerPosition == null)
+        {
+            return;
+        }
         float directionX = playerPosition.position.x - transform.position.x;      
             float moveDirection = directionX > 0 ? 1 : -1;
             rigidbody2D.velocity = new Vector2(moveDirection * moveSpeed, rigidbody2D.velocity.y);

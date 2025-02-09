@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rigidbody2D;
     private Animator animation;
-    private BoxCollider2D boxCollider2D;
+    private  CapsuleCollider2D capsuleCollider2D;
     private float xSpeed;
     private int jumpNumber = 0; // 0,1,2分别表示跳跃了0，1，2次，控制二段跳
     private int jumpLimit;
@@ -91,7 +91,7 @@ public class Player : MonoBehaviour
         Debug.Log("start");
         rigidbody2D = GetComponent<Rigidbody2D>();
         animation = GetComponentInChildren<Animator>();
-        boxCollider2D = GetComponent<BoxCollider2D>();
+        capsuleCollider2D = GetComponent<CapsuleCollider2D>();
         isBat = false;
         faceRight = true;
         jumpLimit = 1;
@@ -224,14 +224,14 @@ public class Player : MonoBehaviour
         {
             rigidbody2D.drag = 10;
             isBat = true;
-            boxCollider2D.size = new Vector2(0.4f, 0.8f);
+            capsuleCollider2D.size = new Vector2(0.8f, 0.8f);
         }
         //按r变身蝙蝠，使下落速度变慢且不能再跳跃
         else if (Input.GetKeyDown(KeyCode.R) && isBat == true && isMouse == false)
         {
             rigidbody2D.drag = 1;
             isBat = false;
-            boxCollider2D.size = new Vector2(0.4f, 1.7f);
+            capsuleCollider2D.size = new Vector2(0.4f, 1.7f);
         }
         //松开r还原
     }
@@ -245,13 +245,14 @@ public class Player : MonoBehaviour
         {
             isMouse = true;
             jumpForce = 8;
-            boxCollider2D.size = new Vector2(0.4f, 0.5f);
+            capsuleCollider2D.size = new Vector2(0.4f, 0.4f);
+
         }
         else if (Input.GetKeyDown(KeyCode.E) && isMouse == true)
         {
             isMouse = false;
             jumpForce = 14;
-            boxCollider2D.size = new Vector2(0.4f, 1.7f);
+            capsuleCollider2D.size = new Vector2(0.4f, 1.7f);
         }
     }
 
@@ -307,7 +308,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground")&&isMouse==false)
         {
            jumpNumber = 1;
         }
