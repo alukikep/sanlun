@@ -199,6 +199,7 @@ MonoBehaviour:
   maxHealth: 20
   health: 20
   flashTime: 0.1
+  hurtEffect: {fileID: 3829011218837494106, guid: 596eba13992e9594587a8bb5aca6c23a, type: 3}
 --- !u!95 &300866651222028808
 Animator:
   serializedVersion: 5

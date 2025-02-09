@@ -13,6 +13,7 @@ public class EnemyHealth : MonoBehaviour
     private Sprite initialSprite;
     private Color originColor;
     [SerializeField]private float flashTime;
+    public GameObject hurtEffect;
 
     public delegate void DeathEventHandler();
     public event DeathEventHandler OnDeath;
@@ -31,9 +32,10 @@ public class EnemyHealth : MonoBehaviour
     }
     public void GetDamage(float pATK)
     {
-       
+        Instantiate(hurtEffect, transform.position, Quaternion.identity);
         health = health - pATK;
         Flash(flashTime);
+
     }
 
     private void Die()
