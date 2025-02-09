@@ -125,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 8372549733123745476}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 2
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0

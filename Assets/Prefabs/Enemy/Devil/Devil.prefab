@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 961065785239290151}
   - component: {fileID: 74342254456993978}
-  - component: {fileID: 5403226214537202844}
   - component: {fileID: 1708954025788712645}
   - component: {fileID: 7396839398841081626}
   - component: {fileID: 1186679046649432203}
   - component: {fileID: -2888819758513009476}
+  - component: {fileID: 300866651222028808}
   m_Layer: 3
   m_Name: Devil
   m_TagString: Untagged
@@ -89,27 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &5403226214537202844
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4353969711573245252}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3770db32f28cd024eb3e200d0f10b5ab, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1708954025788712645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,3 +199,24 @@ MonoBehaviour:
   maxHealth: 20
   health: 20
   flashTime: 0.1
+--- !u!95 &300866651222028808
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4353969711573245252}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8001f2c0c73a87143bfa9501921380e8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
