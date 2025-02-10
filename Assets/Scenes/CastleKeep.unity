@@ -1046,9 +1046,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 617212859}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1001 &216175085
 PrefabInstance:
@@ -1411,9 +1411,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 95008543}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1001 &334829843
 PrefabInstance:
@@ -1576,9 +1576,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 2084150809}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1001 &369687288
 PrefabInstance:
@@ -1665,9 +1665,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 673855617}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1 &386063442
 GameObject:
@@ -11591,9 +11591,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 673855617}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1001 &500234343
 PrefabInstance:
@@ -11756,9 +11756,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 75205245}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1001 &539918921
 PrefabInstance:
@@ -12361,9 +12361,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 75205245}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!4 &623343356 stripped
 Transform:
@@ -13054,9 +13054,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 2084150809}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1001 &795654376
 PrefabInstance:
@@ -13677,9 +13677,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 641573795}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1 &841112641
 GameObject:
@@ -14525,9 +14525,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 2084150809}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1001 &992323963
 PrefabInstance:
@@ -14614,9 +14614,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 95008543}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!4 &1024450180 stripped
 Transform:
@@ -14637,9 +14637,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 2084150809}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1001 &1027002712
 PrefabInstance:
@@ -14873,9 +14873,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 2084150809}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1001 &1076039457
 PrefabInstance:
@@ -14962,9 +14962,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 95008543}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!4 &1108633397 stripped
 Transform:
@@ -15287,9 +15287,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 2084150809}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1 &1221550756
 GameObject:
@@ -15468,9 +15468,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 75205245}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1001 &1257458024
 PrefabInstance:
@@ -15557,9 +15557,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 75205245}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1001 &1273098869
 PrefabInstance:
@@ -15651,9 +15651,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 673855617}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1001 &1274500683
 PrefabInstance:
@@ -123249,9 +123249,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 1864528940}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!4 &1340429065 stripped
 Transform:
@@ -123272,9 +123272,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 673855617}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!4 &1341881962 stripped
 Transform:
@@ -123499,9 +123499,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 641573795}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1 &1386672305
 GameObject:
@@ -123969,9 +123969,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 2084150809}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1 &1414125103
 GameObject:
@@ -124313,9 +124313,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 95008543}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1001 &1492626575
 PrefabInstance:
@@ -124443,9 +124443,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 641573795}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!4 &1576789345 stripped
 Transform:
@@ -124466,9 +124466,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 75205245}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!4 &1577998814 stripped
 Transform:
@@ -124489,9 +124489,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 641573795}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1001 &1578507820
 PrefabInstance:
@@ -124583,9 +124583,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 95008543}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1001 &1590045883
 PrefabInstance:
@@ -124672,9 +124672,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 75205245}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1001 &1622126667
 PrefabInstance:
@@ -124761,9 +124761,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 673855617}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!4 &1634699157 stripped
 Transform:
@@ -125492,9 +125492,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 1864528940}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1 &1730663871
 GameObject:
@@ -125767,9 +125767,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 2084150809}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1 &1761177665
 GameObject:
@@ -125923,9 +125923,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 617212859}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1001 &1796422117
 PrefabInstance:
@@ -126083,9 +126083,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 617212859}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1 &1808602394
 GameObject:
@@ -126335,9 +126335,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 617212859}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1001 &1864124439
 PrefabInstance:
@@ -126424,9 +126424,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 95008543}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1 &1864528938
 GameObject:
@@ -126493,9 +126493,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 641573795}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!4 &1910781587 stripped
 Transform:
@@ -126516,9 +126516,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 2084150809}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1001 &1926146215
 PrefabInstance:
@@ -126605,9 +126605,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 673855617}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1 &1927392473
 GameObject:
@@ -126668,9 +126668,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 641573795}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!4 &1955032760 stripped
 Transform:
@@ -126691,9 +126691,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 95008543}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1 &2008566706
 GameObject:
@@ -127218,9 +127218,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 2084150809}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1001 &2080662067
 PrefabInstance:
@@ -127312,9 +127312,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 95008543}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1001 &2083819653
 PrefabInstance:
@@ -127401,9 +127401,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 673855617}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1 &2084150807
 GameObject:
@@ -127645,9 +127645,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 95008543}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!4 &2113768550 stripped
 Transform:
@@ -127668,9 +127668,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 673855617}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1001 &2116640763
 PrefabInstance:
@@ -127762,9 +127762,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 95008543}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1 &2117618728
 GameObject:
@@ -127907,9 +127907,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 95008543}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1 &2145055403
 GameObject:
@@ -127965,9 +127965,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectPool: {fileID: 95008543}
   player: {fileID: 0}
-  spawnDistance: 200
-  despawnDistance: 200
-  respawnTime: 20
+  spawnDistance: 30
+  despawnDistance: 50
+  respawnTime: 100
   Radius: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
