@@ -14,6 +14,7 @@ public class EnemyHealth : MonoBehaviour
     private Color originColor;
     [SerializeField]private float flashTime;
     public GameObject hurtEffect;
+    public GameObject dieEffect;
 
     public delegate void DeathEventHandler();
     public event DeathEventHandler OnDeath;
@@ -41,7 +42,12 @@ public class EnemyHealth : MonoBehaviour
     private void Die()
     {
         if (health <= 0 && OnDeath != null)
-            animator.Play("Die");
+        {
+            Instantiate(dieEffect, transform.position, Quaternion.identity);
+            SetSprite();
+            DestroyEnemy();
+        }
+
     }
     private void DestroyEnemy()
     {

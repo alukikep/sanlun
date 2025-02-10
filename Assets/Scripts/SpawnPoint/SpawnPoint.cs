@@ -66,12 +66,19 @@ public class SpawnPoint : MonoBehaviour
 
     private void OnMonsterDeath()
     {
-        float maxHealth = currentMonster.GetComponent<EnemyHealth>().maxHealth;
-        currentMonster.GetComponent<EnemyHealth>().health = maxHealth;
-        currentMonster.SetActive(false);
-        currentMonster = null;
-        isDead = true;
-        lastDespawnTime = Time.time;
+        if (currentMonster != null)
+        {
+            float maxHealth = currentMonster.GetComponent<EnemyHealth>().maxHealth;
+            currentMonster.GetComponent<EnemyHealth>().health = maxHealth;
+            currentMonster.SetActive(false);
+            currentMonster = null;
+            isDead = true;
+            lastDespawnTime = Time.time;
+        }
+        else
+        {
+            return;
+        }
     }
     private void OnDrawGizmos()
     {
