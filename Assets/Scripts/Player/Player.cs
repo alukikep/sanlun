@@ -365,12 +365,12 @@ public class Player : MonoBehaviour
     }
     public void SubWeapon()
     {
-        if (Input.GetKeyDown(KeyCode.T)&&isAxe&&currentMana>=axeScript.neededMana)
+        if (Input.GetKeyDown(KeyCode.U)&&isAxe&&currentMana>=axeScript.neededMana)
         {
             GameObject SubWeapon = Instantiate(axe, transform.position, Quaternion.identity);
             currentMana-=axeScript.neededMana;
         }     
-        if (Input.GetKeyDown(KeyCode.T)&& isGuardian&&guardianScript != null&&currentMana>=guardianScript.neededMana)
+        if (Input.GetKeyDown(KeyCode.U)&& isGuardian&&guardianScript != null&&currentMana>=guardianScript.neededMana)
         {
             float radius = guardianScript.radius;
             float angleStep = 360 / guardianNum;
@@ -384,7 +384,7 @@ public class Player : MonoBehaviour
             }
             currentMana-=guardianScript.neededMana;
         }
-        if(Input.GetKeyDown(KeyCode.T)&&isTimeSlowed&&currentMana>=timeSlowScript.neededMana)
+        if(Input.GetKeyDown(KeyCode.U)&&isTimeSlowed&&currentMana>=timeSlowScript.neededMana)
         {
             StartCoroutine(timeSlowScript.ActiveTimeSlow());
             currentMana-=timeSlowScript.neededMana;

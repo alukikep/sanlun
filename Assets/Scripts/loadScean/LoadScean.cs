@@ -7,23 +7,45 @@ public class LoadScean : MonoBehaviour
 {
     [Header("场景设置")]
     [SerializeField] private string targetSceneName; //场景名称
-
-
+    private GameObject DoubleJumpUnlockItem;
     private bool isTransitioning = false;
+    private GameObject Player;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void Start()
     {
-        if (other.CompareTag("Player") && !isTransitioning)
+        Player = GameObject.Find("Player");
+        DoubleJumpUnlockItem = GameObject.Find("DoubleJumpUnlockItem");
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") && !isTransitioning)
         {
-            isTransitioning = true;
+            
             LoadTargetScene();
+           
         }
     }
 
     private void LoadTargetScene()
     {
-       
-         StartCoroutine(LoadAsyncScene());
+       if(targetSceneName== "Sewers")
+        {
+            if(DoubleJumpUnlockItem!=null)
+            {
+                Debug.Log("yes");
+               
+            }
+            else
+            {
+                StartCoroutine(LoadAsyncScene());
+                isTransitioning = true;
+            }
+        }
+        else
+        {
+            StartCoroutine(LoadAsyncScene());
+            isTransitioning = true;
+        }
     }
 
     private IEnumerator LoadAsyncScene()

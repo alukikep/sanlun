@@ -31,6 +31,8 @@ public class Familiar : MonoBehaviour
     private float waitInterval = 5;//每过几秒在玩家旁边移动一下
     private float verticalDistance;//与玩家的最大垂直距离 用于跳跃 不用赋值
     public float maxVerticalDistanceToPlayer;//给这个赋值用以调整跳跃行动
+    public float Length;
+    public float Width;
 
     [Header("升级相关")]
     public float increaseDamageCount;
@@ -43,7 +45,7 @@ public class Familiar : MonoBehaviour
 
     
     public bool invulnerable;
-
+   
     private float waitTimer = 0;
    
     private float attackTimer;  
@@ -56,6 +58,7 @@ public class Familiar : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D rb;
     private GameObject player;
+    private Player _player;
     private Transform targetEnemy;
   
     public GameObject familiarBulletPrefab;
@@ -64,6 +67,7 @@ public class Familiar : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _player = player.GetComponent<Player>();
         rb = GetComponent<Rigidbody2D>();
         attackTimer = 0;
         jumpTimer = jumpInterVal;
@@ -83,11 +87,13 @@ public class Familiar : MonoBehaviour
         jumpTimer -= Time.deltaTime;
         invulnerableTimer -=Time.deltaTime;
         shootTimer -= Time.deltaTime;
-        moveToPlayer();
+        //moveToPlayer();
         getCurrentEnemyTarget();
         attack();       
-        moveToEnemy();
+        //moveToEnemy();
         Flip();
+        move();
+        
 
 
     }
@@ -260,6 +266,18 @@ public class Familiar : MonoBehaviour
         {
             _spriteRenderer.flipX = false;
             faceRight = false;
+        }
+    }
+    private void move()
+    {
+        transform.position = new Vector2(player.transform.position.x + Length, player.transform.position.y + Width);
+        if (_player.faceRight==true)
+        {
+            _spriteRenderer.flipX = true ;
+        }
+        else
+        {
+            _spriteRenderer.flipX = false;
         }
     }
 }

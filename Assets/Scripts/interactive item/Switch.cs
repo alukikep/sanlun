@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Switch : MonoBehaviour
 {
-    public KeyCode interactKey = KeyCode.E;
+    public KeyCode interactKey = KeyCode.Z;
     public float interactRange;
     public GameObject[] bricksToDesTroy;
     private bool isPlayerNearBy = false;

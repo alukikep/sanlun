@@ -165,7 +165,7 @@ MonoBehaviour:
   attackCheck: {fileID: 4497705491918122970}
   damage: 20
   attackRadius: 0.5
-  destroyTime: 10
+  destroyTime: 5
 --- !u!1 &8467325285486336376
 GameObject:
   m_ObjectHideFlags: 0

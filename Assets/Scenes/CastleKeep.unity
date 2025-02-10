@@ -500,6 +500,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 386063443}
     m_Modifications:
     - target: {fileID: 719538052132651873, guid: d4115f30d6dcbe840932681869cebbff, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 719538052132651873, guid: d4115f30d6dcbe840932681869cebbff, type: 3}
       propertyPath: m_Name
       value: DevilSpawn (4)
       objectReference: {fileID: 0}
@@ -576,9 +580,9 @@ GameObject:
   - component: {fileID: 52961067}
   - component: {fileID: 52961066}
   - component: {fileID: 52961065}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Square (3)
-  m_TagString: Untagged
+  m_TagString: DestructibleBricks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1009,6 +1013,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
       propertyPath: m_Name
       value: SlimeSpawn
       objectReference: {fileID: 0}
@@ -1335,6 +1343,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 8573354}
     m_Modifications:
     - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
       propertyPath: m_Name
       value: SkeletonKnightSpawn (4)
       objectReference: {fileID: 0}
@@ -1424,6 +1436,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 8573354}
     m_Modifications:
     - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
       propertyPath: m_Name
       value: SkeletonKnightSpawn (6)
       objectReference: {fileID: 0}
@@ -1503,6 +1519,10 @@ PrefabInstance:
       propertyPath: objectPool
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1504993010791165085, guid: b0c511f410071c3429f97e6a4b7f12cc, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 1504993010791165085, guid: b0c511f410071c3429f97e6a4b7f12cc, type: 3}
       propertyPath: m_Name
       value: ElectricSkeletonSpawn (4)
@@ -1633,6 +1653,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8900475027821914682, guid: 53c5537dbe22faf45a763f5baa45db93, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 8900475027821914682, guid: 53c5537dbe22faf45a763f5baa45db93, type: 3}
       propertyPath: m_Name
       value: SkeletonFighterSpawn
       objectReference: {fileID: 0}
@@ -1718,6 +1742,10 @@ PrefabInstance:
       propertyPath: objectPool
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1504993010791165085, guid: b0c511f410071c3429f97e6a4b7f12cc, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 1504993010791165085, guid: b0c511f410071c3429f97e6a4b7f12cc, type: 3}
       propertyPath: m_Name
       value: ElectricSkeletonSpawn (5)
@@ -11175,9 +11203,9 @@ GameObject:
   - component: {fileID: 412304022}
   - component: {fileID: 412304021}
   - component: {fileID: 412304020}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Square (1)
-  m_TagString: Untagged
+  m_TagString: DestructibleBricks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11466,7 +11494,7 @@ Transform:
   m_GameObject: {fileID: 467705098}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 91.263756, y: 35.474236, z: -9.95496}
+  m_LocalPosition: {x: 37, y: 3.2, z: -9.95496}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11559,6 +11587,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8900475027821914682, guid: 53c5537dbe22faf45a763f5baa45db93, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 8900475027821914682, guid: 53c5537dbe22faf45a763f5baa45db93, type: 3}
       propertyPath: m_Name
       value: SkeletonFighterSpawn (3)
       objectReference: {fileID: 0}
@@ -11648,6 +11680,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8900475027821914682, guid: 53c5537dbe22faf45a763f5baa45db93, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 8900475027821914682, guid: 53c5537dbe22faf45a763f5baa45db93, type: 3}
       propertyPath: m_Name
       value: SkeletonFighterSpawn (6)
       objectReference: {fileID: 0}
@@ -11674,6 +11710,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 386063443}
     m_Modifications:
+    - target: {fileID: 719538052132651873, guid: d4115f30d6dcbe840932681869cebbff, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 719538052132651873, guid: d4115f30d6dcbe840932681869cebbff, type: 3}
       propertyPath: m_Name
       value: DevilSpawn
@@ -11843,6 +11883,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 8573354}
     m_Modifications:
     - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
       propertyPath: m_Name
       value: SkeletonKnightSpawn
       objectReference: {fileID: 0}
@@ -11919,11 +11963,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8730759771221590844, guid: a9c2a5cf77708354188083c94942fd6a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 91.263756
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 8730759771221590844, guid: a9c2a5cf77708354188083c94942fd6a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 35.474236
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 8730759771221590844, guid: a9c2a5cf77708354188083c94942fd6a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12074,6 +12118,10 @@ PrefabInstance:
       propertyPath: objectPool
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1504993010791165085, guid: b0c511f410071c3429f97e6a4b7f12cc, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 1504993010791165085, guid: b0c511f410071c3429f97e6a4b7f12cc, type: 3}
       propertyPath: m_Name
       value: ElectricSkeletonSpawn (2)
@@ -12581,6 +12629,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
       propertyPath: m_Name
       value: SlimeSpawn (1)
       objectReference: {fileID: 0}
@@ -12693,6 +12745,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6713946455890409841, guid: e80921dcdcfea324384132797cc3c481, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 6713946455890409841, guid: e80921dcdcfea324384132797cc3c481, type: 3}
       propertyPath: m_Name
       value: FlyBrainSpawn (4)
@@ -12849,6 +12905,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6713946455890409841, guid: e80921dcdcfea324384132797cc3c481, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 6713946455890409841, guid: e80921dcdcfea324384132797cc3c481, type: 3}
       propertyPath: m_Name
       value: FlyBrainSpawn (3)
@@ -13111,6 +13171,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8900475027821914682, guid: 53c5537dbe22faf45a763f5baa45db93, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 8900475027821914682, guid: 53c5537dbe22faf45a763f5baa45db93, type: 3}
       propertyPath: m_Name
       value: SkeletonFighterSpawn (2)
       objectReference: {fileID: 0}
@@ -13137,6 +13201,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 386063443}
     m_Modifications:
+    - target: {fileID: 719538052132651873, guid: d4115f30d6dcbe840932681869cebbff, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 719538052132651873, guid: d4115f30d6dcbe840932681869cebbff, type: 3}
       propertyPath: m_Name
       value: DevilSpawn (3)
@@ -13212,6 +13280,10 @@ PrefabInstance:
       propertyPath: objectPool
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1504993010791165085, guid: b0c511f410071c3429f97e6a4b7f12cc, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 1504993010791165085, guid: b0c511f410071c3429f97e6a4b7f12cc, type: 3}
       propertyPath: m_Name
       value: ElectricSkeletonSpawn (1)
@@ -13636,6 +13708,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6713946455890409841, guid: e80921dcdcfea324384132797cc3c481, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 6713946455890409841, guid: e80921dcdcfea324384132797cc3c481, type: 3}
       propertyPath: m_Name
       value: FlyBrainSpawn
       objectReference: {fileID: 0}
@@ -13863,9 +13939,9 @@ GameObject:
   - component: {fileID: 908019572}
   - component: {fileID: 908019571}
   - component: {fileID: 908019570}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: DestructibleBricks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14448,6 +14524,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1504993010791165085, guid: b0c511f410071c3429f97e6a4b7f12cc, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 1504993010791165085, guid: b0c511f410071c3429f97e6a4b7f12cc, type: 3}
       propertyPath: m_Name
       value: ElectricSkeletonSpawn (1)
       objectReference: {fileID: 0}
@@ -14537,6 +14617,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8573354}
     m_Modifications:
+    - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
       propertyPath: m_Name
       value: SkeletonKnightSpawn (2)
@@ -14650,6 +14734,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 386063443}
     m_Modifications:
     - target: {fileID: 719538052132651873, guid: d4115f30d6dcbe840932681869cebbff, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 719538052132651873, guid: d4115f30d6dcbe840932681869cebbff, type: 3}
       propertyPath: m_Name
       value: DevilSpawn
       objectReference: {fileID: 0}
@@ -14725,6 +14813,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1504993010791165085, guid: b0c511f410071c3429f97e6a4b7f12cc, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 1504993010791165085, guid: b0c511f410071c3429f97e6a4b7f12cc, type: 3}
       propertyPath: m_Name
       value: ElectricSkeletonSpawn
       objectReference: {fileID: 0}
@@ -14795,6 +14887,10 @@ PrefabInstance:
       propertyPath: objectPool
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1504993010791165085, guid: b0c511f410071c3429f97e6a4b7f12cc, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 1504993010791165085, guid: b0c511f410071c3429f97e6a4b7f12cc, type: 3}
       propertyPath: m_Name
       value: ElectricSkeletonSpawn
@@ -14885,6 +14981,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8573354}
     m_Modifications:
+    - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
       propertyPath: m_Name
       value: SkeletonKnightSpawn (7)
@@ -15215,6 +15315,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1504993010791165085, guid: b0c511f410071c3429f97e6a4b7f12cc, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 1504993010791165085, guid: b0c511f410071c3429f97e6a4b7f12cc, type: 3}
       propertyPath: m_Name
       value: ElectricSkeletonSpawn (6)
       objectReference: {fileID: 0}
@@ -15481,6 +15585,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 386063443}
     m_Modifications:
     - target: {fileID: 719538052132651873, guid: d4115f30d6dcbe840932681869cebbff, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 719538052132651873, guid: d4115f30d6dcbe840932681869cebbff, type: 3}
       propertyPath: m_Name
       value: DevilSpawn (2)
       objectReference: {fileID: 0}
@@ -15614,6 +15722,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8900475027821914682, guid: 53c5537dbe22faf45a763f5baa45db93, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 8900475027821914682, guid: 53c5537dbe22faf45a763f5baa45db93, type: 3}
       propertyPath: m_Name
       value: SkeletonFighterSpawn
       objectReference: {fileID: 0}
@@ -15663,6 +15775,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8573354}
     m_Modifications:
+    - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
       propertyPath: m_Name
       value: SkeletonKnightSpawn (5)
@@ -123208,6 +123324,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4224207331107897983, guid: 70c5d3a5e8b46b4418eccdaf3b97fd6f, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 4224207331107897983, guid: 70c5d3a5e8b46b4418eccdaf3b97fd6f, type: 3}
       propertyPath: m_Name
       value: ZombieSpawn
       objectReference: {fileID: 0}
@@ -123352,6 +123472,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 8573354}
     m_Modifications:
     - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
       propertyPath: m_Name
       value: SkeletonKnightSpawn (8)
       objectReference: {fileID: 0}
@@ -123463,6 +123587,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6713946455890409841, guid: e80921dcdcfea324384132797cc3c481, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 6713946455890409841, guid: e80921dcdcfea324384132797cc3c481, type: 3}
       propertyPath: m_Name
       value: FlyBrainSpawn (2)
       objectReference: {fileID: 0}
@@ -123517,9 +123645,9 @@ GameObject:
   - component: {fileID: 1386672309}
   - component: {fileID: 1386672308}
   - component: {fileID: 1386672307}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Square (4)
-  m_TagString: Untagged
+  m_TagString: DestructibleBricks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123891,6 +124019,10 @@ PrefabInstance:
       propertyPath: objectPool
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1504993010791165085, guid: b0c511f410071c3429f97e6a4b7f12cc, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 1504993010791165085, guid: b0c511f410071c3429f97e6a4b7f12cc, type: 3}
       propertyPath: m_Name
       value: ElectricSkeletonSpawn (2)
@@ -124366,6 +124498,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4224207331107897983, guid: 70c5d3a5e8b46b4418eccdaf3b97fd6f, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 4224207331107897983, guid: 70c5d3a5e8b46b4418eccdaf3b97fd6f, type: 3}
       propertyPath: m_Name
       value: ZombieSpawn
       objectReference: {fileID: 0}
@@ -124502,6 +124638,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 8573354}
     m_Modifications:
     - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
       propertyPath: m_Name
       value: SkeletonKnightSpawn (2)
       objectReference: {fileID: 0}
@@ -124595,6 +124735,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 386063443}
     m_Modifications:
+    - target: {fileID: 719538052132651873, guid: d4115f30d6dcbe840932681869cebbff, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 719538052132651873, guid: d4115f30d6dcbe840932681869cebbff, type: 3}
       propertyPath: m_Name
       value: DevilSpawn (1)
@@ -124728,6 +124872,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8900475027821914682, guid: 53c5537dbe22faf45a763f5baa45db93, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8900475027821914682, guid: 53c5537dbe22faf45a763f5baa45db93, type: 3}
       propertyPath: m_Name
       value: SkeletonFighterSpawn (1)
@@ -125451,6 +125599,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6713946455890409841, guid: e80921dcdcfea324384132797cc3c481, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 6713946455890409841, guid: e80921dcdcfea324384132797cc3c481, type: 3}
       propertyPath: m_Name
       value: FlyBrainSpawn (1)
       objectReference: {fileID: 0}
@@ -125976,6 +126128,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6713946455890409841, guid: e80921dcdcfea324384132797cc3c481, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 6713946455890409841, guid: e80921dcdcfea324384132797cc3c481, type: 3}
       propertyPath: m_Name
       value: FlyBrainSpawn
       objectReference: {fileID: 0}
@@ -126050,6 +126206,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
       propertyPath: m_Name
       value: SlimeSpawn
@@ -126298,6 +126458,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
       propertyPath: m_Name
       value: SlimeSpawn (1)
       objectReference: {fileID: 0}
@@ -126347,6 +126511,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8573354}
     m_Modifications:
+    - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
       propertyPath: m_Name
       value: SkeletonKnightSpawn (3)
@@ -126572,6 +126740,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8900475027821914682, guid: 53c5537dbe22faf45a763f5baa45db93, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8900475027821914682, guid: 53c5537dbe22faf45a763f5baa45db93, type: 3}
       propertyPath: m_Name
       value: SkeletonFighterSpawn (5)
@@ -126929,9 +127101,9 @@ GameObject:
   - component: {fileID: 2041583229}
   - component: {fileID: 2041583228}
   - component: {fileID: 2041583227}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Square (2)
-  m_TagString: Untagged
+  m_TagString: DestructibleBricks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127146,6 +127318,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1504993010791165085, guid: b0c511f410071c3429f97e6a4b7f12cc, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 1504993010791165085, guid: b0c511f410071c3429f97e6a4b7f12cc, type: 3}
       propertyPath: m_Name
       value: ElectricSkeletonSpawn (3)
       objectReference: {fileID: 0}
@@ -127230,6 +127406,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8573354}
     m_Modifications:
+    - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
       propertyPath: m_Name
       value: SkeletonKnightSpawn
@@ -127368,6 +127548,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8900475027821914682, guid: 53c5537dbe22faf45a763f5baa45db93, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 8900475027821914682, guid: 53c5537dbe22faf45a763f5baa45db93, type: 3}
       propertyPath: m_Name
       value: SkeletonFighterSpawn (4)
@@ -127553,7 +127737,7 @@ Transform:
   m_GameObject: {fileID: 2108789829}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 91.263756, y: 35.474236, z: -9.95496}
+  m_LocalPosition: {x: 37, y: 3.2, z: -9.95496}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -127568,6 +127752,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8573354}
     m_Modifications:
+    - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
       propertyPath: m_Name
       value: SkeletonKnightSpawn (1)
@@ -127680,6 +127868,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8573354}
     m_Modifications:
+    - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 3537871659099314883, guid: 2306a630d18ed4b428fd4e2ba23b7e9e, type: 3}
       propertyPath: m_Name
       value: SkeletonKnightSpawn (1)
