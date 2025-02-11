@@ -1,7 +1,11 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Scene = UnityEngine.SceneManagement.Scene;
 
 public class Player : MonoBehaviour
 {
@@ -64,8 +68,6 @@ public class Player : MonoBehaviour
     public bool isTimeSlowed;
     private Guardian guardianScript;
     private Axe axeScript;
-   
-
 
     private Rigidbody2D rigidbody2D;
     private Animator animation;
@@ -91,6 +93,8 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        DontDestroyOnLoad(gameObject);
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
     // Start is called before the first frame update
     void Start()
@@ -519,5 +523,26 @@ public class Player : MonoBehaviour
     {
         ATK += amount;
         Debug.Log("Player's attack increased! New attack: " + ATK);
+    }
+    private void OnSceneLoaded(Scene scene,LoadSceneMode mode)
+    {
+        GameObject Player = GameObject.Find("Player");
+        GameObject spawnpoint1 = GameObject.Find("PlayerSpawnPoint1"); ;
+        GameObject spawnpoint2 = GameObject.Find("PlayerSpawnPoint2");
+        if(spawnpoint2 != null && isdoubleJumpEnabled)
+        {
+            transform.position = spawnpoint2.transform.position;
+        }
+        else
+        {
+            transform.position = spawnpoint1.transform.position;
+        }    
+        
+        CinemachineVirtualCamera virtualCam = FindObjectOfType<CinemachineVirtualCamera>();
+        virtualCam.Follow = Player.transform;
+    }
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded-=OnSceneLoaded;
     }
 }
