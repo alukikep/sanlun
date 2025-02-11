@@ -633,6 +633,10 @@ MonoBehaviour:
   isMouse: 0
   faceRight: 0
   jumpDir: 0
+  protectTime: 1
+  recontrolTime: 0.3
+  hurtMove: 10
+  isControl: 1
   isBlock: 0
   blockSuc: 0
   blockCoolTime: 3
