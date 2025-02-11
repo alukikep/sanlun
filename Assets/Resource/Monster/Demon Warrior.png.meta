@@ -1499,7 +1499,7 @@ TextureImporter:
       name: Demon Warrior_64
       rect:
         serializedVersion: 2
-        x: 1508
+        x: 1582
         y: 3098
         width: 542
         height: 492
@@ -1520,8 +1520,8 @@ TextureImporter:
       name: Demon Warrior_65
       rect:
         serializedVersion: 2
-        x: 17
-        y: 2552
+        x: 115
+        y: 2554
         width: 576
         height: 487
       alignment: 0
@@ -1541,8 +1541,8 @@ TextureImporter:
       name: Demon Warrior_66
       rect:
         serializedVersion: 2
-        x: 709
-        y: 2531
+        x: 784
+        y: 2535
         width: 514
         height: 526
       alignment: 0
@@ -1562,8 +1562,8 @@ TextureImporter:
       name: Demon Warrior_67
       rect:
         serializedVersion: 2
-        x: 1338
-        y: 2553
+        x: 1386
+        y: 2548
         width: 571
         height: 512
       alignment: 0
@@ -1583,7 +1583,7 @@ TextureImporter:
       name: Demon Warrior_68
       rect:
         serializedVersion: 2
-        x: 2035
+        x: 2056
         y: 2528
         width: 451
         height: 545

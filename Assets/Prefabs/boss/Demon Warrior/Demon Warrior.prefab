@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1876106027142923396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6633879264046786595}
+  m_Layer: 0
+  m_Name: AttackCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6633879264046786595
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876106027142923396}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.36, y: 0.04, z: 0.030925043}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8484783642218080580}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7076642844775716171
 GameObject:
   m_ObjectHideFlags: 0
@@ -33,7 +64,8 @@ Transform:
   m_LocalPosition: {x: 472.09045, y: 89.122986, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6633879264046786595}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7404033851495885009
@@ -79,7 +111,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -967239596, guid: 26fb3e7886932fc4c8e2019ea23f113e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 3.520752, y: 3.52}
@@ -147,7 +179,7 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.570282, y: -0.65174794}
+  m_Offset: {x: 0.570282, y: -0.65174794}
   m_Size: {x: 2.675476, y: 4.8590035}
   m_Direction: 0
 --- !u!114 &8262910722885082131
@@ -162,17 +194,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d847cb7969a032c44ac41223d47b2c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 6573698513452718987}
-  spriteRenderer: {fileID: 7404033851495885009}
-  rb: {fileID: 3628440979598208734}
-  player: {fileID: 0}
+  attackCheck: {fileID: 6633879264046786595}
+  attackRadius: 3
+  isAttack: 0
   maxHealth: 3
   stopDistance: 3
   phaseTransitionDuration: 1
-  phase1MoveSpeed: 3
+  phase1MoveSpeed: 6
   phase1AttackCD: 2
-  swipeDamage: 10
-  spawnPoints: []
+  swipeDamage: 70
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   impPrefab: {fileID: 0}
   summonInterval: 5
   phase3SpeedMultiplier: 1.5

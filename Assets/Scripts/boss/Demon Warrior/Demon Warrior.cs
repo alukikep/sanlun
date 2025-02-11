@@ -2,11 +2,16 @@ using UnityEngine;
 
 public class DemonWarrior : MonoBehaviour
 {
-    [Header("基础设置")]
-    public Animator animator;
-    public SpriteRenderer spriteRenderer;
-    public Rigidbody2D rb;
-    public Transform player;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb;
+    private Transform player;
+    private CapsuleCollider2D capsuleCollider;
+
+    [Header("Attack")]
+    public Transform attackCheck;
+    public float attackRadius;
+    public bool isAttack;
 
     [Header("阶段参数")]
     public int maxHealth = 3;
@@ -28,7 +33,6 @@ public class DemonWarrior : MonoBehaviour
     public float phase3AttackMultiplier = 2f;
     public ParticleSystem phase3Effect;
 
-    // 私有变量
     private int currentHealth;
     private int phase = 1;
     private bool isInRange;
@@ -38,8 +42,13 @@ public class DemonWarrior : MonoBehaviour
 
     void Start()
     {
-        currentHealth = maxHealth;
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
         player = Player.Instance.transform;
+        capsuleCollider=GetComponent<CapsuleCollider2D>();
+
+        currentHealth = maxHealth;
     }
 
     void Update()
@@ -67,8 +76,10 @@ public class DemonWarrior : MonoBehaviour
             animator.SetBool("IsMoving", false);
         }
 
-        // 翻转Sprite
-        spriteRenderer.flipX = player.position.x > transform.position.x;
+        // 翻转Sprite和attackCheck的位置
+        bool shouldFlip = player.position.x > transform.position.x;
+        UpdateAttackCheckPosition();
+        UpdateSpriteScale(shouldFlip);
     }
 
     void HandlePhaseBehavior()
@@ -123,7 +134,6 @@ public class DemonWarrior : MonoBehaviour
     void PerformSwipeAttack()
     {
         animator.SetTrigger("Swipe");
-        // 实际伤害检测需要在动画事件中处理
     }
 
     void PerformEnhancedSwipe()
@@ -190,12 +200,12 @@ public class DemonWarrior : MonoBehaviour
         return phase == 3 ? phase1MoveSpeed * phase3SpeedMultiplier : phase1MoveSpeed;
     }
 
-    // 动画事件回调方法
-    public void OnSwipeHit()
+  
+    private void OnSwipeHit()
     {
-        // 实际伤害检测逻辑
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 2f);
-        foreach (var hit in hits)
+        Collider2D[] player = Physics2D.OverlapCircleAll(attackCheck.position, attackRadius, LayerMask.GetMask("Player"));
+
+        foreach (var hit in player)
         {
             if (hit.CompareTag("Player"))
             {
@@ -204,9 +214,29 @@ public class DemonWarrior : MonoBehaviour
         }
     }
 
+    // Gizmos 显示攻击范围
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, 2f);
+        Gizmos.DrawWireSphere(attackCheck.position, attackRadius);
+    }
+    private void UpdateAttackCheckPosition()
+    {
+        // 根据角色的翻转状态调整 attackCheck 的位置
+        if (!spriteRenderer.flipX)
+        {
+            attackCheck.localPosition = new Vector3(-Mathf.Abs(attackCheck.localPosition.x), attackCheck.localPosition.y, attackCheck.localPosition.z);
+        }
+        else
+        {
+            attackCheck.localPosition = new Vector3(Mathf.Abs(attackCheck.localPosition.x), attackCheck.localPosition.y, attackCheck.localPosition.z);
+        }
+    }
+    private void UpdateSpriteScale(bool shouldFlip)
+    {
+        // 更新角色的 localScale 以实现左右翻转
+        Vector3 newScale = transform.localScale;
+        newScale.x = shouldFlip ? Mathf.Abs(newScale.x) : -Mathf.Abs(newScale.x);
+        transform.localScale = newScale;
     }
 }
