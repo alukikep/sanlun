@@ -9,4 +9,7 @@ public enum Ability
     HighJump,           //¸ßÌø
     BatTransform,  //»¯òð
     RatTransform,  //»¯Êó
+    Axe,
+    Guardian,
+    TimeSlow,
 }

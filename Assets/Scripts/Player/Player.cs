@@ -51,7 +51,9 @@ public class Player : MonoBehaviour
     public float ManaPerSecond;
     private float ManaPSOnSlow;
     [Header("¸±ÎäÆ÷Ïà¹Ø")]
-
+    public KeyCode SwitchKey = KeyCode.Q;
+    private int CurrentSubWeaponNum=0;
+    private int maxSubWeaponNum = 0;
     public GameObject axe;
     public bool isAxe;
     public GameObject guardian;
@@ -76,6 +78,9 @@ public class Player : MonoBehaviour
     private bool ishighJumpEnabled=false;
     private bool isbatTransformEnabled=false;
     private bool isratTransformEnabled = false;
+    private bool isAxeEnabled = false;
+    private bool isGuardianEnabled = false;
+    private bool isTimeSlowEnabled = false;
     void Awake()
     {
         if (Instance == null)
@@ -319,6 +324,18 @@ public class Player : MonoBehaviour
                 case Ability.RatTransform:
                     isratTransformEnabled = true;
                     break;
+                case Ability.Axe:
+                    isAxeEnabled = true;
+                    maxSubWeaponNum++;
+                    break;
+                case Ability.Guardian:
+                    isGuardianEnabled = true;
+                    maxSubWeaponNum++;
+                    break;
+                case Ability.TimeSlow:
+                    isTimeSlowEnabled = true;
+                    maxSubWeaponNum++;
+                    break;
             }
         }
     }
@@ -410,7 +427,30 @@ public class Player : MonoBehaviour
 
 
     public void SubWeapon()
-    {
+    {   if(Input.GetKeyDown(SwitchKey))
+        {
+            CurrentSubWeaponNum =(CurrentSubWeaponNum+1)%maxSubWeaponNum;
+            if(CurrentSubWeaponNum==0)
+            {
+                isAxe = true;
+                isGuardian = false;
+                isTimeSlowed = false;
+            }
+            else if(CurrentSubWeaponNum ==1)
+            {
+                isAxe = false;
+                isGuardian = true;
+                isTimeSlowed = false;
+
+            }
+            else if(CurrentSubWeaponNum == 2)
+            {
+                isAxe = false;
+                isGuardian = false;
+                isTimeSlowed = true;
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.U)&&isAxe&&currentMana>=axeScript.neededMana)
         {
             GameObject SubWeapon = Instantiate(axe, transform.position, Quaternion.identity);

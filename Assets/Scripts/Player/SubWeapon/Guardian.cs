@@ -10,6 +10,8 @@ public class Guardian : MonoBehaviour
     public float destroyTime;
     public float totalAngle;
     public float neededMana;
+    public float rotateSpeed;
+    private float rotationAmount;
     private float initialAngle;
     public Transform attackCheck;
     public float attackRadius;
@@ -27,6 +29,7 @@ public class Guardian : MonoBehaviour
         rotate();
         AttackTrigger();
         destroyTime -= Time.deltaTime;
+       
         if (destroyTime <= 0)
         {
             Destroy(gameObject);
@@ -41,6 +44,9 @@ public class Guardian : MonoBehaviour
         float x = Player.position.x+radius*Mathf.Cos(initialAngle+totalAngle);
         float y = Player.position.y+radius*Mathf.Sin(initialAngle+totalAngle);
         transform.position = new Vector3(x, y, transform.position.z);
+        rotationAmount = (rotateSpeed * Time.deltaTime) % 360;
+        transform.Rotate(transform.rotation.x, transform.rotation.y, rotationAmount);
+
     }
     private void AttackTrigger()
     {

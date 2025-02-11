@@ -10,6 +10,8 @@ public class Axe : MonoBehaviour
     public float destroyTime;
     public float neededMana;
     public Transform attackCheck;
+    public float rotateSpeed;
+    private float rotationAmount;
     public float attackRadius;
     private GameObject _player;
     private Player player;
@@ -28,8 +30,10 @@ public class Axe : MonoBehaviour
     private void Update()
     {
         AttackTrigger();
-        destroyTime -= Time.deltaTime;  
-        if(destroyTime<=0)
+        destroyTime -= Time.deltaTime;
+        rotationAmount = (rotateSpeed * Time.deltaTime) % 360;
+        transform.Rotate(transform.rotation.x, transform.rotation.y, rotationAmount);
+        if (destroyTime<=0)
         {
             Destroy(gameObject);
         }
@@ -48,9 +52,10 @@ public class Axe : MonoBehaviour
             Vector2 direction = new Vector2(-Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
             rb.velocity = direction * speed; 
         }
-           
+        
 
-        }
+
+    }
     private void AttackTrigger()
     {
         Collider2D[] Enemies = Physics2D.OverlapCircleAll(attackCheck.position, attackRadius, LayerMask.GetMask("Enemy"));

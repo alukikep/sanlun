@@ -1232,7 +1232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7925732182472429103, guid: 81a578a8e2e5bbb4baa5203d8d0e236e, type: 3}
       propertyPath: m_Name
-      value: Item object-Healing Potion (1)
+      value: Item object-Healing Potion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11957,6 +11957,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6691945612382736208, guid: a9c2a5cf77708354188083c94942fd6a, type: 3}
+      propertyPath: isAxe
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7575352624119987302, guid: a9c2a5cf77708354188083c94942fd6a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -13276,6 +13280,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1709265315593154835, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709265315593154835, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709265315593154835, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709265315593154835, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709265315593154835, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709265315593154835, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2569592728918614764, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -13354,6 +13382,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2569592728918614764, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963899033690194088, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963899033690194088, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963899033690194088, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963899033690194088, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963899033690194088, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963899033690194088, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5255780653748315485, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5255780653748315485, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5255780653748315485, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5255780653748315485, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5255780653748315485, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5255780653748315485, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6510910814514943082, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
@@ -15223,7 +15299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7925732182472429103, guid: 81a578a8e2e5bbb4baa5203d8d0e236e, type: 3}
       propertyPath: m_Name
-      value: Item object-Healing Potion (4)
+      value: Item object-Healing Potion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -123325,7 +123401,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7571363596982820811, guid: 50b76a0b8e2fbd0479353b1c5191d110, type: 3}
       propertyPath: m_Name
-      value: Item object-Health Max Potion (1)
+      value: Item object-Health Max Potion
       objectReference: {fileID: 0}
     - target: {fileID: 7959970640622902192, guid: 50b76a0b8e2fbd0479353b1c5191d110, type: 3}
       propertyPath: m_LocalPosition.x
@@ -123599,7 +123675,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7925732182472429103, guid: 81a578a8e2e5bbb4baa5203d8d0e236e, type: 3}
       propertyPath: m_Name
-      value: Item object-Healing Potion (2)
+      value: Item object-Healing Potion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -126192,7 +126268,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7925732182472429103, guid: 81a578a8e2e5bbb4baa5203d8d0e236e, type: 3}
       propertyPath: m_Name
-      value: Item object-Healing Potion (3)
+      value: Item object-Healing Potion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -128131,7 +128207,7 @@ Transform:
   m_GameObject: {fileID: 2117618728}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 74.909424, y: 29.120123, z: -0.07077865}
+  m_LocalPosition: {x: 74.96, y: 29.17, z: -0.07077865}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
