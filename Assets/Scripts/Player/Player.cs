@@ -186,6 +186,10 @@ public class Player : MonoBehaviour
             currentMana += ManaPSOnSlow * Time.deltaTime;
         }
 
+        HealthBar.maxHealth = maxHealth;
+        HealthBar.currentHealth = health;
+        MagicBar.maxMagic=maxMana;
+        MagicBar.currentMagic= (int)currentMana;
 
     }
     private void SpeedUp()
