@@ -20,6 +20,11 @@ public class Player : MonoBehaviour
     private float maxSpeed;
     private bool highJump;
     private float leftSlowDuration;
+    private bool protect;
+    [SerializeField] private float protectTime;
+    [SerializeField] private float recontrolTime;
+    [SerializeField] private float hurtMove;
+    [SerializeField] private bool isControl=true;
    
     
 
@@ -128,19 +133,33 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        xSpeed = Input.GetAxisRaw("Horizontal");
-        SpeedUp();
+        if(isControl==true)
+        {
+            xSpeed = Input.GetAxisRaw("Horizontal");
+            SpeedUp();
+
+            if (Input.GetButtonDown("Jump") && jumpNumber < jumpLimit)
+            {
+                rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpForce);
+                jumpNumber++;
+            }
+
+            DoubleJump();
+            HighJump();
+            BatTranform();
+            MouseTransform();
+            Attack();
+            Block();
+            SubWeapon();
+        }
+        
         
        
         if(currentMana>=maxMana)
         {
             currentMana = maxMana;
         }
-        if (Input.GetButtonDown("Jump") && jumpNumber < jumpLimit)
-        {
-            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpForce);
-            jumpNumber++;
-        }
+       
 
         if (isAttack == false&&isBlock==false&& timeSlowScript.TimeSlowActive==false)//修改了一下用于适配缓速的副武器
         {
@@ -162,13 +181,7 @@ public class Player : MonoBehaviour
 
         Flip();
         AnimatorControllers();
-        DoubleJump();
-        HighJump();
-        BatTranform();
-        MouseTransform();
-        Attack();
-        Block();
-        SubWeapon();
+       
         resetSpeed();
         blockCoolTimer-=Time.deltaTime;
         leftSlowDuration -= Time.deltaTime;
@@ -357,9 +370,15 @@ public class Player : MonoBehaviour
 
     public void GetDamage(float eATK)
     {
-        if (isBlock == false)
+        if (isBlock == false&&protect==false)
         {
+            protect = true;
+            isControl=false;
+            HurtMove();
+            animation.Play("GetHurt");
             health = health - eATK;
+            Invoke("HurtProtect", protectTime);
+            Invoke("Recontrol",recontrolTime);
         }
         if(isBlock == true)
         {
@@ -367,6 +386,29 @@ public class Player : MonoBehaviour
         }
        
     }
+
+    private void HurtProtect()
+    {
+        protect = false;     
+    }
+    private void Recontrol()
+    {
+        isControl = true;
+    }
+
+    private void HurtMove()
+    {
+        if(faceRight == false)
+        {
+            rigidbody2D.velocity = new Vector2(hurtMove, 0);
+        }
+        else
+        {
+            rigidbody2D.velocity = new Vector2(-hurtMove, 0);
+        }
+    }
+
+
     public void SubWeapon()
     {
         if (Input.GetKeyDown(KeyCode.U)&&isAxe&&currentMana>=axeScript.neededMana)
