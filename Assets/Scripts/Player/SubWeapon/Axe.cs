@@ -32,7 +32,7 @@ public class Axe : MonoBehaviour
         AttackTrigger();
         destroyTime -= Time.deltaTime;
         rotationAmount = (rotateSpeed * Time.deltaTime) % 360;
-        transform.Rotate(transform.rotation.x, transform.rotation.y, rotationAmount);
+        transform.Rotate(transform.rotation.x, transform.rotation.y, -rotationAmount);
         if (destroyTime<=0)
         {
             Destroy(gameObject);

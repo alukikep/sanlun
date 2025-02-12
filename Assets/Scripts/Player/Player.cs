@@ -57,7 +57,7 @@ public class Player : MonoBehaviour
     [Header("∏±Œ‰∆˜œ‡πÿ")]
     public KeyCode SwitchKey = KeyCode.Q;
     private int CurrentSubWeaponNum=0;
-    private int maxSubWeaponNum = 0;
+    private int maxSubWeaponNum = 3;
     public GameObject axe;
     public bool isAxe;
     public GameObject guardian;

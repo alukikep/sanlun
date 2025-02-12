@@ -175,8 +175,8 @@ MonoBehaviour:
   littleSpacing: 2
   hugeSpacing: 1
   lightRainSpacing: 5
-  attackEnd: 1
-  transEnd: 1
+  attackEnd: 0.5
+  transEnd: 2
 --- !u!61 &8914352154077887577
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -259,3 +259,4 @@ MonoBehaviour:
   health: 1000
   flashTime: 0.1
   hurtEffect: {fileID: 3829011218837494106, guid: 596eba13992e9594587a8bb5aca6c23a, type: 3}
+  dieEffect: {fileID: 0}
