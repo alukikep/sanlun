@@ -15,6 +15,7 @@ public class Axe : MonoBehaviour
     public float attackRadius;
     private GameObject _player;
     private Player player;
+    private SpriteRenderer _spriteRenderer;
 
     private Rigidbody2D rb;
     private void Start()
@@ -23,6 +24,7 @@ public class Axe : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = _player.GetComponent<Player>();
         ThrowAxe();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
        
        
     }
@@ -32,7 +34,16 @@ public class Axe : MonoBehaviour
         AttackTrigger();
         destroyTime -= Time.deltaTime;
         rotationAmount = (rotateSpeed * Time.deltaTime) % 360;
-        transform.Rotate(transform.rotation.x, transform.rotation.y, -rotationAmount);
+        if (rb.velocity.x > 0)
+        {
+            transform.Rotate(transform.rotation.x, transform.rotation.y, -rotationAmount);
+            _spriteRenderer.flipX = false;
+        }
+        else
+        {
+            transform.Rotate(transform.rotation.x, transform.rotation.y, rotationAmount);
+            _spriteRenderer.flipX = true;
+        }
         if (destroyTime<=0)
         {
             Destroy(gameObject);

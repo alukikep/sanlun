@@ -373,6 +373,7 @@ public class Player : MonoBehaviour
         animation.SetBool("isAttack", isAttack);
         animation.SetBool("isBlock", isBlock);
         animation.SetBool("blockSuc", blockSuc);
+        animation.SetBool("protect", protect);
     }
 
     private void Flip()//¿ØÖÆ×ªÏò
@@ -392,9 +393,10 @@ public class Player : MonoBehaviour
     public void GetDamage(float eATK)
     {
         if (isBlock == false&&protect==false)
-        {
+        {      
             protect = true;
             isControl=false;
+            rigidbody2D.velocity = new Vector3(0,0,0);
             HurtMove();
             animation.Play("GetHurt");
             health = health - eATK;
@@ -421,11 +423,11 @@ public class Player : MonoBehaviour
     {
         if(faceRight == false)
         {
-            rigidbody2D.velocity = new Vector2(hurtMove, 0);
+            rigidbody2D.velocity = new Vector3(hurtMove,2,0);
         }
         else
         {
-            rigidbody2D.velocity = new Vector2(-hurtMove, 0);
+            rigidbody2D.velocity = new Vector3(-hurtMove, 2, 0);
         }
     }
 
