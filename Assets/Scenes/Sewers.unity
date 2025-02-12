@@ -269,6 +269,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
       propertyPath: m_Name
       value: SlimeSpawn (4)
       objectReference: {fileID: 0}
@@ -457,6 +461,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
       propertyPath: m_Name
       value: SlimeSpawn
       objectReference: {fileID: 0}
@@ -487,100 +495,6 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119852151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cbfd0d9773d49549b359f0efbe6dec9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectPool: {fileID: 531107234}
-  player: {fileID: 0}
-  spawnDistance: 30
-  despawnDistance: 50
-  respawnTime: 100
-  Radius: 0
---- !u!1001 &134892822
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1556343641}
-    m_Modifications:
-    - target: {fileID: 3388401790444853808, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
-      propertyPath: objectPool
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4735991650105577034, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -30.617813
-      objectReference: {fileID: 0}
-    - target: {fileID: 4735991650105577034, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.0300837
-      objectReference: {fileID: 0}
-    - target: {fileID: 4735991650105577034, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.077379934
-      objectReference: {fileID: 0}
-    - target: {fileID: 4735991650105577034, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4735991650105577034, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4735991650105577034, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4735991650105577034, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4735991650105577034, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4735991650105577034, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4735991650105577034, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
-      propertyPath: m_Name
-      value: SlimeSpawn
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 5814230210306126588, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
-    - {fileID: 8292167045104214874, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 134892825}
-  m_SourcePrefab: {fileID: 100100000, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
---- !u!4 &134892823 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4735991650105577034, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
-  m_PrefabInstance: {fileID: 134892822}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &134892824 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
-  m_PrefabInstance: {fileID: 134892822}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &134892825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 134892824}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cbfd0d9773d49549b359f0efbe6dec9, type: 3}
@@ -767,6 +681,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
       propertyPath: m_Name
       value: SlimeSpawn (1)
@@ -1725,6 +1643,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetSceneName: Village
+  targetSpawnPointName: Village-Sewers
 --- !u!1001 &449539235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2264,6 +2183,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
       propertyPath: m_Name
       value: SlimeSpawn (8)
       objectReference: {fileID: 0}
@@ -2764,6 +2687,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
       propertyPath: m_Name
       value: SlimeSpawn
       objectReference: {fileID: 0}
@@ -2857,6 +2784,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
       propertyPath: m_Name
       value: SlimeSpawn (6)
@@ -3049,6 +2980,98 @@ MonoBehaviour:
   m_MaximumFOV: 60
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
+--- !u!1 &847441079
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 847441080}
+  - component: {fileID: 847441082}
+  - component: {fileID: 847441081}
+  m_Layer: 0
+  m_Name: LoadCastleHall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &847441080
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847441079}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -278.9, y: 29.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1198485860}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &847441081
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847441079}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.6486664, y: -0.17875814}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 8.384155, y: 1.3575163}
+  m_EdgeRadius: 0
+--- !u!114 &847441082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847441079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c81bd7f696936c349a7cb596ca79e46b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetSceneName: CastleHall
+  targetSpawnPointName: Hall-Sewers
 --- !u!1001 &851878816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3195,6 +3218,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
       propertyPath: m_Name
       value: SlimeSpawn (2)
@@ -97027,6 +97054,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
       propertyPath: m_Name
       value: SlimeSpawn
       objectReference: {fileID: 0}
@@ -97120,6 +97151,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
       propertyPath: m_Name
       value: SlimeSpawn (1)
@@ -97266,9 +97301,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1145108400}
   m_Layer: 0
-  m_Name: PlayerSpawnPoint1
+  m_Name: Sewers-Hall
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -97280,12 +97315,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1145108399}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 140.06, y: -23.74, z: 5.724784}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -279.39, y: 25.99, z: 6.0727897}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1198485860}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1147863752
 PrefabInstance:
@@ -97339,6 +97374,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
       propertyPath: m_Name
       value: SlimeSpawn (3)
@@ -97528,6 +97567,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
       propertyPath: m_Name
       value: SlimeSpawn (7)
       objectReference: {fileID: 0}
@@ -97599,7 +97642,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1498382264}
+  - {fileID: 847441080}
   - {fileID: 441998858}
+  - {fileID: 1145108400}
+  - {fileID: 1394422509}
+  - {fileID: 2107752557}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1215211261
@@ -97654,6 +97701,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
       propertyPath: m_Name
       value: SlimeSpawn (3)
@@ -97748,6 +97799,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
       propertyPath: m_Name
       value: SlimeSpawn (4)
@@ -97862,9 +97917,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1394422509}
   m_Layer: 0
-  m_Name: PlayerSpawnPoint2
+  m_Name: Sewers-Village
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -97876,12 +97931,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394422508}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 465.43, y: -38.7, z: 2.7943118}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 54.212555, y: -2.6704826, z: 3.1423175}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1198485860}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1429813280
 GameObject:
@@ -98428,6 +98483,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
       propertyPath: m_Name
       value: SlimeSpawn (5)
       objectReference: {fileID: 0}
@@ -98515,6 +98574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetSceneName: Arsenal
+  targetSpawnPointName: Arsenal-Sewers
 --- !u!61 &1498382266
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -98612,6 +98672,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
       propertyPath: m_Name
       value: SlimeSpawn (1)
@@ -98837,6 +98901,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
       propertyPath: m_Name
       value: SlimeSpawn (2)
       objectReference: {fileID: 0}
@@ -98919,7 +98987,6 @@ Transform:
   - {fileID: 1232125529}
   - {fileID: 1492243274}
   - {fileID: 701595921}
-  - {fileID: 134892823}
   - {fileID: 1088954574}
   - {fileID: 1188447011}
   - {fileID: 119852150}
@@ -123421,6 +123488,37 @@ Transform:
   - {fileID: 1686051404}
   m_Father: {fileID: 1866057943}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2107752556
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2107752557}
+  m_Layer: 0
+  m_Name: Sewers-Arsenal
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2107752557
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107752556}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -94.21744, y: 92.62952, z: 6.0032005}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1198485860}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2108925920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -123660,6 +123758,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 7553673116198755068, guid: dba83d420c1efce4e95b5c794f7a3ff5, type: 3}
       propertyPath: m_Name
       value: SlimeSpawn
       objectReference: {fileID: 0}
@@ -123701,67 +123803,6 @@ MonoBehaviour:
   despawnDistance: 50
   respawnTime: 100
   Radius: 0
---- !u!1001 &3767062577878614891
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 370976378476024845, guid: 1f194453e9dd67542b9153d1f510065b, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2444311111491627848, guid: 1f194453e9dd67542b9153d1f510065b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 329
-      objectReference: {fileID: 0}
-    - target: {fileID: 2444311111491627848, guid: 1f194453e9dd67542b9153d1f510065b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2444311111491627848, guid: 1f194453e9dd67542b9153d1f510065b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2444311111491627848, guid: 1f194453e9dd67542b9153d1f510065b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2444311111491627848, guid: 1f194453e9dd67542b9153d1f510065b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2444311111491627848, guid: 1f194453e9dd67542b9153d1f510065b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2444311111491627848, guid: 1f194453e9dd67542b9153d1f510065b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2444311111491627848, guid: 1f194453e9dd67542b9153d1f510065b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2444311111491627848, guid: 1f194453e9dd67542b9153d1f510065b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2444311111491627848, guid: 1f194453e9dd67542b9153d1f510065b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8594257089397773517, guid: 1f194453e9dd67542b9153d1f510065b, type: 3}
-      propertyPath: m_Name
-      value: Enemy1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1f194453e9dd67542b9153d1f510065b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -123769,7 +123810,6 @@ SceneRoots:
   - {fileID: 384975980}
   - {fileID: 165572399}
   - {fileID: 278618526}
-  - {fileID: 3767062577878614891}
   - {fileID: 168008446}
   - {fileID: 324431228}
   - {fileID: 1866057943}
@@ -123777,5 +123817,3 @@ SceneRoots:
   - {fileID: 1198485860}
   - {fileID: 2113233581}
   - {fileID: 759981313}
-  - {fileID: 1145108400}
-  - {fileID: 1394422509}

@@ -528,17 +528,12 @@ public class Player : MonoBehaviour
     }
     private void OnSceneLoaded(Scene scene,LoadSceneMode mode)
     {
+        string TargetSpawnName = LoadScean.TargetSpawnPoint;
         GameObject Player = GameObject.Find("Player");
-        GameObject spawnpoint1 = GameObject.Find("PlayerSpawnPoint1"); ;
-        GameObject spawnpoint2 = GameObject.Find("PlayerSpawnPoint2");
-        if(spawnpoint2 != null && isdoubleJumpEnabled)
-        {
-            transform.position = spawnpoint2.transform.position;
-        }
-        else
-        {
-            transform.position = spawnpoint1.transform.position;
-        }    
+        GameObject TargetSpawn = GameObject.Find(TargetSpawnName);
+            transform.position = TargetSpawn.transform.position;
+       
+          
         
         CinemachineVirtualCamera virtualCam = FindObjectOfType<CinemachineVirtualCamera>();
         virtualCam.Follow = Player.transform;
