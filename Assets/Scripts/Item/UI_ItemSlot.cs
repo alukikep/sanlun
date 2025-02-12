@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UI_ItemSlot : MonoBehaviour
 {
-    [SerializeField]private Image itemImage;
+    [SerializeField] private Image itemImage;
     [SerializeField] private TextMeshProUGUI itemText;
 
     public InventoryItem item;
@@ -18,7 +18,7 @@ public class UI_ItemSlot : MonoBehaviour
         if (item != null)
         {
             itemImage.sprite = item.data.icon;
-
+            itemData=item.data;
             if (item.stackSize > 1)
             {
                 itemText.text = item.stackSize.ToString();
@@ -27,6 +27,13 @@ public class UI_ItemSlot : MonoBehaviour
             {
                 itemText.text = "";
             }
+        }
+        else
+        {
+            // 如果物品为null（即物品数量为0或物品被移除），清空图标和文本
+            itemImage.sprite = null;
+            itemImage.color = Color.clear; // 设置为透明，避免显示白底
+            itemText.text = "";
         }
     }
     

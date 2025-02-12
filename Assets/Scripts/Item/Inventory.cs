@@ -32,9 +32,18 @@ public class Inventory : MonoBehaviour
     }
     private void UpdateSlotUI()
     {
-        for (int i = 0; i < InventoryItems.Count; i++)
+        for (int i = 0; i < itemSlot.Length; i++)
         {
-            itemSlot[i].UpdateSlot(InventoryItems[i]);
+            if (i < InventoryItems.Count)
+            {
+                // 如果物品槽有物品，更新物品信息
+                itemSlot[i].UpdateSlot(InventoryItems[i]);
+            }
+            else
+            {
+                // 如果物品槽没有物品，清空显示
+                itemSlot[i].UpdateSlot(null);
+            }
         }
     }
     public void AddItem(ItemData _item)
@@ -66,6 +75,7 @@ public class Inventory : MonoBehaviour
             else
                 value.RemoveStack();
         }
+       
         UpdateSlotUI();
     }
     // 使用物品

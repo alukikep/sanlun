@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Attack Potion
   icon: {fileID: -816892183, guid: a321228323c823841856a899d3284032, type: 3}
-  itemType: 0
+  itemType: 3
   healAmount: 0
   increaseHealthMax: 0
   increaseAttack: 5

@@ -11,8 +11,6 @@ public class Player : MonoBehaviour
 {
     public static Player Instance;//单例模式
 
-
-
     public float speedRate; // 速率系数
     public float jumpForce; // 跳跃高度
     private float oriJumpForce;
@@ -49,11 +47,13 @@ public class Player : MonoBehaviour
     [Header("Health")]
     public float maxHealth;
     public float health;
+
     [Header("Mana")]
     public float maxMana;
     public float currentMana;
     public float ManaPerSecond;
     private float ManaPSOnSlow;
+
     [Header("副武器相关")]
     public KeyCode SwitchKey = KeyCode.Q;
     private int CurrentSubWeaponNum=0;
