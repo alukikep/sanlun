@@ -526,18 +526,19 @@ public class Player : MonoBehaviour
         ATK += amount;
         Debug.Log("Player's attack increased! New attack: " + ATK);
     }
-    private void OnSceneLoaded(Scene scene,LoadSceneMode mode)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         string TargetSpawnName = LoadScean.TargetSpawnPoint;
         GameObject Player = GameObject.Find("Player");
         GameObject TargetSpawn = GameObject.Find(TargetSpawnName);
-            transform.position = TargetSpawn.transform.position;
-       
-          
-        
+        transform.position = TargetSpawn.transform.position;
+
+
+
         CinemachineVirtualCamera virtualCam = FindObjectOfType<CinemachineVirtualCamera>();
         virtualCam.Follow = Player.transform;
     }
+
     private void OnDestroy()
     {
         SceneManager.sceneLoaded-=OnSceneLoaded;
