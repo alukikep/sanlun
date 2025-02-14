@@ -154,6 +154,7 @@ public class Player : MonoBehaviour
 
             if (Input.GetButtonDown("Jump") && jumpNumber < jumpLimit)
             {
+                audioController.PlaySfx(audioController.jump);
                 rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpForce);
                 jumpNumber++;
             }
@@ -310,6 +311,7 @@ public class Player : MonoBehaviour
         // 当玩家与标签为“ground”的地面接触后，重置跳跃次数
         if (collision.gameObject.CompareTag("Ground"))
         {
+            audioController.PlaySfx(audioController.fallGround);
             rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y);
             jumpNumber = 0;
             highJump = false;
