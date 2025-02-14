@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - DestructibleBricks
   - LoadScene
+  - Audio
   layers:
   - Default
   - TransparentFX

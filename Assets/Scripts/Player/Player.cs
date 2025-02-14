@@ -27,7 +27,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float recontrolTime;
     [SerializeField] private float hurtMove;
     [SerializeField] private bool isControl=true;
-   
+    private GameObject audio;
+    AudioController audioController;
     
 
     [Header("格挡相关")]
@@ -76,6 +77,8 @@ public class Player : MonoBehaviour
     private int jumpNumber = 0; // 0,1,2分别表示跳跃了0，1，2次，控制二段跳
     private int jumpLimit;
 
+    
+
     private bool isdoubleJumpEnabled = false;
     private bool ishighJumpEnabled=false;
     private bool isbatTransformEnabled=false;
@@ -106,6 +109,8 @@ public class Player : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         animation = GetComponentInChildren<Animator>();
         capsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        audio = GameObject.FindGameObjectWithTag("Audio");
+        audioController = audio.GetComponent<AudioController>();
         isBat = false;
         faceRight = true;
         jumpLimit = 1;
@@ -286,6 +291,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.J) && isMouse == false && isBat == false && isAttack == false)
         {
+            audioController.PlaySfx(audioController.attack);
             isAttack = true;
             isBlock = false;
         }
@@ -393,7 +399,8 @@ public class Player : MonoBehaviour
     public void GetDamage(float eATK)
     {
         if (isBlock == false&&protect==false)
-        {      
+        {
+            audioController.PlaySfx(audioController.playerHurt);
             protect = true;
             isControl=false;
             rigidbody2D.velocity = new Vector3(0,0,0);

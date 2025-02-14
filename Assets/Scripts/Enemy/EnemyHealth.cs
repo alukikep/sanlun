@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Content;
 using UnityEditor.Profiling;
 using UnityEngine;
 
@@ -16,8 +17,12 @@ public class EnemyHealth : MonoBehaviour
     public GameObject hurtEffect;
     public GameObject dieEffect;
 
+    private GameObject audio;
+    AudioController audioController;
+
     public delegate void DeathEventHandler();
     public event DeathEventHandler OnDeath;
+
 
     private void Start()
     {
@@ -25,6 +30,8 @@ public class EnemyHealth : MonoBehaviour
         animator = GetComponent<Animator>();
         initialSprite = spriteRenderer.sprite;
         originColor = spriteRenderer.color;
+        audio = GameObject.FindGameObjectWithTag("Audio");
+        audioController = audio.GetComponent<AudioController>();
     }
 
     private void Update()
@@ -33,6 +40,7 @@ public class EnemyHealth : MonoBehaviour
     }
     public void GetDamage(float pATK)
     {
+        audioController.PlaySfx(audioController.enemyHurt);
         Instantiate(hurtEffect, transform.position, Quaternion.identity);
         health = health - pATK;
         Flash(flashTime);
@@ -43,6 +51,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (health <= 0 && OnDeath != null)
         {
+            audioController.PlaySfx(audioController.enemyDie);
             Instantiate(dieEffect, transform.position, Quaternion.identity);
             SetSprite();
             DestroyEnemy();
