@@ -7,6 +7,7 @@ public class DemonWarrior : MonoBehaviour
     private Rigidbody2D rb;
     private Transform player;
     private CapsuleCollider2D capsuleCollider;
+    private EnemyHealth enemyHealth;
 
     [Header("Attack")]
     public Transform attackCheck;
@@ -33,7 +34,7 @@ public class DemonWarrior : MonoBehaviour
     public float phase3AttackMultiplier = 2f;
     public ParticleSystem phase3Effect;
 
-    private int currentHealth;
+    private float currentHealth;
     private int phase = 1;
     private bool isInRange;
     private float attackTimer;
@@ -42,19 +43,20 @@ public class DemonWarrior : MonoBehaviour
 
     void Start()
     {
+        enemyHealth = GetComponent<EnemyHealth>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         player = Player.Instance.transform;
         capsuleCollider=GetComponent<CapsuleCollider2D>();
 
-        currentHealth = maxHealth;
+        currentHealth = enemyHealth.maxHealth;
     }
 
     void Update()
     {
         if (isTransitioning || player == null) return;
-
+        currentHealth = enemyHealth.health;
         HandleMovement();
         HandlePhaseBehavior();
     }
