@@ -22,7 +22,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1079414569185347386
 Transform:
   m_ObjectHideFlags: 0
@@ -33,8 +33,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 449.03, y: 90.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.72, y: 0.72, z: 0.72}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -169,13 +169,6 @@ MonoBehaviour:
   movingInterval: 3
   attackInterval: 1
   BatTrans: {fileID: 8200310514696222930, guid: 03dcbd54b8b17ad4bb1be10883b0d97f, type: 3}
-  bricksToDesTroy:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   batNum: 1
   spawnInterval: 0.5
   littleBatPrefab: {fileID: 1578088413944297465, guid: 74f79159b4a7aee459782e9fb8a7d36e, type: 3}
@@ -251,3 +244,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 300
   health: 300
+  flashTime: 0.1
+  hurtEffect: {fileID: 3829011218837494106, guid: 596eba13992e9594587a8bb5aca6c23a, type: 3}
+  dieEffect: {fileID: 3776493943376636325, guid: a84dcdde275215a4480c19a35a653674, type: 3}

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2077180905396444049}
   - component: {fileID: 8859386170161245851}
   - component: {fileID: 7035291165467820604}
-  - component: {fileID: 3882033936321359258}
   - component: {fileID: -7073418931757787179}
   - component: {fileID: 4372086911853187117}
   m_Layer: 3
@@ -170,20 +169,6 @@ MonoBehaviour:
   horizonSpeed: 0.5
   animator: {fileID: 0}
   ATK: 15
---- !u!114 &3882033936321359258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1578088413944297465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a095b51a2852fdf42b4c9d56c7fa4e24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 20
-  health: 20
 --- !u!58 &-7073418931757787179
 CircleCollider2D:
   m_ObjectHideFlags: 0
