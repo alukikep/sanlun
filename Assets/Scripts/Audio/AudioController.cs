@@ -1,13 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioController : MonoBehaviour
 {
     [SerializeField] private AudioSource Sfx;
     [SerializeField] private AudioSource BGM;
+    private string currentScene;
 
-    public AudioClip bgm;
+    [Header("BGM")]
+    public AudioClip castleHall;
+    public AudioClip sewers;
+    public AudioClip village;
+    public AudioClip arsenal;
+    public AudioClip clocktower;
+    public AudioClip castleKeep;
+
+
+    [Header("Sfx")]
     public AudioClip attack;
     public  AudioClip playerHurt;
     public AudioClip enemyHurt;
@@ -18,15 +29,74 @@ public class AudioController : MonoBehaviour
     public AudioClip wallBreak;
     void Start()
     {
-        BGM.clip=bgm;
-        BGM.Play();
+        currentScene = "123";
     }
 
     // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name != currentScene)
+        {
+            switch (scene.name)
+            {
+                case "CastleHall":
+                    if (castleHall != null)
+                    {
+                        BGM.clip = castleHall;
+                        BGM.Play();
+                    }
+                    break;
+                case "Sewers":
+                    if (sewers != null)
+                    {
+                        BGM.clip = sewers;
+                        BGM.Play();
+                    }
+                    break;
+                case "Village":
+                    if (village != null)
+                    {
+                        BGM.clip = village;
+                        BGM.Play();
+                    }
+                    break;
+                case "Arsenal":
+                    if (arsenal != null)
+                    {
+                        BGM.clip = arsenal;
+                        BGM.Play();
+                    }
+                    break;
+                case "ClockTower":
+                    if (clocktower != null)
+                    {
+                        BGM.clip = clocktower;
+                        BGM.Play();
+                    }
+                    break;
+                case "CastleKeep":
+                    if (castleKeep != null)
+                    {
+                        BGM.clip = castleKeep;
+                        BGM.Play();
+                    }
+                    break;
+            }
+            currentScene = scene.name;
+        }
+    }
+
+
 
     public void PlaySfx(AudioClip sfx)
     {

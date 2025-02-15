@@ -1027,6 +1027,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6275554701037352297}
     m_Modifications:
+    - target: {fileID: 138601592699661752, guid: b07b64b4bb1936947a90be53899e4196, type: 3}
+      propertyPath: sewers
+      value: 
+      objectReference: {fileID: 8300000, guid: 026d905eb5a380e4996926367a080838, type: 3}
+    - target: {fileID: 138601592699661752, guid: b07b64b4bb1936947a90be53899e4196, type: 3}
+      propertyPath: arsenal
+      value: 
+      objectReference: {fileID: 8300000, guid: 2f2bd5be3891c804cbd106e604780a9b, type: 3}
+    - target: {fileID: 138601592699661752, guid: b07b64b4bb1936947a90be53899e4196, type: 3}
+      propertyPath: village
+      value: 
+      objectReference: {fileID: 8300000, guid: 8f47ce979973ea54bb69a0b7eb0f0c8c, type: 3}
+    - target: {fileID: 138601592699661752, guid: b07b64b4bb1936947a90be53899e4196, type: 3}
+      propertyPath: castleHall
+      value: 
+      objectReference: {fileID: 8300000, guid: 6188001151d322a4bb42fb2136e6b88f, type: 3}
+    - target: {fileID: 138601592699661752, guid: b07b64b4bb1936947a90be53899e4196, type: 3}
+      propertyPath: castleKeep
+      value: 
+      objectReference: {fileID: 8300000, guid: cbfd349146ec55d4f847f48d458b7982, type: 3}
+    - target: {fileID: 138601592699661752, guid: b07b64b4bb1936947a90be53899e4196, type: 3}
+      propertyPath: clocktower
+      value: 
+      objectReference: {fileID: 8300000, guid: 586817f36834cd34da61561f45324c38, type: 3}
     - target: {fileID: 8824183650653452774, guid: b07b64b4bb1936947a90be53899e4196, type: 3}
       propertyPath: m_Name
       value: Audio
