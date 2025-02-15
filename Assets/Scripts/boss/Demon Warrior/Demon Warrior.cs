@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 public class DemonWarrior : MonoBehaviour
@@ -34,6 +35,8 @@ public class DemonWarrior : MonoBehaviour
     public float phase3AttackMultiplier = 2f;
     //public ParticleSystem phase3Effect;
 
+    public GameObject doubleJump;
+    private bool spawnItem=false;
     private float currentHealth;
     private int phase = 1;
     private bool isInRange;
@@ -59,6 +62,11 @@ public class DemonWarrior : MonoBehaviour
         currentHealth = enemyHealth.health;
         HandleMovement();
         HandlePhaseBehavior();
+        if(currentHealth<=0&&spawnItem==false)
+        {
+            GameObject DoubleJump = Instantiate(doubleJump,transform.position,quaternion.identity);
+            spawnItem = true;
+        }
     }
 
     void HandleMovement()

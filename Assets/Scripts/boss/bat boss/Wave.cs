@@ -17,13 +17,19 @@ public class Wave : MonoBehaviour//用来互动之后摧毁特定砖块
         rb = GetComponent<Rigidbody2D>();
         Vector2 direction = (_Player.transform.position-transform.position).normalized;
         rb.velocity = direction * speed;
+        float angle = Vector3.SignedAngle(transform.up, direction, transform.forward);
+        transform.Rotate(0, 0, angle-90);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (_Player != null)
         {
             player = collision.GetComponent<Player>();
-            player.getSlowed(slowPercent, slowDuration);
+            if (player != null)
+            {
+                player.getSlowed(slowPercent, slowDuration);
+            }
+            
             if (collision.CompareTag("Player"))
             {
                 collision.GetComponent<Player>().GetDamage(damage);

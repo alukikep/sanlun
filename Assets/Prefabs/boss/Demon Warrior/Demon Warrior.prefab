@@ -213,7 +213,7 @@ MonoBehaviour:
   summonInterval: 5
   phase3SpeedMultiplier: 1.5
   phase3AttackMultiplier: 2
-  phase3Effect: {fileID: 0}
+  doubleJump: {fileID: 2694896876957022395, guid: 55ee93236592b484899237112d67bd51, type: 3}
 --- !u!95 &6573698513452718987
 Animator:
   serializedVersion: 5

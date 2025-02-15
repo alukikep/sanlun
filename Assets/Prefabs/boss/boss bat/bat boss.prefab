@@ -169,11 +169,16 @@ MonoBehaviour:
   movingInterval: 3
   attackInterval: 1
   BatTrans: {fileID: 8200310514696222930, guid: 03dcbd54b8b17ad4bb1be10883b0d97f, type: 3}
+  LimitDistance: 10
+  divingSpeed: 9
+  DivingWeight: 1
   batNum: 1
   spawnInterval: 0.5
   littleBatPrefab: {fileID: 1578088413944297465, guid: 74f79159b4a7aee459782e9fb8a7d36e, type: 3}
   spawnWidth: 1.03
+  LittleBatWeight: 2
   wavePrefab: {fileID: 5650136507599731613, guid: 8786276f23f188746b0e25fc47626aff, type: 3}
+  WaveWeight: 3
 --- !u!58 &2269182658631103618
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -189,7 +194,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 904
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

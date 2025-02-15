@@ -12,6 +12,10 @@ public class Bat : MonoBehaviour
     private float movingTimer;
     public float attackInterval;//调整所有攻击的间隔
     public GameObject BatTrans;
+    private Vector3 SpawnPos;
+    [Header("冲刺")]
+    public float divingSpeed;
+    public int DivingWeight;
     [Header("召唤蝙蝠")]
     public int batNum;
     public float spawnInterval;
@@ -23,12 +27,15 @@ public class Bat : MonoBehaviour
     private Vector3 spawnUp;
     private Vector3 spawnDown;
     private int currentNum;
+    public int LittleBatWeight;
+    
     [Header("超声波")]
     public GameObject wavePrefab;
     private bool Wave;
+    public int WaveWeight;
 
- 
-     
+    private bool firstAttack=true;
+    private int totalWeight;
     private float attackTimer;
     private bool isAttacking;
     private bool diving;
@@ -45,14 +52,14 @@ public class Bat : MonoBehaviour
 
     private void Start()
     {
-        
+        totalWeight = WaveWeight + LittleBatWeight + DivingWeight;
         Player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody2D>();
         enemyHealth = GetComponent<EnemyHealth>();
         movingTimer = 2;
         spawnTimer = 0;
         attackTimer = attackInterval;
-        
+        SpawnPos = transform.position;
          
     }
     private void Update()
@@ -60,12 +67,17 @@ public class Bat : MonoBehaviour
         movingTimer-= Time.deltaTime;
         spawnUp = new Vector3(transform.position.x,Player.transform.position.y+spawnWidth,transform.position.z);
         spawnDown = new Vector3(transform.position.x, Player.transform.position.y - spawnWidth, transform.position.z);
-        if (!isAttacking)
-        {
-            moving();
-           
-        }
-        if(enemyHealth.health<=0)
+        float distance = Vector3.Distance(transform.position, SpawnPos);
+       
+            if (!isAttacking)
+            {
+                moving();
+
+            }
+            Attack();
+        
+
+        if (enemyHealth.health<=0)
         {
             SpawnItem = true;
             if(SpawnItem==true)
@@ -77,7 +89,7 @@ public class Bat : MonoBehaviour
         }
         
         
-        Attack(); 
+        
         
         
 
@@ -90,23 +102,29 @@ public class Bat : MonoBehaviour
         }
         if(attackTimer<=0)
         {
-            int attackNum = Random.Range(0, 3);//随机数控制攻击方式 
+            
+            int attackNum = Random.Range(0, totalWeight);
+            if(firstAttack)
             {
-                if (attackNum == 0)
+                attackNum = 0;
+                firstAttack = false;
+            }
+            {
+                if (attackNum <=DivingWeight)
                 {
                     diving = true;
                     isAttacking = true;
                     hasStartedDiving = false ;
                     attackTimer = attackInterval;
                 }
-                if(attackNum == 1)
+                else if(attackNum <=DivingWeight+LittleBatWeight)
                 {
                     LittleBat = true;
                     isAttacking = true;
                     attackTimer = attackInterval;
                     startSpawn = false;
                 }
-                if(attackNum == 2)
+                else if(attackNum <=totalWeight)
                 {
                     Wave = true;
                     isAttacking = true;
@@ -129,10 +147,10 @@ public class Bat : MonoBehaviour
 
             
             Vector2 directionToTarget = (targetPosition - transform.position).normalized;
-            rb.velocity = directionToTarget * speed * 3;
+            rb.velocity = directionToTarget * divingSpeed;
 
-           
-            if (Vector3.Distance(transform.position, targetPosition) <= 0.1f)
+            
+            if (Vector3.Distance(transform.position, targetPosition) <= 0.5f)
             {
                 rb.velocity = Vector2.zero;
                 hasStartedDiving = false; 
@@ -228,4 +246,5 @@ public class Bat : MonoBehaviour
             collision.GetComponent<Player>().GetDamage(ATK);
         }
     }
+    
 }

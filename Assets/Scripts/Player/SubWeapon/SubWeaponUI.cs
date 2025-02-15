@@ -20,7 +20,7 @@ public class SubWeaponUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+      
         if(player.isAxe==true)
         {
             image.sprite = axe;
