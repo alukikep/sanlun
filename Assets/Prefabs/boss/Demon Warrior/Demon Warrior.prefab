@@ -203,7 +203,7 @@ MonoBehaviour:
   stopDistance: 3
   phaseTransitionDuration: 1
   phase1MoveSpeed: 6
-  phase1AttackCD: 2
+  phase1AttackCD: 1
   swipeDamage: 70
   spawnPoints:
   - {fileID: 0}

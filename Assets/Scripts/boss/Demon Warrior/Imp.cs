@@ -1,103 +1,135 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+public enum ImpState
+{
+    Idle,
+    Moving,
+    Attacking,
+    Dying
+}
 
 public class Imp : MonoBehaviour
 {
-    [Header("移动设置")]
-    public float moveSpeed = 3f;      // 基础移动速度
-    public float acceleration = 5f;   // 移动加速度
-    public float stoppingDistance = 1f; // 与玩家保持距离
+    [Header("移动参数")]
+    public float moveSpeed = 3f;          // 移动速度
+    public float acceleration = 5f;       // 加速度
+    public float retreatDistance = 5f;   // 停止距离
 
-    [Header("攻击设置")]
-    public float fireballDamage = 10f;
-    public float attackInterval = 3f;
-    public float projectileSpeed = 8f;
-    public GameObject fireballPrefab;
+    [Header("攻击参数")]
+    public float fireballDamage = 10f;    // 火球伤害
+    public float attackInterval = 3f;     // 攻击间隔
+    public float projectileSpeed = 8f;    // 火球速度
+    public GameObject fireballPrefab;     // 火球预制体
 
-    [Header("生命设置")]
-    public int maxHealth = 2;
-    public float deathEffectDuration = 0.5f;
-    public GameObject deathParticle;
+    [Header("生命参数")]
+    public int maxHealth = 2;             // 最大生命值
+    public float deathEffectDuration = 0.5f; // 死亡效果持续时间
+    public GameObject deathParticle;      // 死亡特效
 
     private Transform player;
     private Rigidbody2D rb;
     private Animator anim;
     private float attackTimer;
     private int currentHealth;
+    private ImpState currentState = ImpState.Idle;
+
 
     void Start()
     {
         player = Player.Instance.transform;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        currentHealth =maxHealth;
+        currentHealth = maxHealth;
 
-        // 动态生成警戒区域
+        ChangeState(ImpState.Idle);
         CreateDetectionZone();
     }
 
     void Update()
     {
         if (player == null) return;
-
-        HandleMovement();
-        HandleAttack();
-    }
-
-    void HandleMovement()
-    {
         Vector2 dirToPlayer = (player.position - transform.position).normalized;
-        float currentDistance = Vector2.Distance(transform.position, player.position);
 
-        // 动态速度曲线
-        float speedModifier = Mathf.Clamp(
-            currentDistance / stoppingDistance,
-            0.5f,
-            1.5f
-        );
-
-        // 平滑加速移动
-        rb.velocity = Vector2.Lerp(
-            rb.velocity,
-            dirToPlayer * moveSpeed * speedModifier,
-            acceleration * Time.deltaTime
-        );
-
-        // 翻转精灵
-        if (dirToPlayer.x > 0)
+        switch (currentState)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            case ImpState.Idle:
+                HandleIdle();
+                break;
+            case ImpState.Moving:
+                HandleMovement(dirToPlayer);
+                break;
+            case ImpState.Attacking:
+                HandleAttack();
+                break;
+            case ImpState.Dying:
+                HandleDeath();
+                break;
         }
-        else
+
+        // 更新朝向
+        if (dirToPlayer.x > 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
+        else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 
-    void HandleAttack()
+    private void HandleIdle()
+    {
+        // 空闲时的逻辑（可以在这里添加一些随机行为）
+        ChangeState(ImpState.Moving);
+    }
+
+    private void HandleMovement(Vector2 vector2)
+    {
+        float currentDistance = Vector2.Distance(transform.position, player.position);
+
+        // 如果玩家距离小于 retreatDistance，远离玩家
+        if (currentDistance < retreatDistance)
+        {
+            rb.velocity = -vector2 * moveSpeed; // 远离玩家
+        }
+        else
+        {
+            rb.velocity = Vector2.zero; // 停止移动
+        }
+
+    }
+
+    private void HandleAttack()
     {
         attackTimer += Time.deltaTime;
 
         if (attackTimer >= attackInterval)
         {
-            anim.SetTrigger("Attack");
             attackTimer = 0f;
+            LaunchProjectile();
         }
     }
 
-    // 动画事件调用的攻击方法
+    private void HandleDeath()
+    {
+        // 死亡逻辑
+        GetComponent<Collider2D>().enabled = false;
+        rb.velocity = Vector2.zero;
+
+        if (deathParticle != null)
+        {
+            Instantiate(deathParticle, transform.position, Quaternion.identity);
+        }
+
+        Destroy(gameObject, deathEffectDuration);
+    }
+
     public void LaunchProjectile()
     {
         Vector2 fireDirection = (player.position - transform.position).normalized;
+        Vector3 spawnPosition = transform.position + (Vector3)fireDirection * 0.5f;
 
-        GameObject fireball = Instantiate(
-            fireballPrefab,
-            transform.position + (Vector3)fireDirection * 0.5f,
-            Quaternion.identity
-        );
-
+        GameObject fireball = Instantiate(fireballPrefab, spawnPosition, Quaternion.identity);
         Fireball fb = fireball.GetComponent<Fireball>();
         fb.Initialize(fireDirection, projectileSpeed, fireballDamage);
     }
@@ -112,34 +144,34 @@ public class Imp : MonoBehaviour
         }
     }
 
-    IEnumerator DeathSequence()
+    private IEnumerator DeathSequence()
     {
+        ChangeState(ImpState.Dying);
         anim.SetTrigger("Die");
-        GetComponent<Collider2D>().enabled = false;
-        rb.velocity = Vector2.zero;
 
         yield return new WaitForSeconds(deathEffectDuration);
-
-        Instantiate(deathParticle, transform.position, Quaternion.identity);
-        Destroy(gameObject);
     }
 
-    // 生成动态警戒区域
-    void CreateDetectionZone()
+    public void ChangeState(ImpState newState)
+    {
+        currentState = newState;
+        anim.SetInteger("State", (int)newState);
+    }
+
+    private void CreateDetectionZone()
     {
         GameObject zone = new GameObject("DetectionZone");
         zone.transform.SetParent(transform);
         zone.transform.localPosition = Vector3.zero;
 
         CircleCollider2D col = zone.AddComponent<CircleCollider2D>();
-        col.radius = 5f;
+        col.radius = 10f;
         col.isTrigger = true;
 
         zone.AddComponent<ImpDetection>();
     }
 }
 
-// 警戒区域检测脚本
 public class ImpDetection : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D other)
@@ -147,6 +179,7 @@ public class ImpDetection : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             GetComponentInParent<Imp>().enabled = true;
+            GetComponentInParent<Imp>().ChangeState(ImpState.Moving);
         }
     }
 }

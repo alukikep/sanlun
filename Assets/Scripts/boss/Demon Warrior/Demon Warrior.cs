@@ -32,7 +32,7 @@ public class DemonWarrior : MonoBehaviour
     [Header("阶段3 - 强化")]
     public float phase3SpeedMultiplier = 1.5f;
     public float phase3AttackMultiplier = 2f;
-    public ParticleSystem phase3Effect;
+    //public ParticleSystem phase3Effect;
 
     private float currentHealth;
     private int phase = 1;
@@ -141,7 +141,7 @@ public class DemonWarrior : MonoBehaviour
     void PerformEnhancedSwipe()
     {
         animator.SetTrigger("EnhancedSwipe");
-        phase3Effect.Play();
+        //phase3Effect.Play();
         // 强化版攻击处理
     }
 
@@ -192,7 +192,7 @@ public class DemonWarrior : MonoBehaviour
                 break;
             case 3:
                 // 应用强化参数
-                phase3Effect.Play();
+                //phase3Effect.Play();
                 break;
         }
     }

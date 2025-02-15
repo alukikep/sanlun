@@ -31,6 +31,7 @@ public class Fireball : MonoBehaviour
             Destroy(gameObject);
         }
 
+        // Èç¹û»ğÇòÓëÇ½±ÚÅö×²
         if (other.CompareTag("Wall"))
         {
             Destroy(gameObject);
