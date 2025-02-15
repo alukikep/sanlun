@@ -14,6 +14,8 @@ public class AudioController : MonoBehaviour
     public AudioClip enemyDie;
     public AudioClip jump;
     public AudioClip fallGround;
+    public AudioClip handleStart;
+    public AudioClip wallBreak;
     void Start()
     {
         BGM.clip=bgm;

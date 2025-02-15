@@ -8,14 +8,32 @@ public class Switch : MonoBehaviour
     public float interactRange;
     public GameObject[] bricksToDesTroy;
     private bool isPlayerNearBy = false;
+    private Animator animator;
 
+    private GameObject audio;
+    AudioController audioController;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        audio = GameObject.FindGameObjectWithTag("Audio");
+        audioController = audio.GetComponent<AudioController>();
+    }
     private void Update()
     {
         CheckPlayer();
         if(isPlayerNearBy&&Input.GetKeyDown(interactKey))
         {
+            animator.Play("Start");
+            audioController.PlaySfx(audioController.handleStart);
+            Invoke("WallBreak",0.5f);
             DestroyBricks();
         }
+    }
+
+    private void WallBreak()
+    {
+        audioController.PlaySfx(audioController.wallBreak);
     }
     private void CheckPlayer()
     {
@@ -25,6 +43,10 @@ public class Switch : MonoBehaviour
             if(hit.CompareTag("Player"))
             {
                 isPlayerNearBy = true;
+            }
+            else
+            {
+                isPlayerNearBy = false;
             }
         }
 
