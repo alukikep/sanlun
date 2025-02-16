@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     private bool highJump;
     private float leftSlowDuration;
     private bool protect;
+    public GameObject menu;
     [SerializeField] private float protectTime;
     [SerializeField] private float recontrolTime;
     [SerializeField] private float hurtMove;
@@ -147,7 +148,20 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isControl==true)
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            menu.SetActive(!menu.activeSelf);
+        }
+        if(menu.activeSelf==false)
+        {
+            Time.timeScale = 1;
+        }
+        else
+        {
+            Time.timeScale = 0;
+        }
+
+            if (isControl==true)
         {
             xSpeed = Input.GetAxisRaw("Horizontal");
             SpeedUp();

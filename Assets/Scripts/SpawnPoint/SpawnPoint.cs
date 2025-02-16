@@ -26,7 +26,14 @@ public class SpawnPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        player = _Player.transform;
+        if (player == null)
+        {
+            return;
+        }
+        else
+        {
+            player = _Player.transform;
+        }
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
         if (currentMonster==null)
