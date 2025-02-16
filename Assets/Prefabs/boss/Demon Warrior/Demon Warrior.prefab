@@ -196,10 +196,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d847cb7969a032c44ac41223d47b2c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  phase: 2
   attackCheck: {fileID: 6633879264046786595}
   attackRadius: 3
   isAttack: 0
-  maxHealth: 3
+  maxHealth: 500
   stopDistance: 3
   phaseTransitionDuration: 1
   phase1MoveSpeed: 6
@@ -211,8 +212,13 @@ MonoBehaviour:
   - {fileID: 0}
   impPrefab: {fileID: 0}
   summonInterval: 5
+  phase2YOffset: 2
+  phase2XOffset: 2
   phase3SpeedMultiplier: 1.5
   phase3AttackMultiplier: 2
+  shieldEffectPrefab: {fileID: 0}
+  phase3ShieldDuration: 5
+  phase3ShieldCooldown: 10
   doubleJump: {fileID: 2694896876957022395, guid: 55ee93236592b484899237112d67bd51, type: 3}
 --- !u!95 &6573698513452718987
 Animator:
