@@ -98,4 +98,16 @@ public class Inventory : MonoBehaviour
             RemoveItem(_item);
         }
     }
+    public void LoadInventory(List<InventoryItemData> inventoryData)
+    {
+        foreach (var itemData in inventoryData)
+        {
+            ItemData item = Resources.Load<ItemData>("Items/" + itemData.itemName); // 需要根据实际情况调整路径
+            if (item != null)
+            {
+                AddItem(item);
+                inventoryDictionary[item].stackSize = itemData.quantity;
+            }
+        }
+    }
 }

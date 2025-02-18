@@ -566,4 +566,78 @@ public class Player : MonoBehaviour
     {
         SceneManager.sceneLoaded-=OnSceneLoaded;
     }
+    public void SavePlayer()
+    {
+        PlayerSaveData saveData = new PlayerSaveData
+        {
+            health = health,
+            currentMana = currentMana,
+            position = transform.position,
+            isDoubleJumpEnabled = isdoubleJumpEnabled,
+            isHighJumpEnabled = ishighJumpEnabled,
+            isBatTransformEnabled = isbatTransformEnabled,
+            isRatTransformEnabled = isratTransformEnabled,
+            isAxeEnabled = isAxeEnabled,
+            isGuardianEnabled = isGuardianEnabled,
+            isTimeSlowEnabled = isTimeSlowEnabled,
+            attack = ATK,
+            inventoryItems = SaveInventory()
+        };
+
+        string json = JsonUtility.ToJson(saveData);
+        System.IO.File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
+    }
+    public void LoadPlayer()
+    {
+        string path = Application.persistentDataPath + "/playerData.json";
+        if (System.IO.File.Exists(path))
+        {
+            string json = System.IO.File.ReadAllText(path);
+            PlayerSaveData saveData = JsonUtility.FromJson<PlayerSaveData>(json);
+
+            health = saveData.health;
+            currentMana = saveData.currentMana;
+            transform.position = saveData.position;
+            isdoubleJumpEnabled = saveData.isDoubleJumpEnabled;
+            ishighJumpEnabled = saveData.isHighJumpEnabled;
+            isbatTransformEnabled = saveData.isBatTransformEnabled;
+            isratTransformEnabled = saveData.isRatTransformEnabled;
+            isAxeEnabled = saveData.isAxeEnabled;
+            isGuardianEnabled = saveData.isGuardianEnabled;
+            isTimeSlowEnabled = saveData.isTimeSlowEnabled;
+            ATK = saveData.attack;
+
+            // Load inventory items
+            LoadInventory(saveData.inventoryItems);
+        }
+    }
+
+    private List<InventoryItemData> SaveInventory()
+    {
+        List<InventoryItemData> inventoryItems = new List<InventoryItemData>();
+        foreach (var item in Inventory.Instance.InventoryItems)
+        {
+            InventoryItemData itemData = new InventoryItemData
+            {
+                itemName = item.data.itemName,
+                iconPath = item.data.icon.name,
+                quantity = item.stackSize
+            };
+            inventoryItems.Add(itemData);
+        }
+        return inventoryItems;
+    }
+
+    private void LoadInventory(List<InventoryItemData> inventoryData)
+    {
+        foreach (var itemData in inventoryData)
+        {
+            ItemData item = Resources.Load<ItemData>("Items/" + itemData.itemName); // 需要根据实际情况调整路径
+            if (item != null)
+            {
+                Inventory.Instance.AddItem(item);
+                Inventory.Instance.inventoryDictionary[item].stackSize = itemData.quantity;
+            }
+        }
+    }
 }
