@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class AttackCheck : MonoBehaviour
 {
     public Player player;
+    public PlayerState state;
     
     void Start()
     {
@@ -26,6 +27,7 @@ public class AttackCheck : MonoBehaviour
 
     private void AttackTrigger()
     {
+
         Collider2D[] Enemies = Physics2D.OverlapCircleAll(player.attackCheck.position, player.attackRadius, LayerMask.GetMask("Enemy"));
         Collider2D[] bricks = Physics2D.OverlapCircleAll(player.attackCheck.position, player.attackRadius, LayerMask.GetMask("DestructibleBricks"));
         foreach (var hit in Enemies)
@@ -63,9 +65,14 @@ public class AttackCheck : MonoBehaviour
         
     }
 
-    public void AttackEnd()
+    public void GroundAttackEnd()
     {
-        player.isAttack=false;      
+        player.StateMachine.ChangeState(player.idleState);
+    }
+
+    public void AirAttackEnd()
+    {
+        player.StateMachine.ChangeState(player.fallState);
     }
 
     public void BlockEnd()

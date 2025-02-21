@@ -5,11 +5,14 @@ using UnityEngine;
 public class PlayerState 
 {
    protected PlayerStateMachine stateMachine;
-    protected PlayerTest player;
+    protected Player player;
+    protected Rigidbody2D rb;
 
+    protected float xInput;
     private string animBoolName;
+    public bool isAttack;
 
-    public PlayerState(PlayerTest _player,PlayerStateMachine _stateMachine,string _animBoolName)
+    public PlayerState(Player _player,PlayerStateMachine _stateMachine,string _animBoolName)
     {
         this.player = _player;
         this.stateMachine = _stateMachine;
@@ -19,10 +22,23 @@ public class PlayerState
     public virtual void Enter()
     {
         player.anim.SetBool(animBoolName, true);
+        rb=player.rigidbody2D;
     }
     public virtual void Update()
     {
-        Debug.Log("i am in" + animBoolName);
+        xInput = Input.GetAxisRaw("Horizontal");
+        player.anim.SetFloat("yVelocity",rb.velocity.y);
+        player.SetVelocity(xInput * player.speedRate, rb.velocity.y);
+
+        if (xInput > 0)
+        {
+            player.transform.rotation = new Quaternion(0, 0, 0, 0);
+        }
+        if (xInput < 0)
+        {
+            player.transform.rotation = new Quaternion(0, 180, 0, 0);
+        }
+
     }
 
     public virtual void Exit()

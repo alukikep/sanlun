@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Idle : Grounded    
+public class Fall : Air
 {
-    public Idle(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
+    public Fall(Player _player, PlayerStateMachine _stateMachine, string _animBoolName) : base(_player, _stateMachine, _animBoolName)
     {
     }
 
@@ -22,11 +21,10 @@ public class Idle : Grounded
     public override void Update()
     {
         base.Update();
-        if(xInput!=0)
+
+        if (rb.velocity.y == 0)
         {
-            stateMachine.ChangeState(player.moveState);
+            stateMachine.ChangeState(player.idleState);
         }
     }
-
-    
 }

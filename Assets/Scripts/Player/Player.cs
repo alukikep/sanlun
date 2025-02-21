@@ -2,6 +2,8 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.IO.LowLevel.Unsafe;
+using UnityEditor;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,10 +11,29 @@ using Scene = UnityEngine.SceneManagement.Scene;
 
 public class Player : MonoBehaviour
 {
+    public PlayerStateMachine StateMachine { get; private set; }
+
+    public Idle idleState { get; private set; }
+    public Move moveState { get; private set; }
+    public Jump jumpState { get; private set; }
+    public Fall fallState { get; private set; }
+    public PlayerAttack attackState { get; private set; }
+    public BatState batState { get; private set; }
+    public MouseState mouseState { get; private set; }
+    public AirAttack airAttackState { get; private set; }
+
+
+
+
+
     public static Player Instance;//单例模式
 
     public float speedRate; // 速率系数
     public float jumpForce; // 跳跃高度
+
+    public Rigidbody2D rigidbody2D;
+    public Animator anim;
+
     private float oriJumpForce;
     private bool isSlowed;
     public bool isBat;
@@ -27,9 +48,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float protectTime;
     [SerializeField] private float recontrolTime;
     [SerializeField] private float hurtMove;
-    [SerializeField] private bool isControl=true;
-    private GameObject audio;
-    AudioController audioController;
+    public GameObject audio;
+    public AudioController audioController;
     
 
     [Header("格挡相关")]
@@ -71,12 +91,11 @@ public class Player : MonoBehaviour
     private Guardian guardianScript;
     private Axe axeScript;
 
-    private Rigidbody2D rigidbody2D;
-    private Animator animation;
-    private  CapsuleCollider2D capsuleCollider2D;
+    
+    public  CapsuleCollider2D capsuleCollider2D;
     private float xSpeed;
-    private int jumpNumber = 0; // 0,1,2分别表示跳跃了0，1，2次，控制二段跳
-    private int jumpLimit;
+    public int jumpNumber; // 0,1,2分别表示跳跃了0，1，2次，控制二段跳
+    public int jumpLimit;
 
     
 
@@ -99,16 +118,34 @@ public class Player : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+       
+        StateMachine = new PlayerStateMachine();
+
+        idleState = new Idle(this, StateMachine, "Idle");
+        moveState = new Move(this, StateMachine, "Move");
+        jumpState = new Jump(this, StateMachine, "Jump");
+        fallState = new Fall(this, StateMachine, "Jump");
+        attackState = new PlayerAttack(this, StateMachine, "GroundAttack");
+        batState = new BatState(this, StateMachine, "Bat");
+        mouseState = new MouseState(this, StateMachine, "Mouse");
+        airAttackState = new AirAttack(this, StateMachine, "AirAttack");
+   
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+
+
+        anim = GetComponentInChildren<Animator>();
+
+        StateMachine.Initialize(idleState);
+
         oriJumpForce = jumpForce;
         maxSpeed = speedRate;
         Debug.Log("start");
         rigidbody2D = GetComponent<Rigidbody2D>();
-        animation = GetComponentInChildren<Animator>();
+        
         capsuleCollider2D = GetComponent<CapsuleCollider2D>();
         audio = GameObject.FindGameObjectWithTag("Audio");
         audioController = audio.GetComponent<AudioController>();
@@ -148,6 +185,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        StateMachine.currentState.Update();
+
+
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             menu.SetActive(!menu.activeSelf);
@@ -161,27 +202,6 @@ public class Player : MonoBehaviour
             Time.timeScale = 0;
         }
 
-            if (isControl==true)
-        {
-            xSpeed = Input.GetAxisRaw("Horizontal");
-            SpeedUp();
-
-            if (Input.GetButtonDown("Jump") && jumpNumber < jumpLimit)
-            {
-                audioController.PlaySfx(audioController.jump);
-                rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpForce);
-                jumpNumber++;
-            }
-
-            DoubleJump();
-            HighJump();
-            BatTranform();
-            MouseTransform();
-            Attack();
-            Block();
-            SubWeapon();
-        }
-        
         
        
         if(currentMana>=maxMana)
@@ -203,13 +223,6 @@ public class Player : MonoBehaviour
             rigidbody2D.gravityScale = 20;      
             rigidbody2D.velocity = new Vector2(xSpeed * speedRate / Time.timeScale,rigidbody2D.velocity.y);           
         }
-        else
-        {
-            rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y);
-        }
-
-        Flip();
-        AnimatorControllers();
        
         resetSpeed();
         blockCoolTimer-=Time.deltaTime;
@@ -234,13 +247,10 @@ public class Player : MonoBehaviour
         MagicBar.currentMagic= (int)currentMana;
 
     }
-    private void SpeedUp()
+
+    public void SetVelocity(float _xVelocity,float _yVelocity)
     {
-        // 按住shift速度翻倍
-        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
-        {
-            xSpeed *= 2;
-        }
+        rigidbody2D.velocity= new Vector2(_xVelocity, _yVelocity);
     }
 
     private void DoubleJump()
@@ -261,56 +271,9 @@ public class Player : MonoBehaviour
             jumpNumber = 2;
         }
     }
-    private void BatTranform()//按R变身蝙蝠（空中时）
-    {
-        if (!isbatTransformEnabled) return;
+    
+   
 
-        //蝙蝠形态（滑翔）
-        if (Input.GetKeyDown(KeyCode.R) && isBat == false && isMouse == false)
-        {
-            rigidbody2D.drag = 10;
-            isBat = true;
-            capsuleCollider2D.size = new Vector2(0.8f, 0.8f);
-        }
-        //按r变身蝙蝠，使下落速度变慢且不能再跳跃
-        else if (Input.GetKeyDown(KeyCode.R) && isBat == true && isMouse == false)
-        {
-            rigidbody2D.drag = 1;
-            isBat = false;
-            capsuleCollider2D.size = new Vector2(0.4f, 1.7f);
-        }
-        //松开r还原
-    }
-
-    private void MouseTransform()//按E变身老鼠
-    {
-        if (!isratTransformEnabled) return;
-
-
-        if (Input.GetKeyDown(KeyCode.E) && isMouse == false)
-        {
-            isMouse = true;
-            jumpForce = 8;
-            capsuleCollider2D.size = new Vector2(0.4f, 0.4f);
-
-        }
-        else if (Input.GetKeyDown(KeyCode.E) && isMouse == true)
-        {
-            isMouse = false;
-            jumpForce = 14;
-            capsuleCollider2D.size = new Vector2(0.4f, 1.7f);
-        }
-    }
-
-    private void Attack()
-    {
-        if (Input.GetKeyDown(KeyCode.J) && isMouse == false && isBat == false && isAttack == false)
-        {
-            audioController.PlaySfx(audioController.attack);
-            isAttack = true;
-            isBlock = false;
-        }
-    }
 
     private void Block()
     {
@@ -326,7 +289,6 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             audioController.PlaySfx(audioController.fallGround);
-            rigidbody2D.velocity = new Vector2(0, rigidbody2D.velocity.y);
             jumpNumber = 0;
             highJump = false;
         }
@@ -374,43 +336,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void AnimatorControllers()//控制动画
-    {
-        bool isMoving = rigidbody2D.velocity.x != 0;
-        bool isGround = jumpNumber == 0;
-        if (rigidbody2D.velocity.y > 0)
-        {
-            jumpDir = 1;
-        }
-        if (rigidbody2D.velocity.y < 0)
-        {
-            jumpDir = -1;
-        }
-        animation.SetBool("isMoving", isMoving);
-        animation.SetBool("isBat", isBat);
-        animation.SetBool("isGround", isGround);
-        animation.SetFloat("jump", jumpDir);
-        animation.SetBool("highJump", highJump);
-        animation.SetBool("isMouse", isMouse);
-        animation.SetBool("isAttack", isAttack);
-        animation.SetBool("isBlock", isBlock);
-        animation.SetBool("blockSuc", blockSuc);
-        animation.SetBool("protect", protect);
-    }
-
-    private void Flip()//控制转向
-    {
-        if (rigidbody2D.velocity.x > 0 && faceRight == false)
-        {
-            transform.Rotate(0, 180, 0);
-            faceRight = true;
-        }
-        if (rigidbody2D.velocity.x < 0 && faceRight == true)
-        {
-            transform.Rotate(0, 180, 0);
-            faceRight = false;
-        }
-    }
 
     public void GetDamage(float eATK)
     {
@@ -418,28 +343,16 @@ public class Player : MonoBehaviour
         {
             audioController.PlaySfx(audioController.playerHurt);
             protect = true;
-            isControl=false;
             rigidbody2D.velocity = new Vector3(0,0,0);
             HurtMove();
-            animation.Play("GetHurt");
+            anim.Play("GetHurt");
             health = health - eATK;
-            Invoke("HurtProtect", protectTime);
-            Invoke("Recontrol",recontrolTime);
         }
         if(isBlock == true)
         {
             blockSuc = true;
         }
        
-    }
-
-    private void HurtProtect()
-    {
-        protect = false;     
-    }
-    private void Recontrol()
-    {
-        isControl = true;
     }
 
     private void HurtMove()

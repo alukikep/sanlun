@@ -10,13 +10,7 @@ public class PlayerTest : MonoBehaviour
     public Idle idleState { get; private set; }
     public Move moveState { get; private set; }
 
-    private void Awake()
-    {
-        StateMachine = new PlayerStateMachine();
-
-        idleState = new Idle(this, StateMachine, "Idle");
-        moveState = new Move(this, StateMachine, "Move");
-    }
+    
 
     private void Start()
     {

@@ -360,7 +360,7 @@ Animator:
   m_GameObject: {fileID: 1428640491065239043}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 24187d3beddcbdd42b604022cacc0c5c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3e643636af8107f449427cb17e6de290, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -620,9 +620,9 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &5804106670443353414
 MonoBehaviour:
@@ -638,14 +638,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedRate: 8
   jumpForce: 14
+  rigidbody2D: {fileID: 133214304421512573}
+  anim: {fileID: 0}
   isBat: 0
   isMouse: 0
   faceRight: 0
   jumpDir: 0
+  menu: {fileID: 8403651166013251009}
   protectTime: 1
   recontrolTime: 0.4
   hurtMove: 30
   isControl: 1
+  audio: {fileID: 0}
+  audioController: {fileID: 0}
   isBlock: 0
   blockSuc: 0
   blockCoolTime: 3
@@ -667,6 +672,9 @@ MonoBehaviour:
   guardianNum: 4
   TimeSlow: {fileID: 7784096162072956982}
   isTimeSlowed: 0
+  capsuleCollider2D: {fileID: 0}
+  jumpNumber: 3
+  jumpLimit: 0
 --- !u!252 &2413746190978715744
 SurfaceEffector2D:
   m_ObjectHideFlags: 0
@@ -1362,7 +1370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5047204803198719380
 RectTransform:
   m_ObjectHideFlags: 0
