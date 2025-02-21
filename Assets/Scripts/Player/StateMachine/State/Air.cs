@@ -40,6 +40,10 @@ public class Air : PlayerState
             stateMachine.ChangeState(player.airAttackState);
         }
 
+        if(player.jumpNumber==0)
+        {
+            stateMachine.ChangeState(player.idleState);
+        }
         
     }
 }

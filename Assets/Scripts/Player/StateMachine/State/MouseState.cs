@@ -12,6 +12,7 @@ public class MouseState : Grounded
     {
         base.Enter();
         player.jumpForce = 8;
+        player.transform.position = player.transform.position - new Vector3(0, 0.8f, 0);
         player.capsuleCollider2D.size = new Vector2(0.5f, 0.5f);
         isMouse=true;
     }

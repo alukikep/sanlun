@@ -20,9 +20,9 @@ AnimationClip:
   m_PPtrCurves:
   - serializedVersion: 2
     curve:
-    - time: 0
+    - time: 0.0625
       value: {fileID: 21300000, guid: bdcbb01503b35fb40821eea04cee4f22, type: 3}
-    - time: 0.125
+    - time: 0.1875
       value: {fileID: 21300000, guid: bb0a83d075706244bb79b8dafb1a1907, type: 3}
     attribute: m_Sprite
     path: 
@@ -80,7 +80,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.25
+  - time: 0.1875
     functionName: GroundAttackEnd
     data: 
     objectReferenceParameter: {fileID: 0}

@@ -1,4 +1,5 @@
 using Cinemachine;
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -21,10 +22,15 @@ public class Player : MonoBehaviour
     public BatState batState { get; private set; }
     public MouseState mouseState { get; private set; }
     public AirAttack airAttackState { get; private set; }
+    public Block blockState { get; private set; }
+    public BlockSuc blockSucState { get; private set; }
 
 
 
 
+
+    public float raycastDistance = 1f; 
+    public LayerMask obstacleLayer; 
 
     public static Player Instance;//单例模式
 
@@ -33,6 +39,8 @@ public class Player : MonoBehaviour
 
     public Rigidbody2D rigidbody2D;
     public Animator anim;
+    private Menu menu;
+    public bool canRestore;
 
     private float oriJumpForce;
     private bool isSlowed;
@@ -44,7 +52,6 @@ public class Player : MonoBehaviour
     private bool highJump;
     private float leftSlowDuration;
     private bool protect;
-    public GameObject menu;
     [SerializeField] private float protectTime;
     [SerializeField] private float recontrolTime;
     [SerializeField] private float hurtMove;
@@ -55,8 +62,8 @@ public class Player : MonoBehaviour
     [Header("格挡相关")]
     public bool isBlock;
     public bool blockSuc;
-    private float blockCoolTimer;
-    [SerializeField]private float blockCoolTime;
+    public float blockCoolTimer;
+    public float blockCoolTime;
     public float blockBonus;
 
     [Header("Attack")]
@@ -119,7 +126,10 @@ public class Player : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
 
-       
+        oriJumpForce = jumpForce;
+        maxSpeed = speedRate;
+
+
         StateMachine = new PlayerStateMachine();
 
         idleState = new Idle(this, StateMachine, "Idle");
@@ -130,6 +140,8 @@ public class Player : MonoBehaviour
         batState = new BatState(this, StateMachine, "Bat");
         mouseState = new MouseState(this, StateMachine, "Mouse");
         airAttackState = new AirAttack(this, StateMachine, "AirAttack");
+        blockState = new Block(this, StateMachine, "Block");
+        blockSucState = new BlockSuc(this, StateMachine, "BlockSuc");
    
     }
     // Start is called before the first frame update
@@ -141,8 +153,7 @@ public class Player : MonoBehaviour
 
         StateMachine.Initialize(idleState);
 
-        oriJumpForce = jumpForce;
-        maxSpeed = speedRate;
+        
         Debug.Log("start");
         rigidbody2D = GetComponent<Rigidbody2D>();
         
@@ -186,29 +197,22 @@ public class Player : MonoBehaviour
     void Update()
     {
         StateMachine.currentState.Update();
+        blockCoolTimer -= Time.deltaTime;
+
+        HealthBar.maxHealth = maxHealth;
+        HealthBar.currentHealth = health;
+        MagicBar.maxMagic = maxMana;
+        MagicBar.currentMagic = (int)currentMana;
 
 
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            menu.SetActive(!menu.activeSelf);
-        }
-        if(menu.activeSelf==false)
-        {
-            Time.timeScale = 1;
-        }
-        else
-        {
-            Time.timeScale = 0;
-        }
 
-        
-       
-        if(currentMana>=maxMana)
+        if (currentMana>=maxMana)
         {
             currentMana = maxMana;
         }
-       
+
+        
 
         if (isAttack == false&&isBlock==false&& timeSlowScript.TimeSlowActive==false)//修改了一下用于适配缓速的副武器
         {
@@ -225,7 +229,7 @@ public class Player : MonoBehaviour
         }
        
         resetSpeed();
-        blockCoolTimer-=Time.deltaTime;
+       
         leftSlowDuration -= Time.deltaTime;
 
         if (health<0)
@@ -241,11 +245,30 @@ public class Player : MonoBehaviour
             currentMana += ManaPSOnSlow * Time.deltaTime;
         }
 
-        HealthBar.maxHealth = maxHealth;
-        HealthBar.currentHealth = health;
-        MagicBar.maxMagic=maxMana;
-        MagicBar.currentMagic= (int)currentMana;
+       
+    }
 
+    public bool CanRestore()
+    {
+        Vector2 raycastOrigin =capsuleCollider2D.transform.position-new Vector3(0,0.5f,0);
+       
+        raycastOrigin.y += capsuleCollider2D.size.y / 2;
+
+        RaycastHit2D hit = Physics2D.Raycast(raycastOrigin, Vector2.up, raycastDistance, obstacleLayer);
+
+        return hit.collider == null;
+    }
+
+    private void OnDrawGizmos()
+    {
+        // 在编辑器中绘制射线，方便调试
+        if (capsuleCollider2D != null)
+        {
+            Vector2 raycastOrigin = capsuleCollider2D.transform.position - new Vector3(0, 0.5f, 0);
+            raycastOrigin.y += capsuleCollider2D.size.y / 2;
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(raycastOrigin, raycastOrigin + Vector2.up * raycastDistance);
+        }
     }
 
     public void SetVelocity(float _xVelocity,float _yVelocity)
@@ -271,18 +294,11 @@ public class Player : MonoBehaviour
             jumpNumber = 2;
         }
     }
-    
-   
 
 
-    private void Block()
-    {
-        if (Input.GetKeyDown(KeyCode.F) && isBlock == false&&blockCoolTimer<0)
-        {
-            isBlock = true;
-            blockCoolTimer = blockCoolTime;
-        }
-    }
+
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // 当玩家与标签为“ground”的地面接触后，重置跳跃次数
@@ -330,8 +346,9 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground")&&isMouse==false)
+        if (collision.gameObject.CompareTag("Ground")&&mouseState.isMouse==false)
         {
+           StateMachine.ChangeState(fallState);
            jumpNumber = 1;
         }
     }
@@ -339,7 +356,7 @@ public class Player : MonoBehaviour
 
     public void GetDamage(float eATK)
     {
-        if (isBlock == false&&protect==false)
+        if (isBlock == false)
         {
             audioController.PlaySfx(audioController.playerHurt);
             protect = true;
@@ -350,7 +367,7 @@ public class Player : MonoBehaviour
         }
         if(isBlock == true)
         {
-            blockSuc = true;
+            StateMachine.ChangeState(blockSucState);
         }
        
     }

@@ -23,7 +23,7 @@ public class Grounded : PlayerState
     public override void Update()
     {
         base.Update();
-       
+
 
         if (Input.GetKeyDown(KeyCode.J)&&isMouse==false&&isAttack==false)
         {
@@ -46,10 +46,14 @@ public class Grounded : PlayerState
         {
             stateMachine.ChangeState(player.mouseState);  
         }
-        else if(Input.GetKeyDown(KeyCode.V) && isMouse == true)
+        else if(Input.GetKeyDown(KeyCode.V) && isMouse == true&&player.CanRestore())
         {
-            stateMachine.ChangeState(player.idleState);
-         
+                stateMachine.ChangeState(player.idleState);        
+        }
+
+        if(Input.GetKeyDown(KeyCode.K)&&player.blockCoolTimer<0)
+        {
+            stateMachine.ChangeState(player.blockState);
         }
     }
 }

@@ -77,13 +77,12 @@ public class AttackCheck : MonoBehaviour
 
     public void BlockEnd()
     {
-        player.isBlock=false;
+        player.StateMachine.ChangeState(player.idleState);
     }
 
     public void BlockSuccessEnd()
     {
-        player.isBlock = false;     
-        player.blockSuc=false;
-        player.blockBonus = 2;
+        player.StateMachine.ChangeState(player.idleState);
+        player.blockBonus = 1;
     }
 }
