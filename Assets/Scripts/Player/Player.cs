@@ -104,7 +104,7 @@ public class Player : MonoBehaviour
 
     
     public  CapsuleCollider2D capsuleCollider2D;
-    private float xSpeed;
+    public float xSpeed;
     public int jumpNumber; // 0,1,2分别表示跳跃了0，1，2次，控制二段跳
     public int jumpLimit;
 
@@ -220,7 +220,6 @@ public class Player : MonoBehaviour
 
         if (isAttack == false&&isBlock==false&& timeSlowScript.TimeSlowActive==false)//修改了一下用于适配缓速的副武器
         {
-            rigidbody2D.velocity = new Vector2(xSpeed * speedRate, rigidbody2D.velocity.y);
             rigidbody2D.gravityScale = 2;
             jumpForce = oriJumpForce;
            
@@ -229,7 +228,7 @@ public class Player : MonoBehaviour
         {
             jumpForce = 38;
             rigidbody2D.gravityScale = 20;      
-            rigidbody2D.velocity = new Vector2(xSpeed * speedRate / Time.timeScale,rigidbody2D.velocity.y);           
+            rigidbody2D.velocity = new Vector2( xSpeed * speedRate / Time.timeScale,rigidbody2D.velocity.y);           
         }
        
         resetSpeed();

@@ -153,7 +153,7 @@ MonoBehaviour:
   fireballDamage: 10
   attackInterval: 2
   projectileSpeed: 10
-  fireballPrefab: {fileID: 0}
+  fireballPrefab: {fileID: 6286231782093747090, guid: 6c576c9fbb37c344aa02c990af812015, type: 3}
   maxHealth: 2
   deathEffectDuration: 0.5
   deathParticle: {fileID: 0}

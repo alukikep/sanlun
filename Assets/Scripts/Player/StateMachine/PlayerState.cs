@@ -29,6 +29,7 @@ public class PlayerState
         xInput = Input.GetAxisRaw("Horizontal");
         player.anim.SetFloat("yVelocity",rb.velocity.y);
         player.SetVelocity(xInput * player.speedRate, rb.velocity.y);
+        player.xSpeed = xInput;
 
         if (xInput > 0)
         {

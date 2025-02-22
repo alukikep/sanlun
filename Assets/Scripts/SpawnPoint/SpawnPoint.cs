@@ -26,7 +26,7 @@ public class SpawnPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player == null)
+        if (_Player == null)
         {
             return;
         }

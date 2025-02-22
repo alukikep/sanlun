@@ -210,13 +210,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  impPrefab: {fileID: 0}
+  impPrefab: {fileID: 582120383126745895, guid: 59cf0de60e438ff4592955b14f50f918, type: 3}
   summonInterval: 5
   phase2YOffset: 2
   phase2XOffset: 2
   phase3SpeedMultiplier: 1.5
   phase3AttackMultiplier: 2
-  shieldEffectPrefab: {fileID: 0}
+  shieldEffectPrefab: {fileID: 5909545624280044251, guid: 606d614d235664443aa0599f232bd182, type: 3}
   phase3ShieldDuration: 5
   phase3ShieldCooldown: 10
   doubleJump: {fileID: 2694896876957022395, guid: 55ee93236592b484899237112d67bd51, type: 3}

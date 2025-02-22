@@ -1350,7 +1350,7 @@ PrefabInstance:
     - target: {fileID: 4633927529747440750, guid: 70c5d3a5e8b46b4418eccdaf3b97fd6f, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 5894094159649013001}
+      objectReference: {fileID: 0}
     - target: {fileID: 4633927529747440750, guid: 70c5d3a5e8b46b4418eccdaf3b97fd6f, type: 3}
       propertyPath: respawnTime
       value: 1
@@ -2081,11 +2081,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69ae445efb594844d85a7fc3e62b5030, type: 3}
---- !u!4 &5894094159649013001 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1243549605219080793, guid: ccad7a4a190cf7e4d8c2f51b0bca51a8, type: 3}
-  m_PrefabInstance: {fileID: 4651654013643417424}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6514386143545194636
 PrefabInstance:
   m_ObjectHideFlags: 0
