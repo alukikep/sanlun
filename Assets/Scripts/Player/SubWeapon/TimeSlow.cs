@@ -13,6 +13,7 @@ public class TimeSlow : MonoBehaviour
     {
         originalFixedDeltaTime = Time.fixedDeltaTime;
        TimeSlowActive = false;
+        
     }
    
     public IEnumerator ActiveTimeSlow()

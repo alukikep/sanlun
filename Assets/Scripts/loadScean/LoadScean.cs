@@ -12,6 +12,8 @@ public class LoadScean : MonoBehaviour
     private GameObject DoubleJumpUnlockItem;
     private bool isTransitioning = false;
     private GameObject Player;
+    private Player playerScripit;
+    private Rigidbody2D PlayerRB;
     public static string TargetSpawnPoint { get;private set; }
 
     private void Awake()
@@ -21,6 +23,7 @@ public class LoadScean : MonoBehaviour
     private void Start()
     {
         Player = GameObject.Find("Player");
+        PlayerRB = Player.GetComponent<Rigidbody2D>();
         
     }
     private void OnTriggerEnter2D(Collider2D collision)

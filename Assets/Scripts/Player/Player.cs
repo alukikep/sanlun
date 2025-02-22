@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
     private Menu menu;
     public bool canRestore;
 
-    private float oriJumpForce;
+   
     private bool isSlowed;
     public bool isBat;
     public bool isMouse;
@@ -101,8 +101,11 @@ public class Player : MonoBehaviour
     public bool isTimeSlowed;
     private Guardian guardianScript;
     private Axe axeScript;
+    [HideInInspector]public float oriG;
+    [HideInInspector] public float oriJumpForce;
+    private bool speedFixed=false;
 
-    
+
     public  CapsuleCollider2D capsuleCollider2D;
     public float xSpeed;
     public int jumpNumber; // 0,1,2分别表示跳跃了0，1，2次，控制二段跳
@@ -154,7 +157,7 @@ public class Player : MonoBehaviour
     void Start()
     {
 
-
+        oriG = rigidbody2D.gravityScale;
         anim = GetComponentInChildren<Animator>();
 
         StateMachine.Initialize(idleState);
@@ -220,18 +223,26 @@ public class Player : MonoBehaviour
 
         if (isAttack == false&&isBlock==false&& timeSlowScript.TimeSlowActive==false)//修改了一下用于适配缓速的副武器
         {
-            rigidbody2D.gravityScale = 2;
+            rigidbody2D.gravityScale = oriG;
             jumpForce = oriJumpForce;
-           
+          
+            if (speedFixed == false)
+            {
+                rigidbody2D.velocity = new Vector2(xSpeed * speedRate / Time.timeScale, rigidbody2D.velocity.y / 5);
+                Debug.Log("yes");
+            }
+            speedFixed = true;
         }
         else if(isAttack == false && isBlock == false && timeSlowScript.TimeSlowActive == true)
         {
             jumpForce = 38;
-            rigidbody2D.gravityScale = 20;      
+            rigidbody2D.gravityScale = 20;
+            speedFixed = false;
             rigidbody2D.velocity = new Vector2( xSpeed * speedRate / Time.timeScale,rigidbody2D.velocity.y);           
         }
        
         resetSpeed();
+        SubWeapon();
        
         leftSlowDuration -= Time.deltaTime;
 

@@ -43,6 +43,7 @@ public class Switch : MonoBehaviour
             if(hit.CompareTag("Player"))
             {
                 isPlayerNearBy = true;
+                break;
             }
             else
             {
