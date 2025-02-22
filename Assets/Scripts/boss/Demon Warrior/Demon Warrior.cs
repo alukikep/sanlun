@@ -59,7 +59,7 @@ public class DemonWarrior : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
-        player = GameObject.FindFirstObjectByType<Player>().transform;
+        player = Instantiate(player).transform;
         capsuleCollider=GetComponent<CapsuleCollider2D>();
 
         currentHealth = enemyHealth.maxHealth;

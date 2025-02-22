@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
     public Animator anim;
     private Menu menu;
     public bool canRestore;
+    [SerializeField]private Renderer renderer;
 
    
     private bool isSlowed;
@@ -80,6 +81,10 @@ public class Player : MonoBehaviour
     [Header("Health")]
     public float maxHealth;
     public float health;
+    [SerializeField] private float proTime;
+    [SerializeField] private int proNumber;
+    private float protTime;
+
 
     [Header("Mana")]
     public float maxMana;
@@ -122,6 +127,7 @@ public class Player : MonoBehaviour
     public bool isTimeSlowEnabled = false;
     void Awake()
     {
+       
         if (Instance == null)
         {
             Instance = this; // 确保单例引用正确
@@ -135,7 +141,7 @@ public class Player : MonoBehaviour
 
         oriJumpForce = jumpForce;
         maxSpeed = speedRate;
-
+        
 
         StateMachine = new PlayerStateMachine();
 
@@ -213,6 +219,8 @@ public class Player : MonoBehaviour
         MagicBar.maxMagic = maxMana;
         MagicBar.currentMagic = (int)currentMana;
 
+        protTime -= Time.deltaTime;
+
 
         if (currentMana>=maxMana)
         {
@@ -259,7 +267,14 @@ public class Player : MonoBehaviour
             currentMana += ManaPSOnSlow * Time.deltaTime;
         }
 
-       
+       if(xSpeed>0)
+        {
+            faceRight = true;
+        }
+       if(xSpeed<0)
+        {
+            faceRight= false;
+        }
     }
 
     public bool CanRestore()
@@ -310,7 +325,20 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void HurtProtect(int num,float seconds)
+    {
+        StartCoroutine(HurtPro(num, seconds));
+    }
 
+    IEnumerator HurtPro(int num, float seconds)
+    {
+        for(int i = 0; i < num*2; i++)
+        {
+            renderer.enabled=!renderer.enabled;
+            yield return new WaitForSeconds(seconds);
+        }
+        renderer.enabled=true;
+    }
 
 
 
@@ -371,11 +399,13 @@ public class Player : MonoBehaviour
 
     public void GetDamage(float eATK)
     {
-        if (isBlock == false)
+        if (isBlock == false&&protTime<0)
         {
+            protTime = proTime * proNumber * 2;
             audioController.PlaySfx(audioController.playerHurt);
             protect = true;
             health = health - eATK;
+            HurtProtect(proNumber, proTime);
         }
         if(isBlock == true)
         {
