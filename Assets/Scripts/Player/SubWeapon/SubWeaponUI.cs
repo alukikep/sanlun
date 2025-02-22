@@ -8,6 +8,7 @@ public class SubWeaponUI : MonoBehaviour
     [SerializeField] private Sprite axe;
     [SerializeField] private Sprite guard;
     [SerializeField] private Sprite clock;
+    [SerializeField] private Sprite empty;
     [SerializeField] private Image image;
     [SerializeField] private Player player;
     // Start is called before the first frame update
@@ -20,18 +21,23 @@ public class SubWeaponUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
       
         if(player.isAxe==true)
         {
             image.sprite = axe;
         }
-        if(player.isGuardian==true)
+        else if(player.isGuardian==true)
         {
             image.sprite = guard;
         }
-        if(player.isTimeSlowed==true)
+        else if(player.isTimeSlowed==true)
         {
             image.sprite=clock;
+        }
+        else
+        {
+            image.sprite=empty; 
         }
     }
 }
