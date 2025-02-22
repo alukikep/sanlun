@@ -542,6 +542,7 @@ public class Player : MonoBehaviour
             isGuardianEnabled = isGuardianEnabled,
             isTimeSlowEnabled = isTimeSlowEnabled,
             attack = ATK,
+            currentSceneName = SceneManager.GetActiveScene().name,
             inventoryItems = SaveInventory()
         };
 
@@ -567,6 +568,7 @@ public class Player : MonoBehaviour
             isGuardianEnabled = saveData.isGuardianEnabled;
             isTimeSlowEnabled = saveData.isTimeSlowEnabled;
             ATK = saveData.attack;
+            SceneManager.LoadScene(saveData.currentSceneName);
 
             // Load inventory items
             LoadInventory(saveData.inventoryItems);

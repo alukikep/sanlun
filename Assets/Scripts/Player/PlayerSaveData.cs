@@ -16,6 +16,7 @@ public class PlayerSaveData
     public bool isGuardianEnabled;
     public bool isTimeSlowEnabled;
     public float attack;
+    public string currentSceneName;
     public List<InventoryItemData> inventoryItems;
 }
 
