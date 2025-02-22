@@ -23,7 +23,9 @@ public class Player : MonoBehaviour
     public MouseState mouseState { get; private set; }
     public AirAttack airAttackState { get; private set; }
     public Block blockState { get; private set; }
-    public BlockSuc blockSucState { get; private set; }
+    public BlockSuc blockSucState {  get; private set; }
+    public HighJump highJumpState {  get; private set; }
+  
 
 
 
@@ -71,6 +73,8 @@ public class Player : MonoBehaviour
     public float attackRadius;
     public bool isAttack;
     public float ATK;
+    public float attackTime;
+    public float attackTimer;
    
 
     [Header("Health")]
@@ -106,13 +110,13 @@ public class Player : MonoBehaviour
 
     
 
-    private bool isdoubleJumpEnabled = false;
-    private bool ishighJumpEnabled=false;
-    private bool isbatTransformEnabled=false;
-    private bool isratTransformEnabled = false;
-    private bool isAxeEnabled = false;
-    private bool isGuardianEnabled = false;
-    private bool isTimeSlowEnabled = false;
+    public bool isdoubleJumpEnabled = false;
+    public bool ishighJumpEnabled=false;
+    public bool isbatTransformEnabled=false;
+    public bool isratTransformEnabled = false;
+    public bool isAxeEnabled = false;
+    public bool isGuardianEnabled = false;
+    public bool isTimeSlowEnabled = false;
     void Awake()
     {
         if (Instance == null)
@@ -142,6 +146,8 @@ public class Player : MonoBehaviour
         airAttackState = new AirAttack(this, StateMachine, "AirAttack");
         blockState = new Block(this, StateMachine, "Block");
         blockSucState = new BlockSuc(this, StateMachine, "BlockSuc");
+        highJumpState = new HighJump(this, StateMachine, "HighJump");
+       
    
     }
     // Start is called before the first frame update
@@ -205,13 +211,11 @@ public class Player : MonoBehaviour
         MagicBar.currentMagic = (int)currentMana;
 
 
-
-
         if (currentMana>=maxMana)
         {
             currentMana = maxMana;
         }
-
+        attackTimer -= Time.deltaTime;
         
 
         if (isAttack == false&&isBlock==false&& timeSlowScript.TimeSlowActive==false)//修改了一下用于适配缓速的副武器
@@ -261,8 +265,7 @@ public class Player : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        // 在编辑器中绘制射线，方便调试
-        if (capsuleCollider2D != null)
+               if (capsuleCollider2D != null)
         {
             Vector2 raycastOrigin = capsuleCollider2D.transform.position - new Vector3(0, 0.5f, 0);
             raycastOrigin.y += capsuleCollider2D.size.y / 2;
@@ -273,7 +276,9 @@ public class Player : MonoBehaviour
 
     public void SetVelocity(float _xVelocity,float _yVelocity)
     {
+        Debug.Log(_xVelocity);
         rigidbody2D.velocity= new Vector2(_xVelocity, _yVelocity);
+        Debug.Log("Move");
     }
 
     private void DoubleJump()
@@ -360,9 +365,6 @@ public class Player : MonoBehaviour
         {
             audioController.PlaySfx(audioController.playerHurt);
             protect = true;
-            rigidbody2D.velocity = new Vector3(0,0,0);
-            HurtMove();
-            anim.Play("GetHurt");
             health = health - eATK;
         }
         if(isBlock == true)
@@ -372,17 +374,6 @@ public class Player : MonoBehaviour
        
     }
 
-    private void HurtMove()
-    {
-        if(faceRight == false)
-        {
-            rigidbody2D.velocity = new Vector3(hurtMove,2,0);
-        }
-        else
-        {
-            rigidbody2D.velocity = new Vector3(-hurtMove, 2, 0);
-        }
-    }
 
 
     public void SubWeapon()

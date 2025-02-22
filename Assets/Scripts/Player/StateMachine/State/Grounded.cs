@@ -24,8 +24,9 @@ public class Grounded : PlayerState
     {
         base.Update();
 
+      
 
-        if (Input.GetKeyDown(KeyCode.J)&&isMouse==false&&isAttack==false)
+        if (Input.GetKeyDown(KeyCode.J)&&isMouse==false&&isAttack==false&&player.attackTimer<0)
         {
             stateMachine.ChangeState(player.attackState);
         }
@@ -42,11 +43,11 @@ public class Grounded : PlayerState
             player.jumpNumber++;
         }
 
-        if (Input.GetKeyDown(KeyCode.V)&&isMouse==false)
+        if (Input.GetKeyDown(KeyCode.V)&&isMouse==false&&player.isratTransformEnabled==true)
         {
             stateMachine.ChangeState(player.mouseState);  
         }
-        else if(Input.GetKeyDown(KeyCode.V) && isMouse == true&&player.CanRestore())
+        else if(Input.GetKeyDown(KeyCode.V) && isMouse == true&&player.CanRestore()&&player.isratTransformEnabled==true)
         {
                 stateMachine.ChangeState(player.idleState);        
         }

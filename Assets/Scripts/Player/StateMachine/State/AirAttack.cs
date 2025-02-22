@@ -13,6 +13,7 @@ public class AirAttack : PlayerState
         base.Enter();
         player.audioController.PlaySfx(player.audioController.attack);
         isAttack =true;
+        player.attackTimer = player.attackTime;
     }
 
     public override void Exit()

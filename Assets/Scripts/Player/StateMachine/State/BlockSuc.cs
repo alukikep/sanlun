@@ -11,13 +11,11 @@ public class BlockSuc : Block
     public override void Enter()
     {
         base.Enter();
-        player.isBlock = true;
     }
 
     public override void Exit()
     {
         base.Exit();
-        player.isBlock = false;
     }
 
     public override void Update()
