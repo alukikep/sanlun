@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d847cb7969a032c44ac41223d47b2c4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phase: 2
+  phase: 1
   attackCheck: {fileID: 6633879264046786595}
   attackRadius: 3
   isAttack: 0
