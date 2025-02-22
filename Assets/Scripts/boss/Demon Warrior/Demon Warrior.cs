@@ -17,7 +17,6 @@ public class DemonWarrior : MonoBehaviour
     public bool isAttack;
 
     [Header("½×¶Î²ÎÊý")]
-    public int maxHealth = 3;
     public float stopDistance = 3f;
     public float phaseTransitionDuration = 1f;
 
@@ -61,7 +60,6 @@ public class DemonWarrior : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = Player.Instance.transform;
         capsuleCollider=GetComponent<CapsuleCollider2D>();
-
         currentHealth = enemyHealth.maxHealth;
     }
 
@@ -225,7 +223,7 @@ public class DemonWarrior : MonoBehaviour
         if (phase > 3) phase = 3;
 
         ApplyPhaseModifiers();
-        currentHealth = maxHealth;
+        currentHealth = enemyHealth.maxHealth;
         isTransitioning = false;
     }
 
