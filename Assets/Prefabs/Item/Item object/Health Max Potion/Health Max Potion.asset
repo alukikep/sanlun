@@ -16,5 +16,7 @@ MonoBehaviour:
   icon: {fileID: -522958071, guid: a321228323c823841856a899d3284032, type: 3}
   itemType: 2
   healAmount: 0
-  increaseHealthMax: 10
+  increaseHealthMax: 20
   increaseAttack: 0
+  speedEnhanceRate: 0
+  Duration: 0
