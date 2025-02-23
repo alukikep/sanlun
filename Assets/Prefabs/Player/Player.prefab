@@ -622,7 +622,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 230.03925, y: -27.491302}
+  m_AnchoredPosition: {x: 230.0393, y: -27.491333}
   m_SizeDelta: {x: 397.6754, y: 24.7197}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5029287458418905426
@@ -839,8 +839,9 @@ MonoBehaviour:
   speedRate: 8
   jumpForce: 14
   rigidbody2D: {fileID: 5837281319785809218}
-  anim: {fileID: 0}
+  anim: {fileID: 2084463307126911195}
   canRestore: 0
+  renderer: {fileID: 8261027338092003067}
   isBat: 0
   isMouse: 0
   faceRight: 0
@@ -863,6 +864,8 @@ MonoBehaviour:
   attackTimer: 0.5
   maxHealth: 1000
   health: 1000
+  proTime: 0
+  proNumber: 0
   maxMana: 200
   currentMana: 0
   ManaPerSecond: 10
@@ -874,6 +877,8 @@ MonoBehaviour:
   guardianNum: 4
   TimeSlow: {fileID: 1906858406474088369}
   isTimeSlowed: 0
+  oriG: 0
+  oriJumpForce: 0
   capsuleCollider2D: {fileID: 0}
   xSpeed: 0
   jumpNumber: 3
