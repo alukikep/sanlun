@@ -91,8 +91,14 @@ public class Inventory : MonoBehaviour
                 case ItemData.ItemType.HealthMaxPotion:
                     Player.Instance.IncreaseMaxHealth(_item.increaseHealthMax);
                     break;
-                case ItemData.ItemType.AttackPotion:
-                    Player.Instance.IncreaseAttack(_item.increaseAttack);
+                case ItemData.ItemType.EnternalAttackPotion:
+                    Player.Instance.IncreaseEnternalAttack(_item.increaseAttack);
+                    break;
+                case ItemData.ItemType.TemporaryAttackPotion:
+                    Player.Instance.IncreaseTemporaryAttack(_item.increaseAttack,_item.Duration);
+                    break;
+                case ItemData.ItemType.SpeedPotion:
+                    Player.Instance.IncreaseSpeedRate(_item.increaseAttack, _item.Duration);
                     break;
             }
             RemoveItem(_item);

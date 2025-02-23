@@ -11,6 +11,8 @@ public class ItemData : ScriptableObject
     public int healAmount;    // 治疗量，仅对治疗药水有效
     public int increaseHealthMax; // 增加生命值上限
     public int increaseAttack;    // 增加攻击力
+    public int speedEnhanceRate;
+    public int Duration;
 
 
     // 物品类型枚举
@@ -19,6 +21,8 @@ public class ItemData : ScriptableObject
         None,
         HealingPotion,
         HealthMaxPotion,
-        AttackPotion
+        EnternalAttackPotion,
+        TemporaryAttackPotion,
+        SpeedPotion
     }
 }

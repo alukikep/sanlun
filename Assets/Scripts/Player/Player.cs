@@ -74,6 +74,7 @@ public class Player : MonoBehaviour
     public float attackRadius;
     public bool isAttack;
     public float ATK;
+    private float recordATK;//用于记录ATK
     public float attackTime;
     public float attackTimer;
    
@@ -113,6 +114,7 @@ public class Player : MonoBehaviour
 
     public  CapsuleCollider2D capsuleCollider2D;
     public float xSpeed;
+    private float recordxSpeed;
     public int jumpNumber; // 0,1,2分别表示跳跃了0，1，2次，控制二段跳
     public int jumpLimit;
 
@@ -505,10 +507,33 @@ public class Player : MonoBehaviour
         Debug.Log("Player's max health increased! New max health: " + maxHealth);
     }
 
-    public void IncreaseAttack(int amount)
+    public void IncreaseEnternalAttack(int amount)
     {
         ATK += amount;
         Debug.Log("Player's attack increased! New attack: " + ATK);
+    }
+    public void IncreaseTemporaryAttack(int amount,int duration)
+    {
+        recordATK = ATK;
+        ATK += amount; // 增加攻击力
+        StartCoroutine(RestoreAttackAfterDelay(duration)); // 启动协程，等待恢复
+    }
+    // 协程：在指定时间后恢复攻击力
+    private IEnumerator RestoreAttackAfterDelay(float duration)
+    {
+        yield return new WaitForSeconds(duration); // 等待指定时间
+        ATK = recordATK; // 恢复原始攻击力
+    }
+    public void IncreaseSpeedRate(float rate,float duration)
+    {
+        recordxSpeed = xSpeed;
+        xSpeed*=rate;
+        StartCoroutine(RestorexSpeedAfterDelay(duration));
+    }
+    private IEnumerator RestorexSpeedAfterDelay(float duration)
+    {
+        yield return new WaitForSeconds(duration); // 等待指定时间
+        xSpeed = recordxSpeed; // 恢复原始攻击力
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {

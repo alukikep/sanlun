@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35575c5c63f8f3c4eae558577762847b, type: 3}
-  m_Name: Attack Potion
+  m_Name: TemporaryAttackPotion
   m_EditorClassIdentifier: 
-  itemName: Attack Potion
-  icon: {fileID: -816892183, guid: a321228323c823841856a899d3284032, type: 3}
-  itemType: 3
+  itemName: TemporaryAttackPotion
+  icon: {fileID: -812435345, guid: a321228323c823841856a899d3284032, type: 3}
+  itemType: 0
   healAmount: 0
   increaseHealthMax: 0
-  increaseAttack: 5
+  increaseAttack: 10
+  speedEnhanceRate: 0
+  Duration: 10
