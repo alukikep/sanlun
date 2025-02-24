@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6487927024242153558}
   - component: {fileID: 1299165474255668146}
   m_Layer: 0
-  m_Name: Item object-Enternal Attack Potion
+  m_Name: Item object-Eternal Attack Potion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a74ca58cf3987324584f48eda8aba9ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemData: {fileID: 11400000, guid: 73f387cb707f0a1489e6e894de8e60e4, type: 2}
+  ItemData1: {fileID: 11400000, guid: 73f387cb707f0a1489e6e894de8e60e4, type: 2}
 --- !u!61 &1299165474255668146
 BoxCollider2D:
   m_ObjectHideFlags: 0
