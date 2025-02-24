@@ -15,6 +15,8 @@ MonoBehaviour:
   itemName: Healing Potion
   icon: {fileID: 1001614351, guid: a321228323c823841856a899d3284032, type: 3}
   itemType: 1
-  healAmount: 50
+  healAmount: 200
   increaseHealthMax: 0
   increaseAttack: 0
+  speedEnhanceRate: 0
+  Duration: 0

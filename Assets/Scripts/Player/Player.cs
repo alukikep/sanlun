@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     public static Player Instance;//单例模式
 
     public float speedRate; // 速率系数
+    private float recordSpeedRate;
     public float jumpForce; // 跳跃高度
 
     public Rigidbody2D rigidbody2D;
@@ -114,7 +115,6 @@ public class Player : MonoBehaviour
 
     public  CapsuleCollider2D capsuleCollider2D;
     public float xSpeed;
-    private float recordxSpeed;
     public int jumpNumber; // 0,1,2分别表示跳跃了0，1，2次，控制二段跳
     public int jumpLimit;
 
@@ -526,14 +526,14 @@ public class Player : MonoBehaviour
     }
     public void IncreaseSpeedRate(float rate,float duration)
     {
-        recordxSpeed = xSpeed;
-        xSpeed*=rate;
+        recordSpeedRate = maxSpeed;
+        maxSpeed*=rate;
         StartCoroutine(RestorexSpeedAfterDelay(duration));
     }
     private IEnumerator RestorexSpeedAfterDelay(float duration)
     {
         yield return new WaitForSeconds(duration); // 等待指定时间
-        xSpeed = recordxSpeed; // 恢复原始攻击力
+        maxSpeed = recordSpeedRate;
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {

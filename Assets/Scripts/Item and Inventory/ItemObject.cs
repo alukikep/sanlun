@@ -19,6 +19,7 @@ public class ItemObject : MonoBehaviour
         {
             if (ItemData1.itemType == ItemData.ItemType.HealthMaxPotion || ItemData1.itemType == ItemData.ItemType.EnternalAttackPotion)
             {
+                Inventory.Instance.AddItem(ItemData1);
                 Inventory.Instance.UseItem(ItemData1);
                 Destroy(gameObject);
             }
