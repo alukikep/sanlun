@@ -8,7 +8,7 @@ public class FireBall : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
 [SerializeField] private float moveSpeed;
-private float destroyTimer = 10;//自毁时间
+[SerializeField]private float destroyTimer = 10;//自毁时间
 public float ATK;
     private GameObject player;
 // Start is called before the first frame update
