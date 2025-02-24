@@ -23,14 +23,8 @@ public class Jump : Air
     {
         base.Update();
 
-        if (player.jumpNumber < player.jumpLimit && Input.GetKeyDown(KeyCode.Space))
-        {
-            player.audioController.PlaySfx(player.audioController.jump);
-            player.jumpNumber++;
-            stateMachine.ChangeState(player.jumpState);
-        }
 
-        if (rb.velocity.y==0)
+        if (player.jumpNumber==0)
         {
             stateMachine.ChangeState(player.idleState);
         }

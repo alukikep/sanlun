@@ -365,6 +365,7 @@ public class Player : MonoBehaviour
             {
                 case Ability.DoubleJump:
                     isdoubleJumpEnabled = true;
+                    jumpLimit = 2;
                     break;
                 case Ability.HighJump:
                     ishighJumpEnabled = true;

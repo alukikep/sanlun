@@ -50,6 +50,12 @@ public class Air : PlayerState
         {
             stateMachine.ChangeState(player.highJumpState);
         }
-        
+
+        if (player.jumpNumber < player.jumpLimit && Input.GetKeyDown(KeyCode.Space))
+        {
+            player.audioController.PlaySfx(player.audioController.jump);
+            player.jumpNumber++;
+            stateMachine.ChangeState(player.jumpState);
+        }
     }
 }

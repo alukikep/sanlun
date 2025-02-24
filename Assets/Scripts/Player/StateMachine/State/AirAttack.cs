@@ -25,7 +25,7 @@ public class AirAttack : PlayerState
     public override void Update()
     {
         base.Update();
-        if(player.jumpNumber==2)
+        if(player.jumpNumber==0)
         {
             stateMachine.ChangeState(player.idleState);
         }
