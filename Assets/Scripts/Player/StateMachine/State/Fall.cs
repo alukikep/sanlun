@@ -22,7 +22,7 @@ public class Fall : Air
     {
         base.Update();
 
-        if (rb.velocity.y == 0)
+        if (player.jumpNumber==0)
         {
             stateMachine.ChangeState(player.idleState);
         }

@@ -242,7 +242,7 @@ MonoBehaviour:
   attackCheck: {fileID: 863693764070118498}
   ATK: 60
   playerPosition: {fileID: 0}
-  stopDistanceX: 0.8
+  stopDistanceX: 4
   moveSpeed: 2
 --- !u!114 &984091753981882563
 MonoBehaviour:

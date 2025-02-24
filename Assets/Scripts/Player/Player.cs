@@ -61,6 +61,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float hurtMove;
     public GameObject audio;
     public AudioController audioController;
+    public BoxCollider2D boxCollider;
     
 
     [Header("∏Òµ≤œ‡πÿ")]
@@ -175,6 +176,7 @@ public class Player : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         
         capsuleCollider2D = GetComponent<CapsuleCollider2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
         audio = GameObject.FindGameObjectWithTag("Audio");
         audioController = audio.GetComponent<AudioController>();
         isBat = false;

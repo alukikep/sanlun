@@ -14,6 +14,7 @@ public class MouseState : Grounded
         player.jumpForce = 8;
         player.transform.position = player.transform.position - new Vector3(0, 0.8f, 0);
         player.capsuleCollider2D.size = new Vector2(0.5f, 0.5f);
+        player.boxCollider.offset =new Vector2 (0, -0.4f);
         isMouse=true;
     }
 
@@ -23,6 +24,7 @@ public class MouseState : Grounded
         player.transform.position = player.transform.position + new Vector3(0, 0.7f, 0);
         player.jumpForce = 14;
         player.capsuleCollider2D.size = new Vector2(0.4f, 1.7f);
+        player.boxCollider.offset = new Vector2(0, -1);
         isMouse=false;
  
     }
