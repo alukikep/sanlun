@@ -960,7 +960,7 @@ MonoBehaviour:
   maxMana: 200
   currentMana: 0
   ManaPerSecond: 10
-  SwitchKey: 113
+  SwitchKey: 117
   axe: {fileID: 5762047534356073613, guid: 14d34defe9acd644690916ec6c0523b8, type: 3}
   isAxe: 1
   guardian: {fileID: 1551691195948429998, guid: d60d5f33a284a89479c0a7dd11e5da76, type: 3}
@@ -1345,6 +1345,7 @@ MonoBehaviour:
   fallGround: {fileID: 8300000, guid: 0c8ba43162f14934c878f3d5e2bbc37c, type: 3}
   handleStart: {fileID: 8300000, guid: bbf4b10cf23c5314da73c00538c73f0b, type: 3}
   wallBreak: {fileID: 8300000, guid: 4cd2593f4317159419a053e1e4e678b3, type: 3}
+  minotaurAttack: {fileID: 0}
 --- !u!1 &6178018840144071281
 GameObject:
   m_ObjectHideFlags: 0

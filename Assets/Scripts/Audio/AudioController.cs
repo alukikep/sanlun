@@ -27,6 +27,9 @@ public class AudioController : MonoBehaviour
     public AudioClip fallGround;
     public AudioClip handleStart;
     public AudioClip wallBreak;
+
+    [Header("EnemySfx")]
+    public AudioClip minotaurAttack;
     void Start()
     {
         currentScene = "123";

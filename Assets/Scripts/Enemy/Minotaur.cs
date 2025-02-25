@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Minotaur : MonoBehaviour
@@ -10,6 +11,9 @@ public class Minotaur : MonoBehaviour
     [SerializeField] private bool faceRight;
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform bulletSet;
+    [SerializeField] private Player player;
+    [SerializeField] private bool isMinotaus=false;
+    [SerializeField] private float attackStartDis;
 
 
 
@@ -34,6 +38,7 @@ public class Minotaur : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rigidbody2D = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -88,7 +93,16 @@ public class Minotaur : MonoBehaviour
 
     private void AttackPlayer()
     {
-        if (attackTimer < 0)
+        float dirToPlayer;
+        if(playerPosition!=null)
+        {
+            dirToPlayer = Vector2.Distance(playerPosition.position,transform.position);
+        }
+        else
+        {
+            dirToPlayer = 100;
+        }
+        if (attackTimer < 0&&attackStartDis>dirToPlayer)
         {
             AttackAnim();
             attackTimer = attackTime;
@@ -108,6 +122,7 @@ public class Minotaur : MonoBehaviour
         }
 
         GameObject Bullet = Instantiate(bullet, bulletSet.position, Quaternion.identity);
+
     }
 
     private void AttackEnd()
