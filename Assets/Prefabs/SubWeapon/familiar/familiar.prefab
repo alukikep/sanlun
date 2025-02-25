@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce1f8e6a1ca17841824e200ae4f2273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  neededManaPerS: 2
+  neededManaPerS: 40
   maxhealth: 20
   currentHealth: 0
   damage: 3

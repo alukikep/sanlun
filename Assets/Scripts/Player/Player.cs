@@ -219,14 +219,9 @@ public class Player : MonoBehaviour
         {
             timeSlowScript = TimeSlow.GetComponent<TimeSlow>();
         }
-        if(familiarScript==null)
-        {
-            return;
-        }
-        else
-        {
-            familiarScript = familiar.GetComponent<Familiar>();
-        }
+        
+        familiarScript = familiar.GetComponent<Familiar>();
+        
         ManaPSOnSlow = ManaPerSecond /timeSlowScript.slowDownFactor;
 
 
