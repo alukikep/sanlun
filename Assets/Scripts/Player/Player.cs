@@ -3,6 +3,8 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEditor;
 using UnityEditor.SearchService;
@@ -241,7 +243,10 @@ public class Player : MonoBehaviour
           
             if (speedFixed == false)
             {
-                rigidbody2D.velocity = new Vector2(xSpeed * speedRate / Time.timeScale, rigidbody2D.velocity.y / 5);
+                if (Time.timeScale != 0)
+                {
+                    rigidbody2D.velocity = new Vector2(xSpeed * speedRate / Time.timeScale, rigidbody2D.velocity.y / 5);
+                }
             }
             speedFixed = true;
         }
@@ -555,6 +560,7 @@ public class Player : MonoBehaviour
     }
     public void SavePlayer()
     {
+        health=maxHealth;
         PlayerSaveData saveData = new PlayerSaveData
         {
             health = health,
@@ -569,13 +575,13 @@ public class Player : MonoBehaviour
             isTimeSlowEnabled = isTimeSlowEnabled,
             attack = ATK,
             currentSceneName = SceneManager.GetActiveScene().name,
-            inventoryItems = SaveInventory()
+            inventoryItems = SaveInventory(),
         };
 
         string json = JsonUtility.ToJson(saveData);
         System.IO.File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
     }
-    public void LoadPlayer()
+    public async void LoadPlayer()
     {
         string path = Application.persistentDataPath + "/playerData.json";
         if (System.IO.File.Exists(path))
@@ -583,6 +589,7 @@ public class Player : MonoBehaviour
             string json = System.IO.File.ReadAllText(path);
             PlayerSaveData saveData = JsonUtility.FromJson<PlayerSaveData>(json);
 
+            SceneManager.LoadScene(saveData.currentSceneName);
             health = saveData.health;
             currentMana = saveData.currentMana;
             transform.position = saveData.position;
@@ -594,13 +601,13 @@ public class Player : MonoBehaviour
             isGuardianEnabled = saveData.isGuardianEnabled;
             isTimeSlowEnabled = saveData.isTimeSlowEnabled;
             ATK = saveData.attack;
-            SceneManager.LoadScene(saveData.currentSceneName);
 
-            // 在加载完成后更新虚拟摄像机的跟随目标
+            
             StartCoroutine(UpdateVirtualCameraAfterLoad());
-            // Load inventory items
+            await Task.Delay(1000);
             LoadInventory(saveData.inventoryItems);
         }
+        Debug.Log(Inventory.Instance.inventoryDictionary);
     }
     private IEnumerator UpdateVirtualCameraAfterLoad()
     {
@@ -631,16 +638,18 @@ public class Player : MonoBehaviour
         return inventoryItems;
     }
 
-    private void LoadInventory(List<InventoryItemData> inventoryData)
+    private void LoadInventory(List<InventoryItemData> inventoryItems)
     {
-        foreach (var itemData in inventoryData)
+        foreach (var itemData in inventoryItems)
         {
-            ItemData item = Resources.Load<ItemData>("Items/" + itemData.itemName); // 需要根据实际情况调整路径
+            ItemData item = Resources.Load<ItemData>("Items/" +itemData.itemName);
             if (item != null)
             {
                 Inventory.Instance.AddItem(item);
                 Inventory.Instance.inventoryDictionary[item].stackSize = itemData.quantity;
             }
         }
+        Inventory.Instance.UpdateSlotUI();
     }
+  
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 
 public class CheckPoint : MonoBehaviour
 {
@@ -59,4 +60,5 @@ public class CheckPoint : MonoBehaviour
         Player.Instance.LoadPlayer(); // 调用玩家的读档方法
         Debug.Log("游戏已读取");
     }
+    
 }

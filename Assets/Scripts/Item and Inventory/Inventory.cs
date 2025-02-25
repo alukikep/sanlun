@@ -26,15 +26,16 @@ public class Inventory : MonoBehaviour
         {
             Destroy(gameObject); // 销毁重复的实例
         }
+        
     }
     private void Start()
     {
         InventoryItems = new List<InventoryItem>();
         inventoryDictionary = new Dictionary<ItemData, InventoryItem>();
 
-        itemSlot=inventorySlotParent.GetComponentsInChildren<UI_ItemSlot>();
+        itemSlot = inventorySlotParent.GetComponentsInChildren<UI_ItemSlot>();
     }
-    private void UpdateSlotUI()
+    public void UpdateSlotUI()
     {
         for (int i = 0; i < itemSlot.Length; i++)
         {
@@ -52,18 +53,21 @@ public class Inventory : MonoBehaviour
     }
     public void AddItem(ItemData _item)
     {
-        //在背包中，相同物品堆叠
-        if(inventoryDictionary.TryGetValue(_item, out InventoryItem value))
+        // 使用 itemType 查找字典中是否已存在相同的物品
+        foreach (var kvp in inventoryDictionary)
         {
-            value.AddStack();
+            if (kvp.Key.itemType == _item.itemType) // 比较 itemType
+            {
+                kvp.Value.AddStack(); // 增加堆叠数量
+                UpdateSlotUI();
+                return;
+            }
         }
-        //新物品新建
-        else
-        {
-            InventoryItem newItem = new InventoryItem(_item);
-            InventoryItems.Add(newItem);
-            inventoryDictionary.Add(_item, newItem);
-        }
+
+        // 如果没有找到，创建新的物品
+        InventoryItem newItem = new InventoryItem(_item);
+        InventoryItems.Add(newItem);
+        inventoryDictionary.Add(_item, newItem);
         UpdateSlotUI();
     }
     public void RemoveItem(ItemData _item)
@@ -112,13 +116,25 @@ public class Inventory : MonoBehaviour
     {
         foreach (var itemData in inventoryData)
         {
-            ItemData item = Resources.Load<ItemData>("Items/" + itemData.itemName); // 需要根据实际情况调整路径
+            ItemData item = Resources.Load<ItemData>("Items/" + itemData.itemName);
             if (item != null)
             {
-                AddItem(item);
-                inventoryDictionary[item].stackSize = itemData.quantity;
+                // 使用 itemType 查找字典中是否已存在相同的物品
+                if (inventoryDictionary.TryGetValue(item, out InventoryItem value))
+                {
+                    if (value.data.itemType == item.itemType) // 比较 itemType
+                    {
+                        value.stackSize = itemData.quantity; // 更新堆叠数量
+                    }
+                }
+                else
+                {
+                    AddItem(item);
+                    inventoryDictionary[item].stackSize = itemData.quantity;
+                }
             }
         }
+        UpdateSlotUI(); // 更新 UI
     }
     public void SaveInventory()
     {
