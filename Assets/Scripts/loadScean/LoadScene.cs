@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadScean : MonoBehaviour
+public class LoadScene : MonoBehaviour
 {
     [Header("场景设置")]
     [SerializeField] private string targetSceneName; //场景名称
@@ -30,7 +30,7 @@ public class LoadScean : MonoBehaviour
     {
         if (collision.CompareTag("Player") && !isTransitioning)
         {
-            
+            Inventory.Instance.SaveInventory();
             LoadTargetScene();
            
         }
@@ -41,7 +41,6 @@ public class LoadScean : MonoBehaviour
         TargetSpawnPoint = targetSpawnPointName;
             StartCoroutine(LoadAsyncScene());
             isTransitioning = true;
-        
     }
 
     private IEnumerator LoadAsyncScene()
@@ -57,7 +56,7 @@ public class LoadScean : MonoBehaviour
             }
             yield return null;
         }
-       
+        Inventory.Instance.LoadInventory();
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {

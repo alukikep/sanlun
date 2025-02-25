@@ -174,7 +174,6 @@ public class Player : MonoBehaviour
         StateMachine.Initialize(idleState);
 
         
-        Debug.Log("start");
         rigidbody2D = GetComponent<Rigidbody2D>();
         
         capsuleCollider2D = GetComponent<CapsuleCollider2D>();
@@ -243,7 +242,6 @@ public class Player : MonoBehaviour
             if (speedFixed == false)
             {
                 rigidbody2D.velocity = new Vector2(xSpeed * speedRate / Time.timeScale, rigidbody2D.velocity.y / 5);
-                Debug.Log("yes");
             }
             speedFixed = true;
         }
@@ -307,9 +305,7 @@ public class Player : MonoBehaviour
 
     public void SetVelocity(float _xVelocity,float _yVelocity)
     {
-        Debug.Log(_xVelocity);
         rigidbody2D.velocity= new Vector2(_xVelocity, _yVelocity);
-        Debug.Log("Move");
     }
 
     private void DoubleJump()
@@ -542,7 +538,7 @@ public class Player : MonoBehaviour
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        string TargetSpawnName = LoadScean.TargetSpawnPoint;
+        string TargetSpawnName = LoadScene.TargetSpawnPoint;
         GameObject Player = GameObject.Find("Player");
         GameObject TargetSpawn = GameObject.Find(TargetSpawnName);
         transform.position = TargetSpawn.transform.position;
