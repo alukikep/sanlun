@@ -596,11 +596,25 @@ public class Player : MonoBehaviour
             ATK = saveData.attack;
             SceneManager.LoadScene(saveData.currentSceneName);
 
+            // 在加载完成后更新虚拟摄像机的跟随目标
+            StartCoroutine(UpdateVirtualCameraAfterLoad());
             // Load inventory items
             LoadInventory(saveData.inventoryItems);
         }
     }
+    private IEnumerator UpdateVirtualCameraAfterLoad()
+    {
+        // 等待场景加载完成
+        yield return new WaitForSeconds(0.1f); // 等待0.1秒，确保场景加载完成
 
+        // 获取虚拟摄像机
+        CinemachineVirtualCamera virtualCam = FindObjectOfType<CinemachineVirtualCamera>();
+        if (virtualCam != null)
+        {
+            virtualCam.Follow = transform; // 将虚拟摄像机的跟随目标设置为玩家
+            virtualCam.LookAt = transform; // 将虚拟摄像机的跟随目标设置为玩家
+        }
+    }
     private List<InventoryItemData> SaveInventory()
     {
         List<InventoryItemData> inventoryItems = new List<InventoryItemData>();
