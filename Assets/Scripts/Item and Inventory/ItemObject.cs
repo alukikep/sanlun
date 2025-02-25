@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ItemObject : MonoBehaviour
 {
-   
+    
     [SerializeField] private ItemData ItemData1;
-
+    private bool isProcessed = false; // 添加一个标记
     private void OnValidate()
     {
         GetComponent<SpriteRenderer>().sprite =ItemData1.icon;
@@ -15,9 +15,10 @@ public class ItemObject : MonoBehaviour
    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Player>() != null)
+        if (collision.GetComponent<Player>() != null&& !isProcessed)
         {
-            if (ItemData1.itemType == ItemData.ItemType.HealthMaxPotion || ItemData1.itemType == ItemData.ItemType.EnternalAttackPotion)
+            isProcessed = true;
+            if (ItemData1.itemType == ItemData.ItemType.HealthMaxPotion || ItemData1.itemType == ItemData.ItemType.EnternalAttackPotion|| ItemData1.itemType == ItemData.ItemType.ManaCapacityPotion)
             {
                 Inventory.Instance.AddItem(ItemData1);
                 Inventory.Instance.UseItem(ItemData1);
