@@ -25,7 +25,7 @@ public class Axe : MonoBehaviour
         player = _player.GetComponent<Player>();
         ThrowAxe();
         _spriteRenderer = GetComponent<SpriteRenderer>();
-       
+        damage = player.ATK;
        
     }
 
@@ -70,7 +70,7 @@ public class Axe : MonoBehaviour
     private void AttackTrigger()
     {
         Collider2D[] Enemies = Physics2D.OverlapCircleAll(attackCheck.position, attackRadius, LayerMask.GetMask("Enemy"));
-
+        Collider2D[] Bricks = Physics2D.OverlapCircleAll(attackCheck.position, attackRadius, LayerMask.GetMask("DestructibleBricks"));
         foreach (var hit in Enemies)
         {
             if (hit.GetComponent<EnemyHealth>() != null && !hit.isTrigger)
@@ -79,6 +79,14 @@ public class Axe : MonoBehaviour
                     hit.GetComponent<EnemyHealth>().GetDamage(damage);
                 Destroy(gameObject);
                 
+            }
+        }
+        foreach (var hit in Bricks)
+        {
+            if(hit.GetComponent<DestructibleBricks>()!=null)
+            {
+                hit.GetComponent<DestructibleBricks>().GetDamage(damage);
+                Destroy (gameObject);
             }
         }
 

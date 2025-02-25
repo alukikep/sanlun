@@ -100,8 +100,8 @@ public class Player : MonoBehaviour
     private float ManaPSOnSlow;
 
     [Header("∏±Œ‰∆˜œ‡πÿ")]
-    public KeyCode SwitchKey = KeyCode.U;
-    public KeyCode UseKey = KeyCode.I;
+    public KeyCode SwitchKey = KeyCode.I;
+    public KeyCode UseKey = KeyCode.O;
     private int CurrentSubWeaponNum=0;
     private int maxSubWeaponNum = 0;
     public GameObject axe;
@@ -220,7 +220,15 @@ public class Player : MonoBehaviour
         {
             timeSlowScript = TimeSlow.GetComponent<TimeSlow>();
         }
-        
+        if (familiar == null)
+        {
+            return;
+        }
+        else
+        {
+            familiarScript = familiar.GetComponent<Familiar>();
+        }
+
         familiarScript = familiar.GetComponent<Familiar>();
         
         ManaPSOnSlow = ManaPerSecond /timeSlowScript.slowDownFactor;
@@ -241,10 +249,6 @@ public class Player : MonoBehaviour
 
         protTime -= Time.deltaTime;
 
-        if(familiarScript == null)
-        {
-            Debug.Log("yes");
-        }
         if (currentMana>=maxMana)
         {
             currentMana = maxMana;
@@ -484,7 +488,7 @@ public class Player : MonoBehaviour
             GameObject SubWeapon = Instantiate(axe, transform.position, Quaternion.identity);
             currentMana-=axeScript.neededMana;
         }
-        if (Input.GetKeyDown(UseKey) && isFamiliar && currentMana >= familiarScript.neededManaPerS && isFamiliarAlive == false)
+        if (Input.GetKeyDown(UseKey) && isFamiliar && currentMana > 0 && isFamiliarAlive == false)
         {
             currentFamiliar = Instantiate(familiar, transform.position, Quaternion.identity);
             isFamiliarAlive = true;
@@ -494,10 +498,10 @@ public class Player : MonoBehaviour
             Destroy(currentFamiliar);
             isFamiliarAlive = false;
         }
-        if(currentMana>=familiarScript.neededManaPerS&&isFamiliarAlive==true)
+        if(currentMana>=0&&isFamiliarAlive==true)
         {
             currentMana-=Time.deltaTime*familiarScript.neededManaPerS;
-            if(currentMana<familiarScript.neededManaPerS)
+            if(currentMana<0)
             {
                 Destroy(currentFamiliar);
                 isFamiliarAlive = false;

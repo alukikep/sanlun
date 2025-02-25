@@ -148,16 +148,17 @@ public class Bat : MonoBehaviour
             
             Vector2 directionToTarget = (targetPosition - transform.position).normalized;
             rb.velocity = directionToTarget * divingSpeed;
-
             
-            if (Vector3.Distance(transform.position, targetPosition) <= 0.5f)
+            
+            if (Vector2.Distance(transform.position, targetPosition) <= 0.5f)
             {
+                
                 rb.velocity = Vector2.zero;
                 hasStartedDiving = false; 
                 diving = false; 
             }
         }
-        else if (!hasStartedDiving && Vector3.Distance(transform.position, originalPosition) > 0.1f && isAttacking)
+        else if (!hasStartedDiving && Vector2.Distance(transform.position, originalPosition) > 0.1f && isAttacking)
         {
            
             Vector2 directionToOriginal = (originalPosition - transform.position).normalized;
