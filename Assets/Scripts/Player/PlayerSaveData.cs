@@ -20,7 +20,7 @@ public class PlayerSaveData
     public List<InventoryItemData> inventoryItems;
 }
 
-[Serializable]
+[System.Serializable]
 public class InventoryItemData
 {
     public string itemName;

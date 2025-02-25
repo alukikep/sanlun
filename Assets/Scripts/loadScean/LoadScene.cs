@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Threading;
+using System.Threading.Tasks;
 
 public class LoadScene : MonoBehaviour
 {
@@ -11,10 +13,11 @@ public class LoadScene : MonoBehaviour
     [SerializeField] private string targetSpawnPointName;
     private GameObject DoubleJumpUnlockItem;
     private bool isTransitioning = false;
-    private GameObject Player;
+    private GameObject Player1;
     private Player playerScripit;
     private Rigidbody2D PlayerRB;
-    public static string TargetSpawnPoint { get;private set; }
+    List<InventoryItemData> inventoryItems;
+    public static string TargetSpawnPoint { get; private set; }
 
     private void Awake()
     {
@@ -22,25 +25,26 @@ public class LoadScene : MonoBehaviour
     }
     private void Start()
     {
-        Player = GameObject.Find("Player");
-        PlayerRB = Player.GetComponent<Rigidbody2D>();
-        
+        Player1 = GameObject.Find("Player");
+        PlayerRB = Player1.GetComponent<Rigidbody2D>();
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && !isTransitioning)
         {
-            Inventory.Instance.SaveInventory();
+            inventoryItems = Player.Instance.SaveInventory();
             LoadTargetScene();
-           
         }
     }
 
-    private void LoadTargetScene()
+    private async void LoadTargetScene()
     {
         TargetSpawnPoint = targetSpawnPointName;
-            StartCoroutine(LoadAsyncScene());
-            isTransitioning = true;
+        StartCoroutine(LoadAsyncScene());
+        isTransitioning = true;
+        await Task.Delay(1000);
+        Player.Instance.LoadInventory(inventoryItems);
     }
 
     private IEnumerator LoadAsyncScene()
@@ -56,7 +60,6 @@ public class LoadScene : MonoBehaviour
             }
             yield return null;
         }
-        Inventory.Instance.LoadInventory();
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {

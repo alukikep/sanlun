@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Inventory : MonoBehaviour
 {
     public static Inventory Instance;
@@ -135,43 +136,5 @@ public class Inventory : MonoBehaviour
             }
         }
         UpdateSlotUI(); // ¸üÐÂ UI
-    }
-    public void SaveInventory()
-    {
-        List<InventoryItemData> inventoryItems = new List<InventoryItemData>();
-        foreach (var item in InventoryItems)
-        {
-            InventoryItemData itemData = new InventoryItemData
-            {
-                itemName = item.data.itemName,
-                iconPath = item.data.icon.name,
-                quantity = item.stackSize
-            };
-            inventoryItems.Add(itemData);
-        }
-
-        string json = JsonUtility.ToJson(inventoryItems);
-        System.IO.File.WriteAllText(Application.persistentDataPath + "/inventoryData.json", json);
-    }
-
-    public void LoadInventory()
-    {
-        string path = Application.persistentDataPath + "/inventoryData.json";
-        if (System.IO.File.Exists(path))
-        {
-            string json = System.IO.File.ReadAllText(path);
-            List<InventoryItemData> inventoryData = JsonUtility.FromJson<List<InventoryItemData>>(json);
-
-            foreach (var itemData in inventoryData)
-            {
-                ItemData item = Resources.Load<ItemData>("Items/" + itemData.itemName);
-                if (item != null)
-                {
-                    AddItem(item);
-                    inventoryDictionary[item].stackSize = itemData.quantity;
-                }
-            }
-        }
-        UpdateSlotUI();
     }
 }

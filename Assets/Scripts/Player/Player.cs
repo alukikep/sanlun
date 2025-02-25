@@ -622,7 +622,7 @@ public class Player : MonoBehaviour
             virtualCam.LookAt = transform; // 将虚拟摄像机的跟随目标设置为玩家
         }
     }
-    private List<InventoryItemData> SaveInventory()
+    public List<InventoryItemData> SaveInventory()
     {
         List<InventoryItemData> inventoryItems = new List<InventoryItemData>();
         foreach (var item in Inventory.Instance.InventoryItems)
@@ -638,7 +638,7 @@ public class Player : MonoBehaviour
         return inventoryItems;
     }
 
-    private void LoadInventory(List<InventoryItemData> inventoryItems)
+    public void LoadInventory(List<InventoryItemData> inventoryItems)
     {
         foreach (var itemData in inventoryItems)
         {
