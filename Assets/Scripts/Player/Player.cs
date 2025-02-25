@@ -581,16 +581,18 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(duration); // 等待指定时间
         ATK = recordATK; // 恢复原始攻击力
     }
-    public void IncreaseSpeedRate(float rate,float duration)
+    public void IncreaseMana(int amount)
     {
-        recordSpeedRate = maxSpeed;
-        maxSpeed*=rate;
-        StartCoroutine(RestorexSpeedAfterDelay(duration));
+        currentMana += amount;
+        if (currentMana > maxMana)
+            currentMana = maxMana;
+
+        Debug.Log(" Current mana: " + currentMana);
     }
-    private IEnumerator RestorexSpeedAfterDelay(float duration)
+    public void IncreaseMaxMana(int amount)
     {
-        yield return new WaitForSeconds(duration); // 等待指定时间
-        maxSpeed = recordSpeedRate;
+        maxMana += amount;
+        Debug.Log("Player's max mana increased! New max mana: " + maxMana);
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {

@@ -106,8 +106,11 @@ public class Inventory : MonoBehaviour
                 case ItemData.ItemType.TemporaryAttackPotion:
                     Player.Instance.IncreaseTemporaryAttack(_item.increaseAttack,_item.Duration);
                     break;
-                case ItemData.ItemType.SpeedPotion:
-                    Player.Instance.IncreaseSpeedRate(_item.speedEnhanceRate, _item.Duration);
+                case ItemData.ItemType.ManaCapacityPotion:
+                    Player.Instance.IncreaseMaxMana(_item.increaseManaMax);
+                    break;
+                case ItemData.ItemType.ManaRestorePotion:
+                    Player.Instance.IncreaseMana(_item.increaseMana);
                     break;
             }
             RemoveItem(_item);

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Test : MonoBehaviour
 {
     public static Test Instance;
-    public GameObject Inventory;
 
     private void Awake()
     {

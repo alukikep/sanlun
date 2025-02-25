@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35575c5c63f8f3c4eae558577762847b, type: 3}
+  m_Name: Mana Capacity Potion
+  m_EditorClassIdentifier: 
+  itemName: Mana Capacity Potion
+  icon: {fileID: -1510292865, guid: a321228323c823841856a899d3284032, type: 3}
+  itemType: 5
+  healAmount: 0
+  increaseHealthMax: 0
+  increaseAttack: 0
+  increaseManaMax: 20
+  increaseMana: 0
+  Duration: 0

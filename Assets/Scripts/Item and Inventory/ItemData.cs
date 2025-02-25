@@ -11,7 +11,8 @@ public class ItemData : ScriptableObject
     public int healAmount;    // 治疗量，仅对治疗药水有效
     public int increaseHealthMax; // 增加生命值上限
     public int increaseAttack;    // 增加攻击力
-    public int speedEnhanceRate;
+    public int increaseManaMax;
+    public int increaseMana;
     public int Duration;
 
 
@@ -23,6 +24,7 @@ public class ItemData : ScriptableObject
         HealthMaxPotion,
         EnternalAttackPotion,
         TemporaryAttackPotion,
-        SpeedPotion
+        ManaCapacityPotion,
+        ManaRestorePotion
     }
 }
