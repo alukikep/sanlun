@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6546917582980947608}
   m_Layer: 0
   m_Name: Item object-Mana Capacity Potion
-  m_TagString: Untagged
+  m_TagString: Potion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemData1: {fileID: 11400000, guid: a01b78368fbd5b94484c03bee65793fb, type: 2}
+  potionID: 
 --- !u!61 &6546917582980947608
 BoxCollider2D:
   m_ObjectHideFlags: 0

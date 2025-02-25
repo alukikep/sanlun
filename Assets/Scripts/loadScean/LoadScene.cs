@@ -27,6 +27,7 @@ public class LoadScene : MonoBehaviour
     {
         Player1 = GameObject.Find("Player");
         PlayerRB = Player1.GetComponent<Rigidbody2D>();
+        StartCoroutine(Player.Instance.DestroyCollectedPotions());
 
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -54,17 +55,19 @@ public class LoadScene : MonoBehaviour
             if (asyncLoad.progress >= 0.9f)
             {
                 asyncLoad.allowSceneActivation = true;
+                // 等待场景加载完成
+                yield return new WaitForSeconds(0.1f);
             }
             yield return null;
         }
     }
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        GameObject Player = GameObject.Find("Player");
+        GameObject Player1 = GameObject.Find("Player");
         GameObject spawnpoint = GameObject.Find(targetSpawnPointName); ;
         transform.position = spawnpoint.transform.position;
         CinemachineVirtualCamera virtualCam = FindObjectOfType<CinemachineVirtualCamera>();
-        virtualCam.Follow = Player.transform;
+        virtualCam.Follow = Player1.transform;
     }
     private void OnDestroy()
     {

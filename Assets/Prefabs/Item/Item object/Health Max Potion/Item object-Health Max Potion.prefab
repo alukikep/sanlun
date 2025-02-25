@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3536676385233709671}
   m_Layer: 0
   m_Name: Item object-Health Max Potion
-  m_TagString: Untagged
+  m_TagString: Potion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemData1: {fileID: 11400000, guid: 859c4c3416b5f0646a15a87b2b3794f2, type: 2}
+  potionID: 
 --- !u!61 &3536676385233709671
 BoxCollider2D:
   m_ObjectHideFlags: 0

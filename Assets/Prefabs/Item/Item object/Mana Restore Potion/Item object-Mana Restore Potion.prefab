@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3490871134376908911}
   m_Layer: 0
   m_Name: Item object-Mana Restore Potion
-  m_TagString: Untagged
+  m_TagString: Potion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemData1: {fileID: 11400000, guid: e8421b68fad8ff84ba5d02cdafeec190, type: 2}
+  potionID: 
 --- !u!61 &3490871134376908911
 BoxCollider2D:
   m_ObjectHideFlags: 0

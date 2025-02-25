@@ -9,6 +9,7 @@ TagManager:
   - DestructibleBricks
   - LoadScene
   - Audio
+  - Potion
   layers:
   - Default
   - TransparentFX

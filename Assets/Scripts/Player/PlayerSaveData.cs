@@ -17,7 +17,7 @@ public class PlayerSaveData
     public bool isTimeSlowEnabled;
     public float attack;
     public string currentSceneName;
-    public List<InventoryItemData> inventoryItems;
+    public List<string> collectedPotions;
 }
 
 [System.Serializable]

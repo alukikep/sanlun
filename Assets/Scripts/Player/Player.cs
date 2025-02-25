@@ -25,19 +25,20 @@ public class Player : MonoBehaviour
     public MouseState mouseState { get; private set; }
     public AirAttack airAttackState { get; private set; }
     public Block blockState { get; private set; }
-    public BlockSuc blockSucState {  get; private set; }
-    public HighJump highJumpState {  get; private set; }
+    public BlockSuc blockSucState { get; private set; }
+    public HighJump highJumpState { get; private set; }
     public Retreat retreatState { get; private set; }
-  
 
 
 
 
 
-    public float raycastDistance = 1f; 
-    public LayerMask obstacleLayer; 
+
+    public float raycastDistance = 1f;
+    public LayerMask obstacleLayer;
 
     public static Player Instance;//单例模式
+    private HashSet<string> collectedPotions = new HashSet<string>();
 
     public float speedRate; // 速率系数
     private float recordSpeedRate;
@@ -47,10 +48,10 @@ public class Player : MonoBehaviour
     public Animator anim;
     private Menu menu;
     public bool canRestore;
-    [SerializeField]private Renderer renderer;
+    [SerializeField] private Renderer renderer;
     public GameObject blockEffect;
 
-   
+
     private bool isSlowed;
     public bool isBat;
     public bool isMouse;
@@ -66,7 +67,7 @@ public class Player : MonoBehaviour
     public GameObject audio;
     public AudioController audioController;
     public BoxCollider2D boxCollider;
-    
+
 
     [Header("格挡相关")]
     public bool isBlock;
@@ -83,7 +84,7 @@ public class Player : MonoBehaviour
     private float recordATK;//用于记录ATK
     public float attackTime;
     public float attackTimer;
-   
+
 
     [Header("Health")]
     public float maxHealth;
@@ -102,7 +103,7 @@ public class Player : MonoBehaviour
     [Header("副武器相关")]
     public KeyCode SwitchKey = KeyCode.I;
     public KeyCode UseKey = KeyCode.O;
-    private int CurrentSubWeaponNum=0;
+    private int CurrentSubWeaponNum = 0;
     private int maxSubWeaponNum = 0;
     public GameObject axe;
     public bool isAxe;
@@ -119,23 +120,23 @@ public class Player : MonoBehaviour
     public GameObject TimeSlow;
     private TimeSlow timeSlowScript;
     public bool isTimeSlowed;
-   
-    
-    [HideInInspector]public float oriG;
+
+
+    [HideInInspector] public float oriG;
     [HideInInspector] public float oriJumpForce;
-    private bool speedFixed=false;
+    private bool speedFixed = false;
 
 
-    public  CapsuleCollider2D capsuleCollider2D;
+    public CapsuleCollider2D capsuleCollider2D;
     public float xSpeed;
     public int jumpNumber; // 0,1,2分别表示跳跃了0，1，2次，控制二段跳
     public int jumpLimit;
 
-    
+
 
     public bool isdoubleJumpEnabled = false;
-    public bool ishighJumpEnabled=false;
-    public bool isbatTransformEnabled=false;
+    public bool ishighJumpEnabled = false;
+    public bool isbatTransformEnabled = false;
     public bool isratTransformEnabled = false;
     public bool isAxeEnabled = false;
     public bool isFamiliarEnabled = false;
@@ -143,7 +144,7 @@ public class Player : MonoBehaviour
     public bool isTimeSlowEnabled = false;
     void Awake()
     {
-       
+
         if (Instance == null)
         {
             Instance = this; // 确保单例引用正确
@@ -157,7 +158,7 @@ public class Player : MonoBehaviour
 
         oriJumpForce = jumpForce;
         maxSpeed = speedRate;
-        
+
 
         StateMachine = new PlayerStateMachine();
 
@@ -173,8 +174,8 @@ public class Player : MonoBehaviour
         blockSucState = new BlockSuc(this, StateMachine, "BlockSuc");
         highJumpState = new HighJump(this, StateMachine, "HighJump");
         retreatState = new Retreat(this, StateMachine, "Retreat");
-       
-   
+
+
     }
     // Start is called before the first frame update
     void Start()
@@ -185,9 +186,9 @@ public class Player : MonoBehaviour
 
         StateMachine.Initialize(idleState);
 
-        
+
         rigidbody2D = GetComponent<Rigidbody2D>();
-        
+
         capsuleCollider2D = GetComponent<CapsuleCollider2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         audio = GameObject.FindGameObjectWithTag("Audio");
@@ -204,15 +205,15 @@ public class Player : MonoBehaviour
         {
             guardianScript = guardian.GetComponent<Guardian>();
         }
-        if(axe ==null)
+        if (axe == null)
         {
-            return ;
+            return;
         }
         else
         {
             axeScript = axe.GetComponent<Axe>();
         }
-        if(TimeSlow==null)
+        if (TimeSlow == null)
         {
             return;
         }
@@ -230,8 +231,8 @@ public class Player : MonoBehaviour
         }
 
         familiarScript = familiar.GetComponent<Familiar>();
-        
-        ManaPSOnSlow = ManaPerSecond /timeSlowScript.slowDownFactor;
+
+        ManaPSOnSlow = ManaPerSecond / timeSlowScript.slowDownFactor;
 
 
     }
@@ -249,18 +250,18 @@ public class Player : MonoBehaviour
 
         protTime -= Time.deltaTime;
 
-        if (currentMana>=maxMana)
+        if (currentMana >= maxMana)
         {
             currentMana = maxMana;
         }
         attackTimer -= Time.deltaTime;
-        
 
-        if (isAttack == false&&isBlock==false&& timeSlowScript.TimeSlowActive==false)//修改了一下用于适配缓速的副武器
+
+        if (isAttack == false && isBlock == false && timeSlowScript.TimeSlowActive == false)//修改了一下用于适配缓速的副武器
         {
             rigidbody2D.gravityScale = oriG;
             jumpForce = oriJumpForce;
-          
+
             if (speedFixed == false)
             {
                 if (Time.timeScale != 0)
@@ -270,24 +271,24 @@ public class Player : MonoBehaviour
             }
             speedFixed = true;
         }
-        else if(isAttack == false && isBlock == false && timeSlowScript.TimeSlowActive == true)
+        else if (isAttack == false && isBlock == false && timeSlowScript.TimeSlowActive == true)
         {
             jumpForce = 38;
             rigidbody2D.gravityScale = 20;
             speedFixed = false;
-            rigidbody2D.velocity = new Vector2( xSpeed * speedRate / Time.timeScale,rigidbody2D.velocity.y);           
+            rigidbody2D.velocity = new Vector2(xSpeed * speedRate / Time.timeScale, rigidbody2D.velocity.y);
         }
-       
+
         resetSpeed();
         SubWeapon();
-       
+
         leftSlowDuration -= Time.deltaTime;
 
-        if (health<0)
+        if (health < 0)
         {
             Destroy(gameObject);
         }
-        if(timeSlowScript.TimeSlowActive==false)
+        if (timeSlowScript.TimeSlowActive == false)
         {
             currentMana += ManaPerSecond * Time.deltaTime;
         }
@@ -296,11 +297,11 @@ public class Player : MonoBehaviour
             currentMana += ManaPSOnSlow * Time.deltaTime;
         }
 
-        if(xSpeed>0&&faceRight==false)
+        if (xSpeed > 0 && faceRight == false)
         {
             faceRight = true;
         }
-        else if(xSpeed<0&&faceRight==true)
+        else if (xSpeed < 0 && faceRight == true)
         {
             faceRight = false;
         }
@@ -308,8 +309,8 @@ public class Player : MonoBehaviour
 
     public bool CanRestore()
     {
-        Vector2 raycastOrigin =capsuleCollider2D.transform.position-new Vector3(0,0.5f,0);
-       
+        Vector2 raycastOrigin = capsuleCollider2D.transform.position - new Vector3(0, 0.5f, 0);
+
         raycastOrigin.y += capsuleCollider2D.size.y / 2;
 
         RaycastHit2D hit = Physics2D.Raycast(raycastOrigin, Vector2.up, raycastDistance, obstacleLayer);
@@ -319,7 +320,7 @@ public class Player : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-               if (capsuleCollider2D != null)
+        if (capsuleCollider2D != null)
         {
             Vector2 raycastOrigin = capsuleCollider2D.transform.position - new Vector3(0, 0.5f, 0);
             raycastOrigin.y += capsuleCollider2D.size.y / 2;
@@ -328,9 +329,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void SetVelocity(float _xVelocity,float _yVelocity)
+    public void SetVelocity(float _xVelocity, float _yVelocity)
     {
-        rigidbody2D.velocity= new Vector2(_xVelocity, _yVelocity);
+        rigidbody2D.velocity = new Vector2(_xVelocity, _yVelocity);
     }
 
     private void DoubleJump()
@@ -352,19 +353,19 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void HurtProtect(int num,float seconds)
+    private void HurtProtect(int num, float seconds)
     {
         StartCoroutine(HurtPro(num, seconds));
     }
 
     IEnumerator HurtPro(int num, float seconds)
     {
-        for(int i = 0; i < num*2; i++)
+        for (int i = 0; i < num * 2; i++)
         {
-            renderer.enabled=!renderer.enabled;
+            renderer.enabled = !renderer.enabled;
             yield return new WaitForSeconds(seconds);
         }
-        renderer.enabled=true;
+        renderer.enabled = true;
     }
 
 
@@ -421,17 +422,17 @@ public class Player : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground")&&mouseState.isMouse==false)
+        if (collision.gameObject.CompareTag("Ground") && mouseState.isMouse == false)
         {
-           StateMachine.ChangeState(fallState);
-           jumpNumber = 1;
+            StateMachine.ChangeState(fallState);
+            jumpNumber = 1;
         }
     }
 
 
     public void GetDamage(float eATK)
     {
-        if (isBlock == false&&protTime<0)
+        if (isBlock == false && protTime < 0)
         {
             protTime = proTime * proNumber * 2;
             audioController.PlaySfx(audioController.playerHurt);
@@ -439,27 +440,28 @@ public class Player : MonoBehaviour
             health = health - eATK;
             HurtProtect(proNumber, proTime);
         }
-        if(isBlock == true)
+        if (isBlock == true)
         {
             StateMachine.ChangeState(blockSucState);
         }
-       
+
     }
 
 
 
     public void SubWeapon()
-    {   if(Input.GetKeyDown(SwitchKey))
+    {
+        if (Input.GetKeyDown(SwitchKey))
         {
-            CurrentSubWeaponNum =(CurrentSubWeaponNum+1)%maxSubWeaponNum;
-            if(CurrentSubWeaponNum==0)
+            CurrentSubWeaponNum = (CurrentSubWeaponNum + 1) % maxSubWeaponNum;
+            if (CurrentSubWeaponNum == 0)
             {
                 isAxe = true;
                 isFamiliar = false;
                 isGuardian = false;
                 isTimeSlowed = false;
             }
-            else if(CurrentSubWeaponNum ==1)
+            else if (CurrentSubWeaponNum == 1)
             {
                 isAxe = false;
                 isFamiliar = true;
@@ -467,14 +469,14 @@ public class Player : MonoBehaviour
                 isTimeSlowed = false;
 
             }
-            else if(CurrentSubWeaponNum == 2)
+            else if (CurrentSubWeaponNum == 2)
             {
                 isAxe = false;
                 isFamiliar = false;
                 isGuardian = true;
-                isTimeSlowed = false;             
+                isTimeSlowed = false;
             }
-            else if(CurrentSubWeaponNum==3)
+            else if (CurrentSubWeaponNum == 3)
             {
                 isAxe = false;
                 isFamiliar = false;
@@ -483,69 +485,69 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(UseKey)&&isAxe&&currentMana>=axeScript.neededMana)
+        if (Input.GetKeyDown(UseKey) && isAxe && currentMana >= axeScript.neededMana)
         {
             GameObject SubWeapon = Instantiate(axe, transform.position, Quaternion.identity);
-            currentMana-=axeScript.neededMana;
+            currentMana -= axeScript.neededMana;
         }
         if (Input.GetKeyDown(UseKey) && isFamiliar && currentMana > 0 && isFamiliarAlive == false)
         {
             currentFamiliar = Instantiate(familiar, transform.position, Quaternion.identity);
             isFamiliarAlive = true;
         }
-        else if (Input.GetKeyDown(UseKey) && isFamiliar &&  isFamiliarAlive == true)
+        else if (Input.GetKeyDown(UseKey) && isFamiliar && isFamiliarAlive == true)
         {
             Destroy(currentFamiliar);
             isFamiliarAlive = false;
         }
-        if(currentMana>=0&&isFamiliarAlive==true)
+        if (currentMana >= 0 && isFamiliarAlive == true)
         {
-            currentMana-=Time.deltaTime*familiarScript.neededManaPerS;
-            if(currentMana<0)
+            currentMana -= Time.deltaTime * familiarScript.neededManaPerS;
+            if (currentMana < 0)
             {
                 Destroy(currentFamiliar);
                 isFamiliarAlive = false;
             }
         }
-        if (Input.GetKeyDown(UseKey)&& isGuardian&&guardianScript != null&&currentMana>=guardianScript.neededMana)
+        if (Input.GetKeyDown(UseKey) && isGuardian && guardianScript != null && currentMana >= guardianScript.neededMana)
         {
             float radius = guardianScript.radius;
             float angleStep = 360 / guardianNum;
-            for(int i=0;i<guardianNum;i++)
+            for (int i = 0; i < guardianNum; i++)
             {
                 float angle = angleStep * i;
-                float x = radius*Mathf.Cos(angle*Mathf.Deg2Rad);
-                float y = radius*Mathf.Sin(angle*Mathf.Deg2Rad);
-                Vector3 Pos = transform.position+new Vector3(x, y, 0);
+                float x = radius * Mathf.Cos(angle * Mathf.Deg2Rad);
+                float y = radius * Mathf.Sin(angle * Mathf.Deg2Rad);
+                Vector3 Pos = transform.position + new Vector3(x, y, 0);
                 GameObject subWeapon = Instantiate(guardian, Pos, Quaternion.identity);
             }
-            currentMana-=guardianScript.neededMana;
+            currentMana -= guardianScript.neededMana;
         }
-        if(Input.GetKeyDown(UseKey)&&isTimeSlowed&&currentMana>=timeSlowScript.neededMana)
+        if (Input.GetKeyDown(UseKey) && isTimeSlowed && currentMana >= timeSlowScript.neededMana)
         {
             StartCoroutine(timeSlowScript.ActiveTimeSlow());
-            currentMana-=timeSlowScript.neededMana;
+            currentMana -= timeSlowScript.neededMana;
         }
-       
+
 
     }
     public void getSlowed(float slowPercent, float slowDuration)
-    {   
+    {
         leftSlowDuration = slowDuration;
-        
-        
-        if (leftSlowDuration>0&&isSlowed==false)
+
+
+        if (leftSlowDuration > 0 && isSlowed == false)
         {
             isSlowed = true;
-            speedRate *=  slowPercent;
-            
+            speedRate *= slowPercent;
+
         }
-        
-        
+
+
     }
     public void resetSpeed()
     {
-        if(leftSlowDuration<=0)
+        if (leftSlowDuration <= 0)
         {
             speedRate = maxSpeed;
             isSlowed = false;
@@ -573,7 +575,7 @@ public class Player : MonoBehaviour
         ATK += amount;
         Debug.Log("Player's attack increased! New attack: " + ATK);
     }
-    public void IncreaseTemporaryAttack(int amount,int duration)
+    public void IncreaseTemporaryAttack(int amount, int duration)
     {
         recordATK = ATK;
         ATK += amount; // 增加攻击力
@@ -613,11 +615,11 @@ public class Player : MonoBehaviour
 
     private void OnDestroy()
     {
-        SceneManager.sceneLoaded-=OnSceneLoaded;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
     public void SavePlayer()
     {
-        health=maxHealth;
+        health = maxHealth;
         PlayerSaveData saveData = new PlayerSaveData
         {
             health = health,
@@ -632,7 +634,6 @@ public class Player : MonoBehaviour
             isTimeSlowEnabled = isTimeSlowEnabled,
             attack = ATK,
             currentSceneName = SceneManager.GetActiveScene().name,
-            inventoryItems = SaveInventory(),
         };
 
         string json = JsonUtility.ToJson(saveData);
@@ -659,12 +660,9 @@ public class Player : MonoBehaviour
             isTimeSlowEnabled = saveData.isTimeSlowEnabled;
             ATK = saveData.attack;
 
-            
+
             StartCoroutine(UpdateVirtualCameraAfterLoad());
-            await Task.Delay(1000);
-            LoadInventory(saveData.inventoryItems);
         }
-        Debug.Log(Inventory.Instance.inventoryDictionary);
     }
     private IEnumerator UpdateVirtualCameraAfterLoad()
     {
@@ -679,34 +677,30 @@ public class Player : MonoBehaviour
             virtualCam.LookAt = transform; // 将虚拟摄像机的跟随目标设置为玩家
         }
     }
-    public List<InventoryItemData> SaveInventory()
+    public void AddCollectedPotion(string potionID)
     {
-        List<InventoryItemData> inventoryItems = new List<InventoryItemData>();
-        foreach (var item in Inventory.Instance.InventoryItems)
-        {
-            InventoryItemData itemData = new InventoryItemData
-            {
-                itemName = item.data.itemName,
-                iconPath = item.data.icon.name,
-                quantity = item.stackSize
-            };
-            inventoryItems.Add(itemData);
-        }
-        return inventoryItems;
+        collectedPotions.Add(potionID);
     }
 
-    public void LoadInventory(List<InventoryItemData> inventoryItems)
+    public HashSet<string> GetCollectedPotions()
     {
-        foreach (var itemData in inventoryItems)
+        return collectedPotions;
+    }
+    public IEnumerator DestroyCollectedPotions()
+    {
+        yield return new WaitForSeconds(0.1f); // 等待0.1秒，确保场景加载完成
+
+        GameObject[] allPotions = GameObject.FindGameObjectsWithTag("Potion");
+        Debug.Log($"Found {allPotions.Length} potions in the scene.");
+
+        foreach (var potion in allPotions)
         {
-            ItemData item = Resources.Load<ItemData>("Items/" +itemData.itemName);
-            if (item != null)
+            ItemObject itemObject = potion.GetComponent<ItemObject>();
+            if (itemObject != null && collectedPotions.Contains(itemObject.potionID))
             {
-                Inventory.Instance.AddItem(item);
-                Inventory.Instance.inventoryDictionary[item].stackSize = itemData.quantity;
+                Debug.Log($"Destroying potion with ID: {itemObject.potionID}");
+                Destroy(potion); // 销毁已收集的药水
             }
         }
-        Inventory.Instance.UpdateSlotUI();
     }
-  
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4559176400850968835}
   m_Layer: 0
   m_Name: Item object-Healing Potion
-  m_TagString: Untagged
+  m_TagString: Potion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ItemData1: {fileID: 11400000, guid: 699d269f7efcaf846b1042c39807ffd7, type: 2}
+  potionID: 
 --- !u!61 &4559176400850968835
 BoxCollider2D:
   m_ObjectHideFlags: 0
