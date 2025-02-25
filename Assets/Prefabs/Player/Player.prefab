@@ -932,6 +932,7 @@ MonoBehaviour:
   anim: {fileID: 2084463307126911195}
   canRestore: 0
   renderer: {fileID: 8261027338092003067}
+  blockEffect: {fileID: 6274421450212136552, guid: 914452d58f684a9449d863e1f4d8ab6a, type: 3}
   isBat: 0
   isMouse: 0
   faceRight: 0
@@ -960,7 +961,7 @@ MonoBehaviour:
   maxMana: 200
   currentMana: 0
   ManaPerSecond: 10
-  SwitchKey: 117
+  SwitchKey: 105
   axe: {fileID: 5762047534356073613, guid: 14d34defe9acd644690916ec6c0523b8, type: 3}
   isAxe: 1
   guardian: {fileID: 1551691195948429998, guid: d60d5f33a284a89479c0a7dd11e5da76, type: 3}
@@ -1345,6 +1346,7 @@ MonoBehaviour:
   fallGround: {fileID: 8300000, guid: 0c8ba43162f14934c878f3d5e2bbc37c, type: 3}
   handleStart: {fileID: 8300000, guid: bbf4b10cf23c5314da73c00538c73f0b, type: 3}
   wallBreak: {fileID: 8300000, guid: 4cd2593f4317159419a053e1e4e678b3, type: 3}
+  block: {fileID: 0}
   minotaurAttack: {fileID: 0}
 --- !u!1 &6178018840144071281
 GameObject:

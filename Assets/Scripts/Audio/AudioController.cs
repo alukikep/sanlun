@@ -27,6 +27,7 @@ public class AudioController : MonoBehaviour
     public AudioClip fallGround;
     public AudioClip handleStart;
     public AudioClip wallBreak;
+    public AudioClip block;
 
     [Header("EnemySfx")]
     public AudioClip minotaurAttack;

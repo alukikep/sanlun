@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
     private Menu menu;
     public bool canRestore;
     [SerializeField]private Renderer renderer;
+    public GameObject blockEffect;
 
    
     private bool isSlowed;
