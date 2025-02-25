@@ -10,6 +10,7 @@ public enum Ability
     BatTransform,  //»¯òð
     RatTransform,  //»¯Êó
     Axe,
+    familiar,
     Guardian,
     TimeSlow,
 }

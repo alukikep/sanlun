@@ -100,18 +100,26 @@ public class Player : MonoBehaviour
 
     [Header("∏±Œ‰∆˜œ‡πÿ")]
     public KeyCode SwitchKey = KeyCode.U;
+    public KeyCode UseKey = KeyCode.I;
     private int CurrentSubWeaponNum=0;
-    private int maxSubWeaponNum = 3;
+    private int maxSubWeaponNum = 0;
     public GameObject axe;
     public bool isAxe;
+    private Axe axeScript;
+    public GameObject familiar;
+    public bool isFamiliar;
+    private Familiar familiarScript;
+    private bool isFamiliarAlive;
+    private GameObject currentFamiliar;
     public GameObject guardian;
     public bool isGuardian;
     public int guardianNum;
+    private Guardian guardianScript;
     public GameObject TimeSlow;
     private TimeSlow timeSlowScript;
     public bool isTimeSlowed;
-    private Guardian guardianScript;
-    private Axe axeScript;
+   
+    
     [HideInInspector]public float oriG;
     [HideInInspector] public float oriJumpForce;
     private bool speedFixed=false;
@@ -129,6 +137,7 @@ public class Player : MonoBehaviour
     public bool isbatTransformEnabled=false;
     public bool isratTransformEnabled = false;
     public bool isAxeEnabled = false;
+    public bool isFamiliarEnabled = false;
     public bool isGuardianEnabled = false;
     public bool isTimeSlowEnabled = false;
     void Awake()
@@ -210,6 +219,9 @@ public class Player : MonoBehaviour
         {
             timeSlowScript = TimeSlow.GetComponent<TimeSlow>();
         }
+        
+        familiarScript = familiar.GetComponent<Familiar>();
+        
         ManaPSOnSlow = ManaPerSecond /timeSlowScript.slowDownFactor;
 
 
@@ -228,7 +240,10 @@ public class Player : MonoBehaviour
 
         protTime -= Time.deltaTime;
 
-
+        if(familiarScript == null)
+        {
+            Debug.Log("yes");
+        }
         if (currentMana>=maxMana)
         {
             currentMana = maxMana;
@@ -391,6 +406,10 @@ public class Player : MonoBehaviour
                     isTimeSlowEnabled = true;
                     maxSubWeaponNum++;
                     break;
+                case Ability.familiar:
+                    isFamiliarEnabled = true;
+                    maxSubWeaponNum++;
+                    break;
             }
         }
     }
@@ -431,30 +450,59 @@ public class Player : MonoBehaviour
             if(CurrentSubWeaponNum==0)
             {
                 isAxe = true;
+                isFamiliar = false;
                 isGuardian = false;
                 isTimeSlowed = false;
             }
             else if(CurrentSubWeaponNum ==1)
             {
                 isAxe = false;
-                isGuardian = true;
+                isFamiliar = true;
+                isGuardian = false;
                 isTimeSlowed = false;
 
             }
             else if(CurrentSubWeaponNum == 2)
             {
                 isAxe = false;
+                isFamiliar = false;
+                isGuardian = true;
+                isTimeSlowed = false;             
+            }
+            else if(CurrentSubWeaponNum==3)
+            {
+                isAxe = false;
+                isFamiliar = false;
                 isGuardian = false;
                 isTimeSlowed = true;
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.U)&&isAxe&&currentMana>=axeScript.neededMana)
+        if (Input.GetKeyDown(UseKey)&&isAxe&&currentMana>=axeScript.neededMana)
         {
             GameObject SubWeapon = Instantiate(axe, transform.position, Quaternion.identity);
             currentMana-=axeScript.neededMana;
-        }     
-        if (Input.GetKeyDown(KeyCode.U)&& isGuardian&&guardianScript != null&&currentMana>=guardianScript.neededMana)
+        }
+        if (Input.GetKeyDown(UseKey) && isFamiliar && currentMana >= familiarScript.neededManaPerS && isFamiliarAlive == false)
+        {
+            currentFamiliar = Instantiate(familiar, transform.position, Quaternion.identity);
+            isFamiliarAlive = true;
+        }
+        else if (Input.GetKeyDown(UseKey) && isFamiliar &&  isFamiliarAlive == true)
+        {
+            Destroy(currentFamiliar);
+            isFamiliarAlive = false;
+        }
+        if(currentMana>=familiarScript.neededManaPerS&&isFamiliarAlive==true)
+        {
+            currentMana-=Time.deltaTime*familiarScript.neededManaPerS;
+            if(currentMana<familiarScript.neededManaPerS)
+            {
+                Destroy(currentFamiliar);
+                isFamiliarAlive = false;
+            }
+        }
+        if (Input.GetKeyDown(UseKey)&& isGuardian&&guardianScript != null&&currentMana>=guardianScript.neededMana)
         {
             float radius = guardianScript.radius;
             float angleStep = 360 / guardianNum;
@@ -468,11 +516,13 @@ public class Player : MonoBehaviour
             }
             currentMana-=guardianScript.neededMana;
         }
-        if(Input.GetKeyDown(KeyCode.U)&&isTimeSlowed&&currentMana>=timeSlowScript.neededMana)
+        if(Input.GetKeyDown(UseKey)&&isTimeSlowed&&currentMana>=timeSlowScript.neededMana)
         {
             StartCoroutine(timeSlowScript.ActiveTimeSlow());
             currentMana-=timeSlowScript.neededMana;
         }
+       
+
     }
     public void getSlowed(float slowPercent, float slowDuration)
     {   
