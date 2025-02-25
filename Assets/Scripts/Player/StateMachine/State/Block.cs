@@ -13,6 +13,7 @@ public class Block : Grounded
         base.Enter();
         player.blockCoolTimer=player.blockCoolTime;
         player.isBlock=true;
+        player.audioController.PlaySfx(player.audioController.blockStart);
     }
 
     public override void Exit()

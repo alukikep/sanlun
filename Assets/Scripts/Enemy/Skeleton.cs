@@ -23,6 +23,7 @@ public class Enemy1 : MonoBehaviour
     private Rigidbody2D rigidbody2D;
 
     public Transform playerPosition;
+    private Player _player;
 
 
     public float stopDistanceX;//敌人移动到距主角一定距离停下
@@ -33,6 +34,7 @@ public class Enemy1 : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rigidbody2D = GetComponent<Rigidbody2D>();
+        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     // Update is called once per frame

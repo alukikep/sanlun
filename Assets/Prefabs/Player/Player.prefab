@@ -258,7 +258,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1773725085, guid: aaaafa50f30fe1d438b6d96adc741c8e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -962,8 +962,11 @@ MonoBehaviour:
   currentMana: 0
   ManaPerSecond: 10
   SwitchKey: 105
+  UseKey: 117
   axe: {fileID: 5762047534356073613, guid: 14d34defe9acd644690916ec6c0523b8, type: 3}
   isAxe: 1
+  familiar: {fileID: 0}
+  isFamiliar: 0
   guardian: {fileID: 1551691195948429998, guid: d60d5f33a284a89479c0a7dd11e5da76, type: 3}
   isGuardian: 0
   guardianNum: 4
@@ -980,6 +983,7 @@ MonoBehaviour:
   isbatTransformEnabled: 0
   isratTransformEnabled: 0
   isAxeEnabled: 0
+  isFamiliarEnabled: 0
   isGuardianEnabled: 0
   isTimeSlowEnabled: 0
 --- !u!252 &3911207957470364725
@@ -1346,8 +1350,9 @@ MonoBehaviour:
   fallGround: {fileID: 8300000, guid: 0c8ba43162f14934c878f3d5e2bbc37c, type: 3}
   handleStart: {fileID: 8300000, guid: bbf4b10cf23c5314da73c00538c73f0b, type: 3}
   wallBreak: {fileID: 8300000, guid: 4cd2593f4317159419a053e1e4e678b3, type: 3}
-  block: {fileID: 0}
-  minotaurAttack: {fileID: 0}
+  block: {fileID: 8300000, guid: 1390659d27355fc43bd56070fe68c689, type: 3}
+  blockStart: {fileID: 8300000, guid: 4080f802465214242b0c69e76fc589e0, type: 3}
+  minotaurAttack: {fileID: 8300000, guid: 47217f94090e2f943ac5e696bcf316dc, type: 3}
 --- !u!1 &6178018840144071281
 GameObject:
   m_ObjectHideFlags: 0

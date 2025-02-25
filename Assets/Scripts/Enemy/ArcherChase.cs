@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class ArcherChase : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class ArcherChase : MonoBehaviour
     private float cooldownTimer;//¼ÇÂ¼ÀäÈ´Ê±¼ä
     public GameObject bullet;
     private Animator animator;
+    public Player _player;
 
 
     // Start is called before the first frame update
@@ -19,6 +21,7 @@ public class ArcherChase : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         cooldownTimer = 1;
         animator = GetComponent<Animator>();
+        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     void Update()
@@ -38,7 +41,8 @@ public class ArcherChase : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
         b1.transform.rotation = rotation;
         b1.GetComponent<ChaseBullet>().angle = angle;
-        cooldownTimer = cooldown;
+        cooldownTimer = cooldown;    
+            _player.audioController.PlaySfx(_player.audioController.lightningSkeletonAttack);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
