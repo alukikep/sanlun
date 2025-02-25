@@ -33,7 +33,6 @@ public class LoadScene : MonoBehaviour
     {
         if (collision.CompareTag("Player") && !isTransitioning)
         {
-            inventoryItems = Player.Instance.SaveInventory();
             LoadTargetScene();
         }
     }
@@ -43,8 +42,6 @@ public class LoadScene : MonoBehaviour
         TargetSpawnPoint = targetSpawnPointName;
         StartCoroutine(LoadAsyncScene());
         isTransitioning = true;
-        await Task.Delay(1000);
-        Player.Instance.LoadInventory(inventoryItems);
     }
 
     private IEnumerator LoadAsyncScene()
