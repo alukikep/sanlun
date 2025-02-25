@@ -11,9 +11,10 @@ public class Minotaur : MonoBehaviour
     [SerializeField] private bool faceRight;
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform bulletSet;
-    [SerializeField] private Player player;
-    [SerializeField] private bool isMinotaus=false;
+    [SerializeField] private Player _player;
     [SerializeField] private float attackStartDis;
+    public bool isMinotaur;
+    public bool isLightning;
 
 
 
@@ -38,7 +39,7 @@ public class Minotaur : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rigidbody2D = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -124,6 +125,14 @@ public class Minotaur : MonoBehaviour
         }
 
         GameObject Bullet = Instantiate(bullet, bulletSet.position, Quaternion.identity);
+        if(isMinotaur==true)
+        {
+            _player.audioController.PlaySfx(_player.audioController.minotaurAttack);
+        }
+        if(isLightning==true)
+        {
+            _player.audioController.PlaySfx(_player.audioController.lightningSkeletonAttack);
+        }
 
     }
 

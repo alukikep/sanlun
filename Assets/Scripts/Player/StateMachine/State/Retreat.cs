@@ -20,7 +20,7 @@ public class Retreat : Grounded
         {
             rb.velocity = new Vector2(-20, 0);
         }
-        else
+        else if(player.faceRight==false) 
         {
             rb.velocity = new Vector2(20, 0);
         }

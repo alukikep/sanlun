@@ -296,13 +296,13 @@ public class Player : MonoBehaviour
             currentMana += ManaPSOnSlow * Time.deltaTime;
         }
 
-       if(xSpeed>0)
+        if(xSpeed>0&&faceRight==false)
         {
             faceRight = true;
         }
-       if(xSpeed<0)
+        else if(xSpeed<0&&faceRight==true)
         {
-            faceRight= false;
+            faceRight = false;
         }
     }
 
