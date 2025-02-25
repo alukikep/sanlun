@@ -11,6 +11,7 @@ public class PlayerState
     protected float xInput;
     private string animBoolName;
     public bool isAttack;
+    public bool isRetreat;
 
     public PlayerState(Player _player,PlayerStateMachine _stateMachine,string _animBoolName)
     {
@@ -28,7 +29,10 @@ public class PlayerState
     {
         xInput = Input.GetAxisRaw("Horizontal");
         player.anim.SetFloat("yVelocity",rb.velocity.y);
-        player.SetVelocity(xInput * player.speedRate, rb.velocity.y);
+        if (isRetreat == false)
+        {
+            player.SetVelocity(xInput * player.speedRate, rb.velocity.y);
+        }
         player.xSpeed = xInput;
 
         if (xInput > 0)

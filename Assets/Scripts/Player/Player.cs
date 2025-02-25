@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     public Block blockState { get; private set; }
     public BlockSuc blockSucState {  get; private set; }
     public HighJump highJumpState {  get; private set; }
+    public Retreat retreatState { get; private set; }
   
 
 
@@ -96,7 +97,7 @@ public class Player : MonoBehaviour
     private float ManaPSOnSlow;
 
     [Header("∏±Œ‰∆˜œ‡πÿ")]
-    public KeyCode SwitchKey = KeyCode.Q;
+    public KeyCode SwitchKey = KeyCode.U;
     private int CurrentSubWeaponNum=0;
     private int maxSubWeaponNum = 3;
     public GameObject axe;
@@ -159,6 +160,7 @@ public class Player : MonoBehaviour
         blockState = new Block(this, StateMachine, "Block");
         blockSucState = new BlockSuc(this, StateMachine, "BlockSuc");
         highJumpState = new HighJump(this, StateMachine, "HighJump");
+        retreatState = new Retreat(this, StateMachine, "Retreat");
        
    
     }

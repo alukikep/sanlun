@@ -24,6 +24,10 @@ public class CharacterImage : MonoBehaviour
         {
             image.sprite = dangerous;
         }
+        else
+        {
+            image.sprite = normal;
+        }
     }
 }
 

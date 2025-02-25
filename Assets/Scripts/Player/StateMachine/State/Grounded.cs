@@ -56,5 +56,10 @@ public class Grounded : PlayerState
         {
             stateMachine.ChangeState(player.blockState);
         }
+
+        if(Input.GetKeyDown(KeyCode.Q)&&isMouse==false)
+        {
+            stateMachine.ChangeState(player.retreatState);
+        }
     }
 }
