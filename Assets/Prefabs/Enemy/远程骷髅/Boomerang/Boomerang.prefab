@@ -255,6 +255,9 @@ MonoBehaviour:
   faceRight: 0
   bullet: {fileID: 5536462393545170480, guid: 924e9398e840f6146b7c4c79410dd95a, type: 3}
   bulletSet: {fileID: 5183229062607133217}
+  player: {fileID: 0}
+  isMinotaus: 0
+  attackStartDis: 12
   attackCheck: {fileID: 5316521832172901145}
   ATK: 15
   playerPosition: {fileID: 0}

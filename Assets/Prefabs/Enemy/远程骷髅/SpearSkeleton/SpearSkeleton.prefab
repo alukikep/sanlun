@@ -91,7 +91,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &7053043481214034303
 Animator:
   serializedVersion: 5
@@ -255,10 +255,13 @@ MonoBehaviour:
   faceRight: 0
   bullet: {fileID: 4306310654815218683, guid: 52d4fdc7767452e4487a6419a7412ad3, type: 3}
   bulletSet: {fileID: 6604189011349735083}
+  player: {fileID: 0}
+  isMinotaus: 0
+  attackStartDis: 15
   attackCheck: {fileID: 6784538626781529030}
   ATK: 15
   playerPosition: {fileID: 0}
-  stopDistanceX: 8
+  stopDistanceX: 4
   moveSpeed: 2
 --- !u!1 &6638220589326154936
 GameObject:

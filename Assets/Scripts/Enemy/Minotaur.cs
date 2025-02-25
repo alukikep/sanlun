@@ -68,12 +68,14 @@ public class Minotaur : MonoBehaviour
 
     private void Flip()
     {
-        if (rigidbody2D.velocity.x > 0 && faceRight == false)
+
+        Vector2 dirToPlayer = (playerPosition.position - transform.position).normalized;
+        if (dirToPlayer.x > 0 && faceRight == false)
         {
             transform.Rotate(0, 180, 0);
             faceRight = true;
         }
-        if (rigidbody2D.velocity.x < 0 && faceRight == true)
+        if (dirToPlayer.x<0 && faceRight == true)
         {
             transform.Rotate(0, 180, 0);
             faceRight = false;
@@ -93,16 +95,16 @@ public class Minotaur : MonoBehaviour
 
     private void AttackPlayer()
     {
-        float dirToPlayer;
+        float disToPlayer;
         if(playerPosition!=null)
         {
-            dirToPlayer = Vector2.Distance(playerPosition.position,transform.position);
+            disToPlayer = Vector2.Distance(playerPosition.position,transform.position);
         }
         else
         {
-            dirToPlayer = 100;
+            disToPlayer = 100;
         }
-        if (attackTimer < 0&&attackStartDis>dirToPlayer)
+        if (attackTimer < 0&&attackStartDis>disToPlayer)
         {
             AttackAnim();
             attackTimer = attackTime;
