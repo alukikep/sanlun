@@ -52,6 +52,9 @@ public class DemonWarrior : MonoBehaviour
     private bool isShieldActive = false;
     private bool isTransitioning;
 
+    private bool p1=true;
+    private bool p2;
+
     void Start()
     {
         enemyHealth = GetComponent<EnemyHealth>();
@@ -74,6 +77,7 @@ public class DemonWarrior : MonoBehaviour
             GameObject DoubleJump = Instantiate(doubleJump,transform.position,quaternion.identity);
             spawnItem = true;
         }
+        TransPrase();
     }
 
     void HandleSpriteFlip()
@@ -121,7 +125,6 @@ public class DemonWarrior : MonoBehaviour
         if (attackTimer >= phase1AttackCD && isInRange)
         {
             PerformSwipeAttack();
-            attackTimer = 0f;
         }
     }
 
@@ -172,6 +175,7 @@ public class DemonWarrior : MonoBehaviour
     void PerformSwipeAttack()
     {
         animator.SetTrigger("Swipe");
+        attackTimer = 0f;
     }
 
     void PerformEnhancedSwipe()
@@ -179,6 +183,22 @@ public class DemonWarrior : MonoBehaviour
         animator.SetTrigger("Swipe");
         //phase3Effect.Play();
         // 强化版攻击处理
+    }
+
+    private void TransPrase()
+    {
+       
+        if(enemyHealth.health/enemyHealth.maxHealth <=2/3&& enemyHealth.health / enemyHealth.maxHealth >= 1/3&&p1==true)
+        {
+            TransitionPhase();
+            p1=false;
+            p2=true;
+        }
+        if (enemyHealth.health / enemyHealth.maxHealth <= 1/3 && enemyHealth.health / enemyHealth.maxHealth >= 0 && p2 == true)
+        {
+            TransitionPhase();
+            p2=false;
+        }
     }
 
     void SummonImps()
