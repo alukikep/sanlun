@@ -8,14 +8,18 @@ public class FamiliarBullet : MonoBehaviour
     public float damage;
     public float attackRadius;
     public float destroyTime;
+    private Player playerScript;
+    private GameObject player;
     void Start()
     {
-        
+        player = GameObject.Find("Player");
+        playerScript = player.GetComponent<Player>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        damage = playerScript.ATK;
         AttackTrigger();
         destroyTime -= Time.deltaTime;
         if (destroyTime <= 0)

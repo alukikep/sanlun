@@ -6,7 +6,7 @@ using UnityEngine;
 public class Familiar : MonoBehaviour
 {
     public int neededManaPerS;
-  
+    public int neededManaPerBullet;
     [Header("»ù´¡ÊôÐÔ")]
     public float maxhealth;
     public float currentHealth;
@@ -139,6 +139,7 @@ public class Familiar : MonoBehaviour
                 if (shootTimer <= 0)
                 {
                     GameObject farmiliarBullet = Instantiate(familiarBulletPrefab, transform.position, Quaternion.identity);
+                    _player.currentMana-=neededManaPerBullet;
                     Vector2 direction = (targetEnemy.position - transform.position).normalized;
                     Rigidbody2D rb = farmiliarBullet.GetComponent<Rigidbody2D>();
                     rb.velocity = direction * farmiliarBulletSpeed;

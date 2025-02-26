@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d86ac1206978547944430e76283981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  ATKRate: 2
   speed: 3
   radius: 3
   destroyTime: 10

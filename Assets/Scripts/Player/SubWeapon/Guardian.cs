@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Guardian : MonoBehaviour
 {
-    public float damage;
+    private float damage;
+    public float ATKRate;
     public float speed;
     public float radius;
     public float destroyTime;
@@ -16,6 +17,8 @@ public class Guardian : MonoBehaviour
     public Transform attackCheck;
     public float attackRadius;
     private Transform Player;
+    private GameObject PlayerPre;
+    private Player playerScript;
     private Rigidbody2D rb;
     private void Start()
     {
@@ -23,9 +26,12 @@ public class Guardian : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         Vector2 direction = (transform.position - Player.transform.position);
         initialAngle = Mathf.Atan2(direction.y, direction.x);
+        PlayerPre = GameObject.Find("Player");
+        playerScript = PlayerPre.GetComponent<Player>();
     }
     private void Update()
     {
+        damage = playerScript.ATK * ATKRate;
         rotate();
         AttackTrigger();
         destroyTime -= Time.deltaTime;
