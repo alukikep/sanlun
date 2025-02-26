@@ -9,8 +9,9 @@ public class Enemy1 : MonoBehaviour
     [SerializeField] private float attackTime;
     [SerializeField] private float attackRadius;
     [SerializeField] private bool faceRight;
+    [SerializeField] private float attackStartDis;
 
-    
+
 
 
 
@@ -89,7 +90,16 @@ public class Enemy1 : MonoBehaviour
 
     private void AttackPlayer()
     {
-        if (attackTimer < 0)
+        float disToPlayer;
+        if (playerPosition != null)
+        {
+            disToPlayer = Vector2.Distance(playerPosition.position, transform.position);
+        }
+        else
+        {
+            disToPlayer = 100;
+        }
+        if (attackTimer < 0 && attackStartDis > disToPlayer)
         {
             AttackAnim();
             attackTimer = attackTime;

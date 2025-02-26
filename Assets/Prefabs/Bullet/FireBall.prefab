@@ -184,4 +184,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 12
-  ATK: 10
+  destroyTimer: 10
+  ATK: 80
