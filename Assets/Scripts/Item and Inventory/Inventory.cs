@@ -16,6 +16,7 @@ public class Inventory : MonoBehaviour
     [SerializeField]private Transform inventorySlotParent;
 
     private UI_ItemSlot[] itemSlot;
+
     private void Awake()
     {
         if (Instance == null)
@@ -35,6 +36,15 @@ public class Inventory : MonoBehaviour
         inventoryDictionary = new Dictionary<ItemData, InventoryItem>();
 
         itemSlot = inventorySlotParent.GetComponentsInChildren<UI_ItemSlot>();
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            // 空格键被按下，但不执行任何操作
+            return;
+        }
+
     }
     public void UpdateSlotUI()
     {
