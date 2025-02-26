@@ -99,9 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ceb1dc88378305459d3206ddd2d1f8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
-  speed: 4
-  slowPercent: 0.25
+  damage: 25
+  speed: 6
+  slowPercent: 0.35
   slowDuration: 3
 --- !u!50 &1420796038848203716
 Rigidbody2D:

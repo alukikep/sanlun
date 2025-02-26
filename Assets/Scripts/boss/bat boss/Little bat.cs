@@ -65,14 +65,20 @@ public class Littlebat : MonoBehaviour
             faceRight = false;
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
         {
             collision.GetComponent<Player>().GetDamage(ATK);
         }
     }
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Limit"))
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Die()
     {
         if (gameObject.GetComponent<EnemyHealth>().health <= 0)

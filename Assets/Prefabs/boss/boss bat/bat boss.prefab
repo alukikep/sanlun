@@ -166,20 +166,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WaitTime: 2
   AttackDistance: 19.5
-  ATK: 30
-  speed: 3
-  movingInterval: 3
-  attackInterval: 1
+  ATK: 20
+  speed: 5
+  movingInterval: 1.5
+  attackInterval: 3
   BatTrans: {fileID: 8200310514696222930, guid: 03dcbd54b8b17ad4bb1be10883b0d97f, type: 3}
-  divingSpeed: 9
-  DivingWeight: 1
-  batNum: 1
+  divingSpeed: 12
+  backSpeed: 12
+  DivingWeight: 3
+  batNum: 3
   spawnInterval: 0.5
   littleBatPrefab: {fileID: 1578088413944297465, guid: 74f79159b4a7aee459782e9fb8a7d36e, type: 3}
   spawnWidth: 1.03
-  LittleBatWeight: 2
+  LittleBatWeight: 4
   wavePrefab: {fileID: 5650136507599731613, guid: 8786276f23f188746b0e25fc47626aff, type: 3}
-  WaveWeight: 3
+  WaveWeight: 4
 --- !u!58 &2269182658631103618
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -248,8 +249,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a095b51a2852fdf42b4c9d56c7fa4e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 300
-  health: 300
+  maxHealth: 350
+  health: 350
   flashTime: 0.1
   hurtEffect: {fileID: 3829011218837494106, guid: 596eba13992e9594587a8bb5aca6c23a, type: 3}
   dieEffect: {fileID: 3776493943376636325, guid: a84dcdde275215a4480c19a35a653674, type: 3}

@@ -10,6 +10,7 @@ public class Bat : MonoBehaviour
     public float WaitTime;
     public float AttackDistance;
     public float ATK;
+    private bool isFighting=false;
     private float AttackTimer;
     public float speed;
     public float movingInterval;//µ÷Õû×óÓÒÒÆ¶¯µÄÆµÂÊ
@@ -20,6 +21,7 @@ public class Bat : MonoBehaviour
     private GameObject BossRoom;
     [Header("³å´Ì")]
     public float divingSpeed;
+    public float backSpeed;
     public int DivingWeight;
     [Header("ÕÙ»½òùòğ")]
     public int batNum;
@@ -74,12 +76,15 @@ public class Bat : MonoBehaviour
     }
     private void Update()
     {
-       
         float distancetoPlayer = Vector2.Distance(Player.transform.position, transform.position);
         if (distancetoPlayer <= AttackDistance)
         {
+            isFighting = true;
+        }
+        if (isFighting)
+        {
             WaitTime -= Time.deltaTime;
-            if(WaitTime<=0)
+            if (WaitTime <= 0)
             {
                 movingTimer -= Time.deltaTime;
                 spawnUp = new Vector3(transform.position.x, Player.transform.position.y + spawnWidth, transform.position.z);
@@ -106,8 +111,10 @@ public class Bat : MonoBehaviour
                     }
                 }
             }
-           
         }
+        
+           
+        
         
         
         
@@ -186,7 +193,7 @@ public class Bat : MonoBehaviour
         {
            
             Vector2 directionToOriginal = (originalPosition - transform.position).normalized;
-            rb.velocity = directionToOriginal * speed;
+            rb.velocity = directionToOriginal * backSpeed;
 
            
             if (Vector3.Distance(transform.position, originalPosition) <= 0.5f)
@@ -264,7 +271,7 @@ public class Bat : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
         {
