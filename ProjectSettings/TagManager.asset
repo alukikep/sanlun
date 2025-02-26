@@ -10,6 +10,7 @@ TagManager:
   - LoadScene
   - Audio
   - Potion
+  - Limit
   layers:
   - Default
   - TransparentFX

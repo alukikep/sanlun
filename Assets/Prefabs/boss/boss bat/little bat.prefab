@@ -169,7 +169,7 @@ MonoBehaviour:
   upDownWidth: 0.58
   horizonSpeed: 0.5
   animator: {fileID: 0}
-  ATK: 15
+  ATK: 20
 --- !u!58 &-7073418931757787179
 CircleCollider2D:
   m_ObjectHideFlags: 0
