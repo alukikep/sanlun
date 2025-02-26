@@ -239,7 +239,7 @@ MonoBehaviour:
   attackTime: 2
   attackRadius: 2
   faceRight: 0
-  attackStartDis: 0
+  attackStartDis: 5
   attackCheck: {fileID: 863693764070118498}
   ATK: 100
   playerPosition: {fileID: 0}

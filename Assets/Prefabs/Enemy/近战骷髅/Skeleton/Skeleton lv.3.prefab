@@ -205,7 +205,7 @@ MonoBehaviour:
   ATK: 15
   playerPosition: {fileID: 0}
   stopDistanceX: 2
-  moveSpeed: 2
+  moveSpeed: 3
 --- !u!114 &1830354561320032803
 MonoBehaviour:
   m_ObjectHideFlags: 0
