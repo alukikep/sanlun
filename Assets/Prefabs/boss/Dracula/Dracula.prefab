@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa03bed69c3d4564fb2699bb3a5d61a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areaCenter: {x: 467, y: 84}
+  areaCenter: {x: 136, y: 31}
   player: {fileID: 0}
   areaSize: {x: 30, y: 0}
   faceRight: 0
