@@ -36,6 +36,8 @@ public class Player : MonoBehaviour
 
     public float raycastDistance = 1f;
     public LayerMask obstacleLayer;
+    public float startTime;
+    public float currentTime;
 
     public static Player Instance;//单例模式
     private HashSet<string> collectedPotions = new HashSet<string>();
@@ -180,7 +182,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        startTime = Time.unscaledTime;
+        LoadPlayerTime();
         oriG = rigidbody2D.gravityScale;
         anim = GetComponentInChildren<Animator>();
 
@@ -240,6 +243,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentTime = Time.unscaledTime - startTime;
         StateMachine.currentState.Update();
         blockCoolTimer -= Time.deltaTime;
 
@@ -616,6 +620,7 @@ public class Player : MonoBehaviour
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        SavePlayerTime(currentTime);
     }
     public void SavePlayer()
     {
@@ -638,6 +643,7 @@ public class Player : MonoBehaviour
 
         string json = JsonUtility.ToJson(saveData);
         System.IO.File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
+        Debug.Log("valid");
     }
     public async void LoadPlayer()
     {
@@ -702,5 +708,16 @@ public class Player : MonoBehaviour
                 Destroy(potion); // 销毁已收集的药水
             }
         }
+    }
+    
+    private void SavePlayerTime(float time)
+    {
+        PlayerPrefs.SetFloat("PlayTime", time);
+        PlayerPrefs.Save();
+    }
+    private void LoadPlayerTime()
+    {
+        float savedTime = PlayerPrefs.GetFloat("PlayTime", 0);
+
     }
 }

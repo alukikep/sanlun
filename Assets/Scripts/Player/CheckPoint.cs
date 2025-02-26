@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CheckPoint : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class CheckPoint : MonoBehaviour
     public Animator animator;
     private Player player;
     private bool playerInRange; // 玩家是否在存档点附近
+    public GameObject Panel;
 
     private void Start()
     {
@@ -34,21 +36,21 @@ public class CheckPoint : MonoBehaviour
             animator.SetBool("IsIdle", false);
         }
 
+        TogglePanel();
+    }
+    private void TogglePanel()
+    {
         if (playerInRange)
         {
-            if (Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.F))
             {
-                SaveGame();
-                animator.SetTrigger("IsActive");
-            }
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                LoadGame();
-                animator.SetTrigger("IsActive");
+                Time.timeScale = 0;
+                Player.Instance.enabled = false;
+                Panel.SetActive(!Panel.activeSelf);
             }
         }
     }
-
+    
     // 保存游戏进度
     private void SaveGame()
     {
