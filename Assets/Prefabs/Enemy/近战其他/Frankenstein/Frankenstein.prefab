@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackTimer: 3
-  attackTime: 3
+  attackTime: 0
   attackRadius: 1.5
   faceRight: 0
   attackStartDis: 2.5

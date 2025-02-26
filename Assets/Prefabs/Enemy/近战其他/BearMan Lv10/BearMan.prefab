@@ -204,14 +204,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47b99ef330f1de499b73e586131abc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTimer: 2
+  attackTimer: 0
   attackTime: 2
   attackRadius: 1
   faceRight: 0
+  attackStartDis: 3
   attackCheck: {fileID: 5725104344071127726}
   ATK: 80
   playerPosition: {fileID: 0}
-  stopDistanceX: 0.5
+  stopDistanceX: 2
   moveSpeed: 1
 --- !u!114 &2244447696783921006
 MonoBehaviour:

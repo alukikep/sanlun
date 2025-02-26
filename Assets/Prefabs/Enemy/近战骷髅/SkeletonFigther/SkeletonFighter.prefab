@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47b99ef330f1de499b73e586131abc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTimer: 3
+  attackTimer: 0
   attackTime: 3
   attackRadius: 1
   faceRight: 0
