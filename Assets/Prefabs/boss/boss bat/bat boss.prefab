@@ -164,12 +164,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcad394ca4b1b6e4b8bc62d5c23db317, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WaitTime: 2
+  AttackDistance: 19.5
   ATK: 30
   speed: 3
   movingInterval: 3
   attackInterval: 1
   BatTrans: {fileID: 8200310514696222930, guid: 03dcbd54b8b17ad4bb1be10883b0d97f, type: 3}
-  LimitDistance: 10
   divingSpeed: 9
   DivingWeight: 1
   batNum: 1

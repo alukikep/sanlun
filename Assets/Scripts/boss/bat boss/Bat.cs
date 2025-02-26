@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Bat : MonoBehaviour
 {
-    public float ATK;//目前未做伤害处理
+    public float WaitTime;
+    public float AttackDistance;
+    public float ATK;
+    private float AttackTimer;
     public float speed;
     public float movingInterval;//调整左右移动的频率
     private float movingTimer;
     public float attackInterval;//调整所有攻击的间隔
     public GameObject BatTrans;
     private Vector3 SpawnPos;
+    private GameObject BossRoom;
     [Header("冲刺")]
     public float divingSpeed;
     public int DivingWeight;
@@ -52,6 +57,11 @@ public class Bat : MonoBehaviour
 
     private void Start()
     {
+        BossRoom = GameObject.Find("BossRoom");
+        if (BossRoom != null)
+        {
+            BossRoom.SetActive(false);
+        }
         totalWeight = WaveWeight + LittleBatWeight + DivingWeight;
         Player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody2D>();
@@ -64,29 +74,43 @@ public class Bat : MonoBehaviour
     }
     private void Update()
     {
-        movingTimer-= Time.deltaTime;
-        spawnUp = new Vector3(transform.position.x,Player.transform.position.y+spawnWidth,transform.position.z);
-        spawnDown = new Vector3(transform.position.x, Player.transform.position.y - spawnWidth, transform.position.z);
-        float distance = Vector3.Distance(transform.position, SpawnPos);
        
-            if (!isAttacking)
-            {
-                moving();
-
-            }
-            Attack();
-        
-
-        if (enemyHealth.health<=0)
+        float distancetoPlayer = Vector2.Distance(Player.transform.position, transform.position);
+        if (distancetoPlayer <= AttackDistance)
         {
-            SpawnItem = true;
-            if(SpawnItem==true)
+            WaitTime -= Time.deltaTime;
+            if(WaitTime<=0)
             {
-                GameObject batTrans = Instantiate(BatTrans, transform.position, Quaternion.identity);
-                Destroy(gameObject);
+                movingTimer -= Time.deltaTime;
+                spawnUp = new Vector3(transform.position.x, Player.transform.position.y + spawnWidth, transform.position.z);
+                spawnDown = new Vector3(transform.position.x, Player.transform.position.y - spawnWidth, transform.position.z);
+                float distance = Vector3.Distance(transform.position, SpawnPos);
 
+                if (!isAttacking)
+                {
+                    moving();
+
+                }
+                Attack();
+
+
+                if (enemyHealth.health <= 0)
+                {
+                    SpawnItem = true;
+                    if (SpawnItem == true)
+                    {
+                        GameObject batTrans = Instantiate(BatTrans, transform.position, Quaternion.identity);
+                        BossRoom.SetActive(true);
+                        Destroy(gameObject);
+
+                    }
+                }
             }
+           
         }
+        
+        
+        
         
         
         
@@ -244,7 +268,9 @@ public class Bat : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
+            
             collision.GetComponent<Player>().GetDamage(ATK);
+            
         }
     }
     
