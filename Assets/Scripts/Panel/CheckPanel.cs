@@ -1,12 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class CheckPanel : MonoBehaviour
 {
-    public GameObject panel;
+    private GameObject panel;
     public GameObject savePanel;
     public GameObject loadPanel;
+    public GameObject text;
+    private TextMeshProUGUI textMeshPro;
+    private void Start()
+    {
+        panel = gameObject;
+        // 获取当前物体的子物体
+        textMeshPro = text.GetComponent<TextMeshProUGUI>();
+        // 获取当前场景的名称
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        textMeshPro.text = currentSceneName;
+    }
     private void Update()
     {
         ExitPanel();
