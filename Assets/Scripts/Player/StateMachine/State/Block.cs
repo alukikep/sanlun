@@ -25,5 +25,6 @@ public class Block : Grounded
     public override void Update()
     {
         base.Update();
+        rb.velocity=Vector2.zero;
     }
 }

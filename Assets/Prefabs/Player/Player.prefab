@@ -801,7 +801,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -40.200027, y: 320.5}
+  m_AnchoredPosition: {x: -56, y: 256}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6851918087938683538
@@ -926,6 +926,8 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 128
+  startTime: 0
+  currentTime: 0
   speedRate: 8
   jumpForce: 14
   rigidbody2D: {fileID: 5837281319785809218}
@@ -954,18 +956,18 @@ MonoBehaviour:
   ATK: 20
   attackTime: 0
   attackTimer: 0.5
-  maxHealth: 1000
-  health: 400
+  maxHealth: 300
+  health: 300
   proTime: 0.1
   proNumber: 3
-  maxMana: 200
+  maxMana: 100
   currentMana: 0
-  ManaPerSecond: 10
+  ManaPerSecond: 5
   SwitchKey: 105
-  UseKey: 117
+  UseKey: 111
   axe: {fileID: 5762047534356073613, guid: 14d34defe9acd644690916ec6c0523b8, type: 3}
-  isAxe: 1
-  familiar: {fileID: 0}
+  isAxe: 0
+  familiar: {fileID: 7349403836149618934, guid: 9cccad8786dadd342a131131c48a5559, type: 3}
   isFamiliar: 0
   guardian: {fileID: 1551691195948429998, guid: d60d5f33a284a89479c0a7dd11e5da76, type: 3}
   isGuardian: 0
@@ -1119,7 +1121,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -606.6, y: 302.9}
+  m_AnchoredPosition: {x: -634, y: 235}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5024714882547916907
@@ -1353,6 +1355,7 @@ MonoBehaviour:
   block: {fileID: 8300000, guid: 1390659d27355fc43bd56070fe68c689, type: 3}
   blockStart: {fileID: 8300000, guid: 4080f802465214242b0c69e76fc589e0, type: 3}
   minotaurAttack: {fileID: 8300000, guid: 47217f94090e2f943ac5e696bcf316dc, type: 3}
+  lightningSkeletonAttack: {fileID: 0}
 --- !u!1 &6178018840144071281
 GameObject:
   m_ObjectHideFlags: 0
