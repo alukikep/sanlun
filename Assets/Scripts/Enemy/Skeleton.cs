@@ -67,16 +67,34 @@ public class Enemy1 : MonoBehaviour
     {
         if (rigidbody2D.velocity.x > 0 && faceRight == false)
         {
-            transform.Rotate(0, 180, 0);
             faceRight = true;
+            Invoke("Right", 0.3f);
         }
         if (rigidbody2D.velocity.x < 0 && faceRight == true)
         {
-            transform.Rotate(0, 180, 0);
             faceRight = false;
+            Invoke("Left", 0.3f);
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<Player>().GetDamage(ATK);
+        }
+    }
+    private void Right()
+    {
+        transform.Rotate(0, 180, 0);
+       
+    }
+
+    private void Left()
+    {
+        transform.Rotate(0, 180, 0);
+       
+    }
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(attackCheck.position, attackRadius);

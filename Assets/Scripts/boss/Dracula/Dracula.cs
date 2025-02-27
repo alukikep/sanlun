@@ -186,6 +186,14 @@ public class Dracula : MonoBehaviour
         rb.velocity = new Vector2(rushSpeed * (faceRight ? 1 : -1), 0);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        float ATK = 100;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<Player>().GetDamage(ATK);
+        }
+    }
 
     private void Flip()
     {

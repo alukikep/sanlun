@@ -44,6 +44,15 @@ public class ArcherChase : MonoBehaviour
         cooldownTimer = cooldown;    
             _player.audioController.PlaySfx(_player.audioController.lightningSkeletonAttack);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        float ATK = 20;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<Player>().GetDamage(ATK);
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
