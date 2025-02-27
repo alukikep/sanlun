@@ -11,6 +11,8 @@ TagManager:
   - Audio
   - Potion
   - Limit
+  - Button
+  - Limit
   layers:
   - Default
   - TransparentFX
@@ -22,7 +24,7 @@ TagManager:
   - Ground
   - Player
   - DestructibleBricks
-  - 
+  - Limit
   - 
   - 
   - 

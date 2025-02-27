@@ -1,11 +1,13 @@
 using Cinemachine;
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Unity.IO.LowLevel.Unsafe;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.SearchService;
 using UnityEngine;
@@ -105,7 +107,8 @@ public class Player : MonoBehaviour
     [Header("∏±Œ‰∆˜œ‡πÿ")]
     public KeyCode SwitchKey = KeyCode.I;
     public KeyCode UseKey = KeyCode.O;
-    private int CurrentSubWeaponNum = 0;
+    private List<string> collectedWeapons = new List<string> ();
+    private int currentWeaponIndex = -1;
     private int maxSubWeaponNum = 0;
     public GameObject axe;
     public bool isAxe;
@@ -406,18 +409,22 @@ public class Player : MonoBehaviour
                     break;
                 case Ability.Axe:
                     isAxeEnabled = true;
+                    collectedWeapons.Add("Axe");
                     maxSubWeaponNum++;
                     break;
                 case Ability.Guardian:
                     isGuardianEnabled = true;
+                    collectedWeapons.Add("Guardian");
                     maxSubWeaponNum++;
                     break;
                 case Ability.TimeSlow:
                     isTimeSlowEnabled = true;
+                    collectedWeapons.Add("TimeSlow");
                     maxSubWeaponNum++;
                     break;
                 case Ability.familiar:
                     isFamiliarEnabled = true;
+                    collectedWeapons.Add("Familiar");
                     maxSubWeaponNum++;
                     break;
             }
@@ -457,15 +464,16 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(SwitchKey))
         {
-            CurrentSubWeaponNum = (CurrentSubWeaponNum + 1) % maxSubWeaponNum;
-            if (CurrentSubWeaponNum == 0)
+            
+            currentWeaponIndex = (currentWeaponIndex+1)%maxSubWeaponNum;
+            if (collectedWeapons[currentWeaponIndex]=="Axe")
             {
                 isAxe = true;
                 isFamiliar = false;
                 isGuardian = false;
                 isTimeSlowed = false;
             }
-            else if (CurrentSubWeaponNum == 1)
+            else if (collectedWeapons[currentWeaponIndex]=="Familiar")
             {
                 isAxe = false;
                 isFamiliar = true;
@@ -473,14 +481,14 @@ public class Player : MonoBehaviour
                 isTimeSlowed = false;
 
             }
-            else if (CurrentSubWeaponNum == 2)
+            else if (collectedWeapons[currentWeaponIndex] =="Guardian")
             {
                 isAxe = false;
                 isFamiliar = false;
                 isGuardian = true;
                 isTimeSlowed = false;
             }
-            else if (CurrentSubWeaponNum == 3)
+            else if (collectedWeapons[currentWeaponIndex] == "TimeSlow")
             {
                 isAxe = false;
                 isFamiliar = false;
