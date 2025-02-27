@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class SaveLoadPanel : MonoBehaviour
 {
     private GameObject panel;
+    public GameObject slot;
     public TextMeshProUGUI textMeshPro;
     private void Start()
     {
@@ -23,6 +24,9 @@ public class SaveLoadPanel : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                slot.SetActive(false);
+                Time.timeScale = 1;
+                Player.Instance.enabled = true;
                 panel.SetActive(false);
             }
         }

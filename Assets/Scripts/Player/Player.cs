@@ -623,55 +623,8 @@ public class Player : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
         SavePlayerTime(currentTime);
     }
-    public void SavePlayer()
-    {
-        health = maxHealth;
-        PlayerSaveData saveData = new PlayerSaveData
-        {
-            health = health,
-            currentMana = currentMana,
-            position = transform.position,
-            isDoubleJumpEnabled = isdoubleJumpEnabled,
-            isHighJumpEnabled = ishighJumpEnabled,
-            isBatTransformEnabled = isbatTransformEnabled,
-            isRatTransformEnabled = isratTransformEnabled,
-            isAxeEnabled = isAxeEnabled,
-            isGuardianEnabled = isGuardianEnabled,
-            isTimeSlowEnabled = isTimeSlowEnabled,
-            attack = ATK,
-            currentSceneName = SceneManager.GetActiveScene().name,
-        };
-
-        string json = JsonUtility.ToJson(saveData);
-        System.IO.File.WriteAllText(Application.persistentDataPath + "/playerData.json", json);
-        Debug.Log("valid");
-    }
-    public async void LoadPlayer()
-    {
-        string path = Application.persistentDataPath + "/playerData.json";
-        if (System.IO.File.Exists(path))
-        {
-            string json = System.IO.File.ReadAllText(path);
-            PlayerSaveData saveData = JsonUtility.FromJson<PlayerSaveData>(json);
-
-            SceneManager.LoadScene(saveData.currentSceneName);
-            health = saveData.health;
-            currentMana = saveData.currentMana;
-            transform.position = saveData.position;
-            isdoubleJumpEnabled = saveData.isDoubleJumpEnabled;
-            ishighJumpEnabled = saveData.isHighJumpEnabled;
-            isbatTransformEnabled = saveData.isBatTransformEnabled;
-            isratTransformEnabled = saveData.isRatTransformEnabled;
-            isAxeEnabled = saveData.isAxeEnabled;
-            isGuardianEnabled = saveData.isGuardianEnabled;
-            isTimeSlowEnabled = saveData.isTimeSlowEnabled;
-            ATK = saveData.attack;
-
-
-            StartCoroutine(UpdateVirtualCameraAfterLoad());
-        }
-    }
-    private IEnumerator UpdateVirtualCameraAfterLoad()
+    
+    public IEnumerator UpdateVirtualCameraAfterLoad()
     {
         // 等待场景加载完成
         yield return new WaitForSeconds(0.1f); // 等待0.1秒，确保场景加载完成

@@ -13,6 +13,7 @@ public class Slot : MonoBehaviour
     public Image image;
     private void Start()
     {
+        slot = gameObject;
         image = GetComponent<Image>(); 
         //获取父物体
         Transform parentTransform = transform.parent;
@@ -26,14 +27,13 @@ public class Slot : MonoBehaviour
         string currentSceneName = SceneManager.GetActiveScene().name;
         sceneName.text = currentSceneName;
         image.sprite=Player.Instance.CheckpointPicture;
-        Player.Instance.SavePlayer();
     }
     public void LoadGame()
     {
+        slot.SetActive(false);
         parentPanel.SetActive(false);
         Time.timeScale = 1;
         Player.Instance.enabled = true;
-        Player.Instance.LoadPlayer();
     }
     public void Activate()
     {

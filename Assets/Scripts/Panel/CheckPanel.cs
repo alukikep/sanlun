@@ -14,7 +14,6 @@ public class CheckPanel : MonoBehaviour
     private void Start()
     {
         panel = gameObject;
-        // 获取当前物体的子物体
         textMeshPro = text.GetComponent<TextMeshProUGUI>();
         // 获取当前场景的名称
         string currentSceneName = SceneManager.GetActiveScene().name;
