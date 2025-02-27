@@ -6,6 +6,7 @@ public class FireBall : MonoBehaviour
 { 
   private Rigidbody2D rigidbody2D;
     private SpriteRenderer spriteRenderer;
+    public bool isDracula;
 
 [SerializeField] private float moveSpeed;
 [SerializeField]private float destroyTimer = 10;//×Ô»ÙÊ±¼ä
@@ -27,9 +28,13 @@ void Awake()
 
     private void Start()
     {
-        if(rigidbody2D.velocity.x>0)
+        if (rigidbody2D.velocity.x > 0 && isDracula == false)
         {
             spriteRenderer.flipX = false;
+        }
+        else if (rigidbody2D.velocity.x > 0 && isDracula == true)
+        {
+            spriteRenderer.flipX = true;
         }
     }
 
