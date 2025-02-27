@@ -617,7 +617,11 @@ public class Player : MonoBehaviour
         string TargetSpawnName = LoadScene.TargetSpawnPoint;
         GameObject Player = GameObject.Find("Player");
         GameObject TargetSpawn = GameObject.Find(TargetSpawnName);
-        transform.position = TargetSpawn.transform.position;
+        if(TargetSpawn!=null)
+        {
+            transform.position = TargetSpawn.transform.position;
+
+        }
 
 
         health = maxHealth;
