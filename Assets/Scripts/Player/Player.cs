@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
 
     public static Player Instance;//单例模式
     private HashSet<string> collectedPotions = new HashSet<string>();
+    public Sprite CheckpointPicture;
 
     public float speedRate; // 速率系数
     private float recordSpeedRate;
@@ -697,7 +698,6 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.1f); // 等待0.1秒，确保场景加载完成
 
         GameObject[] allPotions = GameObject.FindGameObjectsWithTag("Potion");
-        Debug.Log($"Found {allPotions.Length} potions in the scene.");
 
         foreach (var potion in allPotions)
         {

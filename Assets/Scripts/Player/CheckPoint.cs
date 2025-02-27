@@ -12,8 +12,8 @@ public class CheckPoint : MonoBehaviour
     public Animator animator;
     private Player player;
     private bool playerInRange; // 玩家是否在存档点附近
-    public GameObject Panel;
-
+    public Sprite CheckpointPicture;
+    public GameObject CheckPanel;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -45,22 +45,10 @@ public class CheckPoint : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
             {
                 Time.timeScale = 0;
+                Player.Instance.CheckpointPicture = CheckpointPicture;
                 Player.Instance.enabled = false;
-                Panel.SetActive(!Panel.activeSelf);
+                CheckPanel.SetActive(true);
             }
         }
     }
-    
-    // 保存游戏进度
-    private void SaveGame()
-    {
-        Player.Instance.SavePlayer();
-        Debug.Log("游戏存档成功！");
-    }
-    public void LoadGame()
-    {
-        Player.Instance.LoadPlayer(); // 调用玩家的读档方法
-        Debug.Log("游戏已读取");
-    }
-    
 }
