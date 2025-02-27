@@ -163,4 +163,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 8
   angle: 0
-  ATK: 15
+  ATK: 40

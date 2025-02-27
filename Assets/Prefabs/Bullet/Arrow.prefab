@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   destroyTimer: 8
-  ATK: 20
+  ATK: 35
 --- !u!61 &4507633017639205273
 BoxCollider2D:
   m_ObjectHideFlags: 0
