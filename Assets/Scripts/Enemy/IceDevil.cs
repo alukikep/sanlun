@@ -48,6 +48,14 @@ public class IceDevil : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        float ATK = 40;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<Player>().GetDamage(ATK);
+        }
+    }
     private void HandleMovement(Vector2 vector2)
     {
         float currentDistance = Vector2.Distance(transform.position, player.position);

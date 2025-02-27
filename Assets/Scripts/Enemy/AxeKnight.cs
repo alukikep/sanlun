@@ -58,6 +58,14 @@ public class AxeKnight : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        float ATK = 30;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<Player>().GetDamage(ATK);
+        }
+    }
     private void Attack()
     {
         GameObject axe = Instantiate(bullet, transform.position,Quaternion.identity);
