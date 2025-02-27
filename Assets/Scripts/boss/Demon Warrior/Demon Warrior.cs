@@ -1,3 +1,4 @@
+
 using Unity.Mathematics;
 using UnityEngine;
 using static Unity.Burst.Intrinsics.Arm;
@@ -27,6 +28,7 @@ public class DemonWarrior : MonoBehaviour
     public float swipeDamage = 10f;
 
     [Header("½×¶Î2 - ÕÙ»½")]
+    [SerializeField]private float retreatDistance;
     public GameObject[] spawnPoints;
     public GameObject impPrefab;
     public float summonInterval = 5f;
@@ -79,6 +81,11 @@ public class DemonWarrior : MonoBehaviour
             spawnItem = true;
         }
         TransPrase();
+
+        if(isShieldActive)
+        {
+            Shield();
+        }
     }
 
     void HandleSpriteFlip()
@@ -107,18 +114,19 @@ public class DemonWarrior : MonoBehaviour
 
     void Phase1Logic()
     {
-        float distance = Vector2.Distance(transform.position, player.position);
+       
+        float distance = UnityEngine.Vector2.Distance(transform.position, player.position);
         isInRange = distance <= stopDistance;
 
         if (!isInRange)
         {
-            Vector2 direction = (player.position - transform.position).normalized;
+            UnityEngine.Vector2 direction = (player.position - transform.position).normalized;
             rb.velocity = direction * GetCurrentSpeed();
             animator.SetBool("IsMoving", true);
         }
         else
         {
-            rb.velocity = Vector2.zero;
+            rb.velocity = UnityEngine.Vector2.zero;
             animator.SetBool("IsMoving", false);
         }
 
@@ -131,8 +139,25 @@ public class DemonWarrior : MonoBehaviour
 
     void Phase2Logic()
     {
+        UnityEngine.Vector2 dirToPlayer = (player.position - transform.position).normalized;
         summonTimer += Time.deltaTime;
-        rb.velocity = Vector2.zero;
+
+        float currentDistance = UnityEngine.Vector2.Distance(transform.position, player.position);
+
+        // Èç¹ûÍæ¼Ò¾àÀëÐ¡ÓÚ retreatDistance£¬Ô¶ÀëÍæ¼Ò
+        if (currentDistance < retreatDistance)
+        {
+            rb.velocity = -dirToPlayer * 3; // Ô¶ÀëÍæ¼Ò
+        }
+        else if (currentDistance > retreatDistance + 1)
+        {
+            rb.velocity = dirToPlayer * 3; // Í£Ö¹ÒÆ¶¯
+        }
+        else
+        {
+            rb.velocity = UnityEngine.Vector2.zero;
+        }
+
         if (summonTimer >= summonInterval)
         {
             SummonImps();
@@ -275,13 +300,20 @@ public class DemonWarrior : MonoBehaviour
     private void ActivateShield()
     {
         isShieldActive = true;
+        
         animator.SetTrigger("ReleaseShield");
         shieldEffect = Instantiate(shieldEffectPrefab,
             new Vector3(transform.position.x + 0.26f, transform.position.y - 1.48f, 0),
             Quaternion.identity); 
+        shieldEffect.transform.SetParent(transform);
         Invoke("DeactivateShield", phase3ShieldDuration);
     }
 
+    private void Shield()
+    {
+        float deathHealth = enemyHealth.health;
+        enemyHealth.health = deathHealth;
+    }
     private void DeactivateShield()
     {
         isShieldActive = false;

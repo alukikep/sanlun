@@ -21,16 +21,13 @@ public class Imp : MonoBehaviour
     public float projectileSpeed = 8f;    // 火球速度
     public GameObject fireballPrefab;     // 火球预制体
 
-    [Header("生命参数")]
-    public int maxHealth = 2;             // 最大生命值
-    public float deathEffectDuration = 0.5f; // 死亡效果持续时间
-    public GameObject deathParticle;      // 死亡特效
-
+    public float LifeTime;
+    private EnemyHealth enemyHealth;
     private Transform player;
     private Rigidbody2D rb;
     private Animator anim;
     private float attackTimer;
-    private int currentHealth;
+    private float currentHealth;
     private ImpState currentState = ImpState.Idle;
 
 
@@ -39,7 +36,8 @@ public class Imp : MonoBehaviour
         player = Player.Instance.transform;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        currentHealth = maxHealth;
+        enemyHealth = GetComponent<EnemyHealth>();
+        currentHealth = enemyHealth.maxHealth;
 
         ChangeState(ImpState.Idle);
         CreateDetectionZone();
@@ -47,24 +45,21 @@ public class Imp : MonoBehaviour
 
     void Update()
     {
+        currentHealth = enemyHealth.health;
+        if(currentHealth<1)
+        {
+            Destroy(gameObject);
+        }
+        if(LifeTime<0)
+        {
+            Destroy(gameObject);
+        }
+        LifeTime-=Time.deltaTime;
         if (player == null) return;
         Vector2 dirToPlayer = (player.position - transform.position).normalized;
 
-        switch (currentState)
-        {
-            case ImpState.Idle:
-                HandleIdle();
-                break;
-            case ImpState.Moving:
-                HandleMovement(dirToPlayer);
-                break;
-            case ImpState.Attacking:
-                HandleAttack();
-                break;
-            case ImpState.Dying:
-                HandleDeath();
-                break;
-        }
+        HandleAttack();
+        HandleMovement(dirToPlayer);
 
         // 更新朝向
         if (dirToPlayer.x > 0)
@@ -110,19 +105,6 @@ public class Imp : MonoBehaviour
         }
     }
 
-    private void HandleDeath()
-    {
-        // 死亡逻辑
-        GetComponent<Collider2D>().enabled = false;
-        rb.velocity = Vector2.zero;
-
-        if (deathParticle != null)
-        {
-            Instantiate(deathParticle, transform.position, Quaternion.identity);
-        }
-
-        Destroy(gameObject, deathEffectDuration);
-    }
 
     public void LaunchProjectile()
     {
@@ -134,23 +116,7 @@ public class Imp : MonoBehaviour
         fb.Initialize(fireDirection, projectileSpeed, fireballDamage);
     }
 
-    public void TakeDamage(int damage)
-    {
-        currentHealth -= damage;
 
-        if (currentHealth <= 0)
-        {
-            StartCoroutine(DeathSequence());
-        }
-    }
-
-    private IEnumerator DeathSequence()
-    {
-        ChangeState(ImpState.Dying);
-        anim.SetTrigger("Die");
-
-        yield return new WaitForSeconds(deathEffectDuration);
-    }
 
     public void ChangeState(ImpState newState)
     {
