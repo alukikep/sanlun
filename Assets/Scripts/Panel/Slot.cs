@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
+    public GameObject slot;
     public GameObject parentPanel;
     private TextMeshProUGUI sceneName;
     public Image image;
@@ -18,12 +19,12 @@ public class Slot : MonoBehaviour
         parentPanel=transform.parent.gameObject;
         // 获取当前物体的子物体
         sceneName = GetComponentInChildren<TextMeshProUGUI>();
-        // 获取当前场景的名称
-        string currentSceneName = SceneManager.GetActiveScene().name;
-        sceneName.text = currentSceneName;
     }
     public void SaveGame()
     {
+        image.color = Color.white;
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        sceneName.text = currentSceneName;
         image.sprite=Player.Instance.CheckpointPicture;
         Player.Instance.SavePlayer();
     }
@@ -33,5 +34,9 @@ public class Slot : MonoBehaviour
         Time.timeScale = 1;
         Player.Instance.enabled = true;
         Player.Instance.LoadPlayer();
+    }
+    public void Activate()
+    {
+        slot.SetActive(true);
     }
 }

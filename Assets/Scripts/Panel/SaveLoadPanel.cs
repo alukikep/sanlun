@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class SaveLoadPanel : MonoBehaviour
 {
     private GameObject panel;
-    public GameObject checkPanel;
+    public TextMeshProUGUI textMeshPro;
     private void Start()
     {
         panel = gameObject;
-        
+        textMeshPro = GetComponentInChildren<TextMeshProUGUI>();
+        // 获取当前场景的名称
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        textMeshPro.text = currentSceneName;
     }
     private void Update()
     {
@@ -19,7 +24,6 @@ public class SaveLoadPanel : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 panel.SetActive(false);
-                checkPanel.SetActive(true);
             }
         }
     }

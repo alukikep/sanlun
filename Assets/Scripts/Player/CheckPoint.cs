@@ -13,7 +13,7 @@ public class CheckPoint : MonoBehaviour
     private Player player;
     private bool playerInRange; // 玩家是否在存档点附近
     public Sprite CheckpointPicture;
-    public GameObject CheckPanel;
+    public GameObject savePanel;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -47,7 +47,7 @@ public class CheckPoint : MonoBehaviour
                 Time.timeScale = 0;
                 Player.Instance.CheckpointPicture = CheckpointPicture;
                 Player.Instance.enabled = false;
-                CheckPanel.SetActive(true);
+                savePanel.SetActive(true);
             }
         }
     }
