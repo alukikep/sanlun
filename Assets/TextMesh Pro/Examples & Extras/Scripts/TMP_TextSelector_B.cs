@@ -4,7 +4,6 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 
-
 #pragma warning disable 0618 // Disabled warning due to SetVertices being deprecated until new release with SetMesh() is available.
 
 namespace TMPro.Examples
@@ -21,7 +20,7 @@ namespace TMPro.Examples
 
 
         private TextMeshProUGUI m_TextMeshPro;
-        private CanvasUI m_Canvas;
+        private Canvas m_Canvas;
         private Camera m_Camera;
 
         // Flags
@@ -37,9 +36,7 @@ namespace TMPro.Examples
         void Awake()
         {
             m_TextMeshPro = gameObject.GetComponent<TextMeshProUGUI>();
-
-
-            m_Canvas = gameObject.GetComponentInParent<CanvasUI>();
+            m_Canvas = gameObject.GetComponentInParent<Canvas>();
 
             // Get a reference to the camera if Canvas Render Mode is not ScreenSpace Overlay.
             if (m_Canvas.renderMode == RenderMode.ScreenSpaceOverlay)

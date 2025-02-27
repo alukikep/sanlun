@@ -89,7 +89,7 @@ namespace TMPro
         private TMP_Text m_TextComponent;
 
         private Camera m_Camera;
-        private CanvasUI m_Canvas;
+        private Canvas m_Canvas;
 
         private int m_selectedLink = -1;
         private int m_lastCharIndex = -1;
@@ -104,7 +104,7 @@ namespace TMPro
             // Get a reference to the camera rendering the text taking into consideration the text component type.
             if (m_TextComponent.GetType() == typeof(TextMeshProUGUI))
             {
-                m_Canvas = gameObject.GetComponentInParent<CanvasUI>();
+                m_Canvas = gameObject.GetComponentInParent<Canvas>();
                 if (m_Canvas != null)
                 {
                     if (m_Canvas.renderMode == RenderMode.ScreenSpaceOverlay)
