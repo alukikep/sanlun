@@ -27,11 +27,4 @@ public class SaveLoadButton : MonoBehaviour
             SaveManager.Instance.LoadGame(slotIndex);
         }
     }
-    //public void UpdateRecordImage()
-    //{
-    //    if (isSaveButton)
-    //    {
-    //        selectButton.recordimage.sprite=Player.Instance.CheckpointPicture;
-    //    }
-    //}
 }
