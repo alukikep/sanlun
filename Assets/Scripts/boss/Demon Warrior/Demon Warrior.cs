@@ -1,5 +1,6 @@
 using Unity.Mathematics;
 using UnityEngine;
+using static Unity.Burst.Intrinsics.Arm;
 
 public class DemonWarrior : MonoBehaviour
 {
@@ -131,6 +132,7 @@ public class DemonWarrior : MonoBehaviour
     void Phase2Logic()
     {
         summonTimer += Time.deltaTime;
+        rb.velocity = Vector2.zero;
         if (summonTimer >= summonInterval)
         {
             SummonImps();
@@ -174,13 +176,13 @@ public class DemonWarrior : MonoBehaviour
 
     void PerformSwipeAttack()
     {
-        animator.SetTrigger("Swipe");
+        animator.Play("Swipe");
         attackTimer = 0f;
     }
 
     void PerformEnhancedSwipe()
     {
-        animator.SetTrigger("Swipe");
+        animator.Play("Swipe");
         //phase3Effect.Play();
         // 强化版攻击处理
     }
@@ -188,22 +190,22 @@ public class DemonWarrior : MonoBehaviour
     private void TransPrase()
     {
        
-        if(enemyHealth.health/enemyHealth.maxHealth <=2/3&& enemyHealth.health / enemyHealth.maxHealth >= 1/3&&p1==true)
+        if(currentHealth <1000&&p1==true)
         {
             TransitionPhase();
             p1=false;
             p2=true;
         }
-        if (enemyHealth.health / enemyHealth.maxHealth <= 1/3 && enemyHealth.health / enemyHealth.maxHealth >= 0 && p2 == true)
+        if (currentHealth<500 && p2 == true)
         {
             TransitionPhase();
-            p2=false;
+            p2 =false;
         }
     }
 
     void SummonImps()
     {
-        animator.SetTrigger("Summon");
+        animator.Play("Summon");
         foreach (var spawnPoint in spawnPoints)
         {
             Instantiate(impPrefab, transform.position, Quaternion.identity);
@@ -213,10 +215,6 @@ public class DemonWarrior : MonoBehaviour
     public void TakeDamage(int damage)
     {
         if (isTransitioning || isShieldActive) return; // 如果正在过渡或盾牌激活，忽略伤害
-
-        currentHealth -= damage;
-        animator.SetTrigger("Hurt");
-
         // 在第二阶段，每次受到攻击后调整 X 坐标
         if (phase == 2)
         {
@@ -226,25 +224,13 @@ public class DemonWarrior : MonoBehaviour
             rb.velocity = new Vector2(Mathf.Clamp(deltaX / Time.deltaTime, -maxSpeed, maxSpeed), rb.velocity.y);
         }
 
-        if (currentHealth <= 0)
-        {
-            StartCoroutine(TransitionPhase());
-        }
     }
 
-    System.Collections.IEnumerator TransitionPhase()
-    {
-        isTransitioning = true;
-        animator.SetTrigger("PhaseTransition");
-
-        yield return new WaitForSeconds(phaseTransitionDuration);
-
+    private void TransitionPhase()
+    {      
         phase++;
         if (phase > 3) phase = 3;
-
         ApplyPhaseModifiers();
-        currentHealth = enemyHealth.maxHealth;
-        isTransitioning = false;
     }
 
     void ApplyPhaseModifiers()

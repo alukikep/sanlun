@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  health: 500
+  health: 1001
   flashTime: 0.1
   hurtEffect: {fileID: 3829011218837494106, guid: 596eba13992e9594587a8bb5aca6c23a, type: 3}
   dieEffect: {fileID: 3776493943376636325, guid: a84dcdde275215a4480c19a35a653674, type: 3}
