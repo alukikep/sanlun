@@ -11,6 +11,9 @@ TagManager:
   - Audio
   - Potion
   - Limit
+  - SaveButton
+  - Button
+  - SavePanel
   layers:
   - Default
   - TransparentFX

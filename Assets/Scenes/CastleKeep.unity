@@ -14811,6 +14811,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 476003626287547201, guid: 4a444dbd3ebf2a445a90ce929e21f9f6, type: 3}
+      propertyPath: CheckpointPicture
+      value: 
+      objectReference: {fileID: 1361420440, guid: 46cb16e7dc9cb744d9efa79c5dc4e8f8, type: 3}
     - target: {fileID: 3247982037339264214, guid: 4a444dbd3ebf2a445a90ce929e21f9f6, type: 3}
       propertyPath: m_Name
       value: CheckPoint (1)
@@ -121427,6 +121431,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 476003626287547201, guid: 4a444dbd3ebf2a445a90ce929e21f9f6, type: 3}
+      propertyPath: CheckpointPicture
+      value: 
+      objectReference: {fileID: 711017844, guid: 507e592db05c32a4fa087c7564d8677c, type: 3}
     - target: {fileID: 3247982037339264214, guid: 4a444dbd3ebf2a445a90ce929e21f9f6, type: 3}
       propertyPath: m_Name
       value: CheckPoint (2)
@@ -124460,6 +124468,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 476003626287547201, guid: 4a444dbd3ebf2a445a90ce929e21f9f6, type: 3}
+      propertyPath: CheckpointPicture
+      value: 
+      objectReference: {fileID: 2065711942, guid: 72dcbc39acead544fa06541fdd39716b, type: 3}
     - target: {fileID: 3247982037339264214, guid: 4a444dbd3ebf2a445a90ce929e21f9f6, type: 3}
       propertyPath: m_Name
       value: CheckPoint

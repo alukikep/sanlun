@@ -6,11 +6,11 @@ public class SaveLoadButton : MonoBehaviour
     public int slotIndex; // ´æµµ²ÛË÷Òý
     public bool isSaveButton; // ÊÇ·ñÎª´æµµ°´Å¥
     private Button button;
-    private SelectButton selectButton;
-
+    private SelectToggle selectToggle;
+    public UnityEngine.UI.Image recordImage;
     void Start()
     {
-        selectButton = GetComponentInParent<SelectButton>();
+        selectToggle = GetComponentInParent<SelectToggle>();
         button = GetComponent<Button>();
         button.onClick.AddListener(OnButtonClick);
     }
@@ -19,6 +19,7 @@ public class SaveLoadButton : MonoBehaviour
     {
         if (isSaveButton)
         {
+            recordImage.sprite=Player.Instance.CheckpointPicture;
             SaveManager.Instance.SaveGame(slotIndex);
         }
         else
@@ -26,11 +27,11 @@ public class SaveLoadButton : MonoBehaviour
             SaveManager.Instance.LoadGame(slotIndex);
         }
     }
-    public void UpdateRecordImage()
-    {
-        if (isSaveButton)
-        {
-            selectButton.recordimage.sprite=Player.Instance.CheckpointPicture;
-        }
-    }
+    //public void UpdateRecordImage()
+    //{
+    //    if (isSaveButton)
+    //    {
+    //        selectButton.recordimage.sprite=Player.Instance.CheckpointPicture;
+    //    }
+    //}
 }

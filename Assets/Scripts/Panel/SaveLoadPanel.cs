@@ -9,9 +9,10 @@ using UnityEngine.UI;
 public class SaveLoadPanel : MonoBehaviour
 {
     private GameObject panel;
-    public GameObject slot;
     public TextMeshProUGUI textMeshPro;
-    public List<Button> buttons = new List<Button>();
+    public ToggleGroup toggleGroup; // 需要操作的 ToggleGroup
+
+    private bool lastState = false; // 上一次的状态
 
     private void Start()
     {
@@ -27,19 +28,25 @@ public class SaveLoadPanel : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Deactivate();
-                slot.SetActive(false);
+                //Deactivate();
+                //slot.SetActive(false);
                 Time.timeScale = 1;
                 Player.Instance.enabled = true;
                 panel.SetActive(false);
             }
         }
-    }
-    public void Deactivate()
-    {
-        foreach (Button button in buttons)
+        // 如果状态从不可见变为可见，调用 SetAllTogglesOff 方法
+        if (!lastState && gameObject.activeSelf)
         {
-            button.gameObject.SetActive(false);
+            DisableAllToggles();
         }
+
+        // 更新状态
+        lastState = gameObject.activeSelf;
+    }
+    private void DisableAllToggles()
+    {
+        // 禁用所有 Toggle
+        toggleGroup.SetAllTogglesOff();
     }
 }

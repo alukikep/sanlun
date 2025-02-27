@@ -13,11 +13,14 @@ public class CheckPoint : MonoBehaviour
     private Player player;
     private bool playerInRange; // 玩家是否在存档点附近
     public Sprite CheckpointPicture;
+    private GameObject canvas;
     public GameObject savePanel;
     private void Start()
     {
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        canvas = GameObject.Find("Canvas");
+        savePanel =FindChildByName(canvas,"SavePanel");
     }
 
     // 更新存档点状态
@@ -50,5 +53,29 @@ public class CheckPoint : MonoBehaviour
                 savePanel.SetActive(true);
             }
         }
+    }
+    private GameObject FindChildByName(GameObject parent, string childName)
+    {
+        // 遍历父物体的所有子物体
+        foreach (Transform child in parent.transform)
+        {
+            if (child.gameObject.name == childName)
+            {
+                return child.gameObject; // 找到目标子物体
+            }
+
+            // 如果子物体有子物体，递归查找
+            if (child.childCount > 0)
+            {
+                GameObject found = FindChildByName(child.gameObject, childName);
+                if (found != null)
+                {
+                    return found;
+                }
+            }
+        }
+
+        // 如果没有找到，返回 null
+        return null;
     }
 }
