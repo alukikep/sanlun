@@ -205,8 +205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a095b51a2852fdf42b4c9d56c7fa4e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 95
-  health: 95
+  maxHealth: 120
+  health: 120
   flashTime: 0.1
   hurtEffect: {fileID: 3829011218837494106, guid: 596eba13992e9594587a8bb5aca6c23a, type: 3}
   dieEffect: {fileID: 3776493943376636325, guid: a84dcdde275215a4480c19a35a653674, type: 3}
@@ -260,7 +260,7 @@ MonoBehaviour:
   isMinotaur: 0
   isLightning: 0
   attackCheck: {fileID: 4227072806076045719}
-  ATK: 50
+  ATK: 30
   playerPosition: {fileID: 0}
   stopDistanceX: 4
   moveSpeed: 3

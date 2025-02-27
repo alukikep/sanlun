@@ -162,6 +162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  ATK: 20
+  ATK: 45
   rotateSpeed: 360
   flipTimer: 3

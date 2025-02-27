@@ -210,7 +210,7 @@ MonoBehaviour:
   faceRight: 0
   attackStartDis: 3
   attackCheck: {fileID: 5725104344071127726}
-  ATK: 80
+  ATK: 90
   playerPosition: {fileID: 0}
   stopDistanceX: 2
   moveSpeed: 1
@@ -226,8 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a095b51a2852fdf42b4c9d56c7fa4e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 300
-  health: 300
+  maxHealth: 600
+  health: 600
   flashTime: 0.1
   hurtEffect: {fileID: 3829011218837494106, guid: 596eba13992e9594587a8bb5aca6c23a, type: 3}
   dieEffect: {fileID: 3776493943376636325, guid: a84dcdde275215a4480c19a35a653674, type: 3}

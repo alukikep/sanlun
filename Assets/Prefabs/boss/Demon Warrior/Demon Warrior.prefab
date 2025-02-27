@@ -205,12 +205,12 @@ MonoBehaviour:
   phase1MoveSpeed: 6
   phase1AttackCD: 2
   swipeDamage: 70
+  retreatDistance: 5
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
   impPrefab: {fileID: 582120383126745895, guid: 59cf0de60e438ff4592955b14f50f918, type: 3}
-  summonInterval: 5
+  summonInterval: 15
   phase2YOffset: 2
   phase2XOffset: 2
   phase3SpeedMultiplier: 1.5
