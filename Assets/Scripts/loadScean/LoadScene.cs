@@ -64,8 +64,12 @@ public class LoadScene : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         GameObject Player1 = GameObject.Find("Player");
-        GameObject spawnpoint = GameObject.Find(targetSpawnPointName); ;
-        transform.position = spawnpoint.transform.position;
+        GameObject spawnpoint = GameObject.Find(targetSpawnPointName); 
+        if(spawnpoint!=null)
+        {
+            transform.position = spawnpoint.transform.position;
+        }
+        
         CinemachineVirtualCamera virtualCam = FindObjectOfType<CinemachineVirtualCamera>();
         virtualCam.Follow = Player1.transform;
     }
