@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
+    public static Slot Instance;
     public GameObject slot;
     public GameObject parentPanel;
     private TextMeshProUGUI sceneName;
@@ -23,10 +24,13 @@ public class Slot : MonoBehaviour
     }
     public void SaveGame()
     {
-        image.color = Color.white;
+        //image.color = Color.white;
         string currentSceneName = SceneManager.GetActiveScene().name;
-        sceneName.text = currentSceneName;
-        image.sprite=Player.Instance.CheckpointPicture;
+        //sceneName.text = currentSceneName;
+        if (Player.Instance.CheckpointPicture != null)
+        {
+            image.sprite = Player.Instance.CheckpointPicture;
+        }
     }
     public void LoadGame()
     {
@@ -34,9 +38,5 @@ public class Slot : MonoBehaviour
         parentPanel.SetActive(false);
         Time.timeScale = 1;
         Player.Instance.enabled = true;
-    }
-    public void Activate()
-    {
-        slot.SetActive(true);
     }
 }
