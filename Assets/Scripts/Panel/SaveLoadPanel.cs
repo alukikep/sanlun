@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class SaveLoadPanel : MonoBehaviour
@@ -10,6 +11,8 @@ public class SaveLoadPanel : MonoBehaviour
     private GameObject panel;
     public GameObject slot;
     public TextMeshProUGUI textMeshPro;
+    public List<Button> buttons = new List<Button>();
+
     private void Start()
     {
         panel = gameObject;
@@ -24,11 +27,19 @@ public class SaveLoadPanel : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                Deactivate();
                 slot.SetActive(false);
                 Time.timeScale = 1;
                 Player.Instance.enabled = true;
                 panel.SetActive(false);
             }
+        }
+    }
+    public void Deactivate()
+    {
+        foreach (Button button in buttons)
+        {
+            button.gameObject.SetActive(false);
         }
     }
 }

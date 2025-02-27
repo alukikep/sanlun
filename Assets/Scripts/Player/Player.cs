@@ -42,7 +42,6 @@ public class Player : MonoBehaviour
     public static Player Instance;//单例模式
     private HashSet<string> collectedPotions = new HashSet<string>();
     public Sprite CheckpointPicture;
-
     public float speedRate; // 速率系数
     private float recordSpeedRate;
     public float jumpForce; // 跳跃高度
