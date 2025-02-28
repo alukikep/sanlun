@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SubWeaponUI : MonoBehaviour
 {
     [SerializeField] private Sprite axe;
+    [SerializeField] private Sprite Familiar;
     [SerializeField] private Sprite guard;
     [SerializeField] private Sprite clock;
     [SerializeField] private Sprite empty;
@@ -26,6 +27,10 @@ public class SubWeaponUI : MonoBehaviour
         if(player.isAxe==true)
         {
             image.sprite = axe;
+        }
+        else if(player.isFamiliar==true)
+        {
+            image.sprite= Familiar;
         }
         else if(player.isGuardian==true)
         {

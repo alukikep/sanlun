@@ -39,7 +39,6 @@ public class Player : MonoBehaviour
     public LayerMask obstacleLayer;
     public float startTime;
     public float currentTime;
-
     public static Player Instance;//单例模式
     private HashSet<string> collectedPotions = new HashSet<string>();
     public Sprite CheckpointPicture;
@@ -90,6 +89,7 @@ public class Player : MonoBehaviour
 
     [Header("Health")]
     public float maxHealth;
+    public KeyCode healthKey = KeyCode.P;
     public float health;
     [SerializeField] private float proTime;
     [SerializeField] private int proNumber;
@@ -103,6 +103,7 @@ public class Player : MonoBehaviour
     private float ManaPSOnSlow;
 
     [Header("副武器相关")]
+   
     public KeyCode SwitchKey = KeyCode.I;
     public KeyCode UseKey = KeyCode.O;
     private List<string> collectedWeapons = new List<string> ();
@@ -310,6 +311,14 @@ public class Player : MonoBehaviour
         {
             faceRight = false;
         }
+        if(Input.GetKeyDown(healthKey))
+        {
+            health += maxHealth * 0.5f;
+            if(health>maxHealth)
+            {
+                health = maxHealth;
+            }
+        }
     }
 
     public bool CanRestore()
@@ -493,6 +502,7 @@ public class Player : MonoBehaviour
                 isGuardian = false;
                 isTimeSlowed = true;
             }
+            Destroy(currentFamiliar);
         }
 
         if (Input.GetKeyDown(UseKey) && isAxe && currentMana >= axeScript.neededMana)
