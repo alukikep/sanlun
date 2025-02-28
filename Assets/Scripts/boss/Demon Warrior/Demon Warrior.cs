@@ -58,6 +58,9 @@ public class DemonWarrior : MonoBehaviour
     private bool p1=true;
     private bool p2;
 
+    private AudioController _audioController;
+    private bool BGM;
+
     void Start()
     {
         enemyHealth = GetComponent<EnemyHealth>();
@@ -67,6 +70,7 @@ public class DemonWarrior : MonoBehaviour
         player = Player.Instance.transform;
         capsuleCollider=GetComponent<CapsuleCollider2D>();
         currentHealth = enemyHealth.maxHealth;
+        _audioController = GameObject.Find("Player").GetComponentInChildren<AudioController>();
     }
 
     void Update()
@@ -85,6 +89,19 @@ public class DemonWarrior : MonoBehaviour
         if(isShieldActive)
         {
             Shield();
+        }
+
+        if(player != null&&BGM==false)
+        {
+            _audioController.BGM.clip = _audioController.DevilWarrior;
+            _audioController.BGM.Play(); 
+            BGM = true;
+        }
+
+        if(enemyHealth.health<=0)
+        {
+            _audioController.BGM.clip= _audioController.village;
+            _audioController.BGM.Play();
         }
     }
 

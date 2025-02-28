@@ -54,6 +54,8 @@ public class Bat : MonoBehaviour
     private Vector3 originalPosition; 
     private bool hasStartedDiving = false;
     private bool SpawnItem=false;
+    private AudioController _audioController;
+    private bool BGM;
     
 
 
@@ -68,6 +70,7 @@ public class Bat : MonoBehaviour
         Player = GameObject.Find("Player");
         rb = GetComponent<Rigidbody2D>();
         enemyHealth = GetComponent<EnemyHealth>();
+        _audioController = GameObject.Find("Player").GetComponentInChildren<AudioController>();
         movingTimer = 2;
         spawnTimer = 0;
         attackTimer = attackInterval;
@@ -76,6 +79,13 @@ public class Bat : MonoBehaviour
     }
     private void Update()
     {
+        if(Player != null&&BGM==false)
+        {
+            _audioController.BGM.clip = _audioController.BatBoss;
+            _audioController.BGM.Play();
+            BGM = true;
+        }
+
         float distancetoPlayer = Vector2.Distance(Player.transform.position, transform.position);
         if (distancetoPlayer <= AttackDistance)
         {
@@ -106,9 +116,11 @@ public class Bat : MonoBehaviour
                     {
                         GameObject batTrans = Instantiate(BatTrans, transform.position, Quaternion.identity);
                         BossRoom.SetActive(true);
-                        Destroy(gameObject);
 
                     }
+
+                    _audioController.BGM.clip=_audioController.castleHall;
+                    _audioController.BGM.Play();
                 }
             }
         }

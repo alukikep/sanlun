@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class AudioController : MonoBehaviour
 {
-    [SerializeField] private AudioSource Sfx;
-    [SerializeField] private AudioSource BGM;
+    [SerializeField] public AudioSource Sfx;
+    [SerializeField] public AudioSource BGM;
     private string currentScene;
 
     [Header("BGM")]
@@ -16,6 +16,11 @@ public class AudioController : MonoBehaviour
     public AudioClip arsenal;
     public AudioClip clocktower;
     public AudioClip castleKeep;
+    public AudioClip StageClear;
+    [Header("BossBGM")]
+    public AudioClip BatBoss;
+    public AudioClip DevilWarrior;
+    public AudioClip Dracula;
 
 
     [Header("Sfx")]
@@ -48,8 +53,7 @@ public class AudioController : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name != currentScene)
         {

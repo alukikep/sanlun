@@ -13,6 +13,7 @@ public class Dracula : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private float rushSpeed;
     private Animator animator;
+    private EnemyHealth enemyHealth;
     [Header("×Óµ¯")]
     public GameObject fireBall;
     public GameObject hugeFireBall;
@@ -27,10 +28,14 @@ public class Dracula : MonoBehaviour
     [SerializeField] private float attackEnd;
     [SerializeField] private float transEnd;
 
+    private AudioController _audioController;
+    private bool BGM;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        enemyHealth = GetComponent<EnemyHealth>();
+        _audioController = GameObject.Find("Player").GetComponentInChildren<AudioController>();
     }
     private void Update()
     {
@@ -55,6 +60,19 @@ public class Dracula : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.H))
         {
             Rush();
+        }
+
+        if (player != null && BGM == false)
+        {
+            _audioController.BGM.clip = _audioController.Dracula;
+            _audioController.BGM.Play();
+            BGM = true;
+        }
+
+        if (enemyHealth.health <= 0)
+        {
+            _audioController.BGM.clip = _audioController.StageClear;
+            _audioController.BGM.PlayOneShot(_audioController.StageClear);
         }
     }
 
@@ -197,17 +215,23 @@ public class Dracula : MonoBehaviour
 
     private void Flip()
     {
-        if(player.position.x>transform.position.x&&faceRight==false)
+        if (player == null)
         {
-            transform.Rotate(0, 180, 0);
-            faceRight = true;
+            return;
         }
-        if(player.position.x < transform.position.x&&faceRight==true)
+        else
         {
-            transform.Rotate(0,180,0);
-            faceRight = false;
+            if (player.position.x > transform.position.x && faceRight == false)
+            {
+                transform.Rotate(0, 180, 0);
+                faceRight = true;
+            }
+            if (player.position.x < transform.position.x && faceRight == true)
+            {
+                transform.Rotate(0, 180, 0);
+                faceRight = false;
+            }
         }
-
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
