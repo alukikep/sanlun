@@ -19,7 +19,13 @@ public class SaveLoadButton : MonoBehaviour
     {
         if (isSaveButton)
         {
-            recordImage.sprite=Player.Instance.CheckpointPicture;
+            if (Player.Instance != null && Player.Instance.CheckpointPicture != null)
+            {
+                if (recordImage != null)
+                {
+                    recordImage.sprite = Player.Instance.CheckpointPicture;
+                }
+            }
             SaveManager.Instance.SaveGame(slotIndex);
         }
         else

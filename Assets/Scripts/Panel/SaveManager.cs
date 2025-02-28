@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using System.IO;
+using UnityEditor;
 
 public class SaveManager : MonoBehaviour
 {
@@ -22,6 +24,45 @@ public class SaveManager : MonoBehaviour
         }
 
         LoadAllSaves();
+    }
+    void OnEnable()
+    {
+        // 在编辑器中注册退出事件
+        if (Application.isEditor)
+        {
+            EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+        }
+    }
+
+    void OnDisable()
+    {
+        // 在编辑器中注销退出事件
+        if (Application.isEditor)
+        {
+            EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
+        }
+    }
+
+    private void OnPlayModeStateChanged(PlayModeStateChange state)
+    {
+        // 检测是否从运行模式切换到编辑模式
+        if (state == PlayModeStateChange.ExitingPlayMode)
+        {
+            ClearSaveFiles();
+        }
+    }
+
+    void ClearSaveFiles()
+    {
+        for (int i = 0; i < maxSaveSlots; i++)
+        {
+            string savePath = GetSavePath(i);
+            if (File.Exists(savePath))
+            {
+                File.Delete(savePath);
+                Debug.Log($"Deleted save file: {savePath}");
+            }
+        }
     }
 
     public void SaveGame(int slotIndex)
@@ -60,6 +101,7 @@ public class SaveManager : MonoBehaviour
     {
         string savePath = GetSavePath(slotIndex);
         // 读取存档数据
+        if (savePath == null) return;
         string jsonData = System.IO.File.ReadAllText(savePath);
         PlayerSaveData data = JsonUtility.FromJson<PlayerSaveData>(jsonData);
         // 切换场景
