@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Build.Content;
-using UnityEditor.Profiling;
+
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour

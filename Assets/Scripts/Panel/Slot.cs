@@ -5,7 +5,6 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 //using UnityEngine.Events;
-using static UnityEditorInternal.VersionControl.ListControl;
 
 public class Slot : MonoBehaviour
 {

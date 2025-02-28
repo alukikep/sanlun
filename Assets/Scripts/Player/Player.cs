@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using Unity.IO.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEditor;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Scene = UnityEngine.SceneManagement.Scene;
@@ -50,7 +49,6 @@ public class Player : MonoBehaviour
 
     public Rigidbody2D rigidbody2D;
     public Animator anim;
-    private Menu menu;
     public bool canRestore;
     [SerializeField] private Renderer renderer;
     public GameObject blockEffect;

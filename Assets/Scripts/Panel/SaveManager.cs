@@ -30,7 +30,9 @@ public class SaveManager : MonoBehaviour
         // 在编辑器中注册退出事件
         if (Application.isEditor)
         {
+             #if UNITY_EDITOR
             EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+#endif
         }
     }
 
@@ -39,10 +41,13 @@ public class SaveManager : MonoBehaviour
         // 在编辑器中注销退出事件
         if (Application.isEditor)
         {
+#if UNITY_EDITOR
             EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
+#endif
         }
     }
 
+#if UNITY_EDITOR
     private void OnPlayModeStateChanged(PlayModeStateChange state)
     {
         // 检测是否从运行模式切换到编辑模式
@@ -52,6 +57,7 @@ public class SaveManager : MonoBehaviour
         }
     }
 
+#endif
     void ClearSaveFiles()
     {
         for (int i = 0; i < maxSaveSlots; i++)
