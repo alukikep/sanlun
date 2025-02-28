@@ -146,6 +146,11 @@ public class Player : MonoBehaviour
     public bool isFamiliarEnabled = false;
     public bool isGuardianEnabled = false;
     public bool isTimeSlowEnabled = false;
+
+    public GameObject pauseMenu;
+    public bool isPauseMenuEnabled;
+    public GameObject DieMenu;
+    public bool isDieMenuEnabled;
     void Awake()
     {
 
@@ -245,6 +250,22 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R)&&isPauseMenuEnabled==false)
+        {
+            pauseMenu.SetActive(true);
+            isPauseMenuEnabled = true;
+            Time.timeScale = 0;
+        }
+        else if(Input.GetKeyDown(KeyCode.R) && isPauseMenuEnabled == true)
+        {
+            pauseMenu.SetActive(false);
+            isPauseMenuEnabled = false;
+            Time.timeScale = 1;
+        }
+            
+
+
+
         currentTime = Time.unscaledTime - startTime;
         StateMachine.currentState.Update();
         blockCoolTimer -= Time.deltaTime;
@@ -436,6 +457,8 @@ public class Player : MonoBehaviour
                     break;
             }
         }
+
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
