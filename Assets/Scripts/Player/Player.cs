@@ -289,7 +289,7 @@ public class Player : MonoBehaviour
         {
             rigidbody2D.gravityScale = oriG;
             jumpForce = oriJumpForce;
-
+         
             if (speedFixed == false)
             {
                 if (Time.timeScale != 0)
@@ -304,6 +304,7 @@ public class Player : MonoBehaviour
             jumpForce = 38;
             rigidbody2D.gravityScale = 20;
             speedFixed = false;
+          
             rigidbody2D.velocity = new Vector2(xSpeed * speedRate / Time.timeScale, rigidbody2D.velocity.y);
         }
 
@@ -494,7 +495,7 @@ public class Player : MonoBehaviour
 
     public void SubWeapon()
     {
-        if (Input.GetKeyDown(SwitchKey))
+        if (Input.GetKeyDown(SwitchKey)&&timeSlowScript.TimeSlowActive==false)
         {
             
             currentWeaponIndex = (currentWeaponIndex+1)%maxSubWeaponNum;

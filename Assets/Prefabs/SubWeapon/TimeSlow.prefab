@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slowDownFactor: 0.2
   slowDownDuration: 10
-  neededMana: 20
+  neededMana: 100
   TimeSlowActive: 0
