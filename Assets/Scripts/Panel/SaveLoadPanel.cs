@@ -11,7 +11,6 @@ public class SaveLoadPanel : MonoBehaviour
     private GameObject panel;
     public TextMeshProUGUI textMeshPro;
     public ToggleGroup toggleGroup; // 需要操作的 ToggleGroup
-
     private bool lastState = false; // 上一次的状态
 
     private void Start()
@@ -28,8 +27,6 @@ public class SaveLoadPanel : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                //Deactivate();
-                //slot.SetActive(false);
                 Time.timeScale = 1;
                 Player.Instance.enabled = true;
                 panel.SetActive(false);

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bb96891430c71948b06c18973c2c58a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSaveSlots: 10
+  maxSaveSlots: 4
   saveSlots: []
   selectedSlot:
     name: 

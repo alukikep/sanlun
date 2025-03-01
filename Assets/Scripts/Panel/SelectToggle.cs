@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
+
 
 public class SelectToggle : MonoBehaviour
 {
@@ -23,7 +25,10 @@ public class SelectToggle : MonoBehaviour
     {
         // 根据 Toggle 的状态设置子物体的显示状态
         slot.SetActive(isOn);
-        SaveButton.SetActive(isOn);
+        if (SceneManager.GetActiveScene().name != "StartMenu"&&!Player.Instance.pauseMenu.activeSelf&&!Player.Instance.DieMenu.activeSelf)
+        {
+            SaveButton.SetActive(isOn);
+        }
         LoadButton.SetActive(isOn);
     }
 }

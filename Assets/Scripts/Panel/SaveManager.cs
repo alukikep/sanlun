@@ -30,7 +30,7 @@ public class SaveManager : MonoBehaviour
         // 在编辑器中注册退出事件
         if (Application.isEditor)
         {
-             #if UNITY_EDITOR
+#if UNITY_EDITOR
             EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
 #endif
         }
@@ -90,7 +90,8 @@ public class SaveManager : MonoBehaviour
             isGuardianEnabled = Player.Instance.isGuardianEnabled,
             isTimeSlowEnabled = Player.Instance.isTimeSlowEnabled,
             attack = Player.Instance.ATK,
-            currentSceneName = SceneManager.GetActiveScene().name
+            currentSceneName = SceneManager.GetActiveScene().name,
+            currentCheckpointImage=Player.Instance.CheckpointPicture,
         };
 
         // 序列化数据
@@ -127,7 +128,7 @@ public class SaveManager : MonoBehaviour
 
         StartCoroutine(Player.Instance.UpdateVirtualCameraAfterLoad());
     }
-    private string GetSavePath(int slotIndex)
+    public string GetSavePath(int slotIndex)
     {
         return Application.persistentDataPath + $"Save_{slotIndex + 1}.save";
     }

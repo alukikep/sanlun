@@ -7,7 +7,6 @@ public class PauseMenu : MonoBehaviour
 {
     private Player player;
     public GameObject _player;
-
     public void Start()
     {
           player = GetComponentInParent<Player>();
@@ -15,6 +14,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void Continue()
     {
+        save.Instance.ActivateSavepanel();
         player.pauseMenu.SetActive(false);
         player.isPauseMenuEnabled = false;
         Time.timeScale = 1;

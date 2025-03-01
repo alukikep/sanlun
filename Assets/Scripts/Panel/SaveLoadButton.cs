@@ -17,20 +17,23 @@ public class SaveLoadButton : MonoBehaviour
 
     void OnButtonClick()
     {
+        gameObject.SetActive(false);
+        if (button==null)return;
         if (isSaveButton)
         {
             if (Player.Instance != null && Player.Instance.CheckpointPicture != null)
             {
                 if (recordImage != null)
-                {
-                    recordImage.sprite = Player.Instance.CheckpointPicture;
-                }
+                recordImage.sprite = Player.Instance.CheckpointPicture;
             }
             SaveManager.Instance.SaveGame(slotIndex);
         }
         else
         {
             SaveManager.Instance.LoadGame(slotIndex);
+            save.Instance.ActivateInventory();
+            Player.Instance.pauseMenu.SetActive(false);
+            Player.Instance.DieMenu.SetActive(false);
         }
     }
 }

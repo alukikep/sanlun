@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class Slot : MonoBehaviour
 {
     public GameObject slot;
+    public int slotIndex;
     public GameObject savePanel;
     private TextMeshProUGUI sceneName;
     public Image image;
@@ -16,7 +17,7 @@ public class Slot : MonoBehaviour
     private void Start()
     {
         slot = gameObject;
-        image = GetComponent<Image>(); 
+        image = GetComponent<Image>();
         // 获取当前物体的子物体
         sceneName = GetComponentInChildren<TextMeshProUGUI>();
     }
@@ -43,6 +44,30 @@ public class Slot : MonoBehaviour
         slot.SetActive(false);
         savePanel.SetActive(false);
         Time.timeScale = 1;
-        Player.Instance.enabled = true;
+        if (Player.Instance != null)
+            Player.Instance.enabled = true;
+    }
+    public void LoadImage(int slotIndex)
+    {
+        string savePath = SaveManager.Instance.GetSavePath(slotIndex);
+        // 检查文件是否存在
+        if (!System.IO.File.Exists(savePath))
+        {
+            return;
+        }
+        // 读取存档数据
+        string jsonData = System.IO.File.ReadAllText(savePath);
+        if (string.IsNullOrEmpty(jsonData))
+        {
+            return;
+        }
+        PlayerSaveData data = JsonUtility.FromJson<PlayerSaveData>(jsonData);
+        // 检查 data.currentCheckpointImage 是否为 null
+        if (data.currentCheckpointImage != null)
+        {
+            image.sprite = data.currentCheckpointImage;
+        }
+        // 设置图片颜色
+        image.color = Color.white;
     }
 }

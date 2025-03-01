@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [Serializable]
 public class PlayerSaveData
@@ -18,6 +19,7 @@ public class PlayerSaveData
     public float attack;
     public string currentSceneName;
     public List<string> collectedPotions;
+    public Sprite currentCheckpointImage;
 }
 
 [System.Serializable]
