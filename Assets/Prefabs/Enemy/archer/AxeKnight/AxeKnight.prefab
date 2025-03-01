@@ -105,7 +105,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 72
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -206,8 +206,8 @@ MonoBehaviour:
   player: {fileID: 0}
   cooldown: 6
   bullet: {fileID: 4229485479566874078, guid: c6df9568d3e5aae488936e448b495872, type: 3}
-  stopDistanceX: 5
-  moveSpeed: 2
+  stopDistanceX: 0
+  moveSpeed: 1
 --- !u!50 &599509728348620594
 Rigidbody2D:
   serializedVersion: 4

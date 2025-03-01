@@ -202,19 +202,19 @@ MonoBehaviour:
   isAttack: 0
   stopDistance: 3
   phaseTransitionDuration: 1
-  phase1MoveSpeed: 6
+  phase1MoveSpeed: 4
   phase1AttackCD: 2
-  swipeDamage: 70
+  swipeDamage: 50
   retreatDistance: 5
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
   impPrefab: {fileID: 582120383126745895, guid: 59cf0de60e438ff4592955b14f50f918, type: 3}
-  summonInterval: 15
+  summonInterval: 10
   phase2YOffset: 2
   phase2XOffset: 2
   phase3SpeedMultiplier: 1.5
-  phase3AttackMultiplier: 2
+  phase3AttackMultiplier: 1.2
   shieldEffectPrefab: {fileID: 5909545624280044251, guid: 606d614d235664443aa0599f232bd182, type: 3}
   phase3ShieldDuration: 5
   phase3ShieldCooldown: 10
@@ -252,8 +252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a095b51a2852fdf42b4c9d56c7fa4e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 500
-  health: 1001
+  maxHealth: 3444
+  health: 3444
   flashTime: 0.1
   hurtEffect: {fileID: 3829011218837494106, guid: 596eba13992e9594587a8bb5aca6c23a, type: 3}
   dieEffect: {fileID: 3776493943376636325, guid: a84dcdde275215a4480c19a35a653674, type: 3}

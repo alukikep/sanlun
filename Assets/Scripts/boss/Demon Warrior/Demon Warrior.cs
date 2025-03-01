@@ -232,13 +232,13 @@ public class DemonWarrior : MonoBehaviour
     private void TransPrase()
     {
        
-        if(currentHealth <1000&&p1==true)
+        if(currentHealth <2500&&p1==true)
         {
             TransitionPhase();
             p1=false;
             p2=true;
         }
-        if (currentHealth<500 && p2 == true)
+        if (currentHealth<1000 && p2 == true)
         {
             TransitionPhase();
             p2 =false;

@@ -197,22 +197,22 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.75
+  - time: 3.25
     functionName: HugeFireBalluUP
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 4.25
+  - time: 4.5
     functionName: HugeFireBallDown
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 5.5
-    functionName: HugeFireBalluUP
+  - time: 5.625
+    functionName: HugeFireBallDown
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
