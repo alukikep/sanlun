@@ -16,8 +16,6 @@ public class Slot : MonoBehaviour
     public SaveLoadButton saveLoadButton;
     private void Start()
     {
-        slot = gameObject;
-        image = GetComponent<Image>();
         // 获取当前物体的子物体
         sceneName = GetComponentInChildren<TextMeshProUGUI>();
     }
@@ -49,6 +47,8 @@ public class Slot : MonoBehaviour
     }
     public void LoadImage(int slotIndex)
     {
+        slot = gameObject;
+        image = GetComponent<Image>();
         string savePath = SaveManager.Instance.GetSavePath(slotIndex);
         // 检查文件是否存在
         if (!System.IO.File.Exists(savePath))
@@ -63,11 +63,11 @@ public class Slot : MonoBehaviour
         }
         PlayerSaveData data = JsonUtility.FromJson<PlayerSaveData>(jsonData);
         // 检查 data.currentCheckpointImage 是否为 null
-        if (data.currentCheckpointImage != null)
+        if (data.currentCheckpointImage != null&&image!=null)
         {
             image.sprite = data.currentCheckpointImage;
+            // 设置图片颜色
+            image.color = Color.white;
         }
-        // 设置图片颜色
-        image.color = Color.white;
     }
 }

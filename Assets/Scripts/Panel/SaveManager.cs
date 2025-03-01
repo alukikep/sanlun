@@ -25,39 +25,39 @@ public class SaveManager : MonoBehaviour
 
         LoadAllSaves();
     }
-    void OnEnable()
-    {
-        // 在编辑器中注册退出事件
-        if (Application.isEditor)
-        {
-#if UNITY_EDITOR
-            EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
-#endif
-        }
-    }
+//    void OnEnable()
+//    {
+//        // 在编辑器中注册退出事件
+//        if (Application.isEditor)
+//        {
+//#if UNITY_EDITOR
+//            EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+//#endif
+//        }
+//    }
 
-    void OnDisable()
-    {
-        // 在编辑器中注销退出事件
-        if (Application.isEditor)
-        {
-#if UNITY_EDITOR
-            EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
-#endif
-        }
-    }
+//    void OnDisable()
+//    {
+//        // 在编辑器中注销退出事件
+//        if (Application.isEditor)
+//        {
+//#if UNITY_EDITOR
+//            EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
+//#endif
+//        }
+//    }
 
-#if UNITY_EDITOR
-    private void OnPlayModeStateChanged(PlayModeStateChange state)
-    {
-        // 检测是否从运行模式切换到编辑模式
-        if (state == PlayModeStateChange.ExitingPlayMode)
-        {
-            ClearSaveFiles();
-        }
-    }
+//#if UNITY_EDITOR
+//    private void OnPlayModeStateChanged(PlayModeStateChange state)
+//    {
+//        // 检测是否从运行模式切换到编辑模式
+//        if (state == PlayModeStateChange.ExitingPlayMode)
+//        {
+//            ClearSaveFiles();
+//        }
+//    }
 
-#endif
+//#endif
     void ClearSaveFiles()
     {
         for (int i = 0; i < maxSaveSlots; i++)
