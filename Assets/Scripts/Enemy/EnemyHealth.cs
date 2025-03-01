@@ -39,6 +39,7 @@ public class EnemyHealth : MonoBehaviour
     }
     public void GetDamage(float pATK)
     {
+        
         audioController.PlaySfx(audioController.enemyHurt);
         Instantiate(hurtEffect, transform.position, Quaternion.identity);
         health = health - pATK;

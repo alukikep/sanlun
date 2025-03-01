@@ -151,6 +151,7 @@ public class Player : MonoBehaviour
     public bool isPauseMenuEnabled;
     public GameObject DieMenu;
     public bool isDieMenuEnabled;
+
     void Awake()
     {
 
@@ -313,7 +314,8 @@ public class Player : MonoBehaviour
 
         if (health < 0)
         {
-            Destroy(gameObject);
+            DieMenu.SetActive(true);
+            Time.timeScale = 0;
         }
         if (timeSlowScript.TimeSlowActive == false)
         {
