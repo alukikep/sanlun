@@ -101,7 +101,14 @@ public class SaveManager : MonoBehaviour
                 itemName = item.data.itemName,
                 iconPath = item.data.icon.name, // 如果需要保存图标路径
                 quantity = item.stackSize
-            }).ToList()
+            }).ToList(),
+            collectedWeapons = new List<bool>
+        {
+            Player.Instance.isAxeEnabled,
+            Player.Instance.isGuardianEnabled,
+            Player.Instance.isTimeSlowEnabled,
+            Player.Instance.isFamiliarEnabled
+        }
         };
 
         // 序列化数据
@@ -138,7 +145,13 @@ public class SaveManager : MonoBehaviour
         Player.Instance.isGuardianEnabled = data.isGuardianEnabled;
         Player.Instance.isTimeSlowEnabled = data.isTimeSlowEnabled;
         Player.Instance.ATK = data.attack;
-        // 加载背包数据
+        if (data.collectedWeapons.Count > 0)
+        {
+            Player.Instance.isAxeEnabled = data.collectedWeapons[0];
+            Player.Instance.isGuardianEnabled = data.collectedWeapons[1];
+            Player.Instance.isTimeSlowEnabled = data.collectedWeapons[2];
+            Player.Instance.isFamiliarEnabled = data.collectedWeapons[3];
+        }
         Inventory.Instance.LoadInventory(data.inventoryItems);
 
         StartCoroutine(Player.Instance.UpdateVirtualCameraAfterLoad());

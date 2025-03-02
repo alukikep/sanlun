@@ -12,7 +12,7 @@ public class EnemyHealth : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Sprite initialSprite;
     private Color originColor;
-    [SerializeField]private float flashTime;
+    [SerializeField] private float flashTime;
     public GameObject hurtEffect;
     public GameObject dieEffect;
 
@@ -40,7 +40,7 @@ public class EnemyHealth : MonoBehaviour
     }
     public void GetDamage(float pATK)
     {
-        
+
         audioController.PlaySfx(audioController.enemyHurt);
         Instantiate(hurtEffect, transform.position, Quaternion.identity);
         health = health - pATK;
@@ -52,12 +52,14 @@ public class EnemyHealth : MonoBehaviour
     {
         if (health <= 0 && OnDeath != null)
         {
-            int num = Random.Range(0, 100);
-            if(num<5&&num>=0)
+            if (potion != null)
             {
-                GameObject PPotion = Instantiate(potion, transform.position, Quaternion.identity);
+                int num = Random.Range(0, 100);
+                if (num < 5 && num >= 0)
+                {
+                    GameObject PPotion = Instantiate(potion, transform.position, Quaternion.identity);
+                }
             }
-           
             audioController.PlaySfx(audioController.enemyDie);
             Instantiate(dieEffect, transform.position, Quaternion.identity);
             SetSprite();
@@ -72,7 +74,7 @@ public class EnemyHealth : MonoBehaviour
     private void SetSprite()
     {
         spriteRenderer.sprite = initialSprite;
-        
+
     }
 
     private void Flash(float time)
@@ -83,7 +85,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void ResetColor()
     {
-        spriteRenderer.color= originColor;
+        spriteRenderer.color = originColor;
     }
 
 }
