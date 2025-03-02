@@ -16,7 +16,6 @@ public class PauseMenu : MonoBehaviour
     }
     public void Continue()
     {
-        save.Instance.ActivateSavepanel();
         player.pauseMenu.SetActive(false);
         player.isPauseMenuEnabled = false;
         Time.timeScale = 1;
