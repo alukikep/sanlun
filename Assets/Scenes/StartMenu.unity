@@ -722,6 +722,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2920896485553267466, guid: 3d07c60139e05ef489c764d92f5b52f4, type: 3}
+      propertyPath: m_Name
+      value: Load
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581531321809535856, guid: 3d07c60139e05ef489c764d92f5b52f4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 20477934}
+    - target: {fileID: 7581531321809535856, guid: 3d07c60139e05ef489c764d92f5b52f4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ActivateSavepanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581531321809535856, guid: 3d07c60139e05ef489c764d92f5b52f4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: save, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8618622714541000032, guid: 3d07c60139e05ef489c764d92f5b52f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 757.4361

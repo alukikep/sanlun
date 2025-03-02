@@ -20,8 +20,8 @@ public class PlayerSaveData
     public string currentSceneName;
     public List<string> collectedPotions;
     public Sprite currentCheckpointImage;
-    // 添加背包数据字段
     public List<InventoryItemData> inventoryItems;
+    public List<bool> collectedWeapons;
 }
 
 [System.Serializable]
