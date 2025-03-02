@@ -78,6 +78,20 @@ public class SaveManager : MonoBehaviour
     {
         // 创建存档路径
         string savePath = GetSavePath(slotIndex);
+        // 获取 CheckpointPicture 的路径
+        string checkpointImagePath = "";
+        if (Player.Instance.CheckpointPicture != null)
+        {
+            string fullPath = AssetDatabase.GetAssetPath(Player.Instance.CheckpointPicture);
+            if (fullPath.StartsWith("Assets/Resources/"))
+            {
+                checkpointImagePath = fullPath.Substring("Assets/Resources/".Length);
+            }
+            else
+            {
+                Debug.LogError("CheckpointPicture is not in the Resources folder.");
+            }
+        }
         Player.Instance.health=Player.Instance.maxHealth;
         // 获取玩家数据
         PlayerSaveData data = new PlayerSaveData
@@ -108,7 +122,7 @@ public class SaveManager : MonoBehaviour
             Player.Instance.isGuardianEnabled,
             Player.Instance.isTimeSlowEnabled,
             Player.Instance.isFamiliarEnabled
-        }
+        },checkpointImagePath = checkpointImagePath // 存储路径
         };
 
         // 序列化数据
@@ -145,6 +159,24 @@ public class SaveManager : MonoBehaviour
         Player.Instance.isGuardianEnabled = data.isGuardianEnabled;
         Player.Instance.isTimeSlowEnabled = data.isTimeSlowEnabled;
         Player.Instance.ATK = data.attack;
+
+        // 加载 CheckpointPicture
+        if (!string.IsNullOrEmpty(data.checkpointImagePath))
+        {
+            // 确保路径格式正确，移除扩展名
+            string pathWithoutExtension = Path.ChangeExtension(data.checkpointImagePath, null);
+            Sprite checkpointSprite = Resources.Load<Sprite>(pathWithoutExtension);
+
+            if (checkpointSprite != null)
+            {
+                Player.Instance.CheckpointPicture = checkpointSprite;
+            }
+            else
+            {
+                Debug.LogError($"CheckpointPicture not found at path: {pathWithoutExtension}");
+            }
+        }
+
         if (data.collectedWeapons.Count > 0)
         {
             Player.Instance.isAxeEnabled = data.collectedWeapons[0];

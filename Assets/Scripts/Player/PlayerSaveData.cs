@@ -22,6 +22,7 @@ public class PlayerSaveData
     public Sprite currentCheckpointImage;
     public List<InventoryItemData> inventoryItems;
     public List<bool> collectedWeapons;
+    public string checkpointImagePath;
 }
 
 [System.Serializable]
