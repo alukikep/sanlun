@@ -189,6 +189,7 @@ MonoBehaviour:
   flashTime: 0.1
   hurtEffect: {fileID: 3829011218837494106, guid: 596eba13992e9594587a8bb5aca6c23a, type: 3}
   dieEffect: {fileID: 3776493943376636325, guid: a84dcdde275215a4480c19a35a653674, type: 3}
+  potion: {fileID: 7925732182472429103, guid: 81a578a8e2e5bbb4baa5203d8d0e236e, type: 3}
 --- !u!50 &2747180340028489763
 Rigidbody2D:
   serializedVersion: 4

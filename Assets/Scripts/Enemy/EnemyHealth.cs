@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
@@ -16,6 +16,7 @@ public class EnemyHealth : MonoBehaviour
     public GameObject hurtEffect;
     public GameObject dieEffect;
 
+    public GameObject potion;
     private GameObject audio;
     AudioController audioController;
 
@@ -51,6 +52,12 @@ public class EnemyHealth : MonoBehaviour
     {
         if (health <= 0 && OnDeath != null)
         {
+            int num = Random.Range(0, 100);
+            if(num<5&&num>=0)
+            {
+                GameObject PPotion = Instantiate(potion, transform.position, Quaternion.identity);
+            }
+           
             audioController.PlaySfx(audioController.enemyDie);
             Instantiate(dieEffect, transform.position, Quaternion.identity);
             SetSprite();
