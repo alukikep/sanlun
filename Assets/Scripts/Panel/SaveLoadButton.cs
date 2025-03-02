@@ -10,8 +10,8 @@ public class SaveLoadButton : MonoBehaviour
     public UnityEngine.UI.Image recordImage;
     void Start()
     {
-        selectToggle = GetComponentInParent<SelectToggle>();
         button = GetComponent<Button>();
+        selectToggle = GetComponentInParent<SelectToggle>();
         button.onClick.AddListener(OnButtonClick);
     }
 

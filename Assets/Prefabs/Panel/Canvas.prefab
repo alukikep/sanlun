@@ -1202,6 +1202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slot: {fileID: 2936580260407794150}
+  slotIndex: 0
   SaveButton: {fileID: 5120549656197161655}
   LoadButton: {fileID: 6269306966437538038}
   saveLoadPanel: {fileID: 0}
@@ -1841,6 +1842,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 8141229655629410560}
+        m_TargetAssemblyTypeName: Slot, Assembly-CSharp
+        m_MethodName: LoadImage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   m_IsOn: 0
 --- !u!114 &1080601580542231790
 MonoBehaviour:
@@ -1855,6 +1868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slot: {fileID: 6900574439694421551}
+  slotIndex: 2
   SaveButton: {fileID: 3494332741028761371}
   LoadButton: {fileID: 3932165920321102132}
   saveLoadPanel: {fileID: 0}
@@ -2159,6 +2173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slot: {fileID: 4349021671803821017}
+  slotIndex: 1
   SaveButton: {fileID: 5011984063974781407}
   LoadButton: {fileID: 3002322233996057053}
   saveLoadPanel: {fileID: 0}
@@ -3423,7 +3438,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u5B58\u6863\u4E8C\n"
+  m_text: "\u5B58\u6863\u4E09\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eb8bacd46357fb4418b3d529965e7b08, type: 2}
   m_sharedMaterial: {fileID: 2979193228837331801, guid: eb8bacd46357fb4418b3d529965e7b08, type: 2}
