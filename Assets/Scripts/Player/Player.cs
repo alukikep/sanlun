@@ -29,7 +29,8 @@ public class Player : MonoBehaviour
     public BlockSuc blockSucState { get; private set; }
     public HighJump highJumpState { get; private set; }
     public Retreat retreatState { get; private set; }
-
+    public QuickAttack quickAttackState { get; private set; }
+    public QuickJumpAttack quickJumpState { get; private set; }
 
 
 
@@ -168,7 +169,7 @@ public class Player : MonoBehaviour
         oriJumpForce = jumpForce;
         maxSpeed = speedRate;
 
-
+        
         StateMachine = new PlayerStateMachine();
 
         idleState = new Idle(this, StateMachine, "Idle");
@@ -183,6 +184,8 @@ public class Player : MonoBehaviour
         blockSucState = new BlockSuc(this, StateMachine, "BlockSuc");
         highJumpState = new HighJump(this, StateMachine, "HighJump");
         retreatState = new Retreat(this, StateMachine, "Retreat");
+        quickAttackState = new QuickAttack(this, StateMachine, "QuickAttack");
+        quickJumpState = new QuickJumpAttack(this, StateMachine, "QuickJumpAttack");
 
 
     }

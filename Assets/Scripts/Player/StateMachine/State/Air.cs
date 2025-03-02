@@ -36,9 +36,13 @@ public class Air : PlayerState
             
         }
 
-        if(Input.GetKeyDown(KeyCode.J)&&isBat==false&&isAttack==false&&player.attackTimer<0)
+        if(Input.GetKeyDown(KeyCode.J)&&isBat==false&&isAttack==false&&player.attackTimer<0&&Time.timeScale==1)
         {
             stateMachine.ChangeState(player.airAttackState);
+        }
+        else if(Input.GetKeyDown(KeyCode.J) && isBat == false && isAttack == false && player.attackTimer < 0 && Time.timeScale == 0.2f)
+        {
+            stateMachine.ChangeState(player.quickJumpState);
         }
 
         if(player.jumpNumber==0)
