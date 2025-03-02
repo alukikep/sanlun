@@ -6,11 +6,7 @@ using UnityEngine.SceneManagement;
 public class StartGameButton : MonoBehaviour
 {
     public GameObject Inventory;
-    private GameObject playerParent;
-    private void Start()
-    {
-        playerParent = GameObject.Find("PlayerParent");
-    }
+
     public void StartGame()
     {
 
@@ -20,8 +16,17 @@ public class StartGameButton : MonoBehaviour
         {
             if(obj.name =="Player")
             {
-                obj.SetActive(true);
-              
+               obj.SetActive(true);
+                obj.transform.position = new Vector3(88.60001f, -25.07f, 0.04504037f);
+                GameObject PauMenu = GameObject.Find("PauseMenu");
+                if (PauMenu != null)
+                {   
+                    
+                     PauMenu.SetActive(false);
+                    Time.timeScale = 1f;
+                }
+
+                  
             }
         }
         Inventory.SetActive(true);
