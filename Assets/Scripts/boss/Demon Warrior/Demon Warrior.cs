@@ -81,7 +81,7 @@ public class DemonWarrior : MonoBehaviour
         HandlePhaseBehavior();
         if(currentHealth<=0&&spawnItem==false)
         {
-            GameObject DoubleJump = Instantiate(doubleJump,transform.position,quaternion.identity);
+            GameObject DoubleJump = Instantiate(doubleJump,new Vector3(240.3f, 55f,0.02655149f),quaternion.identity);
             spawnItem = true;
         }
         TransPrase();

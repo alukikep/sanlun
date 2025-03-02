@@ -114,7 +114,7 @@ public class Bat : MonoBehaviour
                     SpawnItem = true;
                     if (SpawnItem == true)
                     {
-                        GameObject batTrans = Instantiate(BatTrans, transform.position, Quaternion.identity);
+                        GameObject batTrans = Instantiate(BatTrans, new Vector3(200.83f, -30.52f, 0), Quaternion.identity);
                         BossRoom.SetActive(true);
 
                     }
