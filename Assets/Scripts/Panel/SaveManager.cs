@@ -139,66 +139,72 @@ public class SaveManager : MonoBehaviour
     {
         player.SetActive(true);
         inventory.SetActive(true);
+
         string savePath = GetSavePath(slotIndex);
+
         // 读取存档数据
         if (savePath == null) return;
         string jsonData = System.IO.File.ReadAllText(savePath);
         PlayerSaveData data = JsonUtility.FromJson<PlayerSaveData>(jsonData);
         Inventory.Instance.ClearInventory();
+
         // 切换场景
         SceneManager.LoadScene(data.currentSceneName);
-        // 还原玩家数据
-        Player.Instance.health = data.health;
-        Player.Instance.currentMana = data.currentMana;
-        Player.Instance.transform.position = data.position;
-        Player.Instance.isdoubleJumpEnabled = data.isDoubleJumpEnabled;
-        Player.Instance.ishighJumpEnabled = data.isHighJumpEnabled;
-        Player.Instance.isbatTransformEnabled = data.isBatTransformEnabled;
-        Player.Instance.isratTransformEnabled = data.isRatTransformEnabled;
-        Player.Instance.isAxeEnabled = data.isAxeEnabled;
-        Player.Instance.isGuardianEnabled = data.isGuardianEnabled;
-        Player.Instance.isTimeSlowEnabled = data.isTimeSlowEnabled;
-        Player.Instance.ATK = data.attack;
-
-        // 加载 CheckpointPicture
-        if (!string.IsNullOrEmpty(data.checkpointImagePath))
+        if (Player.Instance != null)
         {
-            // 确保路径格式正确，移除扩展名
-            string pathWithoutExtension = Path.ChangeExtension(data.checkpointImagePath, null);
-            Sprite checkpointSprite = Resources.Load<Sprite>(pathWithoutExtension);
+            // 还原玩家数据
+            Player.Instance.health = data.health;
+            Player.Instance.currentMana = data.currentMana;
+            Player.Instance.transform.position = data.position;
+            Player.Instance.isdoubleJumpEnabled = data.isDoubleJumpEnabled;
+            Player.Instance.ishighJumpEnabled = data.isHighJumpEnabled;
+            Player.Instance.isbatTransformEnabled = data.isBatTransformEnabled;
+            Player.Instance.isratTransformEnabled = data.isRatTransformEnabled;
+            Player.Instance.isAxeEnabled = data.isAxeEnabled;
+            Player.Instance.isGuardianEnabled = data.isGuardianEnabled;
+            Player.Instance.isTimeSlowEnabled = data.isTimeSlowEnabled;
+            Player.Instance.ATK = data.attack;
 
-            if (checkpointSprite != null)
+            // 加载 CheckpointPicture
+            if (!string.IsNullOrEmpty(data.checkpointImagePath))
             {
-                Player.Instance.CheckpointPicture = checkpointSprite;
-            }
-            else
-            {
-                Debug.LogError($"CheckpointPicture not found at path: {pathWithoutExtension}");
-            }
-        }
+                // 确保路径格式正确，移除扩展名
+                string pathWithoutExtension = Path.ChangeExtension(data.checkpointImagePath, null);
+                Sprite checkpointSprite = Resources.Load<Sprite>(pathWithoutExtension);
 
-        if (data.collectedWeapons.Count > 0)
-        {
-            Player.Instance.isAxeEnabled = data.collectedWeapons[0];
-            Player.Instance.isGuardianEnabled = data.collectedWeapons[1];
-            Player.Instance.isTimeSlowEnabled = data.collectedWeapons[2];
-            Player.Instance.isFamiliarEnabled = data.collectedWeapons[3];
-        }
-        Inventory.Instance.LoadInventory(data.inventoryItems);
-
-        StartCoroutine(Player.Instance.UpdateVirtualCameraAfterLoad());
-        GameObject[] allObj = Resources.FindObjectsOfTypeAll<GameObject>();
-        foreach (GameObject obj in allObj)
-        {
-            if (obj.name == "Player")
-            {
-                obj.SetActive(true);
-                GameObject PauMenu = GameObject.Find("PauseMenu");
-                if (PauMenu != null)
+                if (checkpointSprite != null)
                 {
+                    Player.Instance.CheckpointPicture = checkpointSprite;
+                }
+                else
+                {
+                    Debug.LogError($"CheckpointPicture not found at path: {pathWithoutExtension}");
+                }
+            }
 
-                    PauMenu.SetActive(false);
-                    Time.timeScale = 1f;
+            if (data.collectedWeapons.Count > 0)
+            {
+                Player.Instance.isAxeEnabled = data.collectedWeapons[0];
+                Player.Instance.isGuardianEnabled = data.collectedWeapons[1];
+                Player.Instance.isTimeSlowEnabled = data.collectedWeapons[2];
+                Player.Instance.isFamiliarEnabled = data.collectedWeapons[3];
+            }
+            Inventory.Instance.LoadInventory(data.inventoryItems);
+
+            StartCoroutine(Player.Instance.UpdateVirtualCameraAfterLoad());
+            GameObject[] allObj = Resources.FindObjectsOfTypeAll<GameObject>();
+            foreach (GameObject obj in allObj)
+            {
+                if (obj.name == "Player")
+                {
+                    obj.SetActive(true);
+                    GameObject PauMenu = GameObject.Find("PauseMenu");
+                    if (PauMenu != null)
+                    {
+
+                        PauMenu.SetActive(false);
+                        Time.timeScale = 1f;
+                    }
                 }
             }
         }
