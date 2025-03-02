@@ -150,4 +150,14 @@ public class Inventory : MonoBehaviour
         }
         UpdateSlotUI(); // 更新 UI
     }
+    // 新增方法：清空物品栏
+    public void ClearInventory()
+    {
+        // 清空物品列表和字典
+        InventoryItems.Clear();
+        inventoryDictionary.Clear();
+
+        // 更新 UI，清空所有物品槽
+        UpdateSlotUI();
+    }
 }

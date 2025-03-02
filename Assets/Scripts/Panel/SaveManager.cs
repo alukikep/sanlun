@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using System.IO;
 using UnityEditor;
+using System.Linq;
 
 public class SaveManager : MonoBehaviour
 {
@@ -92,6 +93,13 @@ public class SaveManager : MonoBehaviour
             attack = Player.Instance.ATK,
             currentSceneName = SceneManager.GetActiveScene().name,
             currentCheckpointImage=Player.Instance.CheckpointPicture,
+            collectedPotions = Player.Instance.GetCollectedPotions().ToList(),
+            inventoryItems = Inventory.Instance.InventoryItems.Select(item => new InventoryItemData
+            {
+                itemName = item.data.itemName,
+                iconPath = item.data.icon.name, // 如果需要保存图标路径
+                quantity = item.stackSize
+            }).ToList()
         };
 
         // 序列化数据
@@ -111,6 +119,7 @@ public class SaveManager : MonoBehaviour
         if (savePath == null) return;
         string jsonData = System.IO.File.ReadAllText(savePath);
         PlayerSaveData data = JsonUtility.FromJson<PlayerSaveData>(jsonData);
+        Inventory.Instance.ClearInventory();
         // 切换场景
         SceneManager.LoadScene(data.currentSceneName);
         // 还原玩家数据
@@ -125,6 +134,8 @@ public class SaveManager : MonoBehaviour
         Player.Instance.isGuardianEnabled = data.isGuardianEnabled;
         Player.Instance.isTimeSlowEnabled = data.isTimeSlowEnabled;
         Player.Instance.ATK = data.attack;
+        // 加载背包数据
+        Inventory.Instance.LoadInventory(data.inventoryItems);
 
         StartCoroutine(Player.Instance.UpdateVirtualCameraAfterLoad());
         GameObject[] allObj = Resources.FindObjectsOfTypeAll<GameObject>();
@@ -140,8 +151,6 @@ public class SaveManager : MonoBehaviour
                     PauMenu.SetActive(false);
                     Time.timeScale = 1f;
                 }
-
-
             }
         }
     }
