@@ -21,11 +21,11 @@ public class SelectToggle : MonoBehaviour
         saveLoadPanel= gameObject.GetComponentInParent<SaveLoadPanel>();
         // 添加监听器，当 Toggle 状态改变时触发回调
         toggle.onValueChanged.AddListener(OnToggleValueChanged);
-        CheckSaveSlot();
     }
     
     private void OnToggleValueChanged(bool isOn)
     {
+        CheckSaveSlot();
         // 根据 Toggle 的状态设置子物体的显示状态
         slot.SetActive(isOn);
         if (SceneManager.GetActiveScene().name != "StartMenu"&&!Player.Instance.pauseMenu.activeSelf&&!Player.Instance.DieMenu.activeSelf)
