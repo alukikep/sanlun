@@ -45,7 +45,7 @@ public class CheckPoint : MonoBehaviour
     {
         if (playerInRange)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F)&&!Player.Instance.isBat&&!Player.Instance.isMouse)
             {
                 Time.timeScale = 0;
                 Player.Instance.CheckpointPicture = CheckpointPicture;
