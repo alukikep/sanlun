@@ -12210,6 +12210,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DraculaSpawn
       objectReference: {fileID: 0}
+    - target: {fileID: 3763587500739543688, guid: 69ae445efb594844d85a7fc3e62b5030, type: 3}
+      propertyPath: respawnTime
+      value: 20000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3763587500739543688, guid: 69ae445efb594844d85a7fc3e62b5030, type: 3}
+      propertyPath: spawnDistance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6595176943170548658, guid: 69ae445efb594844d85a7fc3e62b5030, type: 3}
       propertyPath: m_LocalPosition.x
       value: 138.04

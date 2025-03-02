@@ -24,14 +24,18 @@ public class Grounded : PlayerState
     {
         base.Update();
 
-      
 
-        if (Input.GetKeyDown(KeyCode.J)&&isMouse==false&&isAttack==false&&player.attackTimer<0)
+
+        if (Input.GetKeyDown(KeyCode.J) && isMouse == false && isAttack == false && player.attackTimer < 0 && Time.timeScale == 1)
         {
             stateMachine.ChangeState(player.attackState);
         }
+        else if (Input.GetKeyDown(KeyCode.J) && isMouse == false && isAttack == false && player.attackTimer < 0 && Time.timeScale == 0.2f)
+        {
+            stateMachine.ChangeState(player.quickAttackState);
+        }
 
-        if (Input.GetKeyDown(KeyCode.Space)&&player.jumpNumber<player.jumpLimit&&isMouse==false)
+            if (Input.GetKeyDown(KeyCode.Space)&&player.jumpNumber<player.jumpLimit&&isMouse==false)
         {
             player.audioController.PlaySfx(player.audioController.jump);
             player.jumpNumber--;
