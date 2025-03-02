@@ -127,6 +127,23 @@ public class SaveManager : MonoBehaviour
         Player.Instance.ATK = data.attack;
 
         StartCoroutine(Player.Instance.UpdateVirtualCameraAfterLoad());
+        GameObject[] allObj = Resources.FindObjectsOfTypeAll<GameObject>();
+        foreach (GameObject obj in allObj)
+        {
+            if (obj.name == "Player")
+            {
+                obj.SetActive(true);
+                GameObject PauMenu = GameObject.Find("PauseMenu");
+                if (PauMenu != null)
+                {
+
+                    PauMenu.SetActive(false);
+                    Time.timeScale = 1f;
+                }
+
+
+            }
+        }
     }
     public string GetSavePath(int slotIndex)
     {

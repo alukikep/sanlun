@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 public class StartGameButton : MonoBehaviour
 {
     public GameObject Inventory;
-
+    public GameObject player;
+        
     public void StartGame()
     {
-
+        player.SetActive(true);
         SceneManager.LoadScene("CastleHall");
         GameObject[] allObj = Resources.FindObjectsOfTypeAll<GameObject>();
         foreach(GameObject obj in allObj)
@@ -22,7 +23,7 @@ public class StartGameButton : MonoBehaviour
                 if (PauMenu != null)
                 {   
                     
-                     PauMenu.SetActive(false);
+                    PauMenu.SetActive(false);
                     Time.timeScale = 1f;
                 }
 
