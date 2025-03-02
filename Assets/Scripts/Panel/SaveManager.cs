@@ -79,10 +79,13 @@ public class SaveManager : MonoBehaviour
         // 创建存档路径
         string savePath = GetSavePath(slotIndex);
         // 获取 CheckpointPicture 的路径
+
         string checkpointImagePath = "";
         if (Player.Instance.CheckpointPicture != null)
         {
+#if UNITY_EDITOR
             string fullPath = AssetDatabase.GetAssetPath(Player.Instance.CheckpointPicture);
+
             if (fullPath.StartsWith("Assets/Resources/"))
             {
                 checkpointImagePath = fullPath.Substring("Assets/Resources/".Length);
@@ -91,6 +94,7 @@ public class SaveManager : MonoBehaviour
             {
                 Debug.LogError("CheckpointPicture is not in the Resources folder.");
             }
+#endif
         }
         Player.Instance.health=Player.Instance.maxHealth;
         // 获取玩家数据
