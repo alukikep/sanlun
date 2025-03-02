@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    public bool isLittleBat;
     [Header("Health")]
     public float maxHealth;
     public float health;
@@ -52,11 +52,15 @@ public class EnemyHealth : MonoBehaviour
     {
         if (health <= 0 && OnDeath != null)
         {
-            int num = Random.Range(0, 100);
-            if(num<5&&num>=0)
+            if (potion != null)
             {
-                GameObject PPotion = Instantiate(potion, transform.position, Quaternion.identity);
+                int num = Random.Range(0, 100);
+                if (num < 5 && num >= 0)
+                {
+                    GameObject PPotion = Instantiate(potion, transform.position, Quaternion.identity);
+                }
             }
+            
            
             audioController.PlaySfx(audioController.enemyDie);
             Instantiate(dieEffect, transform.position, Quaternion.identity);
@@ -67,7 +71,11 @@ public class EnemyHealth : MonoBehaviour
     }
     private void DestroyEnemy()
     {
-        OnDeath();
+        if(!isLittleBat)
+        {
+            OnDeath();
+        }
+        
     }
     private void SetSprite()
     {
