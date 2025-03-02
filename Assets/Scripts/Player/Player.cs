@@ -89,7 +89,6 @@ public class Player : MonoBehaviour
 
     [Header("Health")]
     public float maxHealth;
-    public KeyCode healthKey = KeyCode.P;
     public float health;
     [SerializeField] private float proTime;
     [SerializeField] private int proNumber;
@@ -335,14 +334,7 @@ public class Player : MonoBehaviour
         {
             faceRight = false;
         }
-        if(Input.GetKeyDown(healthKey))
-        {
-            health += maxHealth * 0.5f;
-            if(health>maxHealth)
-            {
-                health = maxHealth;
-            }
-        }
+      
     }
 
     public bool CanRestore()
