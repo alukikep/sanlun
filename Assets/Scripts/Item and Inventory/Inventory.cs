@@ -135,7 +135,7 @@ public class Inventory : MonoBehaviour
         foreach (var itemData in inventoryData)
         {
             ItemData item = Resources.Load<ItemData>("Items/" + itemData.itemName);
-            if (item != null)
+            if (item != null&&inventoryDictionary!=null)
             {
                 // 使用 itemType 查找字典中是否已存在相同的物品
                 if (inventoryDictionary.TryGetValue(item, out InventoryItem value))

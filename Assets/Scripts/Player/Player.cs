@@ -648,8 +648,6 @@ public class Player : MonoBehaviour
             transform.position = TargetSpawn.transform.position;
 
         }
-
-
         health = maxHealth;
         CinemachineVirtualCamera virtualCam = FindObjectOfType<CinemachineVirtualCamera>();
         virtualCam.Follow = Player.transform;

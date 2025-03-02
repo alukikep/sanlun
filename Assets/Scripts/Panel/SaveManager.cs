@@ -78,7 +78,7 @@ public class SaveManager : MonoBehaviour
     {
         // 创建存档路径
         string savePath = GetSavePath(slotIndex);
-
+        Player.Instance.health=Player.Instance.maxHealth;
         // 获取玩家数据
         PlayerSaveData data = new PlayerSaveData
         {
