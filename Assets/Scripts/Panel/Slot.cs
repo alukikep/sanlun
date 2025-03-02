@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.IO;
 //using UnityEngine.Events;
 
 public class Slot : MonoBehaviour
@@ -66,7 +67,6 @@ public class Slot : MonoBehaviour
         if (data.currentCheckpointImage != null&&image!=null)
         {
             image.sprite = data.currentCheckpointImage;
-            // …Ë÷√Õº∆¨—’…´
             image.color = Color.white;
         }
     }
