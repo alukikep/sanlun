@@ -28,6 +28,7 @@ public class SaveLoadPanel : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 Time.timeScale = 1;
+                if(Player.Instance!=null)
                 Player.Instance.enabled = true;
                 panel.SetActive(false);
             }
