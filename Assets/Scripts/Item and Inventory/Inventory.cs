@@ -48,17 +48,21 @@ public class Inventory : MonoBehaviour
     }
     public void UpdateSlotUI()
     {
-        for (int i = 0; i < itemSlot.Length; i++)
+        if(itemSlot == null)return;
+        if (itemSlot.Length > 0)
         {
-            if (i < InventoryItems.Count)
+            for (int i = 0; i < itemSlot.Length; i++)
             {
-                // 如果物品槽有物品，更新物品信息
-                itemSlot[i].UpdateSlot(InventoryItems[i]);
-            }
-            else
-            {
-                // 如果物品槽没有物品，清空显示
-                itemSlot[i].UpdateSlot(null);
+                if (i < InventoryItems.Count)
+                {
+                    // 如果物品槽有物品，更新物品信息
+                    itemSlot[i].UpdateSlot(InventoryItems[i]);
+                }
+                else
+                {
+                    // 如果物品槽没有物品，清空显示
+                    itemSlot[i].UpdateSlot(null);
+                }
             }
         }
     }
@@ -155,6 +159,7 @@ public class Inventory : MonoBehaviour
     {
         // 清空物品列表和字典
         InventoryItems.Clear();
+        if (inventoryDictionary != null)
         inventoryDictionary.Clear();
 
         // 更新 UI，清空所有物品槽

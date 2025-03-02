@@ -11,6 +11,8 @@ public class SaveManager : MonoBehaviour
     public int maxSaveSlots;
     public List<SaveSlot> saveSlots = new List<SaveSlot>();
     public SaveSlot selectedSlot;
+    public GameObject inventory;
+    public GameObject player;
 
     void Awake()
     {
@@ -114,6 +116,8 @@ public class SaveManager : MonoBehaviour
 
     public void LoadGame(int slotIndex)
     {
+        player.SetActive(true);
+        inventory.SetActive(true);
         string savePath = GetSavePath(slotIndex);
         // ¶ÁÈ¡´æµµÊý¾Ý
         if (savePath == null) return;

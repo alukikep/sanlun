@@ -49,3 +49,5 @@ MonoBehaviour:
   selectedSlot:
     name: 
     path: 
+  inventory: {fileID: 0}
+  player: {fileID: 0}

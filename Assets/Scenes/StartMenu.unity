@@ -191,9 +191,13 @@ PrefabInstance:
       value: SaveManager
       objectReference: {fileID: 0}
     - target: {fileID: 3517171191590918427, guid: 1b0df7a51b3655441a83ab1293abb692, type: 3}
-      propertyPath: maxSaveSlots
-      value: 4
-      objectReference: {fileID: 0}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 633200048}
+    - target: {fileID: 3517171191590918427, guid: 1b0df7a51b3655441a83ab1293abb692, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 356420089}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
