@@ -7,9 +7,11 @@ public class PauseMenu : MonoBehaviour
 {
     private Player player;
     public GameObject _player;
+    public GameObject inventory;
     public void Start()
     {
-          player = GetComponentInParent<Player>();
+        player = GetComponentInParent<Player>();
+        inventory= GameObject.Find("Inventory");
         _player = GameObject.Find("Player");
     }
     public void Continue()
@@ -23,7 +25,7 @@ public class PauseMenu : MonoBehaviour
     public void StartMenu()
     {
         SceneManager.LoadScene("StartMenu");
-        _player.SetActive(false );
-        
+        _player.SetActive(false);
+        inventory.SetActive(false);
     }
 }
