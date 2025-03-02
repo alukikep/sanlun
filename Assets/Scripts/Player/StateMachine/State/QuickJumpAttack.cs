@@ -13,7 +13,7 @@ public class QuickJumpAttack : Air
         base.Enter();
         player.audioController.PlaySfx(player.audioController.attack);
         isAttack = true;
-        player.attackTimer = player.attackTime;
+        player.attackTimer = player.attackTime/5;
     }
 
     public override void Exit()

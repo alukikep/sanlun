@@ -78,9 +78,12 @@ public class IceDevil : MonoBehaviour
 
     private void Attack()
     {
-        cooldownTimer=cooldown;
-        Vector3 height = new Vector3(0,4,0);
-        GameObject IceBullet = Instantiate(iceBullet,player.position+height,Quaternion.identity);
+        if (player != null)
+        {
+            cooldownTimer = cooldown;
+            Vector3 height = new Vector3(0, 4, 0);
+            GameObject IceBullet = Instantiate(iceBullet, player.position + height, Quaternion.identity);
+        }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
