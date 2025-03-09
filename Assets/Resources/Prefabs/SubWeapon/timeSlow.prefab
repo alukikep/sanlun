@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 244099209937976251}
   - component: {fileID: 5862749404650529070}
   m_Layer: 0
-  m_Name: TimeSlow
+  m_Name: timeSlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

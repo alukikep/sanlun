@@ -38,8 +38,6 @@ public class Player : MonoBehaviour
 
     public float raycastDistance = 1f;
     public LayerMask obstacleLayer;
-    public float startTime;
-    public float currentTime;
     public static Player Instance;//单例模式
     private HashSet<string> collectedPotions = new HashSet<string>();
     public Sprite CheckpointPicture;
@@ -106,9 +104,9 @@ public class Player : MonoBehaviour
    
     public KeyCode SwitchKey = KeyCode.I;
     public KeyCode UseKey = KeyCode.O;
-    private List<string> collectedWeapons = new List<string> ();
+    public List<string> collectedWeapons = new List<string> ();
     private int currentWeaponIndex = -1;
-    private int maxSubWeaponNum = 0;
+    public int maxSubWeaponNum = 0;
     public GameObject axe;
     public bool isAxe;
     private Axe axeScript;
@@ -119,12 +117,16 @@ public class Player : MonoBehaviour
     private GameObject currentFamiliar;
     public GameObject guardian;
     public bool isGuardian;
-    public int guardianNum;
     private Guardian guardianScript;
+    public int guardianNum;
     public GameObject TimeSlow;
-    private TimeSlow timeSlowScript;
     public bool isTimeSlowed;
+    private TimeSlow timeSlowScript;
 
+    public bool isAxeEnabled = false;
+    public bool isFamiliarEnabled = false;
+    public bool isGuardianEnabled = false;
+    public bool isTimeSlowEnabled = false;
 
     [HideInInspector] public float oriG;
     [HideInInspector] public float oriJumpForce;
@@ -136,17 +138,11 @@ public class Player : MonoBehaviour
     public int jumpNumber; // 0,1,2分别表示跳跃了0，1，2次，控制二段跳
     public int jumpLimit;
 
-
-
     public bool isdoubleJumpEnabled = false;
     public bool ishighJumpEnabled = false;
     public bool isbatTransformEnabled = false;
     public bool isratTransformEnabled = false;
-    public bool isAxeEnabled = false;
-    public bool isFamiliarEnabled = false;
-    public bool isGuardianEnabled = false;
-    public bool isTimeSlowEnabled = false;
-
+    
     public GameObject pauseMenu;
     public bool isPauseMenuEnabled;
     public GameObject DieMenu;
@@ -192,7 +188,6 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startTime = Time.unscaledTime;
         LoadPlayerTime();
         oriG = rigidbody2D.gravityScale;
         anim = GetComponentInChildren<Animator>();
@@ -269,7 +264,6 @@ public class Player : MonoBehaviour
 
 
 
-        currentTime = Time.unscaledTime - startTime;
         StateMachine.currentState.Update();
         blockCoolTimer -= Time.deltaTime;
 
@@ -492,7 +486,10 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(SwitchKey)&&timeSlowScript.TimeSlowActive==false)
         {
-            
+            axe = Resources.Load<GameObject>("Prefabs/SubWeapon/axe");
+            familiar = Resources.Load<GameObject>("Prefabs/SubWeapon/familiar");
+            guardian = Resources.Load<GameObject>("Prefabs/SubWeapon/guardian");
+            TimeSlow = Resources.Load<GameObject>("Prefabs/SubWeapon/timeSlow");
             currentWeaponIndex = (currentWeaponIndex+1)%maxSubWeaponNum;
             if (collectedWeapons[currentWeaponIndex]=="Axe")
             {
@@ -659,7 +656,6 @@ public class Player : MonoBehaviour
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-        SavePlayerTime(currentTime);
     }
     
     public IEnumerator UpdateVirtualCameraAfterLoad()

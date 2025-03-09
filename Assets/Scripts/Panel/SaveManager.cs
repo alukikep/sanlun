@@ -28,39 +28,6 @@ public class SaveManager : MonoBehaviour
 
         LoadAllSaves();
     }
-//    void OnEnable()
-//    {
-//        // 在编辑器中注册退出事件
-//        if (Application.isEditor)
-//        {
-//#if UNITY_EDITOR
-//            EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
-//#endif
-//        }
-//    }
-
-//    void OnDisable()
-//    {
-//        // 在编辑器中注销退出事件
-//        if (Application.isEditor)
-//        {
-//#if UNITY_EDITOR
-//            EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
-//#endif
-//        }
-//    }
-
-//#if UNITY_EDITOR
-//    private void OnPlayModeStateChanged(PlayModeStateChange state)
-//    {
-//        // 检测是否从运行模式切换到编辑模式
-//        if (state == PlayModeStateChange.ExitingPlayMode)
-//        {
-//            ClearSaveFiles();
-//        }
-//    }
-
-//#endif
     void ClearSaveFiles()
     {
         for (int i = 0; i < maxSaveSlots; i++)
@@ -69,7 +36,6 @@ public class SaveManager : MonoBehaviour
             if (File.Exists(savePath))
             {
                 File.Delete(savePath);
-                Debug.Log($"Deleted save file: {savePath}");
             }
         }
     }
@@ -79,7 +45,6 @@ public class SaveManager : MonoBehaviour
         // 创建存档路径
         string savePath = GetSavePath(slotIndex);
         // 获取 CheckpointPicture 的路径
-
         string checkpointImagePath = "";
         if (Player.Instance.CheckpointPicture != null)
         {
@@ -96,8 +61,14 @@ public class SaveManager : MonoBehaviour
             }
 #endif
         }
-        Player.Instance.health=Player.Instance.maxHealth;
-        // 获取玩家数据
+        List<string> weaponPrefabPaths = new List<string>
+    {
+        "Prefabs/SubWeapon/axe.prefab", // 相对于 Resources 文件夹的路径
+        "Prefabs/SubWeapon/guardian.prefab",
+        "Prefabs/SubWeapon/familiar.prefab",
+        "Prefabs/SubWeapon/timeSlow.prefab"
+    };
+        Player.Instance.health = Player.Instance.maxHealth;
         PlayerSaveData data = new PlayerSaveData
         {
             health = Player.Instance.health,
@@ -112,12 +83,12 @@ public class SaveManager : MonoBehaviour
             isTimeSlowEnabled = Player.Instance.isTimeSlowEnabled,
             attack = Player.Instance.ATK,
             currentSceneName = SceneManager.GetActiveScene().name,
-            currentCheckpointImage=Player.Instance.CheckpointPicture,
+            currentCheckpointImage = Player.Instance.CheckpointPicture,
             collectedPotions = Player.Instance.GetCollectedPotions().ToList(),
             inventoryItems = Inventory.Instance.InventoryItems.Select(item => new InventoryItemData
             {
                 itemName = item.data.itemName,
-                iconPath = item.data.icon.name, // 如果需要保存图标路径
+                iconPath = item.data.icon.name,
                 quantity = item.stackSize
             }).ToList(),
             collectedWeapons = new List<bool>
@@ -126,7 +97,11 @@ public class SaveManager : MonoBehaviour
             Player.Instance.isGuardianEnabled,
             Player.Instance.isTimeSlowEnabled,
             Player.Instance.isFamiliarEnabled
-        },checkpointImagePath = checkpointImagePath // 存储路径
+        },
+            collectedWeaponsIndex = Player.Instance.collectedWeapons, // 保存副武器名称列表
+            checkpointImagePath = checkpointImagePath, // 存储路径
+            weaponPrefabPaths = weaponPrefabPaths,
+            maxSubWeaponNum = Player.Instance.maxSubWeaponNum // 保存 maxSubWeaponNum
         };
 
         // 序列化数据
@@ -185,14 +160,37 @@ public class SaveManager : MonoBehaviour
                     Debug.LogError($"CheckpointPicture not found at path: {pathWithoutExtension}");
                 }
             }
+            Player.Instance.collectedWeapons = data.collectedWeaponsIndex; // 加载副武器名称列表
 
-            if (data.collectedWeapons.Count > 0)
+            // 加载副武器 Prefab 和状态
+            if (data.weaponPrefabPaths.Count > 0 && data.collectedWeapons.Count > 0)
             {
-                Player.Instance.isAxeEnabled = data.collectedWeapons[0];
-                Player.Instance.isGuardianEnabled = data.collectedWeapons[1];
-                Player.Instance.isTimeSlowEnabled = data.collectedWeapons[2];
-                Player.Instance.isFamiliarEnabled = data.collectedWeapons[3];
+                for (int i = 0; i < data.weaponPrefabPaths.Count; i++)
+                {
+                    string prefabPath = data.weaponPrefabPaths[i];
+                    bool isEnabled = data.collectedWeapons[i];
+
+                    // 确保路径是相对于 Resources 文件夹的
+                    prefabPath = prefabPath.Replace("Assets/Resources/", "").Replace(".prefab", "");
+
+                    GameObject prefab = Resources.Load<GameObject>(prefabPath);
+                    if (prefab != null)
+                    {
+                        GameObject weaponInstance = Instantiate(prefab, Player.Instance.transform.position, Quaternion.identity);
+                        if (i == 0) Player.Instance.axe = weaponInstance;
+                        else if (i == 1) Player.Instance.guardian = weaponInstance;
+                        else if (i == 2) Player.Instance.familiar = weaponInstance;
+                        else if (i == 3) Player.Instance.TimeSlow = weaponInstance;
+
+                        weaponInstance.SetActive(isEnabled);
+                    }
+                    else
+                    {
+                        Debug.LogError($"Prefab not found at path: {prefabPath}");
+                    }
+                }
             }
+            Player.Instance.maxSubWeaponNum = data.maxSubWeaponNum;
             Inventory.Instance.LoadInventory(data.inventoryItems);
 
             StartCoroutine(Player.Instance.UpdateVirtualCameraAfterLoad());

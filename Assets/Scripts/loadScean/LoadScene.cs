@@ -19,6 +19,10 @@ public class LoadScene : MonoBehaviour
     List<InventoryItemData> inventoryItems;
     public static string TargetSpawnPoint { get; private set; }
 
+    public GameObject axePrefab;
+    public GameObject guardianPrefab;
+    public GameObject familiarPrefab;
+    public GameObject timeSlowPrefab;
     private void Awake()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -29,6 +33,32 @@ public class LoadScene : MonoBehaviour
         PlayerRB = Player1.GetComponent<Rigidbody2D>();
         StartCoroutine(Player.Instance.DestroyCollectedPotions());
 
+        if (Player.Instance == null)
+        {
+            Debug.LogError("Player.Instance is null. Please ensure Player object exists in the scene.");
+            return;
+        }
+
+        // ≥ı ºªØ∏±Œ‰∆˜ Prefab
+        //if (Player.Instance.isAxeEnabled && Player.Instance.axe == null)
+        //{
+        //    Player.Instance.axe = Instantiate(axePrefab, Player.Instance.transform.position, Quaternion.identity);
+        //}
+
+        //if (Player.Instance.isGuardianEnabled && Player.Instance.guardian == null)
+        //{
+        //    Player.Instance.guardian = Instantiate(guardianPrefab, Player.Instance.transform.position, Quaternion.identity);
+        //}
+
+        //if (Player.Instance.isFamiliarEnabled && Player.Instance.familiar == null)
+        //{
+        //    Player.Instance.familiar = Instantiate(familiarPrefab, Player.Instance.transform.position, Quaternion.identity);
+        //}
+
+        //if (Player.Instance.isTimeSlowEnabled && Player.Instance.TimeSlow == null)
+        //{
+        //    Player.Instance.TimeSlow = Instantiate(timeSlowPrefab, Player.Instance.transform.position, Quaternion.identity);
+        //}
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -77,8 +107,4 @@ public class LoadScene : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-
-
-
-
 }

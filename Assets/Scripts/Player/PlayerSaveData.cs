@@ -22,7 +22,10 @@ public class PlayerSaveData
     public Sprite currentCheckpointImage;
     public List<InventoryItemData> inventoryItems;
     public List<bool> collectedWeapons;
+    public List<string> collectedWeaponsIndex;
+    public List<string> weaponPrefabPaths; // Prefab Â·¾¶
     public string checkpointImagePath;
+    public int maxSubWeaponNum;
 }
 
 [System.Serializable]
