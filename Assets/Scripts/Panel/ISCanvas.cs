@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class save : MonoBehaviour
+public class ISCanvas : MonoBehaviour
 {
-    public static save Instance;
+    public static ISCanvas Instance;
     private GameObject gameObject;
     public GameObject inventory;
     public GameObject savepanel;

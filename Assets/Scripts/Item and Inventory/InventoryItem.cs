@@ -7,7 +7,7 @@ public class InventoryItem
     public ItemData data;
     public int stackSize;
 
-    //为每一个“物品”创建一个独立的“库存”用来统计堆叠数
+    //构造函数，为每一个“物品”创建一个独立的“库存”用来统计堆叠数
     public InventoryItem(ItemData _newItemData)
     {
         data = _newItemData;

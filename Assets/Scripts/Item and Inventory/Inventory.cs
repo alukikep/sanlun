@@ -7,8 +7,8 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory Instance;
 
-    public List<InventoryItem> InventoryItems;
-    public Dictionary<ItemData, InventoryItem> inventoryDictionary;
+    public List<InventoryItem> InventoryItems = new List<InventoryItem>();
+    public Dictionary<ItemData, InventoryItem> inventoryDictionary = new Dictionary<ItemData, InventoryItem>();
 
 
     [Header("Inventory UI")]
@@ -32,19 +32,7 @@ public class Inventory : MonoBehaviour
     }
     private void Start()
     {
-        InventoryItems = new List<InventoryItem>();
-        inventoryDictionary = new Dictionary<ItemData, InventoryItem>();
-
         itemSlot = inventorySlotParent.GetComponentsInChildren<UI_ItemSlot>();
-    }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            // 空格键被按下，但不执行任何操作
-            return;
-        }
-
     }
     public void UpdateSlotUI()
     {
@@ -108,22 +96,22 @@ public class Inventory : MonoBehaviour
         {
             switch (_item.itemType)
             {
-                case ItemData.ItemType.HealingPotion:
+                case ItemData.E_ItemType.HealingPotion:
                     Player.Instance.Heal(_item.healAmount);
                     break;
-                case ItemData.ItemType.HealthMaxPotion:
+                case ItemData.E_ItemType.HealthMaxPotion:
                     Player.Instance.IncreaseMaxHealth(_item.increaseHealthMax);
                     break;
-                case ItemData.ItemType.EnternalAttackPotion:
+                case ItemData.E_ItemType.EnternalAttackPotion:
                     Player.Instance.IncreaseEnternalAttack(_item.increaseAttack);
                     break;
-                case ItemData.ItemType.TemporaryAttackPotion:
+                case ItemData.E_ItemType.TemporaryAttackPotion:
                     Player.Instance.IncreaseTemporaryAttack(_item.increaseAttack,_item.Duration);
                     break;
-                case ItemData.ItemType.ManaCapacityPotion:
+                case ItemData.E_ItemType.ManaCapacityPotion:
                     Player.Instance.IncreaseMaxMana(_item.increaseManaMax);
                     break;
-                case ItemData.ItemType.ManaRestorePotion:
+                case ItemData.E_ItemType.ManaRestorePotion:
                     Player.Instance.IncreaseMana(_item.increaseMana);
                     break;
             }
@@ -154,15 +142,12 @@ public class Inventory : MonoBehaviour
         }
         UpdateSlotUI(); // 更新 UI
     }
-    // 新增方法：清空物品栏
     public void ClearInventory()
     {
         // 清空物品列表和字典
         InventoryItems.Clear();
         if (inventoryDictionary != null)
         inventoryDictionary.Clear();
-
-        // 更新 UI，清空所有物品槽
         UpdateSlotUI();
     }
 }

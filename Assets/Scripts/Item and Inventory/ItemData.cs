@@ -7,17 +7,16 @@ public class ItemData : ScriptableObject
 {
     public string itemName;
     public Sprite icon;
-    public ItemType itemType; 
-    public int healAmount;    // 治疗量，仅对治疗药水有效
-    public int increaseHealthMax; // 增加生命值上限
-    public int increaseAttack;    // 增加攻击力
+    public E_ItemType itemType; 
+    public int healAmount;
+    public int increaseHealthMax;
+    public int increaseAttack;
     public int increaseManaMax;
     public int increaseMana;
     public int Duration;
 
-
     // 物品类型枚举
-    public enum ItemType
+    public enum E_ItemType
     {
         None,
         HealingPotion,

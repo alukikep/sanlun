@@ -26,7 +26,7 @@ public class ItemObject : MonoBehaviour
         {
             isProcessed = true;
             Player.Instance.AddCollectedPotion(potionID);
-            if (ItemData1.itemType == ItemData.ItemType.HealthMaxPotion || ItemData1.itemType == ItemData.ItemType.EnternalAttackPotion|| ItemData1.itemType == ItemData.ItemType.ManaCapacityPotion)
+            if (ItemData1.itemType == ItemData.E_ItemType.HealthMaxPotion || ItemData1.itemType == ItemData.E_ItemType.EnternalAttackPotion|| ItemData1.itemType == ItemData.E_ItemType.ManaCapacityPotion)
             {
                 Inventory.Instance.AddItem(ItemData1);
                 Inventory.Instance.UseItem(ItemData1);

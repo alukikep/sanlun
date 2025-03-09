@@ -31,7 +31,7 @@ public class SaveLoadButton : MonoBehaviour
         else
         {
             SaveManager.Instance.LoadGame(slotIndex);
-            save.Instance.ActivateInventory();
+            ISCanvas.Instance.ActivateInventory();
             Player.Instance.pauseMenu.SetActive(false);
             Player.Instance.DieMenu.SetActive(false);
         }

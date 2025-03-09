@@ -127,7 +127,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7699396445522313085, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
   m_PrefabInstance: {fileID: 645815149}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 760922098}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47218b2f9393b8740a8862b3e686da6b, type: 3}
@@ -203,6 +203,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b0df7a51b3655441a83ab1293abb692, type: 3}
+--- !u!1 &586210390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3762562507068468184, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
+  m_PrefabInstance: {fileID: 645815149}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &605448287
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,8 +425,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 20477934}
-        m_TargetAssemblyTypeName: save, Assembly-CSharp
+      - m_Target: {fileID: 760922103}
+        m_TargetAssemblyTypeName: ISCanvas, Assembly-CSharp
         m_MethodName: ActivateSavepanel
         m_Mode: 1
         m_Arguments:
@@ -704,8 +709,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6510910814514943082, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 760922103}
   m_SourcePrefab: {fileID: 100100000, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
+--- !u!1 &760922098 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6510910814514943082, guid: ad8a8671c2771fc4898f423e3311e730, type: 3}
+  m_PrefabInstance: {fileID: 645815149}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &760922103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760922098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12d5c5b8222c01a43af865a6a347d01e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 356420089}
+  savepanel: {fileID: 586210390}
 --- !u!1 &1160318475
 GameObject:
   m_ObjectHideFlags: 0
