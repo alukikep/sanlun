@@ -6,6 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/StartMenu.unity
+    guid: af6906375b9f117489a8564b46b0e2e7
+  - enabled: 1
+    path: Assets/Scenes/CastleHall.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Arsenal.unity
+    guid: 1c8baa43167906549a3a801e92905a8b
+  - enabled: 1
+    path: Assets/Scenes/CastleKeep.unity
+    guid: fb009deb8acc41a44843f9490251c362
+  - enabled: 1
+    path: Assets/Scenes/ClockTower.unity
+    guid: 5e075e00ff678f74abc7e6d94af3a276
+  - enabled: 1
+    path: Assets/Scenes/Sewers.unity
+    guid: 2fd85dd65c05f03429e4343c6e8afb1c
+  - enabled: 1
+    path: Assets/Scenes/Village.unity
+    guid: 2d7411d117e74334cb0b04bba4a141d4
   m_configObjects: {}

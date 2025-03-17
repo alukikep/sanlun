@@ -11,13 +11,13 @@ public class BlockSuc : Block
     public override void Enter()
     {
         base.Enter();
-        player.isBlock = true;
+        player.audioController.PlaySfx(player.audioController.block);
+        GameObject BlockEffect = MonoBehaviour.Instantiate(player.blockEffect, player.transform.position, Quaternion.identity);
     }
 
     public override void Exit()
     {
         base.Exit();
-        player.isBlock = false;
     }
 
     public override void Update()

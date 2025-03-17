@@ -3,18 +3,28 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Bullet
+  - DestructibleBricks
+  - LoadScene
+  - Audio
+  - Potion
+  - Limit
+  - SaveButton
+  - Button
+  - SavePanel
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Bullet
+  - Ground
+  - Player
+  - DestructibleBricks
   - 
   - 
   - 
@@ -40,4 +50,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Item
+    uniqueID: 717184037
     locked: 0
