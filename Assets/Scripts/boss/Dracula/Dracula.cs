@@ -42,20 +42,6 @@ public class Dracula : MonoBehaviour
         Flip();
 
         
-            FireBall();
-        
-        
-            HugeFireBalluUP();
-        
-        
-            HugeFireBallDown();
-        
-        
-            LightRain();
-        
-        
-            Rush();
-        
 
         if (player != null && BGM == false)
         {

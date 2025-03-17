@@ -177,8 +177,6 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 128
-  startTime: 0
-  currentTime: 0
   CheckpointPicture: {fileID: 0}
   speedRate: 8
   jumpForce: 14
@@ -205,11 +203,11 @@ MonoBehaviour:
   attackCheck: {fileID: 704767553706274509}
   attackRadius: 1.2
   isAttack: 0
-  ATK: 20
+  ATK: 50
   attackTime: 0.3
   attackTimer: 0.3
-  maxHealth: 300
-  health: 300
+  maxHealth: 600
+  health: 600
   proTime: 0.1
   proNumber: 3
   maxMana: 100
@@ -217,6 +215,8 @@ MonoBehaviour:
   ManaPerSecond: 5
   SwitchKey: 105
   UseKey: 111
+  collectedWeapons: []
+  maxSubWeaponNum: 0
   axe: {fileID: 5762047534356073613, guid: 14d34defe9acd644690916ec6c0523b8, type: 3}
   isAxe: 0
   familiar: {fileID: 7349403836149618934, guid: 9cccad8786dadd342a131131c48a5559, type: 3}
@@ -226,6 +226,10 @@ MonoBehaviour:
   guardianNum: 4
   TimeSlow: {fileID: 3516248896231261797}
   isTimeSlowed: 0
+  isAxeEnabled: 0
+  isFamiliarEnabled: 0
+  isGuardianEnabled: 0
+  isTimeSlowEnabled: 0
   oriG: 0
   oriJumpForce: 0
   capsuleCollider2D: {fileID: 0}
@@ -236,10 +240,6 @@ MonoBehaviour:
   ishighJumpEnabled: 0
   isbatTransformEnabled: 0
   isratTransformEnabled: 0
-  isAxeEnabled: 0
-  isFamiliarEnabled: 0
-  isGuardianEnabled: 0
-  isTimeSlowEnabled: 0
   pauseMenu: {fileID: 483030197934543968}
   isPauseMenuEnabled: 0
   DieMenu: {fileID: 2571568922178326178}
