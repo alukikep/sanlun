@@ -41,26 +41,21 @@ public class Dracula : MonoBehaviour
     {
         Flip();
 
-        if(Input.GetKeyDown(KeyCode.O))
-        {
+        
             FireBall();
-        }
-        if (Input.GetKeyDown(KeyCode.U))
-        {
+        
+        
             HugeFireBalluUP();
-        }
-        if(Input.GetKeyDown(KeyCode.V))
-        {
+        
+        
             HugeFireBallDown();
-        }
-        if(Input.GetKeyDown (KeyCode.L))
-        {
+        
+        
             LightRain();
-        }
-        if(Input.GetKeyDown(KeyCode.H))
-        {
+        
+        
             Rush();
-        }
+        
 
         if (player != null && BGM == false)
         {
