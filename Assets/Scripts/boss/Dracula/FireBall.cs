@@ -3,61 +3,54 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FireBall : MonoBehaviour
-{ 
-  private Rigidbody2D rigidbody2D;
-    private SpriteRenderer spriteRenderer;
-    public bool isDracula;
-
-[SerializeField] private float moveSpeed;
-[SerializeField]private float destroyTimer = 10;//自毁时间
-public float ATK;
-    private GameObject player;
-// Start is called before the first frame update
-void Awake()
 {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        player = GameObject.FindWithTag("Player");
-        float movingDir = player.transform.position.x > transform.position.x ? 1 : -1;
-        if(movingDir > 0)
-        {
-            spriteRenderer.flipX = true;
-        }
-    rigidbody2D = GetComponent<Rigidbody2D>();
-    rigidbody2D.velocity =new Vector2(moveSpeed*movingDir, 0);
-}
+   
+    private Rigidbody2D rigidbody2D;
 
-    private void Start()
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float moveDir;
+    public float angle;
+    private float destroyTimer = 10;//自毁时间
+    public float ATK;
+    private Dracula dracula;
+    // Start is called before the first frame update
+    void Start()
     {
-        if (rigidbody2D.velocity.x > 0 && isDracula == false)
+        GameObject.Find("Dracula");
+        dracula = GetComponent<Dracula>();  
+        if(dracula.faceRight==true )
         {
-            spriteRenderer.flipX = false;
+            moveDir = 1;
         }
-        else if (rigidbody2D.velocity.x > 0 && isDracula == true)
+        else
         {
-            spriteRenderer.flipX = true;
+            moveDir = -1;
         }
+        rigidbody2D = GetComponent<Rigidbody2D>();
+        rigidbody2D.velocity = new Vector2(moveSpeed*moveDir, 0);
     }
 
     // Update is called once per frame
     void Update()
-{
-    destroyTimer -= Time.deltaTime;
-    if (destroyTimer < 0)
     {
-        Destroy(gameObject);
+        destroyTimer -= Time.deltaTime;
+        if (destroyTimer < 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            collision.gameObject.GetComponent<Player>().GetDamage(ATK);
+            Destroy(gameObject);
+        }
     }
 }
-private void OnCollisionEnter2D(Collision2D collision)
-{
-    if (collision.gameObject.CompareTag("Ground"))
-    {
-        Destroy(gameObject);
-    }
-    if (collision.gameObject.CompareTag("Player"))
-    {
-        collision.gameObject.GetComponent<Player>().GetDamage(ATK);
-        Destroy(gameObject);
-    }
-}
-}
+
 
